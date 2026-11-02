@@ -1,0 +1,1 @@
+../../.agent/workflows/typescript-scaffold.md

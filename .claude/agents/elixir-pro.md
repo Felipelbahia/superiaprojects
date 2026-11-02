@@ -1,0 +1,1 @@
+../../.agent/agents/elixir-pro.md

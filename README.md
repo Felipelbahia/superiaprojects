@@ -1,0 +1,160 @@
+<div align="center">
+  <img src="assets/logo.png" alt="Futuro Mercado" width="340" />
+  <h1>Super IA Projects (<code>superiaprojects</code>)</h1>
+  <p><strong>The Agentic Engineering Framework</strong></p>
+  <p>Modular Skills, Multi-AI Dual Parity Rules, Autonomous Specialists, and Interactive Visual Catalog.</p>
+
+  <p>
+    <a href="https://www.futuromercado.com.br"><img src="https://img.shields.io/badge/Futuro%20Mercado-Website-gold?style=for-the-badge&logo=googlechrome&logoColor=black" alt="Website" /></a>
+    <a href="https://instagram.com/felipelbahia"><img src="https://img.shields.io/badge/Instagram-@felipelbahia-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
+    <a href="mailto:felipe@futuromercado.com.br"><img src="https://img.shields.io/badge/Contato-felipe@futuromercado.com.br-blue?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" /></a>
+    <img src="https://img.shields.io/badge/Vers%C3%A3o-v1.0.0-blueviolet?style=for-the-badge" alt="Versão" />
+    <img src="https://img.shields.io/badge/Atualizado-01%2F11%2F2026-informational?style=for-the-badge" alt="Atualizado" />
+  </p>
+
+  <p>
+    <strong>Português</strong> | <a href="README.en.md">🇺🇸 Read in English</a>
+  </p>
+</div>
+
+---
+
+> **Autoria:** Criado e mantido por **Felipe Bahia** ([Futuro Mercado](https://www.futuromercado.com.br)).  
+> **Versão:** `v1.0.0` · **Última Atualização:** 01 de Novembro de 2026  
+> Inspirado na filosofia de fricção zero do [`obra/superpowers`](https://github.com/obra/superpowers) e desenhado para engenharia ágil com **Claude Code**, **Google Antigravity** e **Cursor**.
+
+---
+
+## ⚡ Por que o Super IA Projects?
+
+O desenvolvimento com agentes autônomos de IA frequentemente sofre com contexto instável, regras conflitantes e skills difíceis de portar entre diferentes ferramentas de linha de comando ou IDEs.
+
+O **Super IA Projects** resolve isso fornecendo uma arquitetura unificada:
+
+- 🎯 **Compatibilidade Multi-IA Real (Paridade Dual):** Regras 100% idênticas sincronizadas automaticamente entre `CLAUDE.md`, `GEMINI.md` e `.cursorrules`.
+- 🧩 **Skills Modulares & Agnósticas:** Mais de 220 skills prontas cobrindo desenvolvimento web, mobile, automações (n8n), web scraping robusto (Firecrawl) e arquitetura.
+- 🔄 **Loop de Execução (Execution Loop):** Metodologia rígida de entrega: *Brainstorm → Espec → Plan → Execução → QA (com notas 0 a 10 e evidências verificáveis)*.
+- 📊 **Catálogo Visual Interativo:** Um painel navegável em HTML (`catalog.html`) e índice Markdown (`.agent/CATALOG.md`) atualizados dinamicamente.
+- 🛡️ **Privacidade & Isolamento:** Regras pessoais, históricos de execução e dados de clientes isolados por padrão via `.gitignore`.
+
+---
+
+## 📦 O que está incluído
+
+- **130+ Agentes Especialistas** (`.agent/agents/`): Personas focadas em domínios (Frontend, Mobile, Backend, Segurança, DevOps, Auditoria).
+- **220+ Skills com Scripts** (`.agent/skills/`): Conhecimento procedural acionável com verificações e testes embutidos.
+- **110+ Workflows** (`.agent/workflows/`): Comandos `/slash` rápidos para Claude Code e Cursor.
+- **Modelos Agnósticos:**
+  - `CLAUDE.example.md` (ou `ClaudeExample.md`): Template agnóstico pronto para ser copiado para `CLAUDE.md`.
+  - `prompts-template/`: Coleção de prompts copy-paste testados para criação, migração e sincronização de projetos.
+  - `mcp.example.json`: Configuração limpa para servidores MCP.
+
+---
+
+## 🚀 Quickstart & Instalação
+
+### Instalação em 1 Comando:
+
+```bash
+git clone https://github.com/seu-usuario/superiaprojects.git
+cd superiaprojects
+./install.sh
+```
+
+O script `./install.sh`:
+
+1. Verifica seu ambiente Python 3.
+2. Cria o arquivo `CLAUDE.md` a partir do `CLAUDE.example.md` (se ainda não existir).
+3. Cria todos os symlinks para o Claude Code (`.claude/`) e Cursor (`.cursor/`).
+4. Gera o catálogo visual unificado em `catalog.html`.
+
+---
+
+## 📋 Como usar no dia a dia
+
+### 🤖 Roteamento Inteligente de Agentes
+
+Você não precisa se lembrar do nome de cada especialista. O sistema analisa seu pedido e aplica a persona adequada automaticamente:
+
+```markdown
+Você: "Adicione autenticação JWT e proteja as rotas da API"
+IA: 🤖 Applying knowledge of @security-auditor + @backend-specialist...
+```
+
+### 🔁 O Ciclo de Entrega (Execution Loop)
+
+Para features complexas, refatorações ou novos módulos, ative a skill `execution-loop`:
+
+1. **00 Brainstorm:** Alinhamento de escopo e perguntas socráticas.
+2. **01 Espec:** Documento de requisitos com Rubrica de QA (critérios de aceite numerados).
+3. **02 Plan:** Plano de tarefas mapeado item a item.
+4. **03 Execução:** Registro rastreável de comandos, código e diffs.
+5. **04 QA:** Auditoria estrita com nota 0 a 10 por critério. *(Nota < 10 reinicia o ciclo com debug).*
+
+### 📁 Prompts Reutilizáveis (`prompts-template/`)
+
+Dentro da pasta `prompts-template/`, você encontra roteiros prontos para:
+
+- `01-atualizar-projeto-existente.md`: Adotar as regras em um projeto já existente sem perder código (Merge & Preserve).
+- `02-criar-projeto-do-zero.md`: Inicializar um projeto do zero via `project-initializer`.
+- `04-buscar-bibliotecas-prontas.md`: Avaliar reuso de software open source via `oss-scout`.
+- `08-sincronizar-com-o-kit.md`: Manter seus projetos sincronizados com as atualizações do kit.
+- `template-inteligencia.md`: Injetar o módulo transversal de Inteligência de Negócio (Trends, RSS, mineração de ganchos).
+
+---
+
+## 🔌 Ferramentas Recomendadas: Servidores MCP & Extensões
+
+O ecossistema opera de forma integrada com ferramentas que potencializam os agentes de IA.
+
+### 🌟 Servidores MCP Selecionados
+Modelos prontos no arquivo [`mcp.example.json`](mcp.example.json):
+- **`context7`**: Consulta de documentações técnicas oficiais e atualizadas.
+- **`firecrawl`**: Web scraping avançado e pesquisas com saída em Markdown limpo.
+- **`chrome-devtools`**: Depuração visual no navegador, acessibilidade (a11y) e Core Web Vitals.
+- **`testsprite`**: Automação e execução autônoma de planos de testes a partir de PRDs.
+- **`stitch`**: Prototipagem de interfaces e geração de design systems.
+- **`supabase`**: Consultas SQL, migrações e sincronização de tipos TypeScript.
+- **`api-tools`**: Leitura e validação de contratos OpenAPI / Swagger.
+- **`notion`**: Sincronização de documentos, notas e PRDs direto no Notion.
+
+### 🧩 Extensões de IDE (VS Code / Antigravity / Cursor)
+Recomendadas automaticamente via [`.vscode/extensions.json`](.vscode/extensions.json):
+- **IA:** Claude Code, Kilo Code.
+- **Produtividade:** Peacock (cores de workspace), Material Icon Theme, Rainbow CSV, Office Viewer, PDF Viewer.
+- **Web & APIs:** Thunder Client (requisições REST integradas), CSS Peek, Svelte.
+- **Python & Infra:** Suíte oficial Python (Pylance) e Docker.
+
+👉 *Veja o [**Guia Completo de Setup (SETUP.md)**](SETUP.md) para instruções passo a passo e instalação em lote.*
+
+---
+
+## 🤝 Como Contribuir
+
+Quer criar novas skills ou agentes? Veja o nosso [Guia de Contribuição (CONTRIBUTING.md)](CONTRIBUTING.md) para entender a metodologia TDD-for-skills e os padrões de validação.
+
+---
+
+## 🙏 Créditos & Agradecimentos
+
+O **Super IA Projects** foi construído e enriquecido a partir de contribuições valiosas do ecossistema open-source:
+
+- **[`obra/superpowers`](https://github.com/obra/superpowers)** por **Jesse Vincent (obra)**: Grande inspiração para a filosofia de skills modulares, meta-skills de bootstrapping, TDD de documentação (`writing-skills`) e estrutura de repositório público.
+- **Antigravity Kit** por **Vudovn**: Base inicial de agentes e templates de workflows.
+- **Anthropic & Claude Community**: Padrões de engenharia de prompts, segurança e boas práticas de CLI.
+
+---
+
+## 📬 Contato & Comunidade
+
+- **Autor:** Felipe Bahia
+- **Empresa:** [Futuro Mercado](https://www.futuromercado.com.br)
+- **Email:** [felipe@futuromercado.com.br](mailto:felipe@futuromercado.com.br)
+- **Instagram:** [@felipelbahia](https://instagram.com/felipelbahia)
+
+---
+
+## 📄 Licença
+
+Distribuído sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

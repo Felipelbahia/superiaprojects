@@ -1,0 +1,1 @@
+../../.agent/agents/c4-component.md

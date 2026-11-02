@@ -1,0 +1,1 @@
+../../.agent/agents/frontend-specialist.md

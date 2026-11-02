@@ -1,0 +1,1 @@
+../../.agent/agents/product-manager.md

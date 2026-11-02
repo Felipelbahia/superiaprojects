@@ -1,0 +1,1 @@
+../../.agent/agents/scala-pro.md

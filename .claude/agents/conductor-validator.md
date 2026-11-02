@@ -1,0 +1,1 @@
+../../.agent/agents/conductor-validator.md

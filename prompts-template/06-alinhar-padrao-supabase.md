@@ -1,0 +1,15 @@
+Alinhar este projeto ao padrão de bancos Supabase
+
+Siga a skill supabase: <SUPER_IA_PROJECTS_PATH>/.agent/skills/supabase/SKILL.md e o registro <SUPER_IA_PROJECTS_PATH>/projetos/_bancos-supabase.md.
+
+REGRAS: sem MCP do Supabase. Não acesse nenhum banco e não rode migração agora. Do `.env` leia só os NOMES das variáveis (ex.: `cut -d= -f1`), nunca os valores, e não os mostre. Nunca escreva chave, senha, token ou connection string em ficha, registro ou `.env.example`. Não renomeie variável no código sem eu aprovar o plano. Nunca afirme algo sem verificar por comando ou leitura; o que não verificou fica "não verificado".
+
+1. Descobrir o banco: consulte o registro, a ficha do projeto (linha "Banco Supabase") e o `.env.example`. Se disserem "a confirmar", divergirem entre si ou estiverem vazios, PERGUNTE qual banco é (Plinq, Gov-Plinq, WaiMonitor, Pessoal ou novo). Se o projeto usa mais de um banco, liste todos. Se o projeto não usa Supabase, registre "n/a" com o motivo e pare.
+2. Inventário (somente leitura): liste os nomes das variáveis Supabase/Postgres hoje no `.env`, no `.env.example` e usados no código (`grep` do nome, com arquivo:linha). Compare `.env` x `.env.example` só por nome (`comm`). Verifique que `.env` está no `.gitignore`.
+3. Plano de nomenclatura: proponha a tabela "nome atual → nome novo" (`SUPABASE_<BANCO>_URL`, `_ANON_KEY`, `_SERVICE_ROLE_KEY`, `_DB_URL`; `DATABASE_URL`/`DB_HOST` etc. também ganham o sufixo), indicando cada arquivo de código que usa o nome. Chave de serviço nunca com `VITE_` ou `NEXT_PUBLIC_`. Se eu preferir não renomear agora, só documente o banco e a nomenclatura-alvo na ficha. PARE e espere minha aprovação antes de editar código ou `.env`.
+4. Prefixo de tabelas: se o banco é compartilhado com outro app, descubra o prefixo deste app (pelas tabelas/migrações do repositório, somente leitura) e confirme comigo. Objetos novos nascem com esse prefixo.
+5. Depois da minha aprovação: (a) ajuste `.env.example` (nomes novos, valores vazios); (b) se eu autorizar, renomeie no código e me diga que devo ajustar o `.env` real (você não edita valores); (c) adicione ao `CLAUDE.md` do projeto uma regra curta: "este projeto usa o banco <BANCO>; envs `SUPABASE_<BANCO>_*`; sem MCP"; (d) atualize a linha "Banco Supabase" na ficha em Super IA Projects/projetos/ e a linha do projeto no registro (banco, prefixo, situação "confirmado"); preencha o `project_ref` do banco SOMENTE se eu informar.
+6. Trava opcional: se o projeto tem script que GRAVA no banco, proponha a checagem `SUPABASE_<BANCO>_PROJECT_REF` x URL no início do script (seção 5 da skill) e implemente só se eu aprovar.
+7. Verificação: grep de padrões de segredo (`eyJ`, `sb_secret`, `sbp_`, `postgres://`) nos arquivos que você tocou, `git status` mostrando só o esperado, e `comm` `.env.example` x nomes usados no código.
+
+Pare ao final e me apresente, em português simples: o banco identificado (e o que ficou pendente), a tabela de nomes aplicada, os arquivos alterados, o que eu preciso fazer à mão (ajustar valores no `.env`, informar `project_ref` ou a conta de login) e qualquer divergência encontrada.

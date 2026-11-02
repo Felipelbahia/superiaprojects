@@ -1,0 +1,1 @@
+../../.agent/agents/haskell-pro.md

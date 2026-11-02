@@ -1,0 +1,1 @@
+../../.agent/agents/typescript-pro.md

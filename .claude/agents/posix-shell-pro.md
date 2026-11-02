@@ -1,0 +1,1 @@
+../../.agent/agents/posix-shell-pro.md

@@ -1,0 +1,1 @@
+../../.agent/workflows/smart-debug.md

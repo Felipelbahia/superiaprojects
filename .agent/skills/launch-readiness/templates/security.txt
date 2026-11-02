@@ -1,0 +1,6 @@
+# Serve at https://<domain>/.well-known/security.txt (RFC 9116). Renew Expires at least yearly.
+Contact: mailto:security@<domain>
+Expires: 2027-10-12T00:00:00.000Z
+Preferred-Languages: pt, en
+Canonical: https://<domain>/.well-known/security.txt
+Policy: https://<domain>/security-policy

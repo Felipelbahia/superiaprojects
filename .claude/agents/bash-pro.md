@@ -1,0 +1,1 @@
+../../.agent/agents/bash-pro.md

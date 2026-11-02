@@ -1,0 +1,1 @@
+../../.agent/agents/thoughts-locator.md

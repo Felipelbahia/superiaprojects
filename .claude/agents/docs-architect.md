@@ -1,0 +1,1 @@
+../../.agent/agents/docs-architect.md

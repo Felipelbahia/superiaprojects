@@ -1,0 +1,1 @@
+../../.agent/workflows/smart-fix.md

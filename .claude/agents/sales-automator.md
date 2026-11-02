@@ -1,0 +1,1 @@
+../../.agent/agents/sales-automator.md

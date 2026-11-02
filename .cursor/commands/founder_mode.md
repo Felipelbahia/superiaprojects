@@ -1,0 +1,1 @@
+../../.agent/workflows/founder_mode.md

@@ -1,0 +1,1 @@
+../../.agent/agents/architect-review.md

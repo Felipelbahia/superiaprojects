@@ -1,0 +1,40 @@
+# Ignore
+node_modules/
+.temp_ag_kit/
+antigravity-doc
+tests
+
+# MCP configs com chave de API embutida na URL (nao versionar)
+.mcp.json
+opencode.json
+.cursor/mcp.json
+.vscode/mcp.json
+.gemini/settings.json
+.codex/config.toml
+.zed/settings.json
+config/mcporter.json
+
+# macOS / Python
+.DS_Store
+__pycache__/
+*.pyc
+
+# Generated/cache output (Output/ holds a nested git repo)
+Output/
+.firecrawl/
+
+# Planos e histórico de execução de agentes (privacidade local)
+.agent/plans/
+plans/
+
+# Fichas de projetos reais e históricos privados
+projetos/
+
+# Regras locais personalizadas da máquina (usar CLAUDE.example.md como base)
+CLAUDE.md
+GEMINI.md
+AGENTS.md
+.agent/rules/
+.claude/CLAUDE.md
+.cursorrules
+

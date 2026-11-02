@@ -1,0 +1,1 @@
+../../.agent/agents/graphql-architect.md

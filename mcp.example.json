@@ -1,0 +1,60 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@context7/mcp-server"],
+      "description": "Documentação técnica oficial e versionada de bibliotecas e frameworks."
+    },
+    "firecrawl": {
+      "type": "http",
+      "url": "https://mcp.firecrawl.dev/YOUR_FIRECRAWL_API_KEY/v2/mcp",
+      "description": "Web scraping avançado, buscas profundas e extração em Markdown."
+    },
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "description": "Depuração visual no navegador, acessibilidade (a11y) e Core Web Vitals."
+    },
+    "testsprite": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@testsprite/mcp-server"],
+      "env": {
+        "TESTSPRITE_API_KEY": "YOUR_TESTSPRITE_KEY"
+      },
+      "description": "Geração automatizada de planos de testes e execução autônoma."
+    },
+    "stitch": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@stitch/mcp-server"],
+      "description": "Prototipagem de telas, variantes de UI e design systems."
+    },
+    "supabase": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@supabase/mcp-server"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_PERSONAL_ACCESS_TOKEN"
+      },
+      "description": "Migrações SQL, gerenciamento de banco Postgres e tipos TypeScript."
+    },
+    "api-tools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-openapi"],
+      "description": "Inspeção de contratos de API OpenAPI / Swagger."
+    },
+    "notion": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@notionhq/mcp-server"],
+      "env": {
+        "NOTION_API_KEY": "YOUR_NOTION_INTEGRATION_TOKEN"
+      },
+      "description": "Leitura e escrita de PRDs, documentações e bancos de dados no Notion."
+    }
+  }
+}

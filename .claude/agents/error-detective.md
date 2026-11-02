@@ -1,0 +1,1 @@
+../../.agent/agents/error-detective.md

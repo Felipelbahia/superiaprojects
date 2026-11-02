@@ -1,0 +1,1 @@
+../../.agent/agents/legal-advisor.md

@@ -1,0 +1,1 @@
+../../.agent/workflows/c4-architecture.md

@@ -1,0 +1,1 @@
+../../.agent/workflows/design-new-component.md
