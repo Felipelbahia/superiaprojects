@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: hybrid-cloud-networking
 description: Configure secure, high-performance connectivity between on-premises infrastructure and cloud platforms using VPN and dedicated connections. Use when building hybrid cloud architectures, connecting data centers to cloud, or implementing secure cross-premises networking.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Hybrid Cloud Networking
 
 Configure secure, high-performance connectivity between on-premises and cloud environments using VPN, Direct Connect, and ExpressRoute.

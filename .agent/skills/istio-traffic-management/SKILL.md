@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: istio-traffic-management
 description: Configure Istio traffic management including routing, load balancing, circuit breakers, and canary deployments. Use when implementing service mesh traffic policies, progressive delivery, or resilience patterns.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Istio Traffic Management
 
 Comprehensive guide to Istio traffic management for production service mesh deployments.

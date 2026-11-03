@@ -1,8 +1,11 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: writing-plans
 description: Use when you have a spec or requirements for a multi-step task, before touching code
+author: Jesse Vincent (@obra)
+license: MIT
 ---
-
 # Writing Plans
 
 ## Overview

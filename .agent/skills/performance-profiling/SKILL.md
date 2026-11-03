@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: performance-profiling
 description: Performance profiling principles. Measurement, analysis, and optimization techniques.
 allowed-tools: Read, Glob, Grep, Bash
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Performance Profiling
 
 > Measure, analyze, optimize - in that order.

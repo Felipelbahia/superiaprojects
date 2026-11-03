@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: track-management
 description: Use this skill when creating, managing, or working with Conductor tracks - the logical work units for features, bugs, and refactors. Applies to spec.md, plan.md, and track lifecycle operations.
 version: 1.0.0
+author: Futuro Mercado / Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Track Management
 
 Guide for creating, managing, and completing Conductor tracks - the logical work units that organize features, bugs, and refactors through specification, planning, and implementation phases.

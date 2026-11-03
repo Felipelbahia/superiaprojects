@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: memory-forensics
 description: Master memory forensics techniques including memory acquisition, process analysis, and artifact extraction using Volatility and related tools. Use when analyzing memory dumps, investigating incidents, or performing malware analysis from RAM captures.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Memory Forensics
 
 Comprehensive techniques for acquiring, analyzing, and extracting artifacts from memory dumps for incident response and malware analysis.

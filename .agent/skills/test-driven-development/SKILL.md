@@ -1,8 +1,11 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: test-driven-development
 description: Use when implementing any feature or bugfix, before writing implementation code
+author: Jesse Vincent (@obra)
+license: MIT
 ---
-
 # Test-Driven Development (TDD)
 
 ## Overview

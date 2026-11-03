@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: solidity-security
 description: Master smart contract security best practices to prevent common vulnerabilities and implement secure Solidity patterns. Use when writing smart contracts, auditing existing contracts, or implementing security measures for blockchain applications.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Solidity Security
 
 Master smart contract security best practices, vulnerability prevention, and secure Solidity development patterns.

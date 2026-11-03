@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: database-migration
 description: Execute database migrations across ORMs and platforms with zero-downtime strategies, data transformation, and rollback procedures. Use when migrating databases, changing schemas, performing data transformations, or implementing zero-downtime deployment strategies.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Database Migration
 
 Master database schema and data migrations across ORMs (Sequelize, TypeORM, Prisma), including rollback strategies and zero-downtime deployments.

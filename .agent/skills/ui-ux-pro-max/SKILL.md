@@ -1,8 +1,11 @@
 ---
+# Source: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: ui-ux-pro-max
 description: UI/UX design intelligence - styles, color palettes, font pairings, UX guidelines and stack-specific reasoning rules. Use when designing or reviewing interfaces, landing pages, dashboards or design systems.
+author: nextlevelbuilder
+license: MIT
 ---
-
 # UI UX Pro Max
  
 <p align="center">

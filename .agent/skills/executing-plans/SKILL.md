@@ -1,8 +1,11 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: executing-plans
 description: Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline execution, or no subagent tool is available
+author: Jesse Vincent (@obra)
+license: MIT
 ---
-
 # Executing Plans
 
 Execute the plan yourself, task by task, in this session: no implementer

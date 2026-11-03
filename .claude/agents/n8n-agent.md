@@ -1,1 +1,0 @@
-../../.agent/agents/n8n-agent.md

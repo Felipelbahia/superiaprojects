@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: project-defines
 description: Use when a new application or system must be planned, specified and built step by step, when a project contains a _projectdefines/ folder and anything is about to be built, changed or reviewed, or when an owner who does not program needs a safe, lean build path.
+author: Futuro Mercado / Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Project Defines
 
 ## Overview

@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: supabase
 description: Use when a project creates, reads or writes a Supabase database, sets up its .env, writes migrations, or when the owner works with several Supabase databases (each with its own login) and must not mix them up.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Supabase (multi-banco)
 
 ## Overview

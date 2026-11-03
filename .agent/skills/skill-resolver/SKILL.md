@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: skill-resolver
 description: Use whenever a capability seems relevant to the current task but no matching skill appears in the currently loaded skills list — this is common in Antigravity Kit projects (any repo with a .agent/skills/ directory, a .agent/rules/ directory, or a CLAUDE.md/GEMINI.md that references "0 Padrões"), because Claude Code only auto-discovers SKILL.md files under .claude/skills/ and ~/.claude/skills/, never under .agent/skills/. Also use when the user names a skill by name that doesn't show up in the listing, or asks things like "existe skill pra isso", "do we have a skill for X", "check 0 Padrões for a skill". Searches the project's own .agent/skills/ (and .agents/skills/ for older, unmigrated setups), then the global library at 0 Padrões/.agent/skills/, then 0 Mkt/ for marketing, SEO, copywriting or growth topics.
+author: Futuro Mercado / Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Skill Resolver
 
 ## Why this exists

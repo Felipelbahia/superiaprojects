@@ -1,8 +1,12 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
+# Status: Customizada / Modificada localmente por Felipe Bahia
 name: using-superpowers
 description: Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions
+author: Jesse Vincent (@obra) / Modificado por Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 <SUBAGENT-STOP>
 If you were dispatched as a subagent to execute a specific task, ignore this skill.
 </SUBAGENT-STOP>

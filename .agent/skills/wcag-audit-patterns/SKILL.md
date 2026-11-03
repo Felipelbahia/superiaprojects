@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: wcag-audit-patterns
 description: Conduct WCAG 2.2 accessibility audits with automated testing, manual verification, and remediation guidance. Use when auditing websites for accessibility, fixing WCAG violations, or implementing accessible design patterns.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # WCAG Audit Patterns
 
 Comprehensive guide to auditing web content against WCAG 2.2 guidelines with actionable remediation strategies.

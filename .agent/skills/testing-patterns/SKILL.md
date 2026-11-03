@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: testing-patterns
 description: Testing patterns and principles. Unit, integration, mocking strategies.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Testing Patterns
 
 > Principles for reliable test suites.

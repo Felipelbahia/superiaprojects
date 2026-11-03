@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: project-initializer
 description: Use when starting a new project from scratch, when user says "Quero criar um projeto novo com base na skill", or when requested to initialize greenfield project setup.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
+author: Futuro Mercado / Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Project Initializer - Guia Universal de Criação de Projetos do Zero
 
 > **COMPATIBILIDADE MULTI-MODELO:** Este documento é um manual de instrução estrito e passo a passo. Qualquer modelo de IA (Gemini, Claude, GPT-4, DeepSeek, Codex, etc.) DEVE seguir estas etapas sequencialmente sem omitir passos.

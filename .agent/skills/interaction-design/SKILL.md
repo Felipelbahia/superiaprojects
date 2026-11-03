@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: interaction-design
 description: Design and implement microinteractions, motion design, transitions, and user feedback patterns. Use when adding polish to UI interactions, implementing loading states, or creating delightful user experiences.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Interaction Design
 
 Create engaging, intuitive interactions through motion, feedback, and thoughtful state transitions that enhance usability and delight users.

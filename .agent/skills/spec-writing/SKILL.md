@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: spec-writing
 description: Use when a feature or change needs a written specification — Problem, Solution, User Stories, Decisions — before planning or implementation begins, turning what's already been discussed into a concrete document instead of an implicit shared understanding.
+author: Futuro Mercado / Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Spec Writing
 
 ## Overview

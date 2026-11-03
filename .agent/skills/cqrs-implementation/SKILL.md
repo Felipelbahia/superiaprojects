@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: cqrs-implementation
 description: Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # CQRS Implementation
 
 Comprehensive guide to implementing CQRS (Command Query Responsibility Segregation) patterns.

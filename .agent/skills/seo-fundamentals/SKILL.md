@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: seo-fundamentals
 description: SEO fundamentals, E-E-A-T, Core Web Vitals, and Google algorithm principles.
 allowed-tools: Read, Glob, Grep
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # SEO Fundamentals
 
 > Principles for search engine visibility.

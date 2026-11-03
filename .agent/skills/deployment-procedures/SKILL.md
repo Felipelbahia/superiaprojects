@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: deployment-procedures
 description: Production deployment principles and decision-making. Safe deployment workflows, rollback strategies, and verification. Teaches thinking, not scripts.
 allowed-tools: Read, Glob, Grep, Bash
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Deployment Procedures
 
 > Deployment principles and decision-making for safe production releases.

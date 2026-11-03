@@ -1,6 +1,6 @@
 ---
-# Source: https://github.com/DietrichGebert/ponytail (skills/ponytail-audit/SKILL.md)
-# SHA: 09c434ab73ca43761c5d8b0c5d341926c2fba710 | copied: 2026-10-21 | license: MIT (c) 2026 DietrichGebert
+# Source: https://github.com/DietrichGebert/ponytail
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: ponytail-audit
 description: >
   Quality audit of a whole repo: bugs, security holes, what breaks under real
@@ -8,8 +8,9 @@ description: >
   split. Ranked, each finding explained in plain English. One-shot report,
   changes nothing. Use for "audit this codebase", "review the whole repo",
   "find bloat", "what can I delete", /ponytail-audit.
+author: Dietrich Gebert
+license: MIT
 ---
-
 Audit the whole repo like the senior developer who just inherited it and
 will be paged when it breaks. Order of importance: correct, safe, holds under
 load, tested, fast, lean. Lean still matters: every extra line must be read,

@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: helm-chart-scaffolding
 description: Design, organize, and manage Helm charts for templating and packaging Kubernetes applications with reusable configurations. Use when creating Helm charts, packaging Kubernetes applications, or implementing templated deployments.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Helm Chart Scaffolding
 
 Comprehensive guidance for creating, organizing, and managing Helm charts for packaging and deploying Kubernetes applications.

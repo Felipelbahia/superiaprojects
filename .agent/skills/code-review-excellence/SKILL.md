@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: code-review-excellence
 description: Master effective code review practices to provide constructive feedback, catch bugs early, and foster knowledge sharing while maintaining team morale. Use when reviewing pull requests, establishing review standards, or mentoring developers.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Code Review Excellence
 
 > **Precedence (2026-10-11):** for Claude Code's review tooling (`/code-review`, `REVIEW.md`, Code Review check runs) see `claude-code-review`; on any conflict with this skill, `claude-code-review` prevails. Its severity emojis differ from the ones below (🔴 Important · 🟡 **Nit** · 🟣 Pre-existing), so always write the word next to the emoji.

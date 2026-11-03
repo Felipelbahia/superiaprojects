@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: oss-scout
 description: Use when a project needs a capability that a mature library or service may already solve (login, payments, PDF, dates and time zones, rich text, drag and drop), before installing or recommending any package, or when asked to study, compare or take parts from open source projects.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # oss-scout
 
 Look before you build, and verify before you install. Two modes, one registry. Never an extra contract document.

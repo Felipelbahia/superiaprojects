@@ -1,9 +1,9 @@
 ---
+# Source: https://github.com/firecrawl/skills
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: firecrawl-build-scrape
 description: Integrate Firecrawl `/scrape` into product code for single-page extraction. Use when an app already has a URL and needs markdown, HTML, links, screenshots, metadata, or structured page output. Prefer this skill over broader crawl patterns when the feature is page-level.
-license: ISC
 metadata:
-  author: firecrawl
   version: "0.1.0"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/skills
@@ -14,8 +14,9 @@ inputs:
   - name: FIRECRAWL_API_URL
     description: Optional base URL for self-hosted Firecrawl deployments.
     required: false
+author: Firecrawl (Mendable)
+license: MIT
 ---
-
 # Firecrawl Build Scrape
 
 Use this when the application already has the URL and needs content from one page.

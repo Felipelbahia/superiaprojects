@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: linkerd-patterns
 description: Implement Linkerd service mesh patterns for lightweight, security-focused service mesh deployments. Use when setting up Linkerd, configuring traffic policies, or implementing zero-trust networking with minimal overhead.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Linkerd Patterns
 
 Production patterns for Linkerd service mesh - the lightweight, security-first service mesh for Kubernetes.

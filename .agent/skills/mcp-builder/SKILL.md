@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: mcp-builder
 description: MCP (Model Context Protocol) server building principles. Tool design, resource patterns, best practices.
 allowed-tools: Read, Write, Edit, Glob, Grep
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # MCP Builder
 
 > Principles for building MCP servers.

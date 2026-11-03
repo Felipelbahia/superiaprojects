@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: nextjs-best-practices
 description: Next.js App Router principles. Server Components, data fetching, routing patterns.
 allowed-tools: Read, Write, Edit, Glob, Grep
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Next.js Best Practices
 
 > Principles for Next.js App Router development.

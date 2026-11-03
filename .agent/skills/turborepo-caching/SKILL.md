@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: turborepo-caching
 description: Configure Turborepo for efficient monorepo builds with local and remote caching. Use when setting up Turborepo, optimizing build pipelines, or implementing distributed caching.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Turborepo Caching
 
 Production patterns for Turborepo build optimization.

@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: vibecoding-security-audit
 description: Use when an app built or edited with AI needs a security pass before shipping - exposed secrets, Supabase row level security, auth and sessions, user uploads, a new dependency an AI suggested, or AI and usage-priced routes that could run up a bill. Also for "auditoria de segurança" or "vibecoding security audit" requests.
+author: Futuro Mercado / Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Vibecoding Security Audit
 
 Security pass for AI-generated apps. It adds what the baseline scanners miss; it does not replace them. The owner's checklist is `Vibecoding - Segurança - Checagem` (20 points + AI extras).

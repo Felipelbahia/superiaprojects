@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: billing-automation
 description: Build automated billing systems for recurring payments, invoicing, subscription lifecycle, and dunning management. Use when implementing subscription billing, automating invoicing, or managing recurring payment systems.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Billing Automation
 
 Master automated billing systems including recurring billing, invoice generation, dunning management, proration, and tax calculation.

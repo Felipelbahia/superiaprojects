@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: react-patterns
 description: Modern React patterns and principles. Hooks, composition, performance, TypeScript best practices.
 allowed-tools: Read, Write, Edit, Glob, Grep
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # React Patterns
 
 > Principles for building production-ready React applications.

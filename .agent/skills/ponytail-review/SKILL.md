@@ -1,6 +1,6 @@
 ---
-# Source: https://github.com/DietrichGebert/ponytail (skills/ponytail-review/SKILL.md)
-# SHA: 09c434ab73ca43761c5d8b0c5d341926c2fba710 | copied: 2026-10-21 | license: MIT (c) 2026 DietrichGebert
+# Source: https://github.com/DietrichGebert/ponytail
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: ponytail-review
 description: >
   Quality review of a change: is the logic right, is it safe, does it hold
@@ -8,8 +8,9 @@ description: >
   needed. Reads the connected code, not only the diff. Each finding is
   explained in plain English. Use for "review this", "code review", "review
   the last commit", "review my PR", "is this over-engineered", /ponytail-review.
+author: Dietrich Gebert
+license: MIT
 ---
-
 Review a change like the senior developer who will be paged when it breaks.
 Order of importance: correct, safe, holds under load, tested, fast, lean.
 Lean still matters: every extra line must be read, tested and fixed later.

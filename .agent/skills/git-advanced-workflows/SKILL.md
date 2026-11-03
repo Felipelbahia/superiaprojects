@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: git-advanced-workflows
 description: Master advanced Git workflows including rebasing, cherry-picking, bisect, worktrees, and reflog to maintain clean history and recover from any situation. Use when managing complex Git histories, collaborating on feature branches, or troubleshooting repository issues.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Git Advanced Workflows
 
 Master advanced Git techniques to maintain clean history, collaborate effectively, and recover from any situation with confidence.

@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: competitive-landscape
 description: This skill should be used when the user asks to "analyze competitors", "assess competitive landscape", "identify differentiation", "evaluate market positioning", "apply Porter's Five Forces", or requests competitive strategy analysis.
 version: 1.0.0
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Competitive Landscape Analysis
 
 Comprehensive frameworks for analyzing competition, identifying differentiation opportunities, and developing winning market positioning strategies.

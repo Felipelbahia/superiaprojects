@@ -1,8 +1,11 @@
 ---
+# Source: https://github.com/firecrawl/skills
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: firecrawl-research-index
 description: Find the papers that answer a research query with Firecrawl Research, using semantic search, semantic and structural expansion, and in-body verification. Always use this skill for any literature-finding / paper-retrieval task — single-paper lookups or full multi-paper sets.
+author: Firecrawl (Mendable)
+license: MIT
 ---
-
 # Firecrawl Research Index
 
 Find the research papers that answer a research query. Some questions have a single answer; many have several — and when in doubt, lean toward returning the fuller relevant set (most relevant first) rather than narrowing to one. A reader is better served seeing the neighboring methods and papers than having them silently dropped.

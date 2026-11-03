@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: security-guidance-plugin
 description: Use when enabling, tuning or debugging the Claude Code security-guidance plugin that reviews Claude's own edits for vulnerabilities during a session, when adding custom security rules or patterns to it, or when writing code that uses eval or exec, unsafe deserialization, raw DOM injection or CI workflow files. Also for avisos de segurança durante a edição.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Security Guidance Plugin
 
 ## Overview

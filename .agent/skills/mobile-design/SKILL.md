@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: mobile-design
 description: Mobile-first design thinking and decision-making for iOS and Android apps. Touch interaction, performance patterns, platform conventions. Teaches principles, not fixed values. Use when building React Native, Flutter, or native mobile apps.
 allowed-tools: Read, Glob, Grep, Bash
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Mobile Design System
 
 > **Philosophy:** Touch-first. Battery-conscious. Platform-respectful. Offline-capable.

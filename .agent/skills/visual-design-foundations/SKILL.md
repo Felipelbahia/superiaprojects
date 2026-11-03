@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: visual-design-foundations
 description: Apply typography, color theory, spacing systems, and iconography principles to create cohesive visual designs. Use when establishing design tokens, building style guides, or improving visual hierarchy and consistency.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Visual Design Foundations
 
 Build cohesive, accessible visual systems using typography, color, spacing, and iconography fundamentals.

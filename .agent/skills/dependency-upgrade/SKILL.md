@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: dependency-upgrade
 description: Manage major dependency version upgrades with compatibility analysis, staged rollout, and comprehensive testing. Use when upgrading framework versions, updating major dependencies, or managing breaking changes in libraries.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Dependency Upgrade
 
 Master major dependency version upgrades, compatibility analysis, staged upgrade strategies, and comprehensive testing approaches.

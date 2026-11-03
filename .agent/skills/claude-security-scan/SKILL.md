@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: claude-security-scan
 description: Use when scanning a repository, branch diff, pull request or commit for vulnerabilities with the Claude Security plugin (/claude-security), reading CLAUDE-SECURITY reports (md, jsonl, SARIF), turning findings into reviewed patches, or choosing between security-review, deep scan, Code Review and CI scanners. Also for varredura de vulnerabilidades.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Claude Security Scan
 
 ## Overview

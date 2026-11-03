@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: web-component-design
 description: Master React, Vue, and Svelte component patterns including CSS-in-JS, composition strategies, and reusable component architecture. Use when building UI component libraries, designing component APIs, or implementing frontend design systems.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Web Component Design
 
 Build reusable, maintainable UI components using modern frameworks with clean composition patterns and styling approaches.

@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: prompt-engineering-patterns
 description: Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability in production. Use when optimizing prompts, improving LLM outputs, or designing production prompt templates.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Prompt Engineering Patterns
 
 Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability.

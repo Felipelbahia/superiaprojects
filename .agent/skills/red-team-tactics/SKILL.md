@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: red-team-tactics
 description: Red team tactics principles based on MITRE ATT&CK. Attack phases, detection evasion, reporting.
 allowed-tools: Read, Glob, Grep
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Red Team Tactics
 
 > Adversary simulation principles based on MITRE ATT&CK framework.

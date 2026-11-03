@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: dbt-transformation-patterns
 description: Master dbt (data build tool) for analytics engineering with model organization, testing, documentation, and incremental strategies. Use when building data transformations, creating data models, or implementing analytics engineering best practices.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # dbt Transformation Patterns
 
 Production-ready patterns for dbt (data build tool) including model organization, testing strategies, documentation, and incremental processing.

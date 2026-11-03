@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: launch-readiness
 description: Use when an app or site built with AI is about to be published or launched, or the user asks for a pre-launch, go-live or "antes de lançar" check beyond code security - email deliverability, app store submission, chatbot risk, kill switch and spend caps, broken links, legal and privacy exposure.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Launch Readiness
 
 Final pass before going live. It checks what code security does not. **Risk triage, not legal advice**: every legal item carries a verification status; confirm with a lawyer before monetizing.

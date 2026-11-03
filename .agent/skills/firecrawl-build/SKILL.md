@@ -1,9 +1,9 @@
 ---
+# Source: https://github.com/firecrawl/skills
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: firecrawl-build
 description: Integrate Firecrawl into application code whenever a product, agent, or workflow needs web data inside the app: web search, live search results, page scraping, structured extraction, or browser interaction. Use when building any feature that needs data from the web in code, even if the user does not mention Firecrawl explicitly and only describes wanting web data, website content, search, scraping, or interaction in an application. Trigger for Firecrawl requests, "fire girl" shorthand, and generic app-level web-data needs that should map to `/scrape`, `/search`, or `/interact`. Do not use this skill for one-off terminal-only web tasks during the current session; use `firecrawl/cli` for those.
-license: ISC
 metadata:
-  author: firecrawl
   version: "0.1.0"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/skills
@@ -21,8 +21,9 @@ references:
   - references/sdk-installation.md
   - references/auth-and-env.md
   - references/verification.md
+author: Firecrawl (Mendable)
+license: MIT
 ---
-
 # Firecrawl Build
 
 Use this skill when the task is "build web-data capabilities into an application with Firecrawl," not "use Firecrawl as a terminal tool right now."

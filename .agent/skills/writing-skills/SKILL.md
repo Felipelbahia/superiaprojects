@@ -1,8 +1,12 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
+# Status: Customizada / Modificada localmente por Felipe Bahia
 name: writing-skills
 description: Use when creating new skills, editing existing skills, or verifying skills work before deployment
+author: Jesse Vincent (@obra) / Modificado por Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Writing Skills
 
 ## Overview
@@ -110,21 +114,43 @@ skills/
 
 ## SKILL.md Structure
 
-**Frontmatter (YAML):**
-- Two required fields: `name` and `description` (see [agentskills.io/specification](https://agentskills.io/specification) for all supported fields)
-- Max 1024 characters total
-- `name`: Use letters, numbers, and hyphens only (no parentheses, special chars)
-- `description`: Third-person, describes ONLY when to use (NOT what it does)
-  - Start with "Use when..." to focus on triggering conditions
-  - Include specific symptoms, situations, and contexts
-  - **NEVER summarize the skill's process or workflow** (see SDO section for why)
-  - Keep under 500 characters if possible
+**Frontmatter (YAML) & Padrão de Autoria e Repositório:**
+- Campos obrigatórios da especificação ([agentskills.io/specification](https://agentskills.io/specification)):
+  - `name`: Use letras, números e hífens apenas (sem parênteses ou caracteres especiais).
+  - `description`: Terceira pessoa, descreve APENAS quando usar (iniciar com "Use when...").
+  - `author`: Nome do autor ou equipe mantenedora (ex: autor local ou autor upstream original).
+  - `license`: Licença de uso explícita (ex: `MIT`, `Apache-2.0`, `Proprietary`).
 
+- **🔍 Auto-Detecção Dinâmica do GitHub do Projeto Ativo (CRÍTICO):**
+  - Esta skill é universal e executada em múltiplos projetos diferentes. **NUNCA chumbe uma URL fixa de GitHub**.
+  - Sempre descubra dinamicamente o repositório do projeto onde a skill está sendo criada:
+    1. **Comando principal:** Execute `git remote get-url origin` (ou `git config --get remote.origin.url`).
+    2. **Fallback:** Se não houver git remoto configurado, procure o campo de repositório em `package.json`, `pyproject.toml`, no `README.md` do projeto ou na ficha central em `0 Padrões/projetos/<nome-do-projeto>.md`.
+  - Inclua a URL encontrada no cabeçalho de comentários no topo do frontmatter.
+
+**Exemplo para Skill Nativa / In-House (criada para o projeto ativo):**
 ```markdown
 ---
-name: Skill-Name-With-Hyphens
-description: Use when [specific triggering conditions and symptoms]
+# Repository: https://github.com/usuario/projeto-ativo
+name: minha-skill-utilitaria
+description: Use when [condições específicas de disparo e sintomas]
+author: Futuro Mercado / Felipe Bahia
+license: MIT
 ---
+```
+
+**Exemplo para Skill Importada / Baseada em Terceiro (incorporada ao projeto ativo):**
+```markdown
+---
+# Source: https://github.com/autor-original/repo-original (caminho/no/repo)
+# SHA: 09c434ab73ca43761c5d8b0c5d341926c2fba710 | version: v7.0.0 | copied: 2026-11-02
+# Project: https://github.com/usuario/projeto-ativo
+name: nome-da-skill
+description: Use when [condições específicas de disparo e sintomas]
+author: Nome do Autor Original (@github)
+license: MIT
+---
+```
 
 # Skill Name
 
@@ -656,6 +682,9 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 **GREEN Phase - Write Minimal Skill:**
 - [ ] Name uses only letters, numbers, hyphens (no parentheses/special chars)
 - [ ] YAML frontmatter with required `name` and `description` fields (max 1024 chars; see [spec](https://agentskills.io/specification))
+- [ ] Metadados de autoria e licença definidos: `author` e `license` explícitos
+- [ ] Auto-detectar dinamicamente o repositório GitHub do projeto ativo (`git remote get-url origin`) e incluir a referência no cabeçalho
+- [ ] Cabeçalho de proveniência upstream (`# Source:`, `# SHA:` ou `# version:`, `# copied:`) se a skill for de terceiros
 - [ ] Description starts with "Use when..." and includes specific triggers/symptoms
 - [ ] Description written in third person
 - [ ] Keywords throughout for search (errors, symptoms, tools)
@@ -681,7 +710,10 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 - [ ] No narrative storytelling
 - [ ] Supporting files only for tools or heavy reference
 
-**Deployment:**
+**Deployment & Governança:**
+- [ ] Criar symlink em `.claude/skills/<nome>` apontando para `../../.agent/skills/<nome>`
+- [ ] Se a skill for importada ou adaptada de terceiros, registrar no painel `.agent/vendor/`
+- [ ] Atualizar catálogo executando `python .agent/scripts/generate_catalog.py`
 - [ ] Commit skill to git and push to your fork (if configured)
 - [ ] Consider contributing back via PR (if broadly useful)
 

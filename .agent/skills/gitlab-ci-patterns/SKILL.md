@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: gitlab-ci-patterns
 description: Build GitLab CI/CD pipelines with multi-stage workflows, caching, and distributed runners for scalable automation. Use when implementing GitLab CI/CD, optimizing pipeline performance, or setting up automated testing and deployment.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # GitLab CI Patterns
 
 Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.

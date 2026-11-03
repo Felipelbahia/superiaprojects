@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: responsive-design
 description: Implement modern responsive layouts using container queries, fluid typography, CSS Grid, and mobile-first breakpoint strategies. Use when building adaptive interfaces, implementing fluid layouts, or creating component-level responsive behavior.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Responsive Design
 
 Master modern responsive design techniques to create interfaces that adapt seamlessly across all screen sizes and device contexts.

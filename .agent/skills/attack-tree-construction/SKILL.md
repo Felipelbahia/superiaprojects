@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: attack-tree-construction
 description: Build comprehensive attack trees to visualize threat paths. Use when mapping attack scenarios, identifying defense gaps, or communicating security risks to stakeholders.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Attack Tree Construction
 
 Systematic attack path visualization and analysis.

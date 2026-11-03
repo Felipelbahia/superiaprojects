@@ -1,8 +1,11 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: dispatching-parallel-agents
 description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
+author: Jesse Vincent (@obra)
+license: MIT
 ---
-
 # Dispatching Parallel Agents
 
 ## Overview

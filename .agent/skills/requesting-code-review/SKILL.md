@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: requesting-code-review
 description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Requesting Code Review
 
 > **Precedence (2026-10-11):** when the review runs through Claude Code's `/code-review` or managed Code Review, follow `claude-code-review` for severity (Important / Nit / Pre-existing) and triggers; it prevails on conflict.

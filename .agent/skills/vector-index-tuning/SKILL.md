@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: vector-index-tuning
 description: Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector search infrastructure.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Vector Index Tuning
 
 Guide to optimizing vector indexes for production performance.

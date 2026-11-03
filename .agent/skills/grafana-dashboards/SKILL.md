@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: grafana-dashboards
 description: Create and manage production Grafana dashboards for real-time visualization of system and application metrics. Use when building monitoring dashboards, visualizing metrics, or creating operational observability interfaces.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Grafana Dashboards
 
 Create and manage production-ready Grafana dashboards for comprehensive system observability.

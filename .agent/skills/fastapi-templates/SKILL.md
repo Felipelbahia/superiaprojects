@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: fastapi-templates
 description: Create production-ready FastAPI projects with async patterns, dependency injection, and comprehensive error handling. Use when building new FastAPI applications or setting up backend API projects.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # FastAPI Project Templates
 
 Production-ready FastAPI project structures with async patterns, dependency injection, middleware, and best practices for building high-performance APIs.

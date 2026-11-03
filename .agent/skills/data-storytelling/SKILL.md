@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: data-storytelling
 description: Transform data into compelling narratives using visualization, context, and persuasive structure. Use when presenting analytics to stakeholders, creating data reports, or building executive presentations.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Data Storytelling
 
 Transform raw data into compelling narratives that drive decisions and inspire action.

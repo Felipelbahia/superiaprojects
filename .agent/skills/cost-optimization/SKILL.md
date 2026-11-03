@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: cost-optimization
 description: Optimize cloud costs through resource rightsizing, tagging strategies, reserved instances, and spending analysis. Use when reducing cloud expenses, analyzing infrastructure costs, or implementing cost governance policies.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Cloud Cost Optimization
 
 Strategies and patterns for optimizing cloud costs across AWS, Azure, and GCP.

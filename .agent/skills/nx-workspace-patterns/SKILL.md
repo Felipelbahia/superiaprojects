@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: nx-workspace-patterns
 description: Configure and optimize Nx monorepo workspaces. Use when setting up Nx, configuring project boundaries, optimizing build caching, or implementing affected commands.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Nx Workspace Patterns
 
 Production patterns for Nx monorepo management.

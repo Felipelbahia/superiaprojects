@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: changelog-automation
 description: Automate changelog generation from commits, PRs, and releases following Keep a Changelog format. Use when setting up release workflows, generating release notes, or standardizing commit conventions.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Changelog Automation
 
 Patterns and tools for automating changelog generation, release notes, and version management following industry standards.

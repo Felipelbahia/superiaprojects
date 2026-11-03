@@ -1,4 +1,6 @@
 ---
+# Source: https://github.com/firecrawl/skills
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: firecrawl
 description: |
   Firecrawl gives AI agents and apps fast, reliable web context with
@@ -7,8 +9,9 @@ description: |
   segments: live CLI tools, app-integration build skills, and
   outcome-focused workflow skills. Route the reader to the right
   usage path after install.
+author: Firecrawl (Mendable)
+license: MIT
 ---
-
 # Firecrawl
 
 Firecrawl helps agents search first, scrape clean content, interact

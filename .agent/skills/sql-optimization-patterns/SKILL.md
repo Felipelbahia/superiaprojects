@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: sql-optimization-patterns
 description: Master SQL query optimization, indexing strategies, and EXPLAIN analysis to dramatically improve database performance and eliminate slow queries. Use when debugging slow queries, designing database schemas, or optimizing application performance.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # SQL Optimization Patterns
 
 Transform slow database queries into lightning-fast operations through systematic optimization, proper indexing, and query plan analysis.

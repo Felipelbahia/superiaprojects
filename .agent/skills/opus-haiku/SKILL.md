@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: opus-haiku
 description: Use when the user invokes /opus-haiku or asks to save plan usage by delegating code writing to a cheaper model while the main model plans and reviews, and in the Execução phase of the execution-loop.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Opus plans, Haiku writes
 
 ## Overview

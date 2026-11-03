@@ -1,9 +1,9 @@
 ---
+# Source: https://github.com/firecrawl/skills
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: firecrawl-build-onboarding
 description: Get Firecrawl credentials and SDK setup into a project. Use when an application needs `FIRECRAWL_API_KEY`, when an agent should add Firecrawl to `.env`, when the user wants to authenticate Firecrawl for app code, or when choosing the first SDK and docs for a new Firecrawl integration. This skill includes its own browser auth flow, so it does not depend on the website onboarding skill.
-license: ISC
 metadata:
-  author: firecrawl
   version: "0.1.0"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/skills
@@ -18,8 +18,9 @@ references:
   - references/auth-flow.md
   - references/sdk-installation.md
   - references/project-setup.md
+author: Firecrawl (Mendable)
+license: MIT
 ---
-
 # Firecrawl Build Onboarding
 
 Use this skill for the application-integration path from Firecrawl's onboarding flow.

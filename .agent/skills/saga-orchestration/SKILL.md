@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: saga-orchestration
 description: Implement saga patterns for distributed transactions and cross-aggregate workflows. Use when coordinating multi-step business processes, handling compensating transactions, or managing long-running workflows.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Saga Orchestration
 
 Patterns for managing distributed transactions and long-running business processes.

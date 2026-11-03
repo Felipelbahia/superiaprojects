@@ -10,7 +10,7 @@
     <a href="mailto:felipe@futuromercado.com.br"><img src="https://img.shields.io/badge/Contato-felipe@futuromercado.com.br-blue?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" /></a>
     <img src="https://img.shields.io/badge/Vers%C3%A3o-v1.0.0-blueviolet?style=for-the-badge" alt="Versão" />
-    <img src="https://img.shields.io/badge/Atualizado-01%2F11%2F2026-informational?style=for-the-badge" alt="Atualizado" />
+    <img src="https://img.shields.io/badge/Atualizado-03%2F11%2F2026-informational?style=for-the-badge" alt="Atualizado" />
   </p>
 
   <p>
@@ -21,7 +21,7 @@
 ---
 
 > **Autoria:** Criado e mantido por **Felipe Bahia** ([Futuro Mercado](https://www.futuromercado.com.br)).  
-> **Versão:** `v1.0.0` · **Última Atualização:** 01 de Novembro de 2026  
+> **Versão:** `v1.0.0` · **Última Atualização:** 03 de Novembro de 2026  
 > Inspirado na filosofia de fricção zero do [`obra/superpowers`](https://github.com/obra/superpowers) e desenhado para engenharia ágil com **Claude Code**, **Google Antigravity** e **Cursor**.
 
 ---
@@ -33,8 +33,9 @@ O desenvolvimento com agentes autônomos de IA frequentemente sofre com contexto
 O **Super IA Projects** resolve isso fornecendo uma arquitetura unificada:
 
 - 🎯 **Compatibilidade Multi-IA Real (Paridade Dual):** Regras 100% idênticas sincronizadas automaticamente entre `CLAUDE.md`, `GEMINI.md` e `.cursorrules`.
-- 🧩 **Skills Modulares & Agnósticas:** Mais de 220 skills prontas cobrindo desenvolvimento web, mobile, automações (n8n), web scraping robusto (Firecrawl) e arquitetura.
-- 🔄 **Loop de Execução (Execution Loop):** Metodologia rígida de entrega: *Brainstorm → Espec → Plan → Execução → QA (com notas 0 a 10 e evidências verificáveis)*.
+- 🧩 **Skills Modulares & Agnósticas:** Mais de 210 skills prontas cobrindo desenvolvimento web, mobile, web scraping robusto (Firecrawl) e arquitetura.
+- 🔄 **Loop de Execução (Execution Loop):** Metodologia rígida de entrega: *Brainstorm → Espec → Plan → Execução → QA (com notas 0 a 10 e evidências verificáveis)*. Se algum critério da Rubrica de QA tirar nota menor que 10, a skill reinicia o ciclo sozinha (Debug → Espec) e tenta de novo — até 5 ciclos — em vez de entregar algo "quase pronto".
+- 🏭 **SIPs (Super IA Projects especialistas):** Projetos-hub que concentram toda a inteligência (skills, agents, workflows) de um domínio específico (ex: n8n, marketing) em um único lugar, compartilhada sob demanda com qualquer projeto que precise — sem duplicar conhecimento em cada repositório.
 - 📊 **Catálogo Visual Interativo:** Um painel navegável em HTML (`catalog.html`) e índice Markdown (`.agent/CATALOG.md`) atualizados dinamicamente.
 - 🛡️ **Privacidade & Isolamento:** Regras pessoais, históricos de execução e dados de clientes isolados por padrão via `.gitignore`.
 
@@ -84,13 +85,26 @@ IA: 🤖 Applying knowledge of @security-auditor + @backend-specialist...
 
 ### 🔁 O Ciclo de Entrega (Execution Loop)
 
-Para features complexas, refatorações ou novos módulos, ative a skill `execution-loop`:
+Para features complexas, refatorações ou novos módulos, ative a skill `execution-loop` — é o que permite à IA **trabalhar sozinha até o resultado ficar realmente bom**, em vez de parar na primeira versão que compila:
 
 1. **00 Brainstorm:** Alinhamento de escopo e perguntas socráticas.
 2. **01 Espec:** Documento de requisitos com Rubrica de QA (critérios de aceite numerados).
 3. **02 Plan:** Plano de tarefas mapeado item a item.
 4. **03 Execução:** Registro rastreável de comandos, código e diffs.
-5. **04 QA:** Auditoria estrita com nota 0 a 10 por critério. *(Nota < 10 reinicia o ciclo com debug).*
+5. **04 QA:** Auditoria estrita com nota 0 a 10 por critério, com evidência re-derivada (não basta "parece certo").
+
+> 🔁 **Se qualquer critério tirar nota menor que 10, o loop não entrega — ele volta sozinho para o Debug/Espec e tenta de novo**, até 5 ciclos. Isso é o que diferencia o `execution-loop` de pedir "faça X": aqui a IA se audita e se corrige antes de te devolver o trabalho.
+
+### 🏭 SIPs: Projetos Especialistas Compartilhados (`superiaprojects-criar-sip`)
+
+Quando mais de um projeto seu usa a mesma tecnologia (ex: n8n, marketing, um banco de dados específico), não faz sentido duplicar skills e conhecimento em cada repositório. A skill `superiaprojects-criar-sip` transforma um repositório em um **SIP (Super IA Projects especialista)**: um hub central que concentra toda a inteligência daquele domínio — skills, agents, workflows, exemplos reais — e fica disponível **sob demanda** para qualquer outro projeto, via uma skill-ponte leve (`sip-<domínio>`) instalada no projeto consumidor.
+
+Na prática: em vez de cada projeto reinventar (ou copiar e desatualizar) o conhecimento de n8n, todos eles consultam o mesmo hub, que aprende e evolui continuamente.
+
+**SIPs existentes:**
+
+- **`SIP - N8N`**: Hub de automações, nós de código, expressões e padrões arquiteturais de n8n. Por isso este repositório (`0 Padrões`) não carrega mais as skills `n8n-*` localmente — elas migraram para o hub dedicado, que em breve ganha seu próprio repositório público no GitHub.
+- **[`SIP - Marketing`](https://github.com/Felipelbahia/superiaprojects-marketing)**: Hub de copywriting, SEO, growth e estratégia de conteúdo, já publicado no GitHub.
 
 ### 📁 Prompts Reutilizáveis (`prompts-template/`)
 
@@ -127,6 +141,15 @@ Recomendadas automaticamente via [`.vscode/extensions.json`](.vscode/extensions.
 - **Python & Infra:** Suíte oficial Python (Pylance) e Docker.
 
 👉 *Veja o [**Guia Completo de Setup (SETUP.md)**](SETUP.md) para instruções passo a passo e instalação em lote.*
+
+---
+
+## 📝 Atualizações Recentes
+
+- **03/11/2026:** As skills `n8n-*` (automações, código JS/Python, expressões, validação) saíram deste repositório e viraram o hub dedicado **`SIP - N8N`** — em breve com repositório próprio no GitHub. Projetos que precisam de n8n passam a consultá-lo via skill-ponte, em vez de duplicar o conhecimento localmente.
+- **03/11/2026:** Nova skill **`superiaprojects-criar-sip`**, que padroniza a criação desses hubs especialistas (SIPs) para qualquer domínio.
+- **03/11/2026:** Publicado o **[`SIP - Marketing`](https://github.com/Felipelbahia/superiaprojects-marketing)** no GitHub.
+- **03/11/2026:** Logo atualizada (wordmark "Futuro" em preto, legível em fundo claro).
 
 ---
 

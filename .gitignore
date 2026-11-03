@@ -27,6 +27,9 @@ Output/
 .agent/plans/
 plans/
 
+# Documentação e controle de skills de terceiros (privacidade/controle local)
+.agent/vendor/
+
 # Fichas de projetos reais e históricos privados
 projetos/
 

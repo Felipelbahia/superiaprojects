@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: angular-migration
 description: Migrate from AngularJS to Angular using hybrid mode, incremental component rewriting, and dependency injection updates. Use when upgrading AngularJS applications, planning framework migrations, or modernizing legacy Angular code.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Angular Migration
 
 Master AngularJS to Angular migration, including hybrid apps, component conversion, dependency injection changes, and routing migration.

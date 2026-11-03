@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: event-store-design
 description: Design and implement event stores for event-sourced systems. Use when building event sourcing infrastructure, choosing event store technologies, or implementing event persistence patterns.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Event Store Design
 
 Comprehensive guide to designing event stores for event-sourced applications.

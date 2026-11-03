@@ -1,8 +1,11 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: systematic-debugging
 description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes
+author: Jesse Vincent (@obra)
+license: MIT
 ---
-
 # Systematic Debugging
 
 ## Overview

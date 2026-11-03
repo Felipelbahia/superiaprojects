@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: employment-contract-templates
 description: Create employment contracts, offer letters, and HR policy documents following legal best practices. Use when drafting employment agreements, creating HR policies, or standardizing employment documentation.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Employment Contract Templates
 
 Templates and patterns for creating legally sound employment documentation including contracts, offer letters, and HR policies.

@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: accessibility-compliance
 description: Implement WCAG 2.2 compliant interfaces with mobile accessibility, inclusive design patterns, and assistive technology support. Use when auditing accessibility, implementing ARIA patterns, building for screen readers, or ensuring inclusive user experiences.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Accessibility Compliance
 
 Master accessibility implementation to create inclusive experiences that work for everyone, including users with disabilities.

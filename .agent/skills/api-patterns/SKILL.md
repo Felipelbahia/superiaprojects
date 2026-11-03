@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: api-patterns
 description: API design principles and decision-making. REST vs GraphQL vs tRPC selection, response formats, versioning, pagination.
 allowed-tools: Read, Write, Edit, Glob, Grep
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # API Patterns
 
 > API design principles and decision-making for 2025.

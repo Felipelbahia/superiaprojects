@@ -1,8 +1,12 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
+# Status: Customizada / Modificada localmente por Felipe Bahia
 name: brainstorming
 description: "Use when about to create features, build components, add functionality, modify behavior, or plan anything new, in software or out of it, and when a request is complex, vague, or unclear - the Socratic Gate, before any tool use or implementation"
+author: Jesse Vincent (@obra) / Modificado por Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Brainstorming (Socratic Gate + Discovery)
 
 You build what you believe your human partner wants, and that belief is usually thinner than it feels. This skill finds out what they actually want, and why, before anything gets built. It is the full protocol behind the **Socratic Gate** in CLAUDE.md / GEMINI.md.

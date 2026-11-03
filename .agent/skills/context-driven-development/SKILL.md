@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: context-driven-development
 description: Use this skill when working with Conductor's context-driven development methodology, managing project context artifacts, or understanding the relationship between product.md, tech-stack.md, and workflow.md files.
 version: 1.0.0
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Context-Driven Development
 
 Guide for implementing and maintaining context as a managed artifact alongside code, enabling consistent AI interactions and team alignment through structured project documentation.

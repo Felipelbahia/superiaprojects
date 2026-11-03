@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: sast-configuration
 description: Configure Static Application Security Testing (SAST) tools for automated vulnerability detection in application code. Use when setting up security scanning, implementing DevSecOps practices, or automating code vulnerability detection.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # SAST Configuration
 
 > **Precedence (2026-10-11):** SAST is the deterministic CI layer. Claude Code's reasoning-based layers, `security-guidance-plugin` (in-session) and `claude-security-scan` (deep scan), complement it and prevail on conflict; they do not replace SAST.

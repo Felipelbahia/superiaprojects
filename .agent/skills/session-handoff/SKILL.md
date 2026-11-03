@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: session-handoff
 description: Use when ending a session with unfinished work that another session will need to continue, or when starting a session that resumes someone else's (or your own past) handoff — captures task status, decisions, learnings, and next steps without losing context.
+author: Futuro Mercado / Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Session Handoff
 
 ## Overview

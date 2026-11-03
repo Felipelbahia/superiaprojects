@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: paypal-integration
 description: Integrate PayPal payment processing with support for express checkout, subscriptions, and refund management. Use when implementing PayPal payments, processing online transactions, or building e-commerce checkout flows.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # PayPal Integration
 
 Master PayPal payment integration including Express Checkout, IPN handling, recurring billing, and refund workflows.

@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: claude-code-review
 description: Use when setting up, tuning or running Claude Code Review (managed GitHub PR review, REVIEW.md, @claude review) or the local /code-review command, when review findings are noisy, missing or costly, or when gating merges on automated review severity. Also for revisão de PR automatizada and ultrareview requests.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Claude Code Review
 
 ## Overview

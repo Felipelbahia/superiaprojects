@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: webapp-testing
 description: Web application testing principles. E2E, Playwright, deep audit strategies.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Web App Testing
 
 > Discover and test everything. Leave no route untested.

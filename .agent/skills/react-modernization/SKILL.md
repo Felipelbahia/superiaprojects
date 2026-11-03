@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: react-modernization
 description: Upgrade React applications to latest versions, migrate from class components to hooks, and adopt concurrent features. Use when modernizing React codebases, migrating to React Hooks, or upgrading to latest React versions.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # React Modernization
 
 Master React version upgrades, class to hooks migration, concurrent features adoption, and codemods for automated transformation.

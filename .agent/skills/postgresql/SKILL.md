@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: postgresql-table-design
 description: Design a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # PostgreSQL Table Design
 
 ## Core Rules

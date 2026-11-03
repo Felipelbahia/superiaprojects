@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: code-review-checklist
 description: Code review guidelines covering code quality, security, and best practices.
 allowed-tools: Read, Glob, Grep
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Code Review Checklist
 
 > **Precedence (2026-10-11):** for Claude Code's review tooling (`/code-review`, `REVIEW.md`, Code Review check runs) see `claude-code-review`; on any conflict with this skill, `claude-code-review` prevails. Its severity emojis differ from the ones below (🔴 Important · 🟡 **Nit** · 🟣 Pre-existing), so always write the word next to the emoji. Its default scope is correctness, not style or test coverage.

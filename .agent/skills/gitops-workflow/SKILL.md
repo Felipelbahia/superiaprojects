@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: gitops-workflow
 description: Implement GitOps workflows with ArgoCD and Flux for automated, declarative Kubernetes deployments with continuous reconciliation. Use when implementing GitOps practices, automating Kubernetes deployments, or setting up declarative infrastructure management.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # GitOps Workflow
 
 Complete guide to implementing GitOps workflows with ArgoCD and Flux for automated Kubernetes deployments.

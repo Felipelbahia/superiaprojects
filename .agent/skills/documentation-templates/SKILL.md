@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: documentation-templates
 description: Documentation templates and structure guidelines. README, API docs, code comments, and AI-friendly documentation.
 allowed-tools: Read, Glob, Grep
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Documentation Templates
 
 > Templates and structure guidelines for common documentation types.

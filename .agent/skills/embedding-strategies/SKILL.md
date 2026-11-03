@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: embedding-strategies
 description: Select and optimize embedding models for semantic search and RAG applications. Use when choosing embedding models, implementing chunking strategies, or optimizing embedding quality for specific domains.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Embedding Strategies
 
 Guide to selecting and optimizing embedding models for vector search applications.

@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: threat-mitigation-mapping
 description: Map identified threats to appropriate security controls and mitigations. Use when prioritizing security investments, creating remediation plans, or validating control effectiveness.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Threat Mitigation Mapping
 
 Connect threats to controls for effective security planning.

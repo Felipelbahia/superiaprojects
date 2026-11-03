@@ -2,8 +2,8 @@
 
 > Índice central de todas as Skills, Workflows e Agentes da Plataforma (0 Padrões + 0 Mkt)
 
-**Total Geral:** `707` recursos | **Skills:** `320` | **Workflows:** `224` | **Agentes:** `163`
-**Fontes Integradas:** `0 Mkt` (243) · `0 Padrões` (464)
+**Total Geral:** `703` recursos | **Skills:** `315` | **Workflows:** `225` | **Agentes:** `163`
+**Fontes Integradas:** `0 Mkt` (246) · `0 Padrões` (457)
 
 ---
 
@@ -32,21 +32,21 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Pipelines de Dados & Transformação](#pipelines-de-dados--transformação) (`2`)
 - [Arquitetura de Software & Engenharia](#arquitetura-de-software--engenharia) (`42` recursos)
   - [Padrões Arquiteturais & Boas Práticas](#padrões-arquiteturais--boas-práticas) (`42`)
-- [Backend & APIs](#backend--apis) (`20` recursos)
+- [Backend & APIs](#backend--apis) (`18` recursos)
   - [Design & Integração de APIs (REST / GraphQL)](#design--integração-de-apis-rest--graphql) (`10`)
-  - [Node.js, Go & Microsserviços](#nodejs-go--microsserviços) (`2`)
-  - [Python & Backends de Alta Performance](#python--backends-de-alta-performance) (`6`)
+  - [Node.js, Go & Microsserviços](#nodejs-go--microsserviços) (`1`)
+  - [Python & Backends de Alta Performance](#python--backends-de-alta-performance) (`5`)
   - [Serviços de Autenticação & Pagamentos](#serviços-de-autenticação--pagamentos) (`2`)
 - [Database & Storage](#database--storage) (`6` recursos)
   - [Bancos Relacionais (PostgreSQL & SQL)](#bancos-relacionais-postgresql--sql) (`3`)
   - [Modelagem & Migrações de Banco](#modelagem--migrações-de-banco) (`3`)
-- [DevOps & Cloud Infra](#devops--cloud-infra) (`64` recursos)
+- [DevOps & Cloud Infra](#devops--cloud-infra) (`63` recursos)
   - [Infraestrutura como Código (Terraform / Cloud)](#infraestrutura-como-código-terraform--cloud) (`3`)
   - [Orquestração Kubernetes & Contêineres](#orquestração-kubernetes--contêineres) (`2`)
-  - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`59`)
-- [Frontend & UI/UX](#frontend--uiux) (`228` recursos)
+  - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`58`)
+- [Frontend & UI/UX](#frontend--uiux) (`225` recursos)
   - [Acessibilidade Web (A11y & WCAG)](#acessibilidade-web-a11y--wcag) (`4`)
-  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`202`)
+  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`199`)
   - [Design Systems & Estilização Moderna](#design-systems--estilização-moderna) (`10`)
   - [Frameworks Web Modernos (React & Next.js)](#frameworks-web-modernos-react--nextjs) (`12`)
 - [Gestão de Produtos e Projetos](#gestão-de-produtos-e-projetos) (`17` recursos)
@@ -54,9 +54,9 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Estratégia & Especificação de Produto (PRD)](#estratégia--especificação-de-produto-prd) (`3`)
   - [Operações Ágeis & Coordenação de Equipe](#operações-ágeis--coordenação-de-equipe) (`5`)
   - [Planejamento de Projetos & Sprints](#planejamento-de-projetos--sprints) (`7`)
-- [Mobile Development](#mobile-development) (`38` recursos)
+- [Mobile Development](#mobile-development) (`37` recursos)
   - [Arquitetura e Padrões Mobile](#arquitetura-e-padrões-mobile) (`2`)
-  - [iOS & Ferramentas Nativas](#ios--ferramentas-nativas) (`36`)
+  - [iOS & Ferramentas Nativas](#ios--ferramentas-nativas) (`35`)
 - [Processos de VibeCoding & Metodologia IA](#processos-de-vibecoding--metodologia-ia) (`24` recursos)
   - [Auditoria Anti-Slop & Segurança VibeCoding](#auditoria-anti-slop--segurança-vibecoding) (`1`)
   - [Engenharia de Contexto & Memória](#engenharia-de-contexto--memória) (`3`)
@@ -81,11 +81,12 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Meta](#meta) (`1`)
   - [Multiplataforma](#multiplataforma) (`1`)
   - [Mídia Paga](#mídia-paga) (`3`)
-- [audiovisual (Mídia & Audiovisual)](#audiovisual-mídia--audiovisual) (`23` recursos)
+- [audiovisual (Mídia & Audiovisual)](#audiovisual-mídia--audiovisual) (`24` recursos)
   - [Agentes De Voz](#agentes-de-voz) (`1`)
   - [Apresentacoes Educacionais](#apresentacoes-educacionais) (`1`)
   - [Arte Conceitual](#arte-conceitual) (`1`)
   - [Banco De Imagens Pexels](#banco-de-imagens-pexels) (`1`)
+  - [Banco De Midias Openverse](#banco-de-midias-openverse) (`1`)
   - [Download De Video](#download-de-video) (`1`)
   - [Estrutura De Apresentacao](#estrutura-de-apresentacao) (`1`)
   - [Imagem Flux Api](#imagem-flux-api) (`1`)
@@ -103,13 +104,13 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Traducao De Legenda](#traducao-de-legenda) (`1`)
   - [Transcricao](#transcricao) (`1`)
   - [Video Para Gif](#video-para-gif) (`1`)
-- [brand (Identidade da Marca)](#brand-identidade-da-marca) (`16` recursos)
+- [brand (Identidade da Marca)](#brand-identidade-da-marca) (`17` recursos)
   - [Audience](#audience) (`1`)
   - [Builder](#builder) (`1`)
   - [Design System](#design-system) (`1`)
   - [Essence](#essence) (`1`)
   - [Identidade Sonora](#identidade-sonora) (`1`)
-  - [Identidade e Marca](#identidade-e-marca) (`5`)
+  - [Identidade e Marca](#identidade-e-marca) (`6`)
   - [Naming](#naming) (`1`)
   - [Paleta De Cores](#paleta-de-cores) (`1`)
   - [Visual Direction](#visual-direction) (`1`)
@@ -166,7 +167,7 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Newsletter](#newsletter) (`2`)
   - [Otimizacao De Assunto](#otimizacao-de-assunto) (`1`)
   - [Wizard](#wizard) (`1`)
-- [geral (Geral & Governança)](#geral-geral--governança) (`23` recursos)
+- [geral (Geral & Governança)](#geral-geral--governança) (`24` recursos)
   - [Anti Slop](#anti-slop) (`2`)
   - [Arquitetura De Projeto](#arquitetura-de-projeto) (`1`)
   - [Briefing Matinal](#briefing-matinal) (`1`)
@@ -176,7 +177,7 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Extracao E Plano De Acao](#extracao-e-plano-de-acao) (`1`)
   - [Mapa De Stakeholders](#mapa-de-stakeholders) (`1`)
   - [Navegador De Skills](#navegador-de-skills) (`1`)
-  - [Operações e Rotinas](#operações-e-rotinas) (`7`)
+  - [Operações e Rotinas](#operações-e-rotinas) (`8`)
   - [Planejamento Diario](#planejamento-diario) (`1`)
   - [Postmortem](#postmortem) (`1`)
   - [Priorizacao Esforco Impacto](#priorizacao-esforco-impacto) (`1`)
@@ -382,7 +383,7 @@ Total de recursos nesta macro-área: `42`
 
 ## <a id="backend--apis"></a>Backend & APIs
 
-Total de recursos nesta macro-área: `20`
+Total de recursos nesta macro-área: `18`
 
 ### <a id="design--integração-de-apis-rest--graphql"></a>Design & Integração de APIs (REST / GraphQL)
 
@@ -403,7 +404,6 @@ Total de recursos nesta macro-área: `20`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="n8n-code-javascript"></a>**`n8n-code-javascript`** | `Skill` | `0 Padrões` | Escreva o código JavaScript em nós de código n8n. Use ao escrever JavaScript em n8n, usando a sintaxe $input/$json/$node, fazendo solicitações HTTP com $helpers, trabalhando com datas usando DateTime, solucionando erros de nó de código ou escolhendo entre modos de nó de código. |
 | <a id="javascript-pro"></a>**`@javascript-pro`** | `Agent` | `0 Padrões` | Domine JavaScript moderno com ES6+, padrões assíncronos e APIs Node.js. Lida com promessas, loops de eventos e compatibilidade de navegador/nó. Use PROATIVAMENTE para otimização de JavaScript, depuração assíncrona ou padrões JS complexos. |
 
 ### <a id="python--backends-de-alta-performance"></a>Python & Backends de Alta Performance
@@ -412,7 +412,6 @@ Total de recursos nesta macro-área: `20`
 | :--- | :--- | :--- | :--- |
 | <a id="async-python-patterns"></a>**`async-python-patterns`** | `Skill` | `0 Padrões` | Domine Python assíncrono, programação simultânea e padrões assíncronos/aguardados para aplicativos de alto desempenho. Use ao criar APIs assíncronas, sistemas simultâneos ou aplicativos vinculados a E/S que exigem operações sem bloqueio. |
 | <a id="fastapi-templates"></a>**`fastapi-templates`** | `Skill` | `0 Padrões` | Crie projetos FastAPI prontos para produção com padrões assíncronos, injeção de dependência e tratamento abrangente de erros. Use ao criar novos aplicativos FastAPI ou configurar projetos de API de back-end. |
-| <a id="n8n-code-python"></a>**`n8n-code-python`** | `Skill` | `0 Padrões` | Escreva o código Python em nós de código n8n. Use ao escrever Python em n8n, usando a sintaxe _input/_json/_node, trabalhando com biblioteca padrão ou precisa entender as limitações do Python em nós de código n8n. |
 | <a id="python-performance-optimization"></a>**`python-performance-optimization`** | `Skill` | `0 Padrões` | Crie perfis e otimize o código Python usando cProfile, criadores de perfil de memória e práticas recomendadas de desempenho. Use ao depurar código Python lento, otimizar gargalos ou melhorar o desempenho do aplicativo. |
 | <a id="python-testing-patterns"></a>**`python-testing-patterns`** | `Skill` | `0 Padrões` | Implemente estratégias de teste abrangentes com pytest, fixtures, simulação e desenvolvimento orientado a testes. Use ao escrever testes Python, configurar conjuntos de testes ou implementar práticas recomendadas de teste. |
 | <a id="python-scaffold"></a>**`/python-scaffold`** | `Workflow` | `0 Padrões` | Andaime do projeto Python |
@@ -450,7 +449,7 @@ Total de recursos nesta macro-área: `6`
 
 ## <a id="devops--cloud-infra"></a>DevOps & Cloud Infra
 
-Total de recursos nesta macro-área: `64`
+Total de recursos nesta macro-área: `63`
 
 ### <a id="infraestrutura-como-código-terraform--cloud"></a>Infraestrutura como Código (Terraform / Cloud)
 
@@ -483,7 +482,6 @@ Total de recursos nesta macro-área: `64`
 | <a id="market-sizing-analysis"></a>**`market-sizing-analysis`** | `Skill` | `0 Padrões` | Esta habilidade deve ser usada quando o usuário pede para “calcular TAM”, “determinar SAM”, “estimar SOM”, “dimensionar o mercado”, “calcular oportunidade de mercado”, “qual é o mercado total endereçável”, ou solicitar análise de dimensionamento de mercado para uma startup ou oportunidade de negócio. |
 | <a id="memory-safety-patterns"></a>**`memory-safety-patterns`** | `Skill` | `0 Padrões` | Implemente programação segura de memória com RAII, propriedade, ponteiros inteligentes e gerenciamento de recursos em Rust, C++ e C. Use ao escrever códigos de sistemas seguros, gerenciar recursos ou prevenir bugs de memória. |
 | <a id="mtls-configuration"></a>**`mtls-configuration`** | `Skill` | `0 Padrões` | Configure o TLS mútuo (mTLS) para comunicação entre serviços de confiança zero. Use ao implementar redes de confiança zero, gerenciamento de certificados ou proteger a comunicação de serviço interno. |
-| <a id="n8n-validation-expert"></a>**`n8n-validation-expert`** | `Skill` | `0 Padrões` | Interprete erros de validação e oriente sua correção. Use quando encontrar erros de validação, avisos de validação, falsos positivos, problemas de estrutura do operador ou precisar de ajuda para entender os resultados da validação. Use também ao perguntar sobre perfis de validação, tipos de erros ou o processo de loop de validação. |
 | <a id="on-call-handoff-patterns"></a>**`on-call-handoff-patterns`** | `Skill` | `0 Padrões` | Domine a transferência de turnos de plantão com transferência de contexto, procedimentos de escalonamento e documentação. Use ao fazer a transição de responsabilidades de plantão, documentar resumos de turnos ou melhorar processos de plantão. |
 | <a id="opus-haiku"></a>**`opus-haiku`** | `Skill` | `0 Padrões` | Use quando o usuário invoca /opus-haiku ou pede para salvar o uso do plano delegando a escrita do código para um modelo mais barato enquanto o modelo principal planeja e revisa, e na fase de Execução do loop de execução. |
 | <a id="ponytail"></a>**`ponytail`** | `Skill` | `0 Padrões` | Lazy senior dev mode: the smallest change that fully solves the task, and a reply a busy human understands in one read. Use on any coding task (writing, fixing, refactoring, reviewing, choosing dependencies) and when the user says "ponytail", "be lazy", "simplest solution", "yagni", or complains about over-engineering or bloat. Levels: lite, full (default), ultra. |
@@ -535,7 +533,7 @@ Total de recursos nesta macro-área: `64`
 
 ## <a id="frontend--uiux"></a>Frontend & UI/UX
 
-Total de recursos nesta macro-área: `228`
+Total de recursos nesta macro-área: `225`
 
 ### <a id="acessibilidade-web-a11y--wcag"></a>Acessibilidade Web (A11y & WCAG)
 
@@ -612,9 +610,6 @@ Total de recursos nesta macro-área: `228`
 | <a id="mobile-ios-design"></a>**`mobile-ios-design`** | `Skill` | `0 Padrões` | Domine as diretrizes de interface humana do iOS e os padrões SwiftUI para criar aplicativos iOS nativos. Use ao projetar interfaces iOS, implementar visualizações SwiftUI ou garantir que os aplicativos sigam os princípios de design da Apple. |
 | <a id="modern-javascript-patterns"></a>**`modern-javascript-patterns`** | `Skill` | `0 Padrões` | Domine os recursos do ES6+, incluindo assíncrono/espera, desestruturação, operadores de propagação, funções de seta, promessas, módulos, iteradores, geradores e padrões de programação funcionais para escrever código JavaScript limpo e eficiente. Use ao refatorar código legado, implementar padrões modernos ou otimizar aplicativos JavaScript. |
 | <a id="multi-cloud-architecture"></a>**`multi-cloud-architecture`** | `Skill` | `0 Padrões` | Projete arquiteturas multinuvem usando uma estrutura de decisão para selecionar e integrar serviços em AWS, Azure e GCP. Use ao criar sistemas multinuvem, evitando a dependência de fornecedores ou aproveitando os melhores serviços de vários provedores. |
-| <a id="n8n-expression-syntax"></a>**`n8n-expression-syntax`** | `Skill` | `0 Padrões` | Valide a sintaxe da expressão n8n e corrija erros comuns. Use ao escrever expressões n8n, usando a sintaxe {{}}, acessando variáveis ​​$json/$node, solucionando erros de expressão ou trabalhando com dados de webhook em fluxos de trabalho. |
-| <a id="n8n-mcp-tools-expert"></a>**`n8n-mcp-tools-expert`** | `Skill` | `0 Padrões` | Guia especializado para usar ferramentas MCP n8n-mcp de maneira eficaz. Use ao pesquisar nós, validar configurações, acessar modelos, gerenciar fluxos de trabalho ou usar qualquer ferramenta n8n-mcp. Fornece orientação para seleção de ferramentas, formatos de parâmetros e padrões comuns. |
-| <a id="n8n-workflow-patterns"></a>**`n8n-workflow-patterns`** | `Skill` | `0 Padrões` | Padrões de arquitetura de fluxo de trabalho comprovados de fluxos de trabalho n8n reais. Use ao criar novos fluxos de trabalho, projetar estrutura de fluxo de trabalho, escolher padrões de fluxo de trabalho, planejar arquitetura de fluxo de trabalho ou perguntar sobre processamento de webhook, integração de API HTTP, operações de banco de dados, fluxos de trabalho de agente de IA ou tarefas agendadas. |
 | <a id="nft-standards"></a>**`nft-standards`** | `Skill` | `0 Padrões` | Implemente padrões NFT (ERC-721, ERC-1155) com tratamento adequado de metadados, estratégias de cunhagem e integração de mercado. Use ao criar contratos NFT, construir mercados NFT ou implementar sistemas de ativos digitais. |
 | <a id="nodejs-backend-patterns"></a>**`nodejs-backend-patterns`** | `Skill` | `0 Padrões` | Crie serviços de back-end Node.js prontos para produção com Express/Fastify, implementando padrões de middleware, tratamento de erros, autenticação, integração de banco de dados e práticas recomendadas de design de API. Use ao criar servidores Node.js, APIs REST, back-ends GraphQL ou arquiteturas de microsserviços. |
 | <a id="nodejs-best-practices"></a>**`nodejs-best-practices`** | `Skill` | `0 Padrões` | Princípios de desenvolvimento e tomada de decisões do Node.js. Seleção de estrutura, padrões assíncronos, segurança e arquitetura. Ensina a pensar, não a copiar. |
@@ -635,6 +630,7 @@ Total de recursos nesta macro-área: `228`
 | <a id="similarity-search-patterns"></a>**`similarity-search-patterns`** | `Skill` | `0 Padrões` | Implemente uma pesquisa eficiente de similaridade com bancos de dados vetoriais. Use ao criar pesquisa semântica, implementar consultas de vizinhos mais próximos ou otimizar o desempenho de recuperação. |
 | <a id="startup-financial-modeling"></a>**`startup-financial-modeling`** | `Skill` | `0 Padrões` | Essa habilidade deve ser usada quando o usuário pede para "criar projeções financeiras", "construir um modelo financeiro", "prever receita", "calcular taxa de consumo", "estimar pista", "modelar fluxo de caixa" ou solicitar planejamento financeiro de 3 a 5 anos para uma startup. |
 | <a id="stripe-integration"></a>**`stripe-integration`** | `Skill` | `0 Padrões` | Implemente o processamento de pagamentos Stripe para fluxos de pagamento robustos e compatíveis com PCI, incluindo checkout, assinaturas e webhooks. Use ao integrar pagamentos Stripe, criar sistemas de assinatura ou implementar fluxos de checkout seguros. |
+| <a id="superiaprojects-criar-sip"></a>**`superiaprojects-criar-sip`** | `Skill` | `0 Padrões` | Use quando o usuário quiser transformar um projeto/repositório em um "SIP" (Super IA Projects) — um repositório central de Skills, Agents, Workflows e Conhecimento de um domínio que outros projetos possam consultar, quase como um agente especializado daquele domínio. Dispara em pedidos como "cria um SIP de marketing", "transforma esse repo num hub de X", "quero um repositório central pra Y como fizemos com o n8n", ou quando o usuário referencia o `SIP - N8N` como modelo a replicar para um novo domínio. Faz o scaffolding da skill resolver (`sip-<dominio>`), do prompt de instalação, do inbox de contribuições e do registro na ficha do projeto — não cria o conhecimento de domínio em si (isso é trabalho de skills/agents específicos, feitos depois). |
 | <a id="tdd-workflow"></a>**`tdd-workflow`** | `Skill` | `0 Padrões` | Princípios de fluxo de trabalho de Desenvolvimento Orientado a Testes. Ciclo VERMELHO-VERDE-REFATOR. |
 | <a id="team-composition-analysis"></a>**`team-composition-analysis`** | `Skill` | `0 Padrões` | Essa habilidade deve ser usada quando o usuário solicita "planejar estrutura de equipe", "determinar necessidades de contratação", "projetar organograma", "calcular remuneração", "planejar alocação de capital" ou solicitar design organizacional e planejamento de pessoal para uma startup. |
 | <a id="temporal-python-testing"></a>**`temporal-python-testing`** | `Skill` | `0 Padrões` | Teste fluxos de trabalho temporais com estratégias pytest, time-skipping e mocking. Abrange testes unitários, testes de integração, testes de repetição e configuração de desenvolvimento local. Use ao implementar testes de fluxo de trabalho temporal ou depurar falhas de teste. |
@@ -723,7 +719,6 @@ Total de recursos nesta macro-área: `228`
 | <a id="mermaid-expert"></a>**`@mermaid-expert`** | `Agent` | `0 Padrões` | Crie diagramas Mermaid para fluxogramas, sequências, ERDs e arquiteturas. Domina a sintaxe para todos os tipos e estilos de diagramas. Use PROATIVAMENTE para documentação visual, diagramas de sistema ou fluxos de processo. |
 | <a id="minecraft-bukkit-pro"></a>**`@minecraft-bukkit-pro`** | `Agent` | `0 Padrões` | Domine o desenvolvimento de plugins de servidor Minecraft com APIs Bukkit, Spigot e Paper. Especializado em arquitetura orientada a eventos, sistemas de comando, manipulação mundial, gerenciamento de jogadores e otimização de desempenho. Use PROATIVAMENTE para arquitetura de plugins, mecânica de jogo, recursos do lado do servidor ou compatibilidade entre versões. |
 | <a id="monorepo-architect"></a>**`@monorepo-architect`** | `Agent` | `0 Padrões` | Arquitetura Monorepo, construção de sistemas e gerenciamento de dependências em escala (Nx, Turborepo, Bazel, Lerna). Use para configuração do espaço de trabalho e otimização de CI. |
-| <a id="n8n-agent"></a>**`@n8n-agent`** | `Agent` | `0 Padrões` | Projeta, constrói e valida fluxos de trabalho n8n usando ferramentas n8n-MCP. Use para qualquer tarefa de automação n8n. |
 | <a id="network-engineer"></a>**`@network-engineer`** | `Agent` | `0 Padrões` | Engenheiro de rede especializado em redes modernas em nuvem, arquiteturas de segurança e otimização de desempenho. Domina a conectividade multinuvem, malha de serviço, rede de confiança zero, SSL/TLS, balanceamento de carga global e solução de problemas avançada. Lida com otimização de CDN, automação de rede e conformidade. Use PROATIVAMENTE para projeto de rede, problemas de conectividade ou otimização de desempenho. |
 | <a id="observability-engineer"></a>**`@observability-engineer`** | `Agent` | `0 Padrões` | Crie sistemas de monitoramento, registro e rastreamento prontos para produção. Implementa estratégias abrangentes de observabilidade, gerenciamento de SLI/SLO e fluxos de trabalho de resposta a incidentes. Use PROATIVAMENTE para monitorar infraestrutura, otimização de desempenho ou confiabilidade de produção. |
 | <a id="payment-integration"></a>**`@payment-integration`** | `Agent` | `0 Padrões` | Integre Stripe, PayPal e processadores de pagamento. Lida com fluxos de checkout, assinaturas, webhooks e conformidade com PCI. Use PROATIVAMENTE ao implementar recursos de pagamentos, cobrança ou assinatura. |
@@ -832,7 +827,7 @@ Total de recursos nesta macro-área: `17`
 
 ## <a id="mobile-development"></a>Mobile Development
 
-Total de recursos nesta macro-área: `38`
+Total de recursos nesta macro-área: `37`
 
 ### <a id="arquitetura-e-padrões-mobile"></a>Arquitetura e Padrões Mobile
 
@@ -857,7 +852,6 @@ Total de recursos nesta macro-área: `38`
 | <a id="intelligent-routing"></a>**`intelligent-routing`** | `Skill` | `0 Padrões` | Seleção automática de agentes e roteamento inteligente de tarefas. Analisa as solicitações dos usuários e seleciona automaticamente o(s) melhor(es) agente(s) especializado(s) sem exigir menções explícitas dos usuários. |
 | <a id="kpi-dashboard-design"></a>**`kpi-dashboard-design`** | `Skill` | `0 Padrões` | Projete painéis de KPI eficazes com seleção de métricas, melhores práticas de visualização e padrões de monitoramento em tempo real. Use ao criar painéis de negócios, selecionar métricas ou projetar layouts de visualização de dados. |
 | <a id="monorepo-management"></a>**`monorepo-management`** | `Skill` | `0 Padrões` | Domine o gerenciamento de monorepo com espaços de trabalho Turborepo, Nx e pnpm para criar repositórios de vários pacotes eficientes e escaláveis ​​com compilações otimizadas e gerenciamento de dependências. Use ao configurar monorepos, otimizar compilações ou gerenciar dependências compartilhadas. |
-| <a id="n8n-node-configuration"></a>**`n8n-node-configuration`** | `Skill` | `0 Padrões` | Orientação de configuração de nó com reconhecimento de operação. Use ao configurar nós, compreender dependências de propriedades, determinar campos obrigatórios, escolher entre níveis de detalhe get_node ou aprender padrões de configuração comuns por tipo de nó. |
 | <a id="oss-scout"></a>**`oss-scout`** | `Skill` | `0 Padrões` | Use quando um projeto precisar de um recurso que uma biblioteca ou serviço maduro já possa resolver (login, pagamentos, PDF, datas e fusos horários, rich text, arrastar e soltar), antes de instalar ou recomendar qualquer pacote, ou quando solicitado a estudar, comparar ou participar de projetos de código aberto. |
 | <a id="performance-profiling"></a>**`performance-profiling`** | `Skill` | `0 Padrões` | Princípios de perfil de desempenho. Técnicas de medição, análise e otimização. |
 | <a id="plan-writing"></a>**`plan-writing`** | `Skill` | `0 Padrões` | Planejamento de tarefas estruturado com detalhamentos, dependências e critérios de verificação claros. Use ao implementar recursos, refatorar ou qualquer trabalho de várias etapas. |
@@ -1060,7 +1054,7 @@ Total de recursos nesta macro-área: `11`
 
 ## <a id="audiovisual-mídia--audiovisual"></a>audiovisual (Mídia & Audiovisual)
 
-Total de recursos nesta macro-área: `23`
+Total de recursos nesta macro-área: `24`
 
 ### <a id="agentes-de-voz"></a>Agentes De Voz
 
@@ -1085,6 +1079,12 @@ Total de recursos nesta macro-área: `23`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="audiovisual-banco-de-imagens-pexels"></a>**`/audiovisual-banco-de-imagens-pexels`** | `Workflow` | `0 Mkt` | Obtenha imagens e vídeos isentos de royalties da API Pexels para design, espaços reservados ou conteúdo. Suporta pesquisa, conteúdo curado/popular, coleções, múltiplas resoluções e SEMPRE cria arquivos de metadados secundários detalhados. |
+
+### <a id="banco-de-midias-openverse"></a>Banco De Midias Openverse
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="audiovisual-banco-de-midias-openverse"></a>**`audiovisual-banco-de-midias-openverse`** | `Skill` | `0 Mkt` | Busca de fotos, ilustrações, vetores, áudios e vídeos de domínio público e Creative Commons (CC0, CC-BY) na API do Openverse (WordPress/openverse) com fallback resiliente Wikimedia Commons e atribuição legal pronta. |
 
 ### <a id="download-de-video"></a>Download De Video
 
@@ -1194,7 +1194,7 @@ Total de recursos nesta macro-área: `23`
 
 ## <a id="brand-identidade-da-marca"></a>brand (Identidade da Marca)
 
-Total de recursos nesta macro-área: `16`
+Total de recursos nesta macro-área: `17`
 
 ### <a id="audience"></a>Audience
 
@@ -1230,6 +1230,7 @@ Total de recursos nesta macro-área: `16`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
+| <a id="art-director"></a>**`@art-director`** | `Agent` | `0 Mkt` | Diretor de Arte Sênior e Especialista em Branding com padrão de agência internacional (estilo Apple, Nike, Stripe, Airbnb, Notion). Especialista em neurodesign, hierarquia visual, psicologia das cores, tipografia contemporânea e direção estética para redes sociais, apresentações, landing pages e identidades de marca. Use quando precisar definir conceitos visuais de alto impacto, conceber direção de arte multiformato, gerar prompts de imagem multi-engine (Midjourney, Flux, ChatGPT, SD) ou conduzir auditoria e autocrítica estética intransigente. <example> Context: O usuário precisa de uma direção de arte impactante para a campanha de lançamento de um novo recurso. user: "Preciso criar a direção visual para o lançamento da nova funcionalidade da PR Pulse no Instagram e landing page." assistant: "Vou acionar o art-director para conceber o conceito criativo, estruturar 3 caminhos visuais divergentes, definir paleta funcional e tipografia moderna, orquestrando as skills de carrossel e landing page." <commentary> Demanda de concepção estética, direção de arte e consistência visual multiformato. </commentary> </example> <example> Context: O usuário quer prompts de imagem refinados para gerar assets visuais no Midjourney e Flux sem visual clichê de IA. user: "Gere os prompts de imagem para o novo produto da WAIMonitor com estética minimalista e profissional." assistant: "Acionando o art-director para aplicar o filtro anti-slop visual, construir a atmosfera e gerar os prompts calibrados para Midjourney, Flux e ChatGPT Image com contraste e respiro profissional." <commentary> Demanda de engenharia estética de prompts de IA generativa com rigor de diretor de arte. </commentary> </example> |
 | <a id="conversion-optimizer"></a>**`@conversion-optimizer`** | `Agent` | `0 Mkt` | Especialista em otimização de taxa de conversão. Use para maximizar as taxas de conversão em ativos de marketing, aplicando princípios e psicologia comprovados de CRO. Revisa páginas de destino, texto do e-mail, texto do anúncio e CTAs para eficácia de conversão. Exemplos: <exemplo>Contexto: página inicial criada pelo usuário. usuário: \"Analise esta página de destino para otimização de conversão\" assistente: \"Usarei o agente otimizador de conversão para analisar proposta de valor, CTAs e elementos de persuasão.\" <commentary>CRO requer análise especializada de psicologia de conversão e práticas recomendadas.</commentary></example> <example>Contexto: o usuário precisa de e-mail otimizado. usuário: \"Como posso melhorar as conversões neste e-mail?\" assistente: \"Deixe-me implantar o agente otimizador de conversões para revisar o texto, o posicionamento do CTA e os pontos de atrito.\" <commentary>A otimização de conversão de e-mail requer conhecimento especializado em persuasão e psicologia do usuário.</commentary></example> |
 | <a id="researcher"></a>**`@researcher`** | `Agent` | `0 Mkt` | Especialista em pesquisa de mercado e análise competitiva. Use para conduzir pesquisas de mercado, analisar concorrentes, coletar insights do público, explorar tendências do setor e encontrar práticas recomendadas de marketing. Exemplos: <exemplo>Contexto: O usuário precisa de inteligência competitiva. usuário: \"Pesquise as estratégias de marketing dos nossos 5 principais concorrentes\" assistente: \"Usarei o agente pesquisador para conduzir análises competitivas abrangentes, incluindo mensagens, canais e posicionamento.\" <commentary>Isso requer uma pesquisa de mercado aprofundada, então delegue ao agente pesquisador.</commentary></example> <example>Contexto: o usuário deseja entender seu público. usuário: \"Quais são os pontos problemáticos do nosso mercado-alvo?\" assistente: \"Deixe-me implantar o agente pesquisador para coletar insights do público e análise dos pontos problemáticos.\" <commentary>A pesquisa de público requer a síntese de múltiplas fontes e a criação de insights acionáveis.</commentary></example> |
 | <a id="sales-enabler"></a>**`@sales-enabler`** | `Agent` | `0 Mkt` | Especialista em garantia de vendas e capacitação. Use para criar argumentos de venda personalizados, scripts de tratamento de objeções, correspondência de prova social e fluxos de trabalho de aceleração de negócios. Exemplos: <exemplo>Contexto: O usuário precisa de materiais de vendas. usuário: \"Crie um estudo de caso para nossos clientes corporativos\" assistente: \"Usarei o agente facilitador de vendas para desenvolver um estudo de caso atraente com dados de ROI e depoimentos.\" <commentary>A criação de estudos de caso requer mensagens de vendas e experiência em prova social.</commentary></example> <example>Contexto: o usuário deseja melhorar as conversas de vendas. usuário: \"Ajude nossa equipe de vendas a lidar com objeções de preços\" assistente: \"Deixe-me implantar o agente facilitador de vendas para criar scripts de tratamento de objeções e cartões de batalha competitivos." <commentary>O tratamento de objeções requer um conhecimento profundo da psicologia do comprador e do posicionamento competitivo.</commentary></example> |
@@ -1440,7 +1441,7 @@ Total de recursos nesta macro-área: `14`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="copywriter"></a>**`@copywriter`** | `Agent` | `0 Mkt` | Use este agente quando precisar criar textos de alta conversão e voltados para o engajamento para materiais de marketing, postagens em mídias sociais, páginas de destino, campanhas de e-mail, descrições de produtos ou qualquer conteúdo que precise chamar a atenção e impulsionar a ação. Exemplos:\\n\\n<exemplo>\\nContexto: o usuário está lançando um novo recurso de produto e precisa de uma cópia atraente para a seção principal da página de destino.\\nuser: \"Acabamos de adicionar um novo recurso de revisão de código com tecnologia de IA. Você pode escrever um título e um subtítulo principais para a página de destino?\"\\assistente: \"Vou usar a ferramenta Tarefa para iniciar o agente redator para criar uma cópia principal atraente que interrompa os visitantes e direcione conversões.\"\\n<commentary>\\nO usuário precisa de uma cópia de marketing que converta, então delegue ao agente redator a criação de títulos que chamem a atenção.\\n</commentary>\\n</example>\\n\\n<example>\\nContexto: o usuário deseja anunciar uma atualização de produto no Twitter/X para maximizar o envolvimento.\\nuser: \"Acabamos de enviar convites automáticos do GitHub para AgentKits. Precisa de um tweet que atraia as pessoas. entusiasmado.\"\\nassistant: \"Deixe-me usar o agente redator para criar um tweet digno de viral que capte a atenção e gere engajamento.\"\\n<commentary>\\nAnúncio de mídia social requer experiência em redação viral, então use o agente redator.\\n</commentary>\\n</example>\\n\\n<example>\\nContexto: o usuário está revisando os materiais de marketing e o agente identifica proativamente os pontos fracos copy.\\nuser: \"Aqui está o rascunho da nossa nova página de preços\"\\nassistente: \"Percebi que o título 'Nossos planos de preços' poderia ser mais atraente. Deixe-me usar o agente redator para sugerir alternativas que gerem conversões.\"\\n<comentário>\\nIdentifique proativamente oportunidades para melhorar o copy e sugira o uso do redator agente.\\n</commentary>\\n</example>\\n\\n<example>\\nContexto: o usuário precisa de linhas de assunto de e-mail que aumentem as taxas de abertura.\\nuser: \"Escreva linhas de assunto para nossa campanha de e-mail de lançamento de produto\"\\nassistant: \"Estou delegando ao agente redator a criação de linhas de assunto com alta taxa de abertura que eliminem o ruído da caixa de entrada.\"\\n<commentary>\\nO marketing por e-mail requer cópia com foco na conversão, então use um agente redator.\\n</commentary>\\n</example> |
+| <a id="copywriter"></a>**`@copywriter`** | `Agent` | `0 Mkt` | Use este agente quando precisar criar textos de alta conversão e voltados para o engajamento para materiais de marketing, postagens em mídias sociais, páginas de destino, campanhas de e-mail, descrições de produtos ou qualquer conteúdo que precise chamar a atenção e impulsionar a ação. Exemplos:\\n\\n<exemplo>\\nContexto: o usuário está lançando um novo recurso de produto e precisa de uma cópia atraente para a seção principal da página de destino.\\nuser: \"Acabamos de adicionar um novo recurso de revisão de código com tecnologia de IA. Você pode escrever um título e um subtítulo principais para a página de destino?\"\\assistente: \"Vou usar a ferramenta Tarefa para iniciar o agente redator para criar uma cópia principal atraente que interrompa os visitantes e direcione conversões.\"\\n<commentary>\\nO usuário precisa de uma cópia de marketing que converta, então delegue ao agente redator a criação de títulos que chamem a atenção.\\n</commentary>\\n</example>\\n\\n<example>\\nContexto: o usuário deseja anunciar uma atualização de produto no Twitter/X para maximizar o envolvimento.\\nuser: \"Acabamos de enviar GitHub Super IA Projects - Marketingauto-invites para AgentKits Precisa de um tweet. isso deixará as pessoas entusiasmadas.\"\\nassistente: \"Deixe-me usar o agente redator para criar um tweet digno de viral que capte a atenção e gere engajamento.\"\\n<commentary>\\nAnúncio de mídia social requer experiência em redação viral, então use o agente redator.\\n</commentary>\\n</example>\\n\\n<exemplo>\\nContexto: o usuário está revisando materiais de marketing e o agente identifica proativamente os pontos fracos copy.\\nuser: \"Aqui está o rascunho da nossa nova página de preços\"\\nassistente: \"Percebi que o título 'Nossos planos de preços' poderia ser mais atraente. Deixe-me usar o agente redator para sugerir alternativas que gerem conversões.\"\\n<comentário>\\nIdentifique proativamente oportunidades para melhorar o copy e sugira o uso do redator agente.\\n</commentary>\\n</example>\\n\\n<example>\\nContexto: o usuário precisa de linhas de assunto de e-mail que aumentem as taxas de abertura.\\nuser: \"Escreva linhas de assunto para nossa campanha de e-mail de lançamento de produto\"\\nassistant: \"Estou delegando ao agente redator a criação de linhas de assunto com alta taxa de abertura que eliminem o ruído da caixa de entrada.\"\\n<commentary>\\nO marketing por e-mail requer cópia com foco na conversão, então use um agente redator.\\n</commentary>\\n</example> |
 
 ### <a id="vsl"></a>Vsl
 
@@ -1588,7 +1589,7 @@ Total de recursos nesta macro-área: `12`
 
 ## <a id="geral-geral--governança"></a>geral (Geral & Governança)
 
-Total de recursos nesta macro-área: `23`
+Total de recursos nesta macro-área: `24`
 
 ### <a id="anti-slop"></a>Anti Slop
 
@@ -1643,12 +1644,13 @@ Total de recursos nesta macro-área: `23`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="geral-navegador-de-skills"></a>**`/geral-navegador-de-skills`** | `Workflow` | `0 Mkt` | Guia inteligente para as skills reais do catálogo do hub 0 Mkt. Recomenda a skill certa para cada pedido, sugere combinações de skills e ajuda a descobrir capacidades que o usuário talvez não conheça. |
+| <a id="geral-navegador-de-skills"></a>**`/geral-navegador-de-skills`** | `Workflow` | `0 Mkt` | Guia inteligente para as skills reais do catálogo do hub Super IA Projects - Marketing. Recomenda a skill certa para cada pedido, sugere combinações de skills e ajuda a descobrir capacidades que o usuário talvez não conheça. |
 
 ### <a id="operações-e-rotinas"></a>Operações e Rotinas
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
+| <a id="design-direcao-criativa"></a>**`/design-direcao-criativa`** | `Workflow` | `0 Mkt` | Workflow de direção de arte e criação visual em 6 etapas: entendimento, conceito, direção de arte com 3 vias divergentes, paleta funcional, tipografia e layout, com prompts de IA multi-engine e autocrítica (0 a 10). Use para criar conceitos visuais, direções de campanha, identidades ou peças de alto padrão estético. |
 | <a id="analytics-specialist"></a>**`@analytics-specialist`** | `Agent` | `0 Mkt` | Especialista em análise de dados de marketing e insights de desempenho. |
 | <a id="command-helper"></a>**`@command-helper`** | `Agent` | `0 Mkt` | Assistente de comando inteligente que entende a intenção do usuário e sugere comandos relevantes. Os usuários descrevem o que desejam fazer e o agente recomenda os melhores comandos/agentes. Não há necessidade de memorizar comandos. Exemplos: <exemplo>Contexto: O usuário não sabe qual comando usar. usuário: \"Quero escrever uma postagem no blog\" assistente: \"Usarei o agente auxiliar de comando para encontrar o melhor comando para sua tarefa.\" <commentary>A descoberta de comandos requer a compreensão da intenção e a correspondência com os comandos disponíveis.</commentary></example> |
 | <a id="content-creator"></a>**`@content-creator`** | `Agent` | `0 Mkt` | Especialista em criação de conteúdo para todos os tipos de conteúdo de marketing. |

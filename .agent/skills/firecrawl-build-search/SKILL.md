@@ -1,9 +1,9 @@
 ---
+# Source: https://github.com/firecrawl/skills
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: firecrawl-build-search
 description: Integrate Firecrawl `/search` into product code and agent workflows. Use when an app needs discovery before extraction, when the feature starts with a query instead of a URL, or when the system should search the web and optionally hydrate result content.
-license: ISC
 metadata:
-  author: firecrawl
   version: "0.1.0"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/skills
@@ -14,8 +14,9 @@ inputs:
   - name: FIRECRAWL_API_URL
     description: Optional base URL for self-hosted Firecrawl deployments.
     required: false
+author: Firecrawl (Mendable)
+license: MIT
 ---
-
 # Firecrawl Build Search
 
 Use this when the application starts with a query, not a URL.

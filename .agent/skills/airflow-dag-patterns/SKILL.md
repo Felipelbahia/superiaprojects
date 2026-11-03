@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: airflow-dag-patterns
 description: Build production Apache Airflow DAGs with best practices for operators, sensors, testing, and deployment. Use when creating data pipelines, orchestrating workflows, or scheduling batch jobs.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Apache Airflow DAG Patterns
 
 Production-ready patterns for Apache Airflow including DAG design, operators, sensors, testing, and deployment strategies.

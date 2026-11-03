@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: projection-patterns
 description: Build read models and projections from event streams. Use when implementing CQRS read sides, building materialized views, or optimizing query performance in event-sourced systems.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Projection Patterns
 
 Comprehensive guide to building projections and read models for event-sourced systems.

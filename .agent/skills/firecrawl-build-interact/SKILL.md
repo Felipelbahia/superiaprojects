@@ -1,9 +1,9 @@
 ---
+# Source: https://github.com/firecrawl/skills
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: firecrawl-build-interact
 description: Integrate Firecrawl `/interact` into product code for dynamic pages and browser actions after scraping. Use when a feature needs clicks, form fills, pagination, authentication-aware flows, or other multi-step interactions that plain `/scrape` cannot complete.
-license: ISC
 metadata:
-  author: firecrawl
   version: "0.1.0"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/skills
@@ -14,8 +14,9 @@ inputs:
   - name: FIRECRAWL_API_URL
     description: Optional base URL for self-hosted Firecrawl deployments.
     required: false
+author: Firecrawl (Mendable)
+license: MIT
 ---
-
 # Firecrawl Build Interact
 
 Use this when `/scrape` is not enough because the feature needs to act on the page.

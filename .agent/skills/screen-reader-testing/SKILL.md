@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: screen-reader-testing
 description: Test web applications with screen readers including VoiceOver, NVDA, and JAWS. Use when validating screen reader compatibility, debugging accessibility issues, or ensuring assistive technology support.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Screen Reader Testing
 
 Practical guide to testing web applications with screen readers for comprehensive accessibility validation.

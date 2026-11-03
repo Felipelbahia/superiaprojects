@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: behavioral-modes
 description: AI operational modes (brainstorm, implement, debug, review, teach, ship, orchestrate). Use to adapt behavior based on task type.
 allowed-tools: Read, Glob, Grep
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Behavioral Modes - Adaptive AI Operating Modes
 
 ## Purpose

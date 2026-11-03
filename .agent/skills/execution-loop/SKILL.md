@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: execution-loop
 description: Use when starting a non-trivial new feature, build, refactor, or significant change that needs a documented, quality-gated development cycle — also called "Loop de Execução" — before writing implementation code.
+author: Futuro Mercado / Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Execution Loop
 *(a.k.a. "Loop de Execução")*
 

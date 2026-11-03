@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: mtls-configuration
 description: Configure mutual TLS (mTLS) for zero-trust service-to-service communication. Use when implementing zero-trust networking, certificate management, or securing internal service communication.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # mTLS Configuration
 
 Comprehensive guide to implementing mutual TLS for zero-trust service mesh communication.

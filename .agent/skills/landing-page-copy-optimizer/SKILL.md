@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: landing-page-copy-optimizer
 description: Analyze and optimize landing page copy using April Dunford's positioning methodology. Use when user wants to evaluate SaaS landing page copy, improve conversion-focused messaging, apply positioning framework (competitive alternatives, unique features, value themes, target customers, market category), or generate prompts for vibe coding tools (Replit, Lovable). Triggers on requests like "analyze my landing page", "improve my website copy", "help with positioning", "optimize my SaaS page", or when user shares a landing page URL for review.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Landing Page Copy Optimizer
 
 Analyze and optimize SaaS landing page copy using April Dunford's positioning methodology, then generate implementation-ready prompts for vibe coding tools.

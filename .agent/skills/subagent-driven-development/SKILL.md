@@ -1,8 +1,12 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
+# Status: Customizada / Modificada localmente por Felipe Bahia
 name: subagent-driven-development
 description: Use when executing implementation plans with independent tasks in the current session
+author: Jesse Vincent (@obra) / Modificado por Felipe Bahia (@felipelbahia)
+license: MIT
 ---
-
 # Subagent-Driven Development
 
 Execute plan by dispatching a fresh implementer subagent per task, a task review (spec compliance + code quality) after each, and a broad whole-branch review at the end.

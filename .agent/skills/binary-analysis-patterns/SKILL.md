@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: binary-analysis-patterns
 description: Master binary analysis patterns including disassembly, decompilation, control flow analysis, and code pattern recognition. Use when analyzing executables, understanding compiled code, or performing static analysis on binaries.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Binary Analysis Patterns
 
 Comprehensive patterns and techniques for analyzing compiled binaries, understanding assembly code, and reconstructing program logic.

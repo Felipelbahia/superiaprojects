@@ -1,9 +1,11 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: team-composition-analysis
 description: This skill should be used when the user asks to "plan team structure", "determine hiring needs", "design org chart", "calculate compensation", "plan equity allocation", or requests organizational design and headcount planning for a startup.
 version: 1.0.0
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Team Composition Analysis
 
 Design optimal team structures, hiring plans, compensation strategies, and equity allocation for early-stage startups from pre-seed through Series A.

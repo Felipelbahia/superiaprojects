@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: stride-analysis-patterns
 description: Apply STRIDE methodology to systematically identify threats. Use when analyzing system security, conducting threat modeling sessions, or creating security documentation.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # STRIDE Analysis Patterns
 
 Systematic threat identification using the STRIDE methodology.

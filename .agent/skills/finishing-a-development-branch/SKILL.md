@@ -1,8 +1,11 @@
 ---
+# Source: https://github.com/obra/superpowers
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: finishing-a-development-branch
 description: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work
+author: Jesse Vincent (@obra)
+license: MIT
 ---
-
 # Finishing a Development Branch
 
 ## Overview

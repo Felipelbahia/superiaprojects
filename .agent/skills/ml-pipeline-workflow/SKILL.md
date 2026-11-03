@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: ml-pipeline-workflow
 description: Build end-to-end MLOps pipelines from data preparation through model training, validation, and production deployment. Use when creating ML pipelines, implementing MLOps practices, or automating model training and deployment workflows.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # ML Pipeline Workflow
 
 Complete end-to-end MLOps pipeline orchestration from data preparation through model deployment.

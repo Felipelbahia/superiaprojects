@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: design-system-prompts
 description: A collection of prompts and workflows to build a complete design system, components, and pages using shadcn/ui.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Design System Prompts
 
 This skill provides step-by-step prompts to setup and build a complete design system and website utilizing Tailwind CSS and shadcn/ui. 

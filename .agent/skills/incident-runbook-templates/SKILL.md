@@ -1,8 +1,10 @@
 ---
+# Repository: https://github.com/Felipelbahia/superiaprojects
 name: incident-runbook-templates
 description: Create structured incident response runbooks with step-by-step procedures, escalation paths, and recovery actions. Use when building runbooks, responding to incidents, or establishing incident response procedures.
+author: Super IA Projects / Futuro Mercado
+license: MIT
 ---
-
 # Incident Runbook Templates
 
 Production-ready templates for incident response runbooks covering detection, triage, mitigation, resolution, and communication.
