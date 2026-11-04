@@ -55,7 +55,10 @@ aspas: `"<CAMINHO_DO_HUB>"`.
 
 ## Modo contribuição (devolver conhecimento ao hub)
 
-Nunca edite `.agent/skills/` do hub direto. Em vez disso:
+**Exceção primeiro:** se o dono do hub pediu a mudança explicitamente nesta
+conversa (curadoria já feita em tempo real), edite `.agent/skills/` do hub
+direto, sem inbox. Caso contrário (sessão num projeto consumidor, sem o dono
+revisando aquela edição), nunca edite `.agent/skills/` do hub direto. Em vez disso:
 
 1. Leia o formato em `"<CAMINHO_DO_HUB>/inbox/README.md"`.
 2. Crie um arquivo em `inbox/` seguindo esse formato.

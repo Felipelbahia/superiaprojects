@@ -124,9 +124,17 @@ o agente do hub é montar um subagente genérico (`Agent`,
 
 ## Modo contribuição (devolver conhecimento ao hub)
 
-Nunca edite `.agent/skills/` ou equivalentes do hub direto — são compartilhados
-por symlink com todo projeto que instalou esta skill; uma edição sem curadoria
-propagaria pra todo mundo instantaneamente. Em vez disso:
+**Exceção primeiro — edição direta quando o dono já revisou:** se o próprio usuário
+dono do hub pediu explicitamente a mudança nesta conversa (ele indicou o hub como
+destino, revisou a decisão antes de qualquer arquivo ser escrito), a curadoria já
+aconteceu em tempo real — edite `.agent/skills/`/`workflows/`/etc. do hub direto,
+sem passar pelo inbox. O fluxo de inbox abaixo é para o caso contrário: uma sessão
+rodando num projeto consumidor, só com o symlink do resolver instalado, sem o dono
+do hub revisando aquela edição específica.
+
+Nesse segundo caso, nunca edite `.agent/skills/` ou equivalentes do hub direto —
+são compartilhados por symlink com todo projeto que instalou esta skill; uma
+edição sem curadoria propagaria pra todo mundo instantaneamente. Em vez disso:
 
 1. Leia o formato em `"{{HUB_PATH}}/inbox/README.md"`.
 2. Crie um arquivo em `inbox/` seguindo esse formato.
