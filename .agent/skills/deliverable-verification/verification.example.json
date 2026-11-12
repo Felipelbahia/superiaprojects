@@ -1,0 +1,53 @@
+{
+  "_doc": "Copy to the project as verification.json and fill it. Paths are relative to `root` (relative to this file). Delete a key to switch that check off. Keys starting with _ are ignored. Regexes are Python, escaped for JSON (\\d, \\|).",
+
+  "root": "docs/my-deliverable",
+
+  "_registries": "Files that hold ids, one per row. Rows are counted, not unique ids. md: `row_regex` with ONE group = the full id. csv: id column. Used by counts, references, required_mentions and next_id.py.",
+  "registries": {
+    "findings": {"file": "findings.md", "row_regex": "^\\| (F-\\d{3}) "},
+    "backlog": {"file": "backlog.csv", "csv": {"delimiter": ";", "id_column": "id"}}
+  },
+
+  "_counts": "Numbers written in prose must equal the registry row count. `regex` has TWO groups: number and label; `labels` maps each label (case-insensitive) to a registry.",
+  "counts": [
+    {"files": ["parts/00-summary.md"], "regex": "\\*{0,2}(\\d+)\\*{0,2} (findings|backlog items)",
+     "labels": {"findings": "findings", "backlog items": "backlog"}}
+  ],
+
+  "_references": "Every id cited in `files` must exist in `registry`. The generated document is excluded automatically.",
+  "references": [
+    {"files": ["**/*.md"], "exclude": ["findings.md"], "regex": "\\bF-\\d{3}\\b", "registry": "findings"}
+  ],
+
+  "_index": "Every file the index cites (regex group 1) must exist in one of `search` folders, and every file matching `must_list` globs must be cited (a new part nobody added to the index fails).",
+  "index": {"file": "00-INDEX.md", "regex": "`([\\w\\-./]+\\.(?:md|csv))`", "search": ["."], "must_list": ["parts/*.md"]},
+
+  "_document": "Single generated deliverable (build.py). `sections` in order: a part path, or {csv, title, delimiter} for a table. `{date}` in notice is today's date; only the date in the title/notice lines is ignored when checking it is up to date. Optional: `separator` between sections (default \"\\n\\n---\\n\\n\").",
+  "document": {
+    "output": "DELIVERABLE.md",
+    "title": "# My deliverable",
+    "notice": "> Generated on {date} by `build.py`. Do not edit here: edit the parts and rebuild.",
+    "sections": ["parts/00-summary.md", "parts/01-area.md", "findings.md",
+                 {"csv": "backlog.csv", "title": "## Backlog", "delimiter": ";"}]
+  },
+
+  "_source_coverage": "Every source file must be cited (file name, or stem with match=stem) in at least one of `cited_in`.",
+  "source_coverage": [{"sources": "sources/**/*.png", "cited_in": ["parts/*.md"], "match": "name"}],
+
+  "_forbidden": "Personal data and secrets. defaults=true adds CPF, phone, e-mail, secret. `allow` regexes whitelist a match (e.g. the company domain).",
+  "forbidden": {"files": ["**/*.md"], "exclude": ["sources/**"], "defaults": true,
+                "patterns": {"internal host": "\\binternal\\.example\\b"}, "allow": ["@mycompany\\.com"]},
+
+  "_required_mentions": "Terms that must appear in `files`: an explicit list, and/or every id of `registry` from `since` on (e.g. findings added after the last review must reach the summary).",
+  "required_mentions": [{"terms": ["Out of scope"], "registry": "findings", "since": "F-010", "files": ["parts/00-summary.md"]}],
+
+  "_loop_counter": "execution-loop folder: 'NN Name.md' files numbered from 00 with no gap or repeat.",
+  "loop_counter": {"folder": "../../.agent/plans/execution-loops/2026_01_01/My Goal"},
+
+  "_unique_columns": "CSV columns whose values must not repeat.",
+  "unique_columns": [{"file": "catalog.csv", "delimiter": ";", "column": "name"}],
+
+  "_custom_checks": "Python file (relative to this config) with functions check_<name>(ctx) -> (ok, evidence); ctx has root (Path), config and registries ({name: [ids]}). A crash counts as FAIL.",
+  "custom_checks": "verification_custom.py"
+}

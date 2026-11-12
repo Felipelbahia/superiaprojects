@@ -206,6 +206,8 @@ Use the frontend-specialist to analyze React components,
 then have the test-engineer generate tests for the identified components.
 ```
 
+> **Agents that read images or documents and return findings:** brief them with the "Briefing for reader subagents" rule of skill `execution-loop` (template: `execution-loop/reader-briefing.md`) — three confidence labels, external references listed, absence = "not visible", cross-check by you after all return.
+
 ### Resume Previous Agent
 ```
 Resume agent [agentId] and continue with the updated requirements.

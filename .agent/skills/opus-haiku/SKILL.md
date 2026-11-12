@@ -26,6 +26,7 @@ Do NOT delegate:
 - Open-ended investigation, unknown-cause debugging, architecture or design decisions, ambiguous requirements.
 - Shared integrations, auth, secrets, data migrations and anything hard to undo: keep on the strong model (or at most `sonnet`).
 - The user says "sem Haiku" / "faça direto".
+- Reading images or documents to produce findings, or reviewing someone's work: session model, never below `sonnet` (see `execution-loop`, "Who grades" and "Briefing for reader subagents").
 
 ## Core Pattern
 

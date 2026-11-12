@@ -56,6 +56,40 @@ def sources(kind_dir: str, kind: str):
     return sorted(p for p in base.glob("*.md"))  # top level only: _arquivo/ stays hidden
 
 
+def is_hub_skill_link(link: Path, name: str) -> bool:
+    """A skill link that goes straight to the same-named skill in another .agent/ tree (a SIP hub).
+
+    0 Padrões keeps a real stub in .agent/skills/sip-<x> and links .claude/skills/sip-<x> to the hub
+    resolver on purpose (projetos/_sips.md, "Exceção: 0 Padrões não usa o padrão duplo").
+    """
+    if not link.is_symlink() or not link.exists():
+        return False
+    return any(
+        t.name == name and t.parent.name == "skills" and t.parent.parent.name == ".agent" and (t / "SKILL.md").is_file()
+        for t in link_targets(link)
+    )
+
+
+def link_targets(path: Path) -> list[Path]:
+    """The link's own target (one hop, absolute) and its fully resolved path: a hub may itself use symlinks."""
+    if not path.is_symlink():
+        return [path.resolve()]
+    return [Path(os.path.normpath(path.parent / os.readlink(path))), path.resolve()]
+
+
+def hub_skill_names(agent: Path) -> set[str]:
+    """Skills of the hub an agent file really lives in, when the agent is a link from a SIP hub."""
+    names = set()
+    for t in link_targets(agent):
+        agent_dir = t.parent.parent
+        if t.parent.name != "agents" or agent_dir.name != ".agent" or agent_dir.resolve() == AGENT.resolve():
+            continue
+        hub_skills = agent_dir / "skills"
+        if hub_skills.is_dir():
+            names |= {p.name for p in hub_skills.iterdir() if (p / "SKILL.md").exists()}
+    return names
+
+
 def sync_links(check_only: bool) -> list[str]:
     problems = []
     for kind_dir, kind, target_rel in LINKS:
@@ -72,6 +106,8 @@ def sync_links(check_only: bool) -> list[str]:
         for name, rel in wanted.items():
             link = target / name
             if link.is_symlink() and os.readlink(link) == rel and link.exists():
+                continue
+            if kind == "dir" and is_hub_skill_link(link, name):
                 continue
             if link.is_symlink() and link.exists():
                 problems.append(f"symlink points elsewhere, left untouched: {target_rel}/{name} -> {os.readlink(link)}")
@@ -117,8 +153,9 @@ def validate() -> tuple[list[str], dict]:
             errors.append(f"agent name != filename: {a.name} (name: {fm.get('name')!r})")
         if not fm.get("description"):
             errors.append(f"agent without description: {a.name}")
+        known = skill_names | hub_skill_names(a)
         for ref in re.split(r"[,\s]+", fm.get("skills", "")):
-            if ref and ref.split("/")[0] not in skill_names:
+            if ref and ref.split("/")[0] not in known:
                 errors.append(f"agent {a.stem} references missing skill: {ref}")
     workflows = sources("workflows", "file")
     for w in workflows:

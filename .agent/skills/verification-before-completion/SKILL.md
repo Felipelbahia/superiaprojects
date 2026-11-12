@@ -49,6 +49,7 @@ Skip any step = lying, not verifying
 | Regression test works | Red-green cycle verified | Test passes once |
 | Agent completed | VCS diff shows changes | Agent reports "success" |
 | Requirements met | Line-by-line checklist | Tests passing |
+| A count or total told to the user ("27 items") | A command run in the same turn (`wc -l`, a script) counting **rows, not ids**; say where the number came from | Memory, the last id seen, counting identifiers |
 
 ## Red Flags - STOP
 
@@ -73,6 +74,7 @@ Skip any step = lying, not verifying
 | "I'm tired" | Exhaustion ≠ excuse |
 | "Partial check is enough" | Partial proves nothing |
 | "Different words so rule doesn't apply" | Spirit over letter |
+| "I counted them, it is N" | Counting ids misses rows with non-numeric ids (e.g. `2b`) and drifts when the file grows. Run the command. |
 
 ## Key Patterns
 

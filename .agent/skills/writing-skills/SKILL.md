@@ -85,11 +85,11 @@ API docs, syntax guides, tool documentation (office docs)
    ln -s "../../.agent/skills/<name>" ".claude/skills/<name>"
    ```
    Never copy the directory — a copy drifts out of sync on the next edit. A skill without this symlink is invisible to Claude Code even though it exists on disk.
-5. **Catalog Synchronization (CRITICAL — update every time):** Whenever any skill is created, modified or removed, you MUST refresh the unified platform catalog (both Markdown and interactive HTML):
+5. **Catalog Synchronization (CRITICAL — update every time):** whenever any skill is created, modified or removed, refresh the unified platform catalog. The generator lives in the kit and reads the **current directory**, so run it from the project root:
    ```bash
-   python .agent/scripts/generate_catalog.py
+   python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/generate_catalog.py"
    ```
-   This regenerates `.agent/CATALOG.md` and `.agent/catalog.html` with updated names, categories, and Portuguese descriptions.
+   It writes `.agent/CATALOG.md`, `.agent/catalog.html` (about 12 MB), `.agent/catalog-data.js` and the local fallback assets of the project it was run from. A project that keeps its own `.agent/scripts/generate_catalog.py` may call that copy instead. In a project, add `.agent/catalog.html` to `.gitignore` (12 MB per project); `CATALOG.md` stays versioned.
 
 ## Directory Structure
 
@@ -487,6 +487,36 @@ Different skill types need different test approaches:
 
 **Success criteria:** Agent finds and correctly applies reference information
 
+### Process skills that run on a repository
+
+**Examples:** diagnosing a tracking plan, auditing a spec against code, maintaining a registry of decisions.
+
+**Test with:**
+- Run the baseline **inside the real repository**, with its artifacts available. A baseline in a vacuum hides the real gap: with the artifacts present the agent usually knows the *rules* and still skips the *process* (verification, registration, independent review).
+- Include a **collision test** if the skill touches registries with ids: the agent must obtain the next free id from a command (e.g. `next_id.py` of skill `deliverable-verification`), not guess it from the last row it sees.
+- If the skill carries **examples of names**, ask the agent to name real items for the project: it must consult the project's source of truth, not copy the skill's examples.
+- The skill **points to** artifacts and scripts (single source); it does not duplicate them.
+
+**Success criteria:** the agent registers the change in the project files, regenerates what is generated, runs the verification, and states what it did not verify.
+
+### Skills That Cite an Absolute Hub Path
+
+Tests and lints of these skills use two different paths, one per job:
+
+| Job | Path to use |
+|---|---|
+| Compare skill **text** (what the skill says) | The literal cited path, as a constant (`HUB_LITERAL = "/Users/x/hub"`) |
+| Read or check **files** (what exists on disk) | The local checkout (`dirname(fileURLToPath(import.meta.url))` or equivalent); for a cited file, strip `HUB_LITERAL` and join the rest to the local root |
+
+```js
+const HUB_LITERAL = "/Users/x/hub";                      // text
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), ".."); // files
+assert.ok(skill.includes(`${HUB_LITERAL}/templates/foo.astro`));
+assert.ok(existsSync(join(ROOT, "templates/foo.astro")));
+```
+
+Never derive the expected text from where the test runs, and never check existence at the absolute cited path (it tests the canonical copy, not the clone, or gets skipped). Run the suite once in a fresh `git clone` at another path: no failure may come from the path alone.
+
 ## Common Rationalizations for Skipping Testing
 
 | Excuse | Reality |
@@ -678,6 +708,7 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 - [ ] Create pressure scenarios (3+ combined pressures for discipline skills)
 - [ ] Run scenarios WITHOUT skill - document baseline behavior verbatim
 - [ ] Identify patterns in rationalizations/failures
+- [ ] For process skills, run the baseline inside the target repository
 
 **GREEN Phase - Write Minimal Skill:**
 - [ ] Name uses only letters, numbers, hyphens (no parentheses/special chars)
@@ -709,11 +740,12 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 - [ ] Common mistakes section
 - [ ] No narrative storytelling
 - [ ] Supporting files only for tools or heavy reference
+- [ ] Registry ids come from a command; the skill names it
 
 **Deployment & Governança:**
 - [ ] Criar symlink em `.claude/skills/<nome>` apontando para `../../.agent/skills/<nome>`
 - [ ] Se a skill for importada ou adaptada de terceiros, registrar no painel `.agent/vendor/`
-- [ ] Atualizar catálogo executando `python .agent/scripts/generate_catalog.py`
+- [ ] Atualizar catálogo: `python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/generate_catalog.py"` a partir da raiz do projeto (ver Storage Scope, item 5)
 - [ ] Commit skill to git and push to your fork (if configured)
 - [ ] Consider contributing back via PR (if broadly useful)
 

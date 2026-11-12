@@ -7,21 +7,56 @@ Resultado em `<CAMINHO_DO_HUB>/prompts/instalar-skill-sip-exemplo.md`
 # Prompt: Instalar/Atualizar a skill "sip-exemplo" em outro projeto
 
 Cole isto numa sessão do Claude Code dentro do projeto que precisa consultar o
-hub central de exemplo (SIP - Exemplo):
+hub central de exemplo (SIP - Exemplo). Instala o resolver e só os agents/workflows que você escolher:
 
 \`\`\`
-Instale/atualize a skill de conhecimento exemplo do hub central SIP - Exemplo neste projeto:
-1. Crie a pasta .claude/skills/ se ela não existir.
-2. Crie (ou recrie, se já existir e estiver desatualizado/quebrado) um symlink:
-   .claude/skills/sip-exemplo -> "<CAMINHO_DO_HUB>/.agent/skills/sip-exemplo"
-3. Confirme com `ls -la` que o symlink aponta para esse caminho e que o SKILL.md é legível através dele.
-4. Não copie o conteúdo do SKILL.md para este projeto — mantenha como symlink, para
-   herdar atualizações futuras do hub automaticamente.
+Instale/atualize o acesso ao hub central SIP - Exemplo (exemplo) neste projeto.
+(Exemplo resumido: o modelo completo está no SKILL.md, Passo 2.)
+O resolver sempre; agents e workflows só os que eu escolher; skills especialistas nunca.
+Antes de cada `ln -sfn`: se o link já existe como arquivo/pasta REAL, não rode `ln`;
+pergunte caso a caso (renomear o meu / substituir movendo o meu para .bak / pular);
+sem resposta = pular, registrado em "Conflitos".
+Só remova symlinks (`test -L`) cujo destino, lido com `readlink` sem `-f`, aponte
+para dentro de "<CAMINHO_DO_HUB>".
+1. Resolver, com `ln -sfn` (nunca só `-s`):
+   .agent/skills/sip-exemplo -> "<CAMINHO_DO_HUB>/.agent/skills/sip-exemplo"
+   .claude/skills/sip-exemplo -> ../../.agent/skills/sip-exemplo
+2. Migração: remova symlinks antigos de skills especialistas deste hub.
+3. Escolha: mostre as tabelas "Agents do hub" (exemplo-arquiteto, exemplo-revisor)
+   e "Workflows do hub" (exemplo-publicar) do resolver e pergunte
+   "nenhum / todos / quais". Sem resposta = nenhum. Reinstalação: mantenha a
+   escolha do manifesto e pergunte só os itens fora de "Vistos no hub"
+   (sem resposta = os novos ficam de fora).
+   Instalação antiga sem manifesto: marque os symlinks deste hub já existentes e
+   pergunte "manter, mudar ou nenhum" (sem resposta = manter).
+4. Instale só o escolhido (par .agent/ absoluto + .claude/ relativo; workflow
+   também em .cursor/commands/). Ex.: escolhido exemplo-revisor:
+   .agent/agents/exemplo-revisor.md -> "<CAMINHO_DO_HUB>/.agent/agents/exemplo-revisor.md"
+   .claude/agents/exemplo-revisor.md -> ../../.agent/agents/exemplo-revisor.md
+5. Remova symlinks deste hub que saíram da escolha.
+6. Confirme com `ls -la` e rode
+   `python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/sync_entrypoints.py" --check`:
+   tem de sair com 0.
+7. Não copie conteúdo: mantenha como symlink, para herdar atualizações do hub.
+8. .gitignore deste projeto: uma linha por symlink instalado (.agent/skills/sip-exemplo,
+   .claude/skills/sip-exemplo, .agent/agents/exemplo-revisor.md, .claude/agents/exemplo-revisor.md).
+9. Registre a instalação em "<CAMINHO_DO_HUB>/instalacoes/<nome-deste-projeto>.md"
+   (skill; agents/workflows escolhidos, ou "nenhum").
+10. Atualize .agent/SIPS-CONSUMIDOS.md (substitua a entrada deste hub, se houver):
+   ## SIP - Exemplo (`sip-exemplo`)
+   - Hub: <CAMINHO_DO_HUB>
+   - Instalado/atualizado em: AAAA-MM-DD
+   - Skill: sip-exemplo
+   - Agents: exemplo-revisor
+   - Workflows: nenhum
+   - Vistos no hub: agents exemplo-arquiteto, exemplo-revisor; workflows exemplo-publicar
+   - Conflitos: nenhum
+   - Para atualizar: cole de novo "<CAMINHO_DO_HUB>/prompts/instalar-skill-sip-exemplo.md"
 \`\`\`
 
 ## Por que symlink e não cópia
 
-A fonte de verdade da skill fica em `<CAMINHO_DO_HUB>/.agent/skills/sip-exemplo/SKILL.md`.
+A fonte de verdade fica no hub; a skill fica em `<CAMINHO_DO_HUB>/.agent/skills/sip-exemplo/SKILL.md`.
 Symlink garante que atualizações futuras nesse arquivo já reflitam em todos os
 projetos que instalaram, sem rodar este prompt de novo — exceto se o symlink
 quebrar (hub movido/renomeado), caso em que basta colar o prompt outra vez.

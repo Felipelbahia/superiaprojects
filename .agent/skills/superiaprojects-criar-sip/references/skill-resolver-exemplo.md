@@ -38,9 +38,13 @@ aspas: `"<CAMINHO_DO_HUB>"`.
 
 ## Modo consulta (padrão — prefira este)
 
-1. Leia o índice/roteador mestre do hub (se existir):
+1. Ache a linha que bate com o pedido nas tabelas abaixo (Skills, Agents,
+   Workflows): elas são o roteador do hub. Se o hub tiver um roteador mestre
+   para casos ambíguos, leia-o:
    `"<CAMINHO_DO_HUB>/.agent/skills/exemplo-router/SKILL.md"`
-2. Siga até a skill especialista indicada e leia só o `SKILL.md` dela.
+2. Leia só o arquivo do item escolhido, por caminho absoluto no hub
+   (`"<CAMINHO_DO_HUB>/.agent/skills/<nome>/SKILL.md"`). Nunca symlinke nem copie
+   skills especialistas do hub para o projeto.
 3. Aplique o conteúdo inline. Avise o usuário em uma linha que a resposta veio
    do hub `SIP - Exemplo`, não de conhecimento genérico.
 
@@ -53,6 +57,63 @@ aspas: `"<CAMINHO_DO_HUB>"`.
 4. Valide o resultado contra a skill de validação do hub (se existir) antes de
    aplicar.
 
+## Skills do hub
+
+Arquivo: `"<CAMINHO_DO_HUB>/.agent/skills/<nome>/SKILL.md"`.
+
+<!-- skills:start (gerado por build_sip_index.py — não edite à mão) -->
+
+Total: 3.
+
+| Skill | Use quando |
+| --- | --- |
+| `exemplo-api` | Use quando a tarefa chama a API do exemplo. |
+| `exemplo-router` | Use quando não está claro qual skill de exemplo serve. |
+| `exemplo-validar` | Use antes de entregar algo de exemplo, para validar. |
+
+<!-- skills:end -->
+
+## Agents do hub
+
+Arquivo: `"<CAMINHO_DO_HUB>/.agent/agents/<nome>.md"`. Um agent da tabela é a
+persona preferida pro Modo dispatch acima: leia o `.md` inteiro (name +
+description + corpo) antes de montar o subagente. Se este projeto escolheu
+instalá-lo, ele também está em `.claude/agents/<nome>.md` (mesmo conteúdo).
+
+<!-- agents:start (gerado por build_sip_index.py — não edite à mão) -->
+
+Total: 2.
+
+| Agent | Use quando |
+| --- | --- |
+| `exemplo-arquiteto` | Use para desenhar uma solução grande de exemplo. |
+| `exemplo-revisor` | Use para revisar algo de exemplo antes de entregar. |
+
+<!-- agents:end -->
+
+## Workflows do hub
+
+Arquivo: `"<CAMINHO_DO_HUB>/.agent/workflows/<nome>.md"`. Um workflow é um
+procedimento `/nome`: se o pedido bate com uma linha da tabela, leia o `.md`
+e siga o procedimento; não invente um `/comando` que não está na tabela. Se
+este projeto escolheu instalá-lo, ele também aparece como `/nome` nativo.
+
+<!-- workflows:start (gerado por build_sip_index.py — não edite à mão) -->
+
+Total: 1.
+
+| Workflow | Use quando |
+| --- | --- |
+| `/exemplo-publicar` | Publicar uma entrega de exemplo. |
+
+<!-- workflows:end -->
+
+## Agent ou workflow não instalado
+
+Use-o assim mesmo, lendo pelo caminho absoluto acima. Só ofereça instalá-lo
+(colando de novo o prompt de instalação e escolhendo o item) se o usuário
+disser que vai usá-lo com frequência neste projeto. Não instale por conta própria.
+
 ## Modo contribuição (devolver conhecimento ao hub)
 
 **Exceção primeiro:** se o dono do hub pediu a mudança explicitamente nesta
@@ -61,8 +122,20 @@ direto, sem inbox. Caso contrário (sessão num projeto consumidor, sem o dono
 revisando aquela edição), nunca edite `.agent/skills/` do hub direto. Em vez disso:
 
 1. Leia o formato em `"<CAMINHO_DO_HUB>/inbox/README.md"`.
-2. Crie um arquivo em `inbox/` seguindo esse formato.
-3. Avise o usuário que a contribuição ficou pendente de revisão.
+2. Crie `"<CAMINHO_DO_HUB>/inbox/NNN-<assunto>.md"` (próximo número livre da pasta)
+   com todas as seções do formato, escrito para quem nunca viu a conversa.
+3. Avise o usuário que a contribuição ficou pendente de revisão, com o caminho do arquivo.
+
+## Atualização
+
+- Última atualização do hub: 2026-11-11 (o dono do hub muda esta data sempre
+  que esta skill, um agent, um workflow ou a estrutura do hub mudar).
+- Para atualizar a instalação num projeto (refazer links, escolher entre os
+  agents/workflows novos do hub, mudar a escolha): cole de novo o prompt
+  `"<CAMINHO_DO_HUB>/prompts/instalar-skill-sip-exemplo.md"` numa sessão daquele projeto.
+- A data em que **cada projeto** instalou ou atualizou fica no
+  `.agent/SIPS-CONSUMIDOS.md` dele. Se for anterior à data acima, ofereça
+  rodar o prompt.
 
 ## Se nada bater
 

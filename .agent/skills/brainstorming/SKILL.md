@@ -44,11 +44,12 @@ Each message ends with **one** question: a single sentence, no list of example a
 
 **Get them describing.** Open questions come first; their own words carry intent your options can't. Offer a short menu only when they're stuck or the choice is a real trade-off (see `dynamic-questioning.md`; use your harness's structured-question tool if it has one, e.g. `AskUserQuestion` in Claude Code, otherwise a short lettered list in chat). When they say "just guess" or "what do you think?", propose something concrete.
 
-**Minimum coverage (the gate's three questions).** Before a build starts you must have covered all three. Cover them across the conversation, one per message, in your own words, never as a form:
+**Minimum coverage (the gate's questions).** Before a build starts you must have covered all four. Cover them across the conversation, one per message, in your own words, never as a form:
 
 - 🎯 **Purpose**: what problem is this solving, why now, what does success look like?
 - 👥 **Users**: who uses it, in what situation?
 - 📦 **Scope**: must-have vs nice-to-have; goals, non-goals, anti-goals (what would make this a failure even if it technically works).
+- 📐 **Shape of the deliverable**: ask what shape the final deliverable should take and who will act on it: table, blocks, CSV, document, dashboard. Ask for **one example row or section** of how it should look, and confirm it back. If the deliverable feeds several audiences, ask what each one must be able to decide with it.
 
 Often one good answer covers two of them. Skip a question only when the answer is already on the table; never skip a topic.
 
@@ -124,6 +125,7 @@ After a project's document is approved, for COMPLEX CODE / DESIGN-UI / multi-fil
 | "The spike works, I'll keep building on it" | Keeping it is a new request. Back through the gate. |
 | "They gave me answers 1, 2, 3, so the gate is cleared" | Spec-heavy is not unambiguous. Ask the 2 edge-case questions. |
 | "I think..." | Uncertainty means ask instead. |
+| "The shape is obvious, I'll pick a format when I build it" | Building the deliverable before the shape was confirmed with an example is how the right thing gets built in the wrong form. Ask for one example row or section. |
 
 ## Visual Companion
 

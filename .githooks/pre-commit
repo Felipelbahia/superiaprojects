@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Versioned pre-commit hook for 0 Padrões: fast, deterministic checks only (~1 s).
+# Activate once per clone: git config core.hooksPath .githooks
+# Bypass in an emergency: git commit --no-verify (then fix and run the checks by hand).
+set -u
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+failed=0
+run_check() {
+  local label="$1"; shift
+  local out
+  if ! out=$("$@" 2>&1); then
+    echo "pre-commit: $label failed" >&2
+    echo "$out" >&2
+    failed=1
+  fi
+}
+
+run_check "AI entrypoints (sync_entrypoints.py --check)" python3 .agent/scripts/sync_entrypoints.py --check
+run_check "rule-file parity (sync_rules.py --check)" python3 .agent/scripts/sync_rules.py --check
+
+if [ "$failed" -ne 0 ]; then
+  echo "pre-commit: commit refused. Fix the items above, or run python3 .agent/scripts/sync_rules.py / sync_entrypoints.py." >&2
+  exit 1
+fi
+exit 0
