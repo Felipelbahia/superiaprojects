@@ -4,6 +4,13 @@ node_modules/
 antigravity-doc
 tests
 
+# Variáveis de ambiente e segredos (exceções vêm depois de .env.* e *.env)
+.env
+.env.*
+*.env
+!.env.example
+!*.env.example
+
 # MCP configs com chave de API embutida na URL (nao versionar)
 .mcp.json
 opencode.json
@@ -30,8 +37,29 @@ plans/
 # Documentação e controle de skills de terceiros (privacidade/controle local)
 .agent/vendor/
 
+# SIPs instalados aqui como consumidor (symlink -> path absoluto de outro hub,
+# nao portavel entre maquinas/clones). Fonte de verdade fica no hub, nao aqui.
+.claude/skills/sip-*
+# sip-geral é nativo deste próprio hub (symlink relativo versionado)
+!.claude/skills/sip-geral
+# Agents/workflows de SIPs instalados (sem prefixo fixo, listar cada um ao
+# instalar via o prompt de instalacao - ver projetos/_sips.md):
+.claude/agents/n8n-agent.md
+.claude/commands/buscar-jornalistas-e-veiculos.md
+.claude/commands/criar-personalizar-releases.md
+.claude/commands/onboarding-novo-jornalista.md
+.claude/commands/perfil-jornalista.md
+.claude/commands/radar-semanal.md
+
 # Fichas de projetos reais e históricos privados
 projetos/
+
+# Conteúdo local do hub: contribuições pendentes e registro de consumidores
+# (caminhos absolutos de outros projetos; não é conhecimento de domínio)
+inbox/*
+!inbox/README.md
+instalacoes/*
+!instalacoes/README.md
 
 # Regras locais personalizadas da máquina (usar CLAUDE.example.md como base)
 CLAUDE.md
