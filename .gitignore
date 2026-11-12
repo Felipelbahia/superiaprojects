@@ -2,7 +2,6 @@
 node_modules/
 .temp_ag_kit/
 antigravity-doc
-tests
 
 # Variáveis de ambiente e segredos (exceções vêm depois de .env.* e *.env)
 .env

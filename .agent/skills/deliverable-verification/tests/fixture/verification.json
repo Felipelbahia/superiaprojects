@@ -1,0 +1,29 @@
+{
+  "root": ".",
+  "registries": {
+    "achados": {"file": "achados.md", "row_regex": "^\\| (A-\\d{3}) "},
+    "backlog": {"file": "backlog.csv", "csv": {"delimiter": ";", "id_column": "id"}}
+  },
+  "counts": [
+    {"files": ["partes/00-resumo.md", "00-INDEX.md"], "regex": "\\*{0,2}(\\d+)\\*{0,2} (achados|itens no backlog)",
+     "labels": {"achados": "achados", "itens no backlog": "backlog"}}
+  ],
+  "references": [
+    {"files": ["**/*.md"], "exclude": ["achados.md", "loop/*"], "regex": "\\bA-\\d{3}\\b", "registry": "achados"}
+  ],
+  "index": {"file": "00-INDEX.md", "regex": "`([\\w\\-./]+\\.(?:md|csv))`", "search": ["."], "must_list": ["partes/*.md"]},
+  "document": {
+    "output": "DIAGNOSTICO.md",
+    "title": "# Diagnóstico de exemplo",
+    "notice": "> Arquivo gerado em {date} por `build.py`. Não edite aqui: edite as partes e rode de novo.",
+    "sections": ["partes/00-resumo.md", "partes/01-feed.md", "partes/02-conta.md", "achados.md",
+                 {"csv": "backlog.csv", "title": "## Backlog", "delimiter": ";"}]
+  },
+  "source_coverage": [{"sources": "fontes/**/*.png", "cited_in": ["partes/*.md"], "match": "name"}],
+  "forbidden": {"files": ["**/*.md"], "exclude": ["loop/*"], "defaults": true,
+                "patterns": {"internal host": "\\binterno\\.local\\b"}, "allow": []},
+  "required_mentions": [{"registry": "achados", "since": "A-002", "files": ["partes/00-resumo.md"]}],
+  "loop_counter": {"folder": "loop"},
+  "unique_columns": [{"file": "catalogo.csv", "delimiter": ";", "column": "nome"}],
+  "custom_checks": "verification_custom.py"
+}
