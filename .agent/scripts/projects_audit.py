@@ -38,6 +38,8 @@ PRUNE = {
     "Output", "snapshot", "skills", "bak", ".firecrawl", "data", "temporario",
 }
 MAX_DEPTH = 4
+# Third-party clones that have their own rules files: never audited, never changed.
+THIRD_PARTY = {BASE / "_Plataforma" / "Firecrawl - local" / "docs", BASE / "_Plataforma" / "Firecrawl - local" / "firecrawl"}
 WEB_MARKERS = ("next", "react", "vue", "svelte", "astro", "vite", "nuxt")
 
 
@@ -92,7 +94,7 @@ def project_type(folder: Path) -> str:
     return "other/docs"
 
 
-def discover(roots):
+def discover(roots, skip=THIRD_PARTY):
     seen = set()
     for root in roots:
         root = Path(root)
@@ -101,7 +103,7 @@ def discover(roots):
         base_depth = len(root.parts)
         for current, dirs, _files in os.walk(root):
             cur = Path(current)
-            dirs[:] = [d for d in dirs if d not in PRUNE]
+            dirs[:] = [d for d in dirs if d not in PRUNE and cur / d not in skip]
             if len(cur.parts) - base_depth >= MAX_DEPTH:
                 dirs[:] = []
             if cur in seen:

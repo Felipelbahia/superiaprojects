@@ -131,6 +131,21 @@ class ProjectsAuditTest(unittest.TestCase):
             with self.subTest(line=line):
                 self.assertTrue(audit_mod.profile_filled(MODULAR_RULES + "\n## Project\n" + line + "\n"))
 
+    def test_third_party_clones_are_not_discovered(self):
+        # Arrange: a project with a third-party clone inside it
+        own = self.root / "hub"
+        clone = own / "vendor-clone"
+        write(own / "CLAUDE.md", MODULAR_RULES)
+        write(clone / "AGENTS.md", "third-party rules")
+        # Act
+        found = list(audit_mod.discover([self.root], skip={clone}))
+        # Assert
+        self.assertEqual(found, [own])
+
+    def test_firecrawl_clones_are_in_the_default_skip_list(self):
+        base = audit_mod.BASE / "_Plataforma" / "Firecrawl - local"
+        self.assertLessEqual({base / "docs", base / "firecrawl"}, audit_mod.THIRD_PARTY)
+
     def test_render_has_new_columns_and_no_old_ones(self):
         report = audit_mod.render([audit_mod.audit(self.complete_project())])
         header = next(l for l in report.splitlines() if l.startswith("| Projeto"))
