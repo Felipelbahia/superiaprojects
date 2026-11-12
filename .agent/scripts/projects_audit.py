@@ -2,9 +2,10 @@
 """
 projects_audit.py - READ-ONLY report of every project against the Antigravity Kit rules.
 
-For each project (a folder that has a rules file) it reports whether its copy of the rules already has
-the newer kit rules, whether it has the `## Stack` block, whether it adopted `_projectdefines/`, and where
-its execution loops and handoffs live (project root = legacy, `.agent/plans/` = current).
+For each project (a folder that has a rules file) it reports which rules model it uses (modular = assembled
+from the kit's modules; old = the pre-2026-11-12 rules), whether its `## Project` profile is filled, whether
+`sip-geral` is installed, whether it has the destination map, whether `.claude/CLAUDE.md` duplicates
+`./CLAUDE.md`, the `## Stack` block, `_projectdefines/`, and where its loops and handoffs live.
 
 It never writes inside a project. The only file it writes is the report (default:
 `<kit>/.agent/plans/Relatório de projetos vs kit.md`).
@@ -48,9 +49,24 @@ def read_text(path: Path, limit: int = 2_000_000) -> str:
         return ""
 
 
-def rule_paths(folder: Path):
+def agent_linked_to_kit(folder: Path, kit_agent: Path = KIT / ".agent") -> bool:
+    """True when the project's `.agent` is a link into the kit's `.agent` (its plans, rules and skills are the kit's)."""
+    if folder.resolve() == kit_agent.resolve().parent:
+        return False
+    kit = kit_agent.resolve()
+    for sub in (".agent", ".agent/rules", ".agent/plans", ".agent/skills"):
+        link = folder / sub
+        if link.is_symlink():
+            target = link.resolve()
+            if target == kit or kit in target.parents:
+                return True
+    return False
+
+
+def rule_paths(folder: Path, skip_agent: bool = False):
     found = [folder / n for n in RULE_FILES if (folder / n).is_file()]
-    found += [folder / p for p in AGENT_RULE_FILES if (folder / p).is_file()]
+    if not skip_agent:
+        found += [folder / p for p in AGENT_RULE_FILES if (folder / p).is_file()]
     return found
 
 
@@ -103,6 +119,20 @@ def stack_state(text: str) -> str:
     return "yes" if "Context7" in text[m.end():m.end() + 700] else "old"
 
 
+def rules_model(text: str) -> str:
+    """'modular' = assembled from the kit modules; 'old' = pre-2026-11-12 kit rules; 'none'."""
+    if "Before acting (mandatory sequence)" in text:
+        return "modular"
+    if "Project Defines Gate" in text or "Latest Docs First" in text:
+        return "old"
+    return "none"
+
+
+def profile_filled(text: str) -> bool:
+    """True when a `- Produces:` line has a real value (the core module ships a `<...>` placeholder)."""
+    return any(not m.group(1).startswith("<") for m in re.finditer(r"^\s*-\s*\**Produces:\**[ \t]*(\S.*)$", text, re.M))
+
+
 def launch_profile_state(folder: Path) -> str:
     """'-' = no `_projectdefines/`; 'yes' = BRIEF has the Launch profile section; 'no' = BRIEF lacks it (or is missing)."""
     contract = folder / "_projectdefines"
@@ -141,27 +171,35 @@ def sync_state(ficha) -> tuple:
         return date, "?"
 
 
-def audit(folder: Path, fichas=None):
-    text = "\n".join(read_text(p) for p in rule_paths(folder))
+def audit(folder: Path, fichas=None, kit_agent: Path = KIT / ".agent"):
+    linked = agent_linked_to_kit(folder, kit_agent)
+    text = "\n".join(read_text(p) for p in rule_paths(folder, skip_agent=linked))
     loops_new = (folder / ".agent" / "plans" / "execution-loops").is_dir()
     loops_old = (folder / "execution-loops").is_dir()
     hand_new = (folder / ".agent" / "plans" / "handoffs").is_dir()
     hand_old = (folder / "handoffs").is_dir()
-    gate = "Project Defines Gate" in text
-    latest = "Latest Docs First" in text
+    model = rules_model(text)
+    profile = profile_filled(text)
+    sip = any((folder / d / "skills" / "sip-geral").exists() for d in ((".claude",) if linked else (".agent", ".claude")))
+    dest_map = (folder / "docs" / "mapa-de-destinos.md").is_file() or (folder / "mapa-de-destinos.md").is_file()
+    duplicate = (folder / "CLAUDE.md").is_file() and (folder / ".claude" / "CLAUDE.md").is_file()
     stack = stack_state(text)
     synced, kit_changed = sync_state((fichas or {}).get(folder))
     return {
         "path": folder,
         "type": project_type(folder),
-        "gate": gate,
-        "latest": latest,
+        "model": model,
+        "profile": profile,
+        "sip": sip,
+        "map": dest_map,
+        "duplicate": duplicate,
+        "agent_linked": linked,
         "stack": stack,
         "contract": (folder / "_projectdefines").is_dir(),
         "launch": launch_profile_state(folder),
         "loops": "new" if loops_new else ("legacy" if loops_old else "-"),
         "handoffs": "new" if hand_new else ("legacy" if hand_old else "-"),
-        "up_to_date": gate and latest,
+        "up_to_date": model == "modular" and profile and sip and dest_map and not duplicate and not linked,
         "synced": synced,
         "kit_changed": kit_changed,
     }
@@ -180,26 +218,29 @@ def render(rows) -> str:
         "# Relatório de projetos vs kit",
         "",
         f"> Gerado em {today} por `.agent/scripts/projects_audit.py`. **Somente leitura**: nenhum arquivo de projeto foi alterado.",
-        "> *Gate* = tem o Project Defines Gate · *Latest* = tem Latest Docs First · *Stack* = bloco `## Stack` do kit (`yes`; `old` = título igual mas sem o formato) · *Contract* = tem `_projectdefines/` · *Launch* = o BRIEF dele tem a seção Launch profile (`no` = contrato sem perfil de lançamento; `-` = sem contrato).",
-        "> *Sincronizado em* = data da linha \"Última sincronização com o kit\" na ficha (`nunca` = ficha sem a linha; `sem ficha` = nenhuma ficha aponta para esta pasta) · *Kit mudou desde então* = commits do kit em regras e `.agent/` depois do hash registrado.",
+        "> *Modelo* = `modular` (regras montadas pelos módulos do kit) · `old` (regras anteriores a 2026-11-12) · `none` · *Perfil* = bloco `## Project` preenchido · *SIP geral* = `sip-geral` instalado · *Mapa* = `docs/mapa-de-destinos.md` · *.claude/CLAUDE.md* = `yes` quando duplica o `./CLAUDE.md` (regras em dobro) · *.agent → kit* = `yes` quando a pasta `.agent` do projeto é um link para o `.agent` do kit (planos, regras e skills do projeto caem dentro do kit; as regras de `.agent/rules/` não são lidas como do projeto) · *Stack* = bloco `## Stack` (`yes`; `old` = título sem o formato) · *Contract* = tem `_projectdefines/` · *Launch* = o BRIEF tem a seção Launch profile (`-` = sem contrato).",
+        "> *Situação* `em dia` = Modelo `modular` + Perfil + SIP geral + Mapa + sem `.claude/CLAUDE.md` duplicado + `.agent` próprio.",
+        "> *Sincronizado em* = data da linha \"Última sincronização com o kit\" na ficha (`nunca` = ficha sem a linha; `sem ficha` = nenhuma ficha aponta para esta pasta) · *Kit mudou desde então* = commits do kit em `.agent/` depois do hash registrado (os arquivos de regra do kit não são versionados; mudança não commitada não conta).",
         "> *Loops/Handoffs*: `new` = `.agent/plans/…` · `legacy` = na raiz do projeto (continua valendo até migrar) · `-` = não existe.",
         "",
         f"**{len(rows)} projetos encontrados · {len(rows) - len(behind)} com as regras novas · {len(behind)} atrás do kit.**",
         "",
-        "| Projeto | Tipo | Gate | Latest | Stack | Contract | Launch | Loops | Handoffs | Situação | Sincronizado em | Kit mudou desde então |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "| Projeto | Tipo | Modelo | Perfil | SIP geral | Mapa | .claude/CLAUDE.md | .agent → kit | Stack | Contract | Launch | Loops | Handoffs | Situação | Sincronizado em | Kit mudou desde então |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows:
         rel = os.path.relpath(r["path"], BASE)
         lines.append(
-            f"| {rel} | {r['type']} | {mark(r['gate'])} | {mark(r['latest'])} | {mark(r['stack'])} | "
+            f"| {rel} | {r['type']} | {r['model']} | {mark(r['profile'])} | {mark(r['sip'])} | {mark(r['map'])} | "
+            f"{mark(r['duplicate'])} | {mark(r['agent_linked'])} | {mark(r['stack'])} | "
             f"{mark(r['contract'])} | {r['launch']} | {r['loops']} | {r['handoffs']} | {'em dia' if r['up_to_date'] else 'atrás'} | "
             f"{r['synced']} | {r['kit_changed']} |"
         )
     lines += [
         "",
         "## Como usar",
-        "- **Atrás do kit, ou `Kit mudou` = `sim`:** rode o prompt `projetos/prompts/08-sincronizar-com-o-kit.md` no projeto (incremental; grava a data na ficha). Primeira adoção do padrão: `01-atualizar-projeto-existente.md` (Merge & Preserve).",
+        "- **Atrás do kit, ou `Kit mudou` = `sim`:** rode o prompt `projetos/prompts/01-atualizar-projeto-existente.md` no projeto (primeira adoção ou atualização; grava a data na ficha). Ele cobre cada coluna `no`: monta as regras pelos módulos (Modelo), preenche o `## Project` (Perfil), instala o `sip-geral`, cria o mapa de destinos e trata o `.claude/CLAUDE.md` duplicado (só apaga com o seu ok).",
+        "- **`.agent → kit` = `yes`:** NÃO rode o 01 antes de decidir com o dono: o projeto escreveria dentro do kit. Primeiro troque o link por uma pasta `.agent/` própria (com aprovação), depois alinhe.",
         "- **Aplicação com interface e sem contrato:** candidata ao modo brownfield (`projetos/prompts/03-adotar-contrato-brownfield.md`).",
         "- **Contract `yes` e Launch `no`:** o contrato foi aprovado antes do perfil de lançamento; propor ao dono a adoção da seção (`project-defines/launch-profile.md`), sem editar o BRIEF aprovado por conta própria.",
         "- **`legacy` em loops/handoffs:** nada a fazer; a migração é opcional e só a pedido do dono.",

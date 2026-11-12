@@ -1,69 +1,75 @@
-Atualização de Projetos
+Alinhar projeto existente com o kit (primeira vez ou atualização)
 
-Quero atualizar este projeto para o padrão de Inteligência Global do Super IA Projects SEM APAGAR ou sobrescrever do zero as regras e especificações que este projeto já possui.
+Quero alinhar este projeto, que JÁ EXISTE, ao estado atual do kit em "<SUPER_IA_PROJECTS_PATH>". Serve tanto para a primeira adoção quanto para atualizar um projeto que já foi alinhado antes. Mude só o que falta ou ficou defasado.
 
-Consulte o repositório base <SUPER_IA_PROJECTS_PATH> e execute o processo de MESCLAGEM (Merge & Preserve).
+REGRAS (valem para todos os passos):
+- NUNCA apague nem sobrescreva as regras locais do projeto (comandos de build/teste, variáveis de ambiente, convenções, exceções): elas são PRESERVADAS num bloco próprio.
+- Ação destrutiva (apagar, mover, substituir arquivo ou pasta) só com a minha confirmação, caso a caso.
+- Do `.env` leia só os NOMES das variáveis (ex.: `cut -d= -f1`), nunca os valores.
+- NUNCA afirme que algo "existe", "está correto" ou "foi preservado" sem verificar por comando (find/grep/diff/comm/test -L) ou leitura direta. O que não foi verificado vira "não verificado".
+- Sem commit, sem push, sem eu pedir.
 
-REGRA GERAL (vale para todos os passos abaixo): NUNCA afirme no resumo final que algo "existe", "está correto" ou "foi preservado" sem ter verificado de fato com um comando (find/grep/diff/comm) ou leitura direta do arquivo. Se você não verificou, não afirme — diga "não verificado" em vez de assumir.
+1. Leitura e inventário (nada é alterado neste passo):
+   - PRIMEIRO: `for d in .agent .agent/rules .agent/plans .agent/skills; do test -L "$d" && echo "$d -> $(readlink "$d")"; done`. Se `.agent` (ou uma dessas subpastas) for um link para o `.agent` do kit (`<SUPER_IA_PROJECTS_PATH>/.agent`), PARE e me pergunte: este prompt gravaria regras, planos, skills e o catálogo dentro do kit. Só continue depois que eu decidir (ex.: trocar o link por uma pasta `.agent/` própria).
+   - Leia os arquivos de regra existentes (`./CLAUDE.md`, `./.claude/CLAUDE.md`, `./GEMINI.md`, `./AGENTS.md`, `./.cursorrules`, `.agent/rules/*`, `STANDARDS.md`), se existirem.
+   - Liste, arquivo por arquivo, as regras ESPECÍFICAS deste projeto, citando o texto (não resuma de memória): comandos, variáveis de ambiente, convenções, exceções, pastas. Separe do que é texto genérico do kit antigo (seções como "Fallback Resolution Protocol", "Latest Docs First", "Socratic Gate", "Firecrawl: MCP vs Execução Local"), que será substituído pelos módulos.
+   - Abra a ficha do projeto em "<SUPER_IA_PROJECTS_PATH>/projetos/" (ache pela linha "Repositório / Caminho") e leia a linha "Última sincronização com o kit: DATA (kit @ HASH)". Se existir, rode `git -C "<SUPER_IA_PROJECTS_PATH>" log --oneline HASH..HEAD -- CLAUDE.md .agent` e diga, em português simples, o que mudou no kit que afeta este projeto. Se o HASH não existir mais no kit, diga "não verificado" e compare por conteúdo (`diff` das regras). Se a ficha não tiver essa linha, trate como primeira adoção.
+   - Rode `python3 "<SUPER_IA_PROJECTS_PATH>/.agent/scripts/projects_audit.py" --no-write` e leia a linha deste projeto.
 
-1. Leitura & Preservação de Regras Locais:
-   - Leia todos os arquivos de regra existentes neste projeto (./CLAUDE.md, ./AGENTS.md, ./.cursorrules, .agent/rules/GEMINI.md, STANDARDS.md, etc.), se existirem.
-   - Liste explicitamente, um por um, quais arquivos encontrou e quais regras específicas cada um contém (comandos de build/test, variáveis de ambiente, convenções, exceções). Não resuma de memória — copie/cite o que está escrito.
-   - MANTENHA E PRESERVE 100% dessas regras específicas do projeto.
+2. Perfil do projeto (bloco `## Project`):
+   - Se o `CLAUDE.md` já tem o bloco `## Project` (Produces / Modules / Primary agent / SIPs), use-o e confirme comigo em uma linha.
+   - Se não tem, faça as perguntas guiadas do prompt de criação (`<SUPER_IA_PROJECTS_PATH>/projetos/prompts/02-criar-projeto-do-zero.md`, passo 1, itens b, c, f, g), APENAS 1 por vez, dizendo em 1 linha o que cada resposta define. Mostre os SIPs em tabela com ⭐ nos sugeridos; o `sip-geral` entra sempre.
+   - Mostre o resumo (módulos `core` + `sip-access` + escolhidos, agente primário, SIPs) e só siga depois do meu "ok".
 
-2. Inclusão das Diretrizes de Inteligência Global:
-   - Mescle com o conteúdo existente as diretrizes globais do Super IA Projects: paridade de regras, isolamento local de novas skills em .agent/skills/, busca fallback em Super IA Projects e 0 Mkt, e o link da ficha técnica no Super IA Projects/projetos/.
-   - ANTES de copiar qualquer referência a agente, skill ou script do template global (ex: nomes como `orchestrator`, `backend-specialist`, `security_scan.py`, ou arquivos como `CODEBASE.md`/`ARCHITECTURE.md`/`PATTERNS.md`/`memory.md`), VERIFIQUE que cada um existe de verdade:
-     - Agentes (personas como `orchestrator`): `ls "<SUPER_IA_PROJECTS_PATH>/.agent/agents/<nome>.md"`
-     - Workflows (comandos `/nome`, como `/plan`, `/tdd-cycle`): `ls "<SUPER_IA_PROJECTS_PATH>/.agent/workflows/<nome>.md"` — workflow NUNCA está em `agents/`
-     - Skills: `ls "<SUPER_IA_PROJECTS_PATH>/.agent/skills/<nome>/"`
-     - Scripts: `find "<SUPER_IA_PROJECTS_PATH>/.agent/skills" -name "<nome>.py"`
-     - Arquivos citados (CODEBASE.md etc.) dentro DESTE projeto: `find . -maxdepth 2 -iname "<nome>"`
-   - Se algo citado no template NÃO existir, NÃO copie a referência cegamente: ou adapte para algo que existe de fato neste projeto (ex: trocar `CODEBASE.md` por `STANDARDS.md` se for o que documenta dependências aqui), ou remova a seção com uma nota explicando por quê.
-   - Identifique o tipo do projeto (backend/API, frontend/web, mobile, dados/IA, automação) e REMOVA do arquivo final as seções do template que não se aplicam (ex: regras de Design/UI/Mobile num projeto 100% backend sem interface). Não deixe "por via das dúvidas" — só o que é real para este projeto.
-
-3. Sincronização em Todas as Portas de Entrada (Paridade Total Multi-IA):
-   - Atualize de forma idêntica os arquivos de entrada: ./CLAUDE.md (maiúsculas exatas na raiz), ./GEMINI.md, ./AGENTS.md, ./.cursorrules e os arquivos em .agent/rules/ (GEMINI.md, CLAUDE.md, AGENTS.md).
-   - Ao terminar, rode a partir da raiz do projeto:
+3. Montagem das regras (nunca recortar à mão):
+   - Backup antes de tudo: copie TODOS os arquivos de regra lidos no passo 1 para `.agent/plans/rules-backup-AAAA-MM-DD/`, na mesma estrutura (o `sync_rules.py` vai sobrescrever `GEMINI.md`, `AGENTS.md`, `.cursorrules` e `.agent/rules/*`).
+   - Monte:
      ```
-     python3 "<SUPER_IA_PROJECTS_PATH>/.agent/scripts/sync_rules.py"
+     python3 "<SUPER_IA_PROJECTS_PATH>/.agent/scripts/assemble_rules.py" --modules core,sip-access,<escolhidos> --title "<Nome do Projeto>" --out "<project_root>/CLAUDE.md"
      ```
-   - Cole a saída completa desse comando no resumo final. Só é aceitável reportar "paridade concluída" se a saída disser literalmente "100% synchronized". Se não disser, corrija e rode de novo até dizer.
+   - Acrescente ao fim do `CLAUDE.md`, nesta ordem: o bloco `## Project` preenchido; com módulo `code`, o bloco `## Stack` (leia o lockfile/manifest e consulte o Context7 pela versão INSTALADA; sem números de versão congelados; se o projeto já tinha uma seção própria de stack com versões, preserve-a dentro do bloco de regras locais); e o bloco `## Local rules` com TODAS as regras específicas listadas no passo 1, com o texto original.
+   - Mostre o `diff` entre o `CLAUDE.md` do backup e o novo e confirme, item por item da lista do passo 1, que cada regra local está no bloco `## Local rules` (grep de um trecho literal de cada uma).
 
-3b. Regras novas do kit (confirme que chegaram, por comando):
-   - `grep -c "Project Defines Gate" CLAUDE.md`, `grep -c "Latest Docs First" CLAUDE.md` e `grep -c "^## Stack" CLAUDE.md` (cada um deve ser ≥ 1 depois da mesclagem; se o projeto já tinha uma seção própria "Stack e Arquitetura" com versões fixas, PRESERVE-A e acrescente o bloco `## Stack` do kit, sem números de versão).
-   - Se o projeto não tiver o bloco `## Stack`: leia o lockfile/manifest, consulte o Context7 pela versão instalada e escreva o bloco (formato no CLAUDE.md, regra "Latest Docs First").
-   - Planos e handoffs agora ficam em `.agent/plans/execution-loops/` e `.agent/plans/handoffs/`. Se o projeto já tem `execution-loops/` ou `handoffs/` na raiz, NÃO mova: a regra de legado mantém a raiz até o dono pedir a migração.
-   - Se o `.gitignore` do projeto esconde `.agent/plans/` ou pastas de loop, registre como pendência (esconde o histórico do projeto).
+4. Cópias para as outras IAs e duplicação:
+   - Se existir `.claude/CLAUDE.md`: compare com o `CLAUDE.md` do backup (`cmp`). Igual → proponha apagar (o Claude Code carrega ele e o `./CLAUDE.md` juntos, regras em dobro) e só apague com o meu "ok". Diferente → mostre o `diff` e pergunte.
+   - Gere as cópias: `cd "<project_root>" && python3 "<SUPER_IA_PROJECTS_PATH>/.agent/scripts/sync_rules.py"`; depois rode o mesmo com `--check` e só prossiga com "Parity OK".
 
-4. Varredura Completa e Padronização de Skills Locais:
-   - Busque por skills em todas as pastas do projeto (.agent/skills/, .agents/skills/, .claude/skills/, skills/, etc.).
-   - Se houver skills locais, garanta que fiquem organizadas em .agent/skills/<nome-da-skill>/SKILL.md com cabeçalho YAML (name + description no mínimo). Esta é a fonte única de CONTEÚDO — mas sozinha ela é invisível para o Claude Code (ver nota "Atualização em 2026-09-03" no topo deste arquivo).
-   - Se encontrar MAIS DE UMA pasta de skills com conteúdo próprio (ex: .agent/skills/ e .agents/skills/, ambas com arquivos reais), compare arquivo por arquivo com `diff -rq` antes de sugerir qualquer consolidação. NUNCA apague uma pasta duplicada por conta própria: (a) confirme por diff que nada seria perdido, (b) proponha a remoção no resumo final e PARE, aguardando confirmação explícita do usuário antes de executar. Apagar é uma ação destrutiva.
-   - **Distinga duplicata de conteúdo (acima) de espelho de descoberta — NÃO são a mesma coisa:** para cada skill em `.agent/skills/<nome>/`, verifique `.claude/skills/<nome>`:
-     ```
-     test -L ".claude/skills/<nome>" && echo "OK: já é symlink" || (test -e ".claude/skills/<nome>" && echo "ATENÇÃO: existe como pasta/cópia real, não symlink — comparar com diff -rq antes de tocar" || echo "FALTANDO: criar symlink")
-     ```
-     - Se **faltando**: crie `ln -s "../../.agent/skills/<nome>" ".claude/skills/<nome>"` — isso NÃO é criar uma skill nova (a regra 3 do CLAUDE.md sobre escopo local não se aplica aqui), é só o ponteiro que faz o Claude Code enxergar uma skill que já existe.
-     - Se **existe como pasta real** (não symlink): rode `diff -rq ".claude/skills/<nome>" ".agent/skills/<nome>"`. Em AMBOS os casos (idêntico ou divergente) vale a mesma regra do bullet acima: NUNCA apague/substitua por conta própria — proponha a ação exata (substituir por symlink, se idêntico; ou tratar como duplicata real com conteúdo próprio, se divergente) no resumo final e PARE, aguardando confirmação explícita do usuário antes de executar.
-   - **Agents e workflows locais (mesma lógica das skills):** se o projeto tem `.agent/agents/` ou `.agent/workflows/` próprios, rode da raiz do projeto `python3 "<SUPER_IA_PROJECTS_PATH>/.agent/scripts/sync_entrypoints.py" --check`; se apontar link faltando, rode sem `--check` (o script só cria/repara symlinks para `.claude/agents/`, `.claude/commands/` e `.cursor/commands/`; nunca toca em arquivo real nem em link que aponta para fora). Entradas reais (não symlink) ele só reporta: trate como no bullet das skills (diff, propor, PARAR). Cada erro de validação que ele listar (agent sem `name`/`description`, `skills:` inexistente) vai para o resumo final.
-   - Verifique que a skill roteadora global existe: `ls ~/.claude/skills/skill-resolver/SKILL.md`. Se não existir, sinalize no resumo final como pendência de setup pessoal (não é algo a recriar por projeto — é um recurso único, fora deste repositório).
+5. SIPs:
+   - Instale o `sip-geral` seguindo `<SUPER_IA_PROJECTS_PATH>/prompts/instalar-skill-sip-geral.md` e cada SIP escolhido (prompt na tabela de `<SUPER_IA_PROJECTS_PATH>/projetos/_sips.md`). Agents/workflows de cada SIP: se o prompt perguntar, responda "nenhum"; se instalar todos sem perguntar (modelo anterior), execute só o passo do resolver. Eles ficam no SIP salvo pedido meu.
+   - Menções antigas a "Fallback" ou a caminhos do 0 Mkt/0 Padrões nas regras locais: proponha trocar pelo SIP correspondente, sem aplicar sem o meu "ok".
 
-5. Registro/Atualização da Ficha Central em Super IA Projects:
-   - Crie/atualize a ficha técnica deste projeto em <SUPER_IA_PROJECTS_PATH>/projetos/[NOME_DO_PROJETO].md (baseado em .../projetos/TEMPLATE.md).
-   - Toda variável de ambiente que você listar na ficha precisa ter sido confirmada de fato — rode `grep -oE "^[A-Z_]+=" .env.example | sort` e, se existir um `.env` real, compare os dois com `comm -23 <(grep -oE "^[A-Z_]+=" .env | sort -u) <(grep -oE "^[A-Z_]+=" .env.example | sort -u)`. Se sobrar algo do lado esquerdo, o `.env.example` está incompleto — corrija-o antes de documentar a ficha (isso já aconteceu de verdade neste tipo de projeto: 13 variáveis reais usadas em código não estavam documentadas em lugar nenhum).
-   - Preencha a stack real, o objetivo, e o catálogo completo de TODAS as skills locais catalogadas no passo 4.
-   - Adicione/atualize a linha deste projeto na tabela do <SUPER_IA_PROJECTS_PATH>/projetos/README.md.
+6. Skills, agents e workflows locais:
+   - Busque skills em `.agent/skills/`, `.agents/skills/`, `.claude/skills/`, `skills/`. Cada skill local fica em `.agent/skills/<nome>/SKILL.md` com frontmatter (name + description no mínimo).
+   - Mais de uma pasta com conteúdo próprio: compare com `diff -rq` e NUNCA apague por conta própria; proponha a ação.
+   - Skill local que é cópia de uma skill do kit ou de um SIP que mudou: aponte as diferenças com `diff -rq` e me pergunte antes de atualizar.
+   - Para cada `.agent/skills/<nome>`: `test -L ".claude/skills/<nome>" && echo "OK: symlink" || (test -e ".claude/skills/<nome>" && echo "ATENÇÃO: pasta real, comparar com diff -rq" || echo "FALTANDO: criar symlink")`. Faltando → `ln -s "../../.agent/skills/<nome>" ".claude/skills/<nome>"`. Pasta real → `diff -rq` e pare esperando a minha decisão.
+   - Rode `cd "<project_root>" && python3 "<SUPER_IA_PROJECTS_PATH>/.agent/scripts/sync_entrypoints.py"` (symlinks de agents/workflows) e depois `--check`; erros de validação (agent sem `name`/`description`, `skills:` inexistente) vão para o resumo; entrada real (não symlink) em `.claude/agents/` ou `.claude/commands/` → `diff`, proponha e pare. Depois `python3 "<SUPER_IA_PROJECTS_PATH>/.agent/scripts/generate_catalog.py"` e garanta `.agent/catalog.html` no `.gitignore`.
 
-6. Verificação Final (checklist obrigatório antes de apresentar o resumo):
-   - [ ] sync_rules.py retornou "100% synchronized" (cole a saída)
-   - [ ] Os três `grep -c` do passo 3b retornaram ≥ 1 (cole a saída) e o bloco `## Stack` não tem números de versão congelados
-   - [ ] Toda referência a agente/skill/script nos arquivos de regra foi confirmada existente por comando (não suposição)
-   - [ ] Nenhuma instrução nos arquivos de regra aponta para um arquivo que não existe neste projeto
-   - [ ] .env.example (se existir) foi comparado com .env real e está 100% completo (comando do passo 5 retornou vazio ou só variáveis comprovadamente não usadas em código)
-   - [ ] Skills duplicadas foram identificadas (inclusive um `.claude/skills/<nome>` real, idêntico ou divergente) e, se existirem, o usuário foi consultado antes de qualquer remoção ou substituição por symlink
-   - [ ] Toda skill em .agent/skills/<nome>/ tem um `.claude/skills/<nome>` correspondente e é um symlink de verdade (verificado com `test -L`, não suposição) — garante descoberta nativa pelo Claude Code
-   - [ ] `~/.claude/skills/skill-resolver/SKILL.md` foi checado; se ausente, isso foi registrado no resumo como pendência
-   - [ ] A ficha técnica no Super IA Projects só contém afirmações verificadas, não copiadas de memória
+7. Mapa de destinos:
+   - Se não existir `docs/mapa-de-destinos.md`, siga a skill `mapa-de-destinos` (via `sip-geral`), caso "projeto existente sem mapa": documente o que já existe, aponte inconsistências e pergunte. NÃO mova nada.
+   - Se existir, confira que as pastas citadas existem e liste divergências (sem mover).
 
-   Apresente um resumo comparativo destacando: as regras locais que foram preservadas, as diretrizes globais que foram mescladas, as skills catalogadas, E qualquer referência do template que você removeu ou adaptou por não existir de fato — seja transparente sobre isso, não esconda.
+8. Ambiente e `.gitignore`:
+   - `.env.example` completo: `comm -23 <(grep -oE "^[A-Za-z_][A-Za-z0-9_]*=" .env | sort -u) <(grep -oE "^[A-Za-z_][A-Za-z0-9_]*=" .env.example | sort -u)`; o que sobrar entra no `.env.example` (só o nome) ou é justificado como não usado em código.
+   - `.gitignore`: `.env*` (com exceção `!.env.example`), `.agent/plans/` e `plans/` ignorados; `_projectdefines/`, `memory.md`, `STANDARDS.md`, `.env.example`, `docs/` e os arquivos de regra (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, `.cursorrules`, `.agent/rules/`) NUNCA ignorados.
+   - Testes (com módulo `code`): rode a suíte inteira e cole a saída. Teste que já falha: registre nome e causa no resumo; NÃO apague, pule nem afrouxe (decisão minha). Sem `.githooks/pre-commit`: proponha o hook com a parte rápida da suíte (passo "Hook de commit" de `<SUPER_IA_PROJECTS_PATH>/.agent/skills/project-initializer/SKILL.md`) e só instale com o meu "ok"; se houver teste que já falha na parte rápida, diga que o hook recusaria todo commit e pergunte antes.
+   - `memory.md` na raiz: se faltar, crie (memória de longo prazo, formato `Problema → Solução`, versionado).
+   - Planos e handoffs ficam em `.agent/plans/execution-loops/` e `.agent/plans/handoffs/`. Se o projeto já tem `execution-loops/` ou `handoffs/` na raiz, NÃO mova (legado até eu pedir).
+
+9. Ficha central:
+   - Crie/atualize "<SUPER_IA_PROJECTS_PATH>/projetos/<nome-do-projeto>.md" (modelo `<SUPER_IA_PROJECTS_PATH>/projetos/TEMPLATE.md`) e a linha em "<SUPER_IA_PROJECTS_PATH>/projetos/README.md": tipo (`Produces`), módulos, SIPs, stack real, objetivo, skills locais, integrações do `.env.example`. Só afirmações verificadas.
+   - Por último, grave no cabeçalho: `> **Última sincronização com o kit:** AAAA-MM-DD (kit @ HASH)` com a data de hoje e `git -C "<SUPER_IA_PROJECTS_PATH>" rev-parse --short HEAD`, só depois dos passos 3 a 8 verificados.
+
+10. Verificação final (cole a saída de cada comando):
+   - [ ] `sync_rules.py --check` → "Parity OK"
+   - [ ] Cada regra local do passo 1 encontrada no bloco `## Local rules` (grep)
+   - [ ] Nenhum `.claude/CLAUDE.md` ao lado do `./CLAUDE.md` (ou a minha decisão registrada)
+   - [ ] Toda skill local tem `.claude/skills/<nome>` como symlink (`test -L`)
+   - [ ] `sync_entrypoints.py --check` OK
+   - [ ] Toda skill/agent/script e todo arquivo (`CODEBASE.md`, `ARCHITECTURE.md`…) citado nas regras existe no projeto ou no hub (comando, não suposição)
+   - [ ] `comm` do passo 8 vazio (ou só variáveis justificadas)
+   - [ ] `docs/mapa-de-destinos.md` existe (ou a minha decisão registrada)
+   - [ ] Com módulo `code`: saída da suíte inteira colada; testes que já falhavam listados (nenhum apagado, pulado ou afrouxado); hook instalado ou a minha decisão registrada
+   - [ ] `git status` só com os arquivos esperados
+
+Pare e me apresente, em português simples, SÓ o que mudou: módulos e SIPs aplicados, o que o kit trouxe de novo, as regras locais preservadas (com onde ficaram), skills que entraram ou saíram, pendências que dependem de mim e o que ficou "não verificado".

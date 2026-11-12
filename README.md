@@ -110,11 +110,9 @@ Na prática: em vez de cada projeto reinventar (ou copiar e desatualizar) o conh
 
 Dentro da pasta `prompts-template/`, você encontra roteiros prontos para:
 
-- `01-atualizar-projeto-existente.md`: Adotar as regras em um projeto já existente sem perder código (Merge & Preserve).
+- `01-atualizar-projeto-existente.md`: Alinhar um projeto já existente ao kit, na primeira vez ou depois de atualizações, sem perder as regras locais.
 - `02-criar-projeto-do-zero.md`: Inicializar um projeto do zero via `project-initializer`.
 - `04-buscar-bibliotecas-prontas.md`: Avaliar reuso de software open source via `oss-scout`.
-- `08-sincronizar-com-o-kit.md`: Manter seus projetos sincronizados com as atualizações do kit.
-- `template-inteligencia.md`: Injetar o módulo transversal de Inteligência de Negócio (Trends, RSS, mineração de ganchos).
 
 ---
 
@@ -141,6 +139,8 @@ Recomendadas automaticamente via [`.vscode/extensions.json`](.vscode/extensions.
 - **Python & Infra:** Suíte oficial Python (Pylance) e Docker.
 
 👉 *Veja o [**Guia Completo de Setup (SETUP.md)**](SETUP.md) para instruções passo a passo e instalação em lote.*
+
+**Hook de commit (uma vez por clone):** `git config core.hooksPath .githooks`. O `.githooks/pre-commit` roda `sync_entrypoints.py --check` e `sync_rules.py --check` (~2 s) e recusa o commit se algum falhar.
 
 ---
 

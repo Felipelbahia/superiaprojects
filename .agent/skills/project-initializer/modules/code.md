@@ -1,0 +1,22 @@
+## Code rules
+
+- Code, comments and identifiers in English.
+- **`ponytail`:** on every coding task (write, fix, refactor, review, pick a dependency) apply skill `ponytail`: the smallest complete change, and a reply a busy human reads in one pass. Default level `full`.
+- Clean code (`clean-code`): concise, no over-engineering. Every logic change comes with tests (unit > integration > E2E, AAA).
+- **Tests accumulate:** every bug fix starts with a test that reproduces the bug and fails; then the fix; the test stays in the suite for good (skill `test-driven-development`). Show the failing run before the fix and the passing run after.
+- **Never weaken the suite:** do not delete, skip, or loosen a failing test (or its expected value) to get a green run without the owner's approval. A test that was already in the suite and already failing in a baseline run made before your first edit (output shown) is reported with its name and cause, and stays failing until the owner decides. A test that passed in the baseline and fails now is a regression you caused and blocks; the new bug test must pass after the fix. Ask the owner in the same reply. Until then, those named tests are the only accepted failures: `checklist.py` and the execution loop's closing gate count as green only if every other check passes, and the change is reported as "done except known failing test <name> (owner decision pending)". Never bypass the hook (`--no-verify`) for them: commits wait for the owner.
+- **Where tests run:** the fast part of the suite (seconds) in the pre-commit hook `.githooks/pre-commit`; the full suite in `checklist.py` and before closing a significant change. No hook in the project and a fast check exists (about 5 s or less): propose installing it (step "Hook de commit" of `project-initializer`).
+- **Docs first (Context7 MCP, mandatory):** before choosing, installing, configuring or writing code for any technology — framework, library, SDK, API, CLI, and also CSS/UI libraries, component kits and design tokens — consult Context7 (`resolve-library-id` → `query-docs`) and say which library ID was used. New project: current stable version. Existing project: the version in the lockfile. Docs win over memory and templates on facts. Context7 unavailable: use official docs and say so.
+- **`## Stack` block** in this file, names only, no frozen versions. Missing? Write it the first time a technology is touched (read the lockfile, consult Context7).
+  ```
+  ## Stack
+  - Language/runtime: <name>
+  - Framework: <name>
+  - Main libraries: <names>
+  - Last checked: AAAA-MM-DD (Context7)
+  ```
+- **Reuse before build:** skill `oss-scout` before building a capability a mature library may cover.
+
+## Code done means
+
+A significant change is not finished until `python .agent/scripts/checklist.py .` passes (add `--url <URL>` before deploy). Show its output. Also run it when the user asks for "final checks" / "checagem final". Order: Security → Lint → Schema → Tests → UX → SEO → Lighthouse/E2E; fix Critical blockers first. Review and security: `claude-code-review`, `security-guidance-plugin`, `claude-security-scan` win over `code-review-*`, `vulnerability-scanner`, `sast-configuration`.

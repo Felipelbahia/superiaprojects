@@ -96,11 +96,9 @@ In practice: instead of every project reinventing (or copying and letting go sta
 
 Inside `prompts-template/`, you will find ready-to-use recipes:
 
-- `01-atualizar-projeto-existente.md`: Adopt multi-AI standards in brownfield projects without breaking existing code (Merge & Preserve).
+- `01-atualizar-projeto-existente.md`: Align an existing project with the kit, the first time or after kit updates, keeping its local rules.
 - `02-criar-projeto-do-zero.md`: Scaffold new applications from scratch via `project-initializer`.
 - `04-buscar-bibliotecas-prontas.md`: Evaluate open-source library reuse with `oss-scout`.
-- `08-sincronizar-com-o-kit.md`: Keep projects synchronized with updates from the central kit.
-- `template-inteligencia.md`: Inject market intelligence routines (Trends, RSS, hook mining).
 
 ---
 

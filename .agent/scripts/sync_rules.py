@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 sync_rules.py - Bidirectional Multi-AI Interoperability & Parity Checker
+Usage: python3 .agent/scripts/sync_rules.py [--check]   (--check: read-only, exit 1 if out of parity)
 Ensures that all rule entrypoints for any AI assistant (Google Antigravity, Claude Code, Cursor, Qwen, OpenRouter, etc.)
 remain 100% synchronized with the most recently updated Source of Truth.
 """
@@ -31,13 +32,18 @@ def main():
         root_dir / "GEMINI.md",
         root_dir / ".cursorrules",
     ]
-    if claude_dir.exists():
+    # Claude Code loads ./CLAUDE.md and ./.claude/CLAUDE.md both: only keep the second if it already exists.
+    if (claude_dir / "CLAUDE.md").exists():
         all_rule_paths.append(claude_dir / "CLAUDE.md")
 
     # Filter to existing files
     existing_files = [p for p in all_rule_paths if p.exists()]
 
     if not existing_files:
+        if "--check" in sys.argv[1:]:
+            # Rule files are git-ignored in 0 Padrões, so a fresh clone has none: nothing to compare.
+            print("✅ Parity OK (no rule files in this checkout)")
+            return
         print("❌ Error: No rules files found to synchronize.")
         sys.exit(1)
 
@@ -45,6 +51,18 @@ def main():
     newest_file = max(existing_files, key=lambda p: p.stat().st_mtime)
     source_text = newest_file.read_text(encoding="utf-8")
     norm_source = normalize(source_text)
+
+    if "--check" in sys.argv[1:]:
+        # Read-only: every existing rule file must match the newest one after normalization.
+        diverged = [p for p in existing_files if normalize(p.read_text(encoding="utf-8")) != norm_source]
+        if diverged:
+            print(f"❌ Rule files out of parity with {newest_file.relative_to(root_dir)}:")
+            for p in diverged:
+                print(f"   - {p.relative_to(root_dir)}")
+            print("   Fix: python3 .agent/scripts/sync_rules.py")
+            sys.exit(1)
+        print(f"✅ Parity OK ({len(existing_files)} rule files)")
+        return
 
     print(f"🔍 Source of Truth (Most Recent): {newest_file.relative_to(root_dir)}")
 

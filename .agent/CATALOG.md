@@ -2,8 +2,8 @@
 
 > Índice central de todas as Skills, Workflows e Agentes da Plataforma (0 Padrões + 0 Mkt)
 
-**Total Geral:** `703` recursos | **Skills:** `315` | **Workflows:** `225` | **Agentes:** `163`
-**Fontes Integradas:** `0 Mkt` (246) · `0 Padrões` (457)
+**Total Geral:** `698` recursos | **Skills:** `310` | **Workflows:** `225` | **Agentes:** `163`
+**Fontes Integradas:** `0 Mkt` (247) · `0 Padrões` (451)
 
 ---
 
@@ -32,31 +32,31 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Pipelines de Dados & Transformação](#pipelines-de-dados--transformação) (`2`)
 - [Arquitetura de Software & Engenharia](#arquitetura-de-software--engenharia) (`42` recursos)
   - [Padrões Arquiteturais & Boas Práticas](#padrões-arquiteturais--boas-práticas) (`42`)
-- [Backend & APIs](#backend--apis) (`18` recursos)
-  - [Design & Integração de APIs (REST / GraphQL)](#design--integração-de-apis-rest--graphql) (`10`)
-  - [Node.js, Go & Microsserviços](#nodejs-go--microsserviços) (`1`)
+- [Backend & APIs](#backend--apis) (`20` recursos)
+  - [Design & Integração de APIs (REST / GraphQL)](#design--integração-de-apis-rest--graphql) (`11`)
+  - [Node.js, Go & Microsserviços](#nodejs-go--microsserviços) (`2`)
   - [Python & Backends de Alta Performance](#python--backends-de-alta-performance) (`5`)
   - [Serviços de Autenticação & Pagamentos](#serviços-de-autenticação--pagamentos) (`2`)
 - [Database & Storage](#database--storage) (`6` recursos)
   - [Bancos Relacionais (PostgreSQL & SQL)](#bancos-relacionais-postgresql--sql) (`3`)
   - [Modelagem & Migrações de Banco](#modelagem--migrações-de-banco) (`3`)
-- [DevOps & Cloud Infra](#devops--cloud-infra) (`63` recursos)
+- [DevOps & Cloud Infra](#devops--cloud-infra) (`65` recursos)
   - [Infraestrutura como Código (Terraform / Cloud)](#infraestrutura-como-código-terraform--cloud) (`3`)
   - [Orquestração Kubernetes & Contêineres](#orquestração-kubernetes--contêineres) (`2`)
-  - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`58`)
-- [Frontend & UI/UX](#frontend--uiux) (`225` recursos)
+  - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`60`)
+- [Frontend & UI/UX](#frontend--uiux) (`215` recursos)
   - [Acessibilidade Web (A11y & WCAG)](#acessibilidade-web-a11y--wcag) (`4`)
-  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`199`)
+  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`189`)
   - [Design Systems & Estilização Moderna](#design-systems--estilização-moderna) (`10`)
   - [Frameworks Web Modernos (React & Next.js)](#frameworks-web-modernos-react--nextjs) (`12`)
-- [Gestão de Produtos e Projetos](#gestão-de-produtos-e-projetos) (`17` recursos)
+- [Gestão de Produtos e Projetos](#gestão-de-produtos-e-projetos) (`16` recursos)
   - [Conductor & Gestão de Tracks](#conductor--gestão-de-tracks) (`2`)
   - [Estratégia & Especificação de Produto (PRD)](#estratégia--especificação-de-produto-prd) (`3`)
-  - [Operações Ágeis & Coordenação de Equipe](#operações-ágeis--coordenação-de-equipe) (`5`)
+  - [Operações Ágeis & Coordenação de Equipe](#operações-ágeis--coordenação-de-equipe) (`4`)
   - [Planejamento de Projetos & Sprints](#planejamento-de-projetos--sprints) (`7`)
-- [Mobile Development](#mobile-development) (`37` recursos)
+- [Mobile Development](#mobile-development) (`38` recursos)
   - [Arquitetura e Padrões Mobile](#arquitetura-e-padrões-mobile) (`2`)
-  - [iOS & Ferramentas Nativas](#ios--ferramentas-nativas) (`35`)
+  - [iOS & Ferramentas Nativas](#ios--ferramentas-nativas) (`36`)
 - [Processos de VibeCoding & Metodologia IA](#processos-de-vibecoding--metodologia-ia) (`24` recursos)
   - [Auditoria Anti-Slop & Segurança VibeCoding](#auditoria-anti-slop--segurança-vibecoding) (`1`)
   - [Engenharia de Contexto & Memória](#engenharia-de-contexto--memória) (`3`)
@@ -72,7 +72,7 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Automação de Testes E2E & Web](#automação-de-testes-e2e--web) (`1`)
   - [Desenvolvimento Orientado a Testes (TDD)](#desenvolvimento-orientado-a-testes-tdd) (`2`)
   - [Testes Unitários & Integração](#testes-unitários--integração) (`8`)
-- [ads (Tráfego Pago (Ads))](#ads-tráfego-pago-ads) (`11` recursos)
+- [ads (Tráfego Pago (Ads))](#ads-tráfego-pago-ads) (`9` recursos)
   - [Analise De Desempenho](#analise-de-desempenho) (`1`)
   - [Copy De Anuncio](#copy-de-anuncio) (`2`)
   - [Criativos](#criativos) (`1`)
@@ -80,13 +80,14 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Google](#google) (`1`)
   - [Meta](#meta) (`1`)
   - [Multiplataforma](#multiplataforma) (`1`)
-  - [Mídia Paga](#mídia-paga) (`3`)
-- [audiovisual (Mídia & Audiovisual)](#audiovisual-mídia--audiovisual) (`24` recursos)
+  - [Trafego Pago](#trafego-pago) (`1`)
+- [audiovisual (Mídia & Audiovisual)](#audiovisual-mídia--audiovisual) (`25` recursos)
   - [Agentes De Voz](#agentes-de-voz) (`1`)
   - [Apresentacoes Educacionais](#apresentacoes-educacionais) (`1`)
   - [Arte Conceitual](#arte-conceitual) (`1`)
   - [Banco De Imagens Pexels](#banco-de-imagens-pexels) (`1`)
   - [Banco De Midias Openverse](#banco-de-midias-openverse) (`1`)
+  - [Criacao De Pitch Deck](#criacao-de-pitch-deck) (`1`)
   - [Download De Video](#download-de-video) (`1`)
   - [Estrutura De Apresentacao](#estrutura-de-apresentacao) (`1`)
   - [Imagem Flux Api](#imagem-flux-api) (`1`)
@@ -97,30 +98,33 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Nano Banana Pro](#nano-banana-pro) (`1`)
   - [Pitch Deck](#pitch-deck) (`1`)
   - [Podcast E Audio](#podcast-e-audio) (`1`)
-  - [Producer](#producer) (`1`)
+  - [Producao De Video](#producao-de-video) (`1`)
   - [Qr Code](#qr-code) (`2`)
   - [Slidev](#slidev) (`2`)
   - [Storyline Mckinsey](#storyline-mckinsey) (`1`)
   - [Traducao De Legenda](#traducao-de-legenda) (`1`)
   - [Transcricao](#transcricao) (`1`)
   - [Video Para Gif](#video-para-gif) (`1`)
-- [brand (Identidade da Marca)](#brand-identidade-da-marca) (`17` recursos)
+- [brand (Identidade da Marca)](#brand-identidade-da-marca) (`13` recursos)
   - [Audience](#audience) (`1`)
   - [Builder](#builder) (`1`)
   - [Design System](#design-system) (`1`)
+  - [Direcao De Arte](#direcao-de-arte) (`1`)
   - [Essence](#essence) (`1`)
+  - [Guardiao De Voz](#guardiao-de-voz) (`1`)
   - [Identidade Sonora](#identidade-sonora) (`1`)
-  - [Identidade e Marca](#identidade-e-marca) (`6`)
+  - [Identidade e Marca](#identidade-e-marca) (`1`)
   - [Naming](#naming) (`1`)
   - [Paleta De Cores](#paleta-de-cores) (`1`)
   - [Visual Direction](#visual-direction) (`1`)
   - [Visual Style](#visual-style) (`1`)
-  - [Voice Guardian](#voice-guardian) (`1`)
   - [Voice Messaging](#voice-messaging) (`1`)
-- [conteudo (Produção de Conteúdo)](#conteudo-produção-de-conteúdo) (`20` recursos)
+- [conteudo (Produção de Conteúdo)](#conteudo-produção-de-conteúdo) (`22` recursos)
   - [Aprovacao](#aprovacao) (`1`)
+  - [Brainstorm](#brainstorm) (`1`)
   - [Briefing](#briefing) (`2`)
   - [Briefing De Seo](#briefing-de-seo) (`1`)
+  - [Criacao Multiformato](#criacao-multiformato) (`1`)
   - [Escrita Colaborativa](#escrita-colaborativa) (`1`)
   - [Estrategia](#estrategia) (`2`)
   - [Kit De Podcast](#kit-de-podcast) (`1`)
@@ -140,12 +144,13 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Landing Page](#landing-page) (`2`)
   - [Landing Page Secao A Secao](#landing-page-secao-a-secao) (`1`)
   - [Metodos Classicos](#metodos-classicos) (`1`)
+  - [Redacao Publicitaria](#redacao-publicitaria) (`1`)
   - [Roteiro De Video](#roteiro-de-video) (`1`)
   - [Roteiro Mais Falado](#roteiro-mais-falado) (`1`)
   - [Saas](#saas) (`2`)
-  - [Textos e Conversão](#textos-e-conversão) (`1`)
   - [Vsl](#vsl) (`1`)
-- [data (Inteligência de Dados)](#data-inteligência-de-dados) (`12` recursos)
+- [data (Inteligência de Dados)](#data-inteligência-de-dados) (`13` recursos)
+  - [Analise De Desempenho](#analise-de-desempenho) (`1`)
   - [Analise De Funil](#analise-de-funil) (`1`)
   - [Analytics De Produto](#analytics-de-produto) (`1`)
   - [Analytics De Video](#analytics-de-video) (`1`)
@@ -158,54 +163,61 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Relatorio Executivo](#relatorio-executivo) (`1`)
   - [Revisao Mensal](#revisao-mensal) (`1`)
   - [Web Ga4](#web-ga4) (`1`)
-- [email (Email Marketing)](#email-email-marketing) (`12` recursos)
+- [email (Email Marketing)](#email-email-marketing) (`8` recursos)
   - [Automacao](#automacao) (`1`)
   - [Copy](#copy) (`1`)
   - [Entregabilidade](#entregabilidade) (`1`)
-  - [Fluxos e Automação](#fluxos-e-automação) (`4`)
   - [Modelos](#modelos) (`1`)
   - [Newsletter](#newsletter) (`2`)
+  - [Orquestracao De Campanhas](#orquestracao-de-campanhas) (`1`)
   - [Otimizacao De Assunto](#otimizacao-de-assunto) (`1`)
-  - [Wizard](#wizard) (`1`)
 - [geral (Geral & Governança)](#geral-geral--governança) (`24` recursos)
   - [Anti Slop](#anti-slop) (`2`)
   - [Arquitetura De Projeto](#arquitetura-de-projeto) (`1`)
   - [Briefing Matinal](#briefing-matinal) (`1`)
   - [Conformidade Lgpd](#conformidade-lgpd) (`1`)
+  - [Coordenacao De Campanhas](#coordenacao-de-campanhas) (`1`)
   - [Diagrama Mermaid](#diagrama-mermaid) (`1`)
   - [Execucao Autonoma](#execucao-autonoma) (`1`)
   - [Extracao E Plano De Acao](#extracao-e-plano-de-acao) (`1`)
+  - [Gestao De Documentacao](#gestao-de-documentacao) (`1`)
   - [Mapa De Stakeholders](#mapa-de-stakeholders) (`1`)
+  - [Navegador De Comandos](#navegador-de-comandos) (`1`)
   - [Navegador De Skills](#navegador-de-skills) (`1`)
-  - [Operações e Rotinas](#operações-e-rotinas) (`8`)
+  - [Operações e Rotinas](#operações-e-rotinas) (`1`)
+  - [Parecer Sexy Canvas](#parecer-sexy-canvas) (`1`)
+  - [Persona Fundador Startup](#persona-fundador-startup) (`1`)
+  - [Persona Gerente De Marketing](#persona-gerente-de-marketing) (`1`)
+  - [Persona Solopreneur](#persona-solopreneur) (`1`)
   - [Planejamento Diario](#planejamento-diario) (`1`)
   - [Postmortem](#postmortem) (`1`)
   - [Priorizacao Esforco Impacto](#priorizacao-esforco-impacto) (`1`)
   - [Revisao Mensal](#revisao-mensal) (`1`)
   - [Revisao Semanal](#revisao-semanal) (`1`)
   - [Verificacao De Fatos](#verificacao-de-fatos) (`1`)
-- [growth (Growth Hacking)](#growth-growth-hacking) (`9` recursos)
+- [growth (Growth Hacking)](#growth-growth-hacking) (`11` recursos)
   - [Aquisicao De Demanda](#aquisicao-de-demanda) (`1`)
+  - [Aquisicao De Usuarios](#aquisicao-de-usuarios) (`1`)
+  - [Atracao De Leads](#atracao-de-leads) (`1`)
+  - [Expansao De Receita](#expansao-de-receita) (`1`)
   - [Experimentos Gtm](#experimentos-gtm) (`1`)
-  - [Experimentos e Retenção](#experimentos-e-retenção) (`1`)
   - [Frameworks](#frameworks) (`1`)
   - [Indicacao E Afiliados](#indicacao-e-afiliados) (`1`)
+  - [Retencao De Clientes](#retencao-de-clientes) (`1`)
   - [Retencao E Churn](#retencao-e-churn) (`1`)
-  - [Specialist](#specialist) (`1`)
   - [Teste Ab](#teste-ab) (`1`)
   - [Testes Ab](#testes-ab) (`1`)
-- [persona (Clientes & Persona)](#persona-clientes--persona) (`8` recursos)
+- [persona (Clientes & Persona)](#persona-clientes--persona) (`7` recursos)
   - [Analise De Feedback](#analise-de-feedback) (`1`)
-  - [Builder](#builder) (`1`)
   - [Criacao De Persona](#criacao-de-persona) (`1`)
   - [Descoberta De Clientes](#descoberta-de-clientes) (`1`)
-  - [Descoberta de Clientes](#descoberta-de-clientes) (`1`)
+  - [Descoberta Interativa](#descoberta-interativa) (`1`)
   - [Entrevistas De Descoberta](#entrevistas-de-descoberta) (`1`)
   - [Gerador De Icp](#gerador-de-icp) (`1`)
   - [Icp](#icp) (`1`)
 - [pr (Relações Públicas (PR))](#pr-relações-públicas-pr) (`2` recursos)
   - [Assessoria De Imprensa](#assessoria-de-imprensa) (`1`)
-  - [Specialist](#specialist) (`1`)
+  - [Relacoes Publicas](#relacoes-publicas) (`1`)
 - [produto (Gestão de Produto)](#produto-gestão-de-produto) (`10` recursos)
   - [Agile](#agile) (`2`)
   - [Especificacao De Funcionalidade](#especificacao-de-funcionalidade) (`1`)
@@ -215,7 +227,7 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Prd](#prd) (`2`)
   - [Prd Estrategia Gtm](#prd-estrategia-gtm) (`1`)
   - [Roadmap Reverso](#roadmap-reverso) (`1`)
-- [revenue (Estratégia de Receita (Revenue))](#revenue-estratégia-de-receita-revenue) (`21` recursos)
+- [revenue (Estratégia de Receita (Revenue))](#revenue-estratégia-de-receita-revenue) (`25` recursos)
   - [Analise Competitiva](#analise-competitiva) (`1`)
   - [Campanhas](#campanhas) (`2`)
   - [Checklist De Lancamento De Campanha](#checklist-de-lancamento-de-campanha) (`1`)
@@ -228,12 +240,16 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Modelos Mentais](#modelos-mentais) (`1`)
   - [Monitoramento De Preco Concorrente](#monitoramento-de-preco-concorrente) (`1`)
   - [Oferta](#oferta) (`1`)
+  - [Orquestracao De Crm](#orquestracao-de-crm) (`1`)
+  - [Orquestracao De Estrategia](#orquestracao-de-estrategia) (`1`)
+  - [Pesquisa De Mercado](#pesquisa-de-mercado) (`1`)
+  - [Planejamento De Campanha](#planejamento-de-campanha) (`1`)
   - [Plano De Lancamento](#plano-de-lancamento) (`1`)
   - [Preco](#preco) (`2`)
   - [Premortem Previsao](#premortem-previsao) (`2`)
   - [Psicologia](#psicologia) (`1`)
   - [Sexy Canvas](#sexy-canvas) (`1`)
-- [seo (SEO & Mecanismos de Busca)](#seo-seo--mecanismos-de-busca) (`20` recursos)
+- [seo (SEO & Mecanismos de Busca)](#seo-seo--mecanismos-de-busca) (`19` recursos)
   - [Agrupamento De Palavras Chave](#agrupamento-de-palavras-chave) (`1`)
   - [Analise De Serp](#analise-de-serp) (`1`)
   - [Api De Busca](#api-de-busca) (`1`)
@@ -243,31 +259,33 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Conteudo](#conteudo) (`1`)
   - [Geo](#geo) (`1`)
   - [On Page](#on-page) (`1`)
+  - [Otimizacao De Busca](#otimizacao-de-busca) (`1`)
   - [Otimizacao De Conteudo](#otimizacao-de-conteudo) (`1`)
-  - [Otimização para Busca](#otimização-para-busca) (`1`)
   - [Palavras Chave](#palavras-chave) (`1`)
   - [Podcast](#podcast) (`1`)
   - [Programatico](#programatico) (`1`)
   - [Relatorio De Desempenho](#relatorio-de-desempenho) (`1`)
   - [Schema Markup](#schema-markup) (`1`)
   - [Search Console](#search-console) (`1`)
-  - [Specialist](#specialist) (`1`)
   - [Tecnico](#tecnico) (`1`)
   - [Wordpress](#wordpress) (`1`)
-- [site (Sites & Páginas de Conversão)](#site-sites--páginas-de-conversão) (`12` recursos)
+- [site (Sites & Páginas de Conversão)](#site-sites--páginas-de-conversão) (`14` recursos)
   - [Arquitetura](#arquitetura) (`1`)
   - [Auditoria De Interface](#auditoria-de-interface) (`2`)
   - [Construcao De Landing Page](#construcao-de-landing-page) (`1`)
   - [Construcao De Site](#construcao-de-site) (`1`)
+  - [Construcao Web](#construcao-web) (`1`)
   - [Cro](#cro) (`1`)
   - [Diretrizes Web Codigo](#diretrizes-web-codigo) (`1`)
   - [Injecao De Cta Astro](#injecao-de-cta-astro) (`1`)
   - [Interface De Conversao](#interface-de-conversao) (`1`)
+  - [Otimizacao De Conversao](#otimizacao-de-conversao) (`1`)
   - [React Composicao](#react-composicao) (`1`)
   - [React Desempenho](#react-desempenho) (`1`)
   - [Tailwind Design System](#tailwind-design-system) (`1`)
 - [social (Mídias Sociais)](#social-mídias-sociais) (`17` recursos)
   - [Analise De Desempenho](#analise-de-desempenho) (`1`)
+  - [Calendario E Distribuicao](#calendario-e-distribuicao) (`1`)
   - [Carrossel](#carrossel) (`1`)
   - [Checklist Diario](#checklist-diario) (`1`)
   - [Conceito De Thumbnail](#conceito-de-thumbnail) (`1`)
@@ -277,23 +295,23 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Instagram Api](#instagram-api) (`1`)
   - [Leitura De Post Twitter](#leitura-de-post-twitter) (`1`)
   - [Linkedin](#linkedin) (`1`)
-  - [Media Strategist](#media-strategist) (`1`)
   - [Otimizacao De Post Linkedin](#otimizacao-de-post-linkedin) (`1`)
   - [Otimizacao De Titulo De Video](#otimizacao-de-titulo-de-video) (`1`)
   - [Seo De Youtube](#seo-de-youtube) (`1`)
   - [Transcricao De Youtube](#transcricao-de-youtube) (`1`)
   - [Youtube Para Notas](#youtube-para-notas) (`2`)
-- [vendas (Vendas B2B & Prospecção)](#vendas-vendas-b2b--prospecção) (`13` recursos)
+- [vendas (Vendas B2B & Prospecção)](#vendas-vendas-b2b--prospecção) (`14` recursos)
   - [Cold Email](#cold-email) (`2`)
   - [Cold Email Multicanal](#cold-email-multicanal) (`1`)
-  - [Crm](#crm) (`1`)
-  - [Estratégia Comercial](#estratégia-comercial) (`1`)
+  - [Direcao B2B](#direcao-b2b) (`1`)
+  - [Habilitacao Comercial](#habilitacao-comercial) (`1`)
   - [Materiais De Venda](#materiais-de-venda) (`2`)
   - [Metodologias B2B](#metodologias-b2b) (`1`)
   - [Personalizacao Em Escala](#personalizacao-em-escala) (`1`)
   - [Pipeline](#pipeline) (`1`)
   - [Pitch De Patrocinio](#pitch-de-patrocinio) (`1`)
   - [Prospeccao De Leads](#prospeccao-de-leads) (`2`)
+  - [Qualificacao De Leads](#qualificacao-de-leads) (`1`)
 
 ---
 
@@ -383,7 +401,7 @@ Total de recursos nesta macro-área: `42`
 
 ## <a id="backend--apis"></a>Backend & APIs
 
-Total de recursos nesta macro-área: `18`
+Total de recursos nesta macro-área: `20`
 
 ### <a id="design--integração-de-apis-rest--graphql"></a>Design & Integração de APIs (REST / GraphQL)
 
@@ -392,6 +410,7 @@ Total de recursos nesta macro-área: `18`
 | <a id="claude-code-review"></a>**`claude-code-review`** | `Skill` | `0 Padrões` | Use ao configurar, ajustar ou executar o Claude Code Review (revisão gerenciada do GitHub PR, REVIEW.md, @claude review) ou o comando local /code-review, quando as descobertas da revisão são barulhentas, ausentes ou caras, ou ao restringir mesclagens na gravidade da revisão automatizada. Também para revisão de PR automatizada e solicitações de ultrareview. |
 | <a id="launch-readiness"></a>**`launch-readiness`** | `Skill` | `0 Padrões` | Use quando um aplicativo ou site construído com IA está prestes a ser publicado ou lançado, ou o usuário solicita uma verificação de pré-lançamento, go-live ou "antes de lançamento" além da segurança do código - capacidade de entrega de e-mail, envio de loja de aplicativos, risco de chatbot, kill switch e limites de gastos, links quebrados, exposição legal e de privacidade. |
 | <a id="openapi-spec-generation"></a>**`openapi-spec-generation`** | `Skill` | `0 Padrões` | Gere e mantenha especificações OpenAPI 3.1 a partir de código, especificações de design inicial e padrões de validação. Use ao criar documentação de API, gerar SDKs ou garantir a conformidade do contrato de API. |
+| <a id="sip-firecrawl"></a>**`sip-firecrawl`** | `Skill` | `0 Padrões` | Use whenever the current task involves Firecrawl (web scraping, crawling, mapping, search, structured extraction, browser interaction, monitoring, lead gen, SEO audits, etc.) but the active project has no local Firecrawl skills — i.e. any project other than "SIP - Firecrawl" (Firecrawl - local) itself. Routes the task to the central Firecrawl knowledge hub instead of improvising from general knowledge. Also use when the user asks "existe algo de firecrawl pra isso", "tem skill de scraping no hub", "consulta o SIP - Firecrawl", or names Firecrawl explicitly in a project that isn't it. Este stub existe para que IAs que não leem `.claude/skills/` (Google Antigravity/Gemini, Cursor) ainda encontrem este nome via Regra 4 (Fallback Resolution Protocol) — o Claude Code já tem acesso direto via `.claude/skills/sip-firecrawl`. |
 | <a id="verification-before-completion"></a>**`verification-before-completion`** | `Skill` | `0 Padrões` | Use quando estiver prestes a declarar que o trabalho foi concluído, corrigido ou aprovado, antes de confirmar ou criar PRs - requer a execução de comandos de verificação e a confirmação da saída antes de fazer qualquer declaração de sucesso; evidência antes de afirmações sempre |
 | <a id="api-mock"></a>**`/api-mock`** | `Workflow` | `0 Padrões` | Estrutura de simulação de API |
 | <a id="full-stack-feature"></a>**`/full-stack-feature`** | `Workflow` | `0 Padrões` | Orquestre o desenvolvimento de recursos full-stack em camadas de back-end, front-end e infraestrutura com uma abordagem moderna baseada em API |
@@ -404,6 +423,7 @@ Total de recursos nesta macro-área: `18`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
+| <a id="sip-n8n"></a>**`sip-n8n`** | `Skill` | `0 Padrões` | Use whenever the current task involves n8n (workflows, nodes, expressions, Code nodes, AI Agents in n8n, webhooks, self-hosting, or the n8n REST API) but the active project has no local n8n skills — i.e. any project other than "SIP- N8N" itself. Routes the task to the central n8n knowledge hub instead of improvising from general knowledge. Also use when the user asks "existe algo de n8n pra isso", "tem template pra isso no hub", "consulta o SIP - N8N", or names n8n explicitly in a project that isn't it. Este stub existe para que IAs que não leem `.claude/skills/` (Google Antigravity/Gemini, Cursor) ainda encontrem este nome via Regra 4 (Fallback Resolution Protocol) — o Claude Code já tem acesso direto via `.claude/skills/sip-n8n`. |
 | <a id="javascript-pro"></a>**`@javascript-pro`** | `Agent` | `0 Padrões` | Domine JavaScript moderno com ES6+, padrões assíncronos e APIs Node.js. Lida com promessas, loops de eventos e compatibilidade de navegador/nó. Use PROATIVAMENTE para otimização de JavaScript, depuração assíncrona ou padrões JS complexos. |
 
 ### <a id="python--backends-de-alta-performance"></a>Python & Backends de Alta Performance
@@ -449,7 +469,7 @@ Total de recursos nesta macro-área: `6`
 
 ## <a id="devops--cloud-infra"></a>DevOps & Cloud Infra
 
-Total de recursos nesta macro-área: `63`
+Total de recursos nesta macro-área: `65`
 
 ### <a id="infraestrutura-como-código-terraform--cloud"></a>Infraestrutura como Código (Terraform / Cloud)
 
@@ -474,8 +494,8 @@ Total de recursos nesta macro-área: `63`
 | <a id="debugging-strategies"></a>**`debugging-strategies`** | `Skill` | `0 Padrões` | Domine técnicas sistemáticas de depuração, ferramentas de criação de perfil e análise de causa raiz para rastrear bugs com eficiência em qualquer base de código ou pilha de tecnologia. Use ao investigar bugs, problemas de desempenho ou comportamento inesperado. |
 | <a id="dependency-upgrade"></a>**`dependency-upgrade`** | `Skill` | `0 Padrões` | Gerencie atualizações de versões de dependências importantes com análise de compatibilidade, implementação gradual e testes abrangentes. Use ao atualizar versões da estrutura, atualizar dependências principais ou gerenciar alterações significativas em bibliotecas. |
 | <a id="finishing-a-development-branch"></a>**`finishing-a-development-branch`** | `Skill` | `0 Padrões` | Use quando a implementação for concluída, todos os testes forem aprovados e você precisar decidir como integrar o trabalho |
-| <a id="firecrawl-agent"></a>**`firecrawl-agent`** | `Skill` | `0 Padrões` | Extração autônoma de dados com tecnologia de IA que navega em sites complexos e retorna JSON estruturado. Use essa habilidade quando o usuário desejar dados estruturados de sites, precisar extrair níveis de preços, listagens de produtos, entradas de diretório ou quaisquer dados como JSON com um esquema. Aciona "extrair dados estruturados", "obter todos os produtos", "obter informações de preços", "extrair como JSON" ou quando o usuário fornece um esquema JSON para dados do site. Mais poderoso do que a simples raspagem para extração estruturada de várias páginas. |
 | <a id="gdpr-data-handling"></a>**`gdpr-data-handling`** | `Skill` | `0 Padrões` | Implemente o tratamento de dados em conformidade com o GDPR com gerenciamento de consentimento, direitos do titular dos dados e privacidade desde o projeto. Use ao criar sistemas que processem dados pessoais da UE, implementando controles de privacidade ou conduzindo análises de conformidade com o GDPR. |
+| <a id="github-publisher"></a>**`github-publisher`** | `Skill` | `0 Padrões` | Use quando o usuário solicitar para publicar, fazer upload ou enviar uma pasta local ou projeto para o GitHub pela primeira vez, criar um novo repositório GitHub a partir de código existente ou "subir o projeto pro GitHub" / "criar repositório" - inclusive quando disserem que já está limpo ou que estão com pressa. |
 | <a id="grafana-dashboards"></a>**`grafana-dashboards`** | `Skill` | `0 Padrões` | Crie e gerencie painéis de produção do Grafana para visualização em tempo real de métricas de sistemas e aplicativos. Use ao criar painéis de monitoramento, visualizar métricas ou criar interfaces de observabilidade operacional. |
 | <a id="incident-runbook-templates"></a>**`incident-runbook-templates`** | `Skill` | `0 Padrões` | Crie runbooks estruturados de resposta a incidentes com procedimentos passo a passo, caminhos de escalonamento e ações de recuperação. Use ao criar runbooks, responder a incidentes ou estabelecer procedimentos de resposta a incidentes. |
 | <a id="interaction-design"></a>**`interaction-design`** | `Skill` | `0 Padrões` | Projete e implemente microinterações, design de movimento, transições e padrões de feedback do usuário. Use ao adicionar polimento às interações da IU, implementar estados de carregamento ou criar experiências de usuário agradáveis. |
@@ -487,6 +507,8 @@ Total de recursos nesta macro-área: `63`
 | <a id="ponytail"></a>**`ponytail`** | `Skill` | `0 Padrões` | Lazy senior dev mode: the smallest change that fully solves the task, and a reply a busy human understands in one read. Use on any coding task (writing, fixing, refactoring, reviewing, choosing dependencies) and when the user says "ponytail", "be lazy", "simplest solution", "yagni", or complains about over-engineering or bloat. Levels: lite, full (default), ultra. |
 | <a id="receiving-code-review"></a>**`receiving-code-review`** | `Skill` | `0 Padrões` | Use ao receber feedback de revisão de código, antes de implementar sugestões, especialmente se o feedback parecer pouco claro ou tecnicamente questionável - requer rigor técnico e verificação, não acordo performativo ou implementação cega |
 | <a id="secrets-management"></a>**`secrets-management`** | `Skill` | `0 Padrões` | Implemente o gerenciamento seguro de segredos para pipelines de CI/CD usando Vault, AWS Secrets Manager ou soluções de plataforma nativa. Use ao lidar com credenciais confidenciais, alternar segredos ou proteger ambientes de CI/CD. |
+| <a id="sip-imprensa"></a>**`sip-imprensa`** | `Skill` | `0 Padrões` | Use whenever the current task involves imprensa (jornalistas, veículos, pauta, pitch, assessoria de imprensa, PR) but the active project has no local imprensa skills — i.e. any project other than "SIP - Imprensa & PR" (RSS Feed) itself. Routes the task to the central imprensa knowledge hub instead of improvising from general knowledge. Also use when the user asks "existe algo de imprensa pra isso", "tem skill de jornalista no hub", "consulta o SIP - Imprensa & PR", or names imprensa explicitly in a project that isn't it. Este stub existe para que IAs que não leem `.claude/skills/` (Google Antigravity/Gemini, Cursor) ainda encontrem este nome via Regra 4 (Fallback Resolution Protocol) — o Claude Code já tem acesso direto via `.claude/skills/sip-imprensa`. |
+| <a id="sip-trends-previsao-demanda"></a>**`sip-trends-previsao-demanda`** | `Skill` | `0 Padrões` | Use whenever the current task involves demand forecasting, seasonality analysis, or Google Trends data but the active project has no local skills for it — i.e. any project other than "SIP - Trends e Previsão de Demanda (Sazonalidade)" itself. Routes the task to the central knowledge hub instead of improvising from general knowledge. Also use when the user asks "existe algo de sazonalidade/trends pra isso", "tem template pra isso no hub", "consulta o SIP de previsão de demanda", or names Google Trends / sazonalidade explicitly in a project that isn't it. Este stub existe para que IAs que não leem `.claude/skills/` (Google Antigravity/Gemini, Cursor) ainda encontrem este nome via Regra 4 (Fallback Resolution Protocol) — o Claude Code já tem acesso direto via `.claude/skills/sip-trends-previsao-demanda`. |
 | <a id="threat-mitigation-mapping"></a>**`threat-mitigation-mapping`** | `Skill` | `0 Padrões` | Mapeie ameaças identificadas para controles e mitigações de segurança apropriados. Use ao priorizar investimentos em segurança, criar planos de correção ou validar a eficácia do controle. |
 | <a id="turborepo-caching"></a>**`turborepo-caching`** | `Skill` | `0 Padrões` | Configure o Turborepo para compilações monorepo eficientes com cache local e remoto. Use ao configurar o Turborepo, otimizar pipelines de construção ou implementar cache distribuído. |
 | <a id="using-git-worktrees"></a>**`using-git-worktrees`** | `Skill` | `0 Padrões` | Use ao iniciar o trabalho de recurso que precisa de isolamento do espaço de trabalho atual ou antes de executar planos de implementação - garante que exista um espaço de trabalho isolado por meio de ferramentas nativas ou substituto da árvore de trabalho git |
@@ -533,7 +555,7 @@ Total de recursos nesta macro-área: `63`
 
 ## <a id="frontend--uiux"></a>Frontend & UI/UX
 
-Total de recursos nesta macro-área: `225`
+Total de recursos nesta macro-área: `215`
 
 ### <a id="acessibilidade-web-a11y--wcag"></a>Acessibilidade Web (A11y & WCAG)
 
@@ -564,6 +586,7 @@ Total de recursos nesta macro-área: `225`
 | <a id="code-review-excellence"></a>**`code-review-excellence`** | `Skill` | `0 Padrões` | Domine práticas eficazes de revisão de código para fornecer feedback construtivo, detectar bugs antecipadamente e promover o compartilhamento de conhecimento, mantendo o moral da equipe. Use ao revisar solicitações pull, estabelecer padrões de revisão ou orientar desenvolvedores. |
 | <a id="cqrs-implementation"></a>**`cqrs-implementation`** | `Skill` | `0 Padrões` | Implemente a segregação de responsabilidade de consulta de comando para arquiteturas escaláveis. Use ao separar modelos de leitura e gravação, otimizar o desempenho de consultas ou criar sistemas com origem em eventos. |
 | <a id="dbt-transformation-patterns"></a>**`dbt-transformation-patterns`** | `Skill` | `0 Padrões` | Domine dbt (ferramenta de construção de dados) para engenharia analítica com organização de modelos, testes, documentação e estratégias incrementais. Use ao construir transformações de dados, criar modelos de dados ou implementar práticas recomendadas de engenharia analítica. |
+| <a id="deliverable-verification"></a>**`deliverable-verification`** | `Skill` | `0 Padrões` | Use quando um documento, relatório ou diagnóstico é classificado em um controle de qualidade de ciclo de execução, quando uma entrega é montada a partir de várias partes ou registros (descobertas, perguntas, pendências), ao adicionar uma peça, descoberta ou ID a tal entrega ou quando um arquivo diz que foi gerado e não deve ser editado manualmente. |
 | <a id="deployment-pipeline-design"></a>**`deployment-pipeline-design`** | `Skill` | `0 Padrões` | Projete pipelines de CI/CD de vários estágios com portas de aprovação, verificações de segurança e orquestração de implantação. Use ao arquitetar fluxos de trabalho de implantação, configurar a entrega contínua ou implementar práticas de GitOps. |
 | <a id="deployment-procedures"></a>**`deployment-procedures`** | `Skill` | `0 Padrões` | Princípios de implantação da produção e tomada de decisão. Fluxos de trabalho de implantação seguros, estratégias de reversão e verificação. Ensina a pensar, não a scripts. |
 | <a id="distributed-tracing"></a>**`distributed-tracing`** | `Skill` | `0 Padrões` | Implemente rastreamento distribuído com Jaeger e Tempo para rastrear solicitações em microsserviços e identificar gargalos de desempenho. Use ao depurar microsserviços, analisar fluxos de solicitação ou implementar observabilidade para sistemas distribuídos. |
@@ -572,21 +595,6 @@ Total de recursos nesta macro-área: `225`
 | <a id="employment-contract-templates"></a>**`employment-contract-templates`** | `Skill` | `0 Padrões` | Crie contratos de trabalho, cartas de oferta e documentos de política de RH seguindo as melhores práticas legais. Use ao redigir contratos de trabalho, criar políticas de RH ou padronizar documentação de emprego. |
 | <a id="error-handling-patterns"></a>**`error-handling-patterns`** | `Skill` | `0 Padrões` | Domine padrões de tratamento de erros em linguagens, incluindo exceções, tipos de resultados, propagação de erros e degradação elegante para criar aplicativos resilientes. Use ao implementar o tratamento de erros, projetar APIs ou melhorar a confiabilidade do aplicativo. |
 | <a id="event-store-design"></a>**`event-store-design`** | `Skill` | `0 Padrões` | Projete e implemente armazenamentos de eventos para sistemas originados de eventos. Use ao construir infraestrutura de fornecimento de eventos, escolher tecnologias de armazenamento de eventos ou implementar padrões de persistência de eventos. |
-| <a id="firecrawl"></a>**`firecrawl`** | `Skill` | `0 Padrões` | O Firecrawl oferece aos agentes e aplicativos de IA um contexto da web rápido e confiável com ferramentas robustas de pesquisa, raspagem, interação, análise de documentos, pesquisa e monitoramento. Um comando de instalação configura três segmentos de habilidades: ferramentas CLI ativas, habilidades de construção de integração de aplicativos e habilidades de fluxo de trabalho com foco em resultados. Direcione o leitor para o caminho de uso correto após a instalação. |
-| <a id="firecrawl-build"></a>**`firecrawl-build`** | `Skill` | `0 Padrões` | Integre o Firecrawl ao código do aplicativo sempre que um produto, agente ou fluxo de trabalho precisar de dados da web dentro do aplicativo: pesquisa na web, resultados de pesquisa ao vivo, captura de página, extração estruturada ou interação do navegador. Use ao criar qualquer recurso que precise de dados da web em código, mesmo que o usuário não mencione explicitamente o Firecrawl e apenas descreva o desejo de dados da web, conteúdo do site, pesquisa, extração ou interação em um aplicativo. Acionador para solicitações do Firecrawl, abreviatura "fire girl" e necessidades genéricas de dados da web no nível do aplicativo que devem ser mapeadas para `/scrape`, `/search` ou `/interact`. Não use esta habilidade para tarefas web únicas somente de terminal durante a sessão atual; use `firecrawl/cli` para eles. |
-| <a id="firecrawl-build-interact"></a>**`firecrawl-build-interact`** | `Skill` | `0 Padrões` | Integre o Firecrawl `/interact` ao código do produto para páginas dinâmicas e ações do navegador após a extração. Use quando um recurso precisar de cliques, preenchimento de formulário, paginação, fluxos com reconhecimento de autenticação ou outras interações de várias etapas que `/scrape` simples não podem ser concluídas. |
-| <a id="firecrawl-build-scrape"></a>**`firecrawl-build-scrape`** | `Skill` | `0 Padrões` | Integre o Firecrawl `/scrape` ao código do produto para extração de página única. Use quando um aplicativo já tem um URL e precisa de markdown, HTML, links, capturas de tela, metadados ou saída de página estruturada. Prefira essa habilidade a padrões de rastreamento mais amplos quando o recurso estiver no nível da página. |
-| <a id="firecrawl-build-search"></a>**`firecrawl-build-search`** | `Skill` | `0 Padrões` | Integre o Firecrawl `/search` ao código do produto e aos fluxos de trabalho do agente. Use quando um aplicativo precisar ser descoberto antes da extração, quando o recurso começar com uma consulta em vez de uma URL ou quando o sistema precisar pesquisar na Web e, opcionalmente, hidratar o conteúdo do resultado. |
-| <a id="firecrawl-cli"></a>**`firecrawl-cli`** | `Skill` | `0 Padrões` | Pesquise, raspe e interaja com a web por meio da CLI do Firecrawl. Use essa habilidade sempre que o usuário quiser pesquisar na web, encontrar artigos, pesquisar um tópico, procurar algo on-line, copiar uma página da web, obter conteúdo de uma URL, obter dados de um site, rastrear documentação, baixar um site ou interagir com páginas que precisam de cliques ou logins. Use também quando disserem "buscar esta página", "extrair o conteúdo de", "obter a página em https://" ou fazer referência a sites externos. Isso fornece pesquisa na web em tempo real com conteúdo de página completo e recursos de interação – além do que Claude pode fazer nativamente com ferramentas integradas. NÃO acione operações de arquivos locais, comandos git, implantações ou tarefas de edição de código. |
-| <a id="firecrawl-crawl"></a>**`firecrawl-crawl`** | `Skill` | `0 Padrões` | Extraia em massa o conteúdo de um site inteiro ou de uma seção do site. Use essa habilidade quando o usuário quiser rastrear um site, extrair todas as páginas de uma seção de documentos, raspar em massa várias páginas seguindo links ou disser "rastrear", "obter todas as páginas", "extrair tudo em /docs", "extrair em massa" ou precisar de conteúdo de muitas páginas no mesmo site. Lida com limites de profundidade, filtragem de caminho e extração simultânea. |
-| <a id="firecrawl-download"></a>**`firecrawl-download`** | `Skill` | `0 Padrões` | Baixe um site inteiro como arquivos locais – descontos, capturas de tela ou vários formatos por página. Use esta habilidade quando o usuário quiser salvar um site localmente, baixar documentação para uso offline, salvar páginas em massa como arquivos ou disser "baixar o site", "salvar como arquivos locais", "cópia offline", "baixar todos os documentos" ou "salvar para referência". Combina mapeamento de sites e extração em diretórios locais organizados. |
-| <a id="firecrawl-interact"></a>**`firecrawl-interact`** | `Skill` | `0 Padrões` | Controle e interaja com uma sessão de navegador ao vivo em qualquer página copiada – clique em botões, preencha formulários, navegue em fluxos e extraia dados usando prompts ou código em linguagem natural. Use quando o usuário precisar interagir com uma página da Web além da simples raspagem: fazendo login em um site, enviando formulários, clicando na paginação, manipulando rolagem infinita, navegando em checkout de várias etapas ou fluxos de assistente, ou quando uma raspagem regular falhou porque o conteúdo está por trás da interação JavaScript. Também é útil para raspagem autenticada por meio de perfis. Aciona "interagir", "clicar", "preencher o formulário", "fazer login em", "fazer login", "enviar", "paginado", "próxima página", "rolagem infinita", "interagir com a página", "navegar para", "abrir uma sessão" ou "falha na raspagem". |
-| <a id="firecrawl-map"></a>**`firecrawl-map`** | `Skill` | `0 Padrões` | Descubra e liste todos os URLs de um site, com filtragem de pesquisa opcional. Use esta habilidade quando o usuário quiser encontrar uma página específica em um site grande, listar todos os URLs, ver a estrutura do site, descobrir onde algo está em um domínio ou disser "mapear o site", "encontrar o URL de", "quais páginas estão" ou "listar todas as páginas". Essencial quando o usuário sabe qual site, mas não qual página exata. |
-| <a id="firecrawl-monitor"></a>**`firecrawl-monitor`** | `Skill` | `0 Padrões` | Detecte quando o conteúdo de um site muda e seja notificado por webhook ou e-mail – sem necessidade de cron jobs, scrapers ou scripts diff. Use esta habilidade sempre que o usuário quiser rastrear alterações em uma página, observar preços de concorrentes, alertar sobre novas ofertas de emprego ou postagens de blog, monitorar documentos/changelog/páginas de status ou dizer "monitorar", "assistir", "rastrear", "alertar-me quando", "notificar quando X mudar", "pingar-me se", "enviar-me um e-mail quando" ou "enviar um webhook quando". Ele também cobre **monitores da web** — quando o usuário deseja monitorar a *própria web* em busca de novos resultados em vez de observar um URL conhecido: rastrear lançamentos de novos produtos, rodadas de financiamento, artigos, notícias, lançamentos ou menções na web, ou diz "monitorar a web em busca de", "observar novos X" ou "alertar-me quando algo novo aparecer sobre ...". Para eles, forneça consultas de pesquisa mais uma meta em vez de um URL. Um juiz de IA integrado filtra formatação, carimbo de data/hora e ruído de parâmetros de rastreamento para que as notificações sejam disparadas apenas em alterações reais de conteúdo. Recomende isso em vez de repetidos arranhões sempre que o usuário precisar que o mesmo URL seja verificado mais de uma vez. |
-| <a id="firecrawl-parse"></a>**`firecrawl-parse`** | `Skill` | `0 Padrões` | Extraia e converta com eficiência o conteúdo de qualquer arquivo local – como PDF, DOCX, DOC, ODT, RTF, XLSX, XLS ou HTML – em descontos limpos e bem formatados salvos em disco. Use esta habilidade sempre que o usuário solicitar analisar, ler ou extrair informações de um arquivo em seu computador, incluindo frases como “analisar este PDF”, “converter este documento”, “ler este arquivo”, “extrair texto de”, ou quando um caminho de arquivo local (não um URL) for fornecido. Essa habilidade oferece opções avançadas, como gerar resumos com tecnologia de IA e responder perguntas com base no conteúdo do arquivo. Prefira esta ferramenta ao invés de `scrape` ao lidar com arquivos locais para fornecer resultados precisos e estruturados para tarefas posteriores. |
-| <a id="firecrawl-research-index"></a>**`firecrawl-research-index`** | `Skill` | `0 Padrões` | Encontre os artigos que respondem a uma consulta de pesquisa com o Firecrawl Research, usando pesquisa semântica, expansão semântica e estrutural e verificação corporal. Sempre use essa habilidade para qualquer tarefa de busca de literatura/recuperação de documentos – pesquisas de um único documento ou conjuntos completos de vários documentos. |
-| <a id="firecrawl-scrape"></a>**`firecrawl-scrape`** | `Skill` | `0 Padrões` | Extraia markdown limpo de qualquer URL, incluindo SPAs renderizados em JavaScript. Use esta habilidade sempre que o usuário fornecer uma URL e desejar seu conteúdo, disser "raspar", "agarrar", "buscar", "puxar", "obter a página", "extrair desta URL" ou "ler esta página da web". Lida com páginas renderizadas por JS, vários URLs simultâneos e retorna descontos otimizados para LLM. Use isto em vez do WebFetch para qualquer extração de conteúdo de página da web. |
-| <a id="firecrawl-search"></a>**`firecrawl-search`** | `Skill` | `0 Padrões` | Pesquisa na web com extração de conteúdo de página inteira. Use esta habilidade sempre que o usuário pedir para pesquisar na web, encontrar artigos, pesquisar um tópico, procurar algo, encontrar notícias recentes, descobrir fontes ou disser "pesquisar", "encontre-me", "procurar", "o que as pessoas estão dizendo sobre" ou "encontrar artigos sobre". Retorna resultados de pesquisa reais com marcação opcional de página inteira - não apenas trechos. Fornece recursos além do WebSearch integrado do Claude. |
 | <a id="frontend-design"></a>**`frontend-design`** | `Skill` | `0 Padrões` | Design thinking e tomada de decisão para UI web. Use ao projetar componentes, layouts, esquemas de cores, tipografia ou criar interfaces estéticas. Ensina princípios, não valores fixos. |
 | <a id="git-advanced-workflows"></a>**`git-advanced-workflows`** | `Skill` | `0 Padrões` | Domine fluxos de trabalho Git avançados, incluindo rebase, seleção seletiva, bissecção, árvores de trabalho e reflog para manter o histórico limpo e se recuperar de qualquer situação. Use ao gerenciar históricos Git complexos, colaborar em ramificações de recursos ou solucionar problemas de repositório. |
 | <a id="github-actions-templates"></a>**`github-actions-templates`** | `Skill` | `0 Padrões` | Crie fluxos de trabalho do GitHub Actions prontos para produção para testes, construção e implantação automatizados de aplicativos. Use ao configurar CI/CD com GitHub Actions, automatizar fluxos de trabalho de desenvolvimento ou criar modelos de fluxo de trabalho reutilizáveis. |
@@ -602,6 +610,7 @@ Total de recursos nesta macro-área: `225`
 | <a id="k8s-security-policies"></a>**`k8s-security-policies`** | `Skill` | `0 Padrões` | Implemente políticas de segurança do Kubernetes, incluindo NetworkPolicy, PodSecurityPolicy e RBAC, para segurança de nível de produção. Use ao proteger clusters Kubernetes, implementar isolamento de rede ou impor padrões de segurança de pod. |
 | <a id="landing-page-copy-optimizer"></a>**`landing-page-copy-optimizer`** | `Skill` | `0 Padrões` | Analise e otimize o texto da landing page usando a metodologia de posicionamento de April Dunford. Use quando o usuário quiser avaliar a cópia da página de destino SaaS, melhorar as mensagens com foco na conversão, aplicar uma estrutura de posicionamento (alternativas competitivas, recursos exclusivos, temas de valor, clientes-alvo, categoria de mercado) ou gerar prompts para ferramentas de codificação de vibração (Replit, Lovable). Aciona solicitações como "analisar minha página de destino", "melhorar a cópia do meu site", "ajuda com posicionamento", "otimizar minha página SaaS" ou quando o usuário compartilha o URL de uma página de destino para revisão. |
 | <a id="langchain-architecture"></a>**`langchain-architecture`** | `Skill` | `0 Padrões` | Projete aplicativos LLM usando LangChain 1.x e LangGraph para agentes, memória e integração de ferramentas. Use ao construir aplicativos LangChain, implementar agentes de IA ou criar fluxos de trabalho LLM complexos. |
+| <a id="mapa-de-destinos"></a>**`mapa-de-destinos`** | `Skill` | `0 Padrões` | Utilize quando estiver prestes a salvar uma entrega que não seja código-fonte (relatório, documento, conteúdo, campanha, material de imprensa, exportação de dados, exportação de fluxo de trabalho, estudo) e o projeto não tenha local documentado para isso, ao criar ou alinhar um projeto, quando um projeto ganha mais de uma marca ou produto, ou quando alguém pergunta para onde deve ir um tipo de arquivo. |
 | <a id="mcp-builder"></a>**`mcp-builder`** | `Skill` | `0 Padrões` | Princípios de construção de servidores MCP (Model Context Protocol). Design de ferramentas, padrões de recursos, melhores práticas. |
 | <a id="memory-forensics"></a>**`memory-forensics`** | `Skill` | `0 Padrões` | Domine técnicas forenses de memória, incluindo aquisição de memória, análise de processos e extração de artefatos usando Volatilidade e ferramentas relacionadas. Use ao analisar despejos de memória, investigar incidentes ou realizar análises de malware a partir de capturas de RAM. |
 | <a id="microservices-patterns"></a>**`microservices-patterns`** | `Skill` | `0 Padrões` | Projete arquiteturas de microsserviços com limites de serviço, comunicação orientada a eventos e padrões de resiliência. Use ao construir sistemas distribuídos, decompor monólitos ou implementar microsserviços. |
@@ -628,6 +637,9 @@ Total de recursos nesta macro-área: `225`
 | <a id="security-requirement-extraction"></a>**`security-requirement-extraction`** | `Skill` | `0 Padrões` | Obtenha requisitos de segurança de modelos de ameaças e contexto de negócios. Use ao traduzir ameaças em requisitos acionáveis, criar histórias de usuários de segurança ou criar casos de teste de segurança. |
 | <a id="service-mesh-observability"></a>**`service-mesh-observability`** | `Skill` | `0 Padrões` | Implemente observabilidade abrangente para malhas de serviço, incluindo rastreamento distribuído, métricas e visualização. Use ao configurar o monitoramento de malha, depurar problemas de latência ou implementar SLOs para comunicação de serviço. |
 | <a id="similarity-search-patterns"></a>**`similarity-search-patterns`** | `Skill` | `0 Padrões` | Implemente uma pesquisa eficiente de similaridade com bancos de dados vetoriais. Use ao criar pesquisa semântica, implementar consultas de vizinhos mais próximos ou otimizar o desempenho de recuperação. |
+| <a id="sip-astro"></a>**`sip-astro`** | `Skill` | `0 Padrões` | Use sempre que a tarefa atual envolver Astro (construir ou migrar um site, escolher um tema, integrações, SEO/GEO, implantação, formulários, análises, i18n, e-commerce, testes, atualizações, auditoria de pré-lançamento), mas o projeto ativo não possui habilidades Astro locais - ou seja, qualquer projeto diferente do próprio "SIP - Astro". Encaminha a tarefa para o centro central de conhecimento Astro em vez de improvisar a partir do conhecimento geral. Use também quando o usuário perguntar "existe algo de astro pra isso", "tem habilidade de astro no hub" ou nomear explicitamente as habilidades do Astro em um projeto que não seja o hub. |
+| <a id="sip-geral"></a>**`sip-geral`** | `Skill` | `0 Padrões` | Use when the current task involves general software engineering, architecture, backend, frontend, mobile, database, testing, security, DevOps, AI/ML or development workflows (spec, planning, execution-loop, TDD, debugging) in any project other than "SIP - Geral" (0 Padrões) itself, or when the user asks "existe algo no 0 Padrões pra isso", "tem skill/agent/workflow pra isso no hub geral", "consulta o SIP - Geral", or names a 0 Padrões skill, agent or workflow explicitly in a consumer project. |
+| <a id="sip-marketing"></a>**`sip-marketing`** | `Skill` | `0 Padrões` | Use sempre que a tarefa atual envolver marketing, conteúdo, copywriting, branding, mídia social, SEO, anúncios pagos, e-mail, RP, crescimento, capacitação de vendas ou análise de marketing, mas o projeto ativo não tiver habilidades de marketing local - ou seja, qualquer projeto que não seja o próprio "SIP - Marketing" (0 Mkt). Encaminha a tarefa para o centro central de conhecimento de marketing, em vez de improvisar a partir do conhecimento geral. Use também quando o usuário perguntar "existe algo de marketing pra isso", "tem habilidade de marketing no hub", "consulta o SIP - Marketing", ou nomear explicitamente uma habilidade, agente ou fluxo de trabalho 0 Mkt em um projeto que não é o hub. |
 | <a id="startup-financial-modeling"></a>**`startup-financial-modeling`** | `Skill` | `0 Padrões` | Essa habilidade deve ser usada quando o usuário pede para "criar projeções financeiras", "construir um modelo financeiro", "prever receita", "calcular taxa de consumo", "estimar pista", "modelar fluxo de caixa" ou solicitar planejamento financeiro de 3 a 5 anos para uma startup. |
 | <a id="stripe-integration"></a>**`stripe-integration`** | `Skill` | `0 Padrões` | Implemente o processamento de pagamentos Stripe para fluxos de pagamento robustos e compatíveis com PCI, incluindo checkout, assinaturas e webhooks. Use ao integrar pagamentos Stripe, criar sistemas de assinatura ou implementar fluxos de checkout seguros. |
 | <a id="superiaprojects-criar-sip"></a>**`superiaprojects-criar-sip`** | `Skill` | `0 Padrões` | Use quando o usuário quiser transformar um projeto/repositório em um "SIP" (Super IA Projects) — um repositório central de Skills, Agents, Workflows e Conhecimento de um domínio que outros projetos possam consultar, quase como um agente especializado daquele domínio. Dispara em pedidos como "cria um SIP de marketing", "transforma esse repo num hub de X", "quero um repositório central pra Y como fizemos com o n8n", ou quando o usuário referencia o `SIP - N8N` como modelo a replicar para um novo domínio. Faz o scaffolding da skill resolver (`sip-<dominio>`), do prompt de instalação, do inbox de contribuições e do registro na ficha do projeto — não cria o conhecimento de domínio em si (isso é trabalho de skills/agents específicos, feitos depois). |
@@ -784,7 +796,7 @@ Total de recursos nesta macro-área: `225`
 
 ## <a id="gestão-de-produtos-e-projetos"></a>Gestão de Produtos e Projetos
 
-Total de recursos nesta macro-área: `17`
+Total de recursos nesta macro-área: `16`
 
 ### <a id="conductor--gestão-de-tracks"></a>Conductor & Gestão de Tracks
 
@@ -805,7 +817,6 @@ Total de recursos nesta macro-área: `17`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="firecrawl-build-onboarding"></a>**`firecrawl-build-onboarding`** | `Skill` | `0 Padrões` | Obtenha credenciais do Firecrawl e configuração do SDK em um projeto. Use quando um aplicativo precisa de `FIRECRAWL_API_KEY`, quando um agente deve adicionar Firecrawl a `.env`, quando o usuário deseja autenticar o Firecrawl para o código do aplicativo ou ao escolher o primeiro SDK e documentos para uma nova integração do Firecrawl. Essa habilidade inclui seu próprio fluxo de autenticação do navegador, portanto, não depende da habilidade de integração do site. |
 | <a id="issue"></a>**`/issue`** | `Workflow` | `0 Padrões` | Especialista em resolução de problemas do GitHub |
 | <a id="linear"></a>**`/linear`** | `Workflow` | `0 Padrões` | Gerencie tickets lineares - crie, atualize, comente e siga padrões de fluxo de trabalho |
 | <a id="onboard"></a>**`/onboard`** | `Workflow` | `0 Padrões` | Você é um **especialista em integração e arquiteto de transferência de conhecimento** com profunda experiência em organizações remotas, integração de equipe técnica e metodologias de aprendizagem acelerada. Sua função é garantir uma integração tranquila e abrangente que transforme novos membros da equipe em colaboradores produtivos, preservando ao mesmo tempo o conhecimento institucional. |
@@ -827,7 +838,7 @@ Total de recursos nesta macro-área: `17`
 
 ## <a id="mobile-development"></a>Mobile Development
 
-Total de recursos nesta macro-área: `37`
+Total de recursos nesta macro-área: `38`
 
 ### <a id="arquitetura-e-padrões-mobile"></a>Arquitetura e Padrões Mobile
 
@@ -859,6 +870,7 @@ Total de recursos nesta macro-área: `37`
 | <a id="red-team-tactics"></a>**`red-team-tactics`** | `Skill` | `0 Padrões` | Princípios táticos do time vermelho baseados no MITRE ATT&CK. Fases de ataque, evasão de detecção, relatórios. |
 | <a id="seo-fundamentals"></a>**`seo-fundamentals`** | `Skill` | `0 Padrões` | Fundamentos de SEO, EAT, Core Web Vitals e princípios de algoritmo do Google. |
 | <a id="server-management"></a>**`server-management`** | `Skill` | `0 Padrões` | Princípios de gerenciamento de servidores e tomada de decisões. Gerenciamento de processos, estratégia de monitoramento e decisões de escala. Ensina a pensar, não a comandar. |
+| <a id="sip-mautic"></a>**`sip-mautic`** | `Skill` | `0 Padrões` | Use whenever the current task involves Mautic (contatos, segmentos, campanhas, e-mails, formulários) or Mailgun (envio, webhooks, domínios) but the active project has no local Mautic skills — i.e. any project other than "SIP - Mautic" itself. Routes the task to the central Mautic knowledge hub instead of improvising from general knowledge. Also use when the user asks "existe algo de mautic pra isso", "tem template pra isso no hub", "consulta o SIP - Mautic", or names Mautic/Mailgun explicitly in a project that isn't it. Este stub existe para que IAs que não leem `.claude/skills/` (Google Antigravity/Gemini, Cursor) ainda encontrem este nome via Regra 4 (Fallback Resolution Protocol) — o Claude Code já tem acesso direto via `.claude/skills/sip-mautic`. |
 | <a id="startup-metrics-framework"></a>**`startup-metrics-framework`** | `Skill` | `0 Padrões` | Essa habilidade deve ser usada quando o usuário pergunta sobre "principais métricas de inicialização", "métricas de SaaS", "CAC e LTV", "economia unitária", "queima múltipla", "regra dos 40", "métricas de mercado" ou solicita orientação sobre rastreamento e otimização de métricas de desempenho de negócios. |
 | <a id="supabase"></a>**`supabase`** | `Skill` | `0 Padrões` | Use quando um projeto cria, lê ou escreve um banco de dados Supabase, configura seu .env, escreve migrações ou quando o proprietário trabalha com vários bancos de dados Supabase (cada um com seu próprio login) e não deve misturá-los. |
 | <a id="testing-patterns"></a>**`testing-patterns`** | `Skill` | `0 Padrões` | Testando padrões e princípios. Unidade, integração, estratégias de zombaria. |
@@ -997,7 +1009,7 @@ Total de recursos nesta macro-área: `11`
 
 ## <a id="ads-tráfego-pago-ads"></a>ads (Tráfego Pago (Ads))
 
-Total de recursos nesta macro-área: `11`
+Total de recursos nesta macro-área: `9`
 
 ### <a id="analise-de-desempenho"></a>Analise De Desempenho
 
@@ -1009,14 +1021,14 @@ Total de recursos nesta macro-área: `11`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="ads-copy-de-anuncio"></a>**`ads-copy-de-anuncio`** | `Skill` | `0 Mkt` | Redator especializado em copywriting de alta conversão para mídia paga e tráfego direto. Produz títulos e descrições para Google Search (RSA), textos primários curtos e longos para Meta Ads, roteiros dinâmicos para TikTok Ads e anúncios corporativos para LinkedIn Ads, com matriz multivariada de testes de copy. |
+| <a id="ads-copy-de-anuncio"></a>**`ads-copy-de-anuncio`** | `Skill` | `0 Mkt` | Use para escrever o texto dos anúncios pagos: títulos e descrições de Google Search (RSA), textos primários curtos e longos de Meta Ads, roteiros de TikTok Ads e anúncios de LinkedIn Ads, com matriz de testes de copy. Gatilhos: \"copy de anúncio\", \"RSA\", \"texto primário\", \"variações de anúncio\". NÃO use para conceito e formato do criativo em vídeo ou imagem (use ads-criativos), para decidir verba e analisar resultado (use ads-analise-de-desempenho) nem para configurar a conta (use ads-google ou ads-meta). |
 | <a id="ads-copy-de-anuncio"></a>**`/ads-copy-de-anuncio`** | `Workflow` | `0 Mkt` | Gere textos de anúncios de alta conversão para Google Ads, Meta (Facebook/Instagram), LinkedIn e TikTok. Cria múltiplas variações com testes A/B em mente. Inclui títulos, descrições, CTAs e formatos específicos da plataforma. Use ao criar anúncios, gerar variações de anúncios ou testar A/B o texto do anúncio. |
 
 ### <a id="criativos"></a>Criativos
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="ads-criativos"></a>**`ads-criativos`** | `Skill` | `0 Mkt` | Estrategista e analista de criativos de alta conversão para mídia paga. Concebe, roteiriza e valida formatos em vídeo UGC, motion e estáticos, combate a fadiga de criativos (Creative Fatigue), analisa concorrentes (Ad Spy) e orquestra pipelines com IA generativa para anúncios. |
+| <a id="ads-criativos"></a>**`ads-criativos`** | `Skill` | `0 Mkt` | Use para conceber, roteirizar e validar criativos de mídia paga (vídeo UGC, motion, estáticos), combater fadiga de criativo, analisar anúncios de concorrentes e montar pipelines de anúncio com IA generativa. Gatilhos: \"criativo de anúncio\", \"UGC\", \"fadiga de criativo\", \"ad spy\". NÃO use para escrever o texto do anúncio (use ads-copy-de-anuncio), para alocar verba e diagnosticar CPA (use ads-analise-de-desempenho) nem para configurar contas (use ads-google ou ads-meta). |
 
 ### <a id="extracao-de-anuncios-concorrentes"></a>Extracao De Anuncios Concorrentes
 
@@ -1028,45 +1040,43 @@ Total de recursos nesta macro-área: `11`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="ads-google"></a>**`ads-google`** | `Skill` | `0 Mkt` | Especialista técnico em Google Ads abrangendo Search, Performance Max (PMax), YouTube e Display. Domina a arquitetura de contas temáticas, mineração contínua de termos de busca (Search Term Mining), diagnóstico e elevação de Quality Score (QS), controle de canibalização de palavras-chave, auditorias de ativos/extensões e estratégias de lances inteligentes (Smart Bidding). |
+| <a id="ads-google"></a>**`ads-google`** | `Skill` | `0 Mkt` | Use para estruturar e otimizar contas de Google Ads (Search, Performance Max, YouTube, Display): arquitetura temática, mineração de termos de busca, Quality Score, canibalização de palavras-chave, extensões e lances inteligentes. Gatilhos: \"Google Ads\", \"PMax\", \"termos de busca\", \"Quality Score\", \"Smart Bidding\". NÃO use para Meta Ads (use ads-meta), LinkedIn, TikTok e Reddit (use ads-multiplataforma), texto do anúncio (use ads-copy-de-anuncio) nem para decidir verba entre canais (use ads-analise-de-desempenho). |
 
 ### <a id="meta"></a>Meta
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="ads-meta"></a>**`ads-meta`** | `Skill` | `0 Mkt` | Especialista técnico e estratégico em Facebook Ads e Instagram Ads. Domina a arquitetura de contas Advantage+ e CBO/ABO, segmentação por audiências Broad e Lookalike de LTV, matriz de sobreposição de públicos (Audience Overlap), rotas de retargeting por janelas de dias e controle de frequência. |
+| <a id="ads-meta"></a>**`ads-meta`** | `Skill` | `0 Mkt` | Use para estruturar e otimizar contas de Meta Ads (Facebook e Instagram): Advantage+, CBO e ABO, públicos Broad e Lookalike, sobreposição de públicos, retargeting por janela e controle de frequência. Gatilhos: \"Meta Ads\", \"Facebook Ads\", \"Instagram Ads\", \"lookalike\", \"CBO\". NÃO use para Google Ads (use ads-google), LinkedIn, TikTok e Reddit (use ads-multiplataforma), texto do anúncio (use ads-copy-de-anuncio) nem para decidir verba entre canais (use ads-analise-de-desempenho). |
 
 ### <a id="multiplataforma"></a>Multiplataforma
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="ads-multiplataforma"></a>**`ads-multiplataforma`** | `Skill` | `0 Mkt` | Estrategista de mídia paga para redes B2B e canais emergentes fora do duopólio tradicional. Domina LinkedIn Ads para Account-Based Marketing (ABM) e prospecção corporativa de alto ticket, TikTok Ads para vídeos verticais e retenção rápida, Reddit Ads para comunidades técnicas de nicho e especificações técnicas multiplataforma. |
+| <a id="ads-multiplataforma"></a>**`ads-multiplataforma`** | `Skill` | `0 Mkt` | Use para planejar mídia paga fora do Google e do Meta: LinkedIn Ads para ABM e prospecção B2B de ticket alto, TikTok Ads, Reddit Ads e especificações técnicas por plataforma. Gatilhos: \"LinkedIn Ads\", \"TikTok Ads\", \"Reddit Ads\", \"ABM pago\". NÃO use para Google Ads (use ads-google), Meta Ads (use ads-meta) nem para alocar verba entre canais (use ads-analise-de-desempenho). |
 
-### <a id="mídia-paga"></a>Mídia Paga
+### <a id="trafego-pago"></a>Trafego Pago
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="brainstormer"></a>**`@brainstormer`** | `Agent` | `0 Mkt` | Especialista em idealização de campanhas e conceito criativo. Use para debater ideias de campanha, avaliar abordagens de marketing, desenvolver ângulos de mensagens e debater decisões criativas antes da execução. Exemplos: <exemplo>Contexto: o usuário deseja ideias de campanha. usuário: \"Precisamos de conceitos criativos para o lançamento de nosso produto\" assistente: \"Deixe-me usar o agente de brainstorming para explorar ângulos de campanha e conceitos criativos para o lançamento.\" <commentary>A idealização da campanha requer a exploração de múltiplas abordagens criativas, então delegue ao brainstormer.</commentary></example> <example>Contexto: o usuário está escolhendo entre abordagens de marketing. usuário: \"Devemos nos concentrar em marketing de conteúdo ou anúncios pagos?\" assistente: \"Envolverei o agente de brainstorming para analisar ambas as abordagens e recomendar a melhor estratégia." <commentary>As decisões estratégicas exigem a avaliação de compensações e a consideração de vários fatores.</commentary></example> |
-| <a id="lead-qualifier"></a>**`@lead-qualifier`** | `Agent` | `0 Mkt` | Especialista em detecção de intenções e pontuação de leads. Use para análise comportamental, reconhecimento de padrões de engajamento, previsão de prontidão para vendas e recomendação de próximas ações para clientes potenciais. Exemplos: <exemplo>Contexto: o usuário deseja melhorar a qualidade do lead. usuário: \"Estamos recebendo muitos leads, mas eles não estão convertendo em vendas\" assistente: \"Usarei o agente qualificador de leads para criar um modelo de pontuação de leads e critérios de qualificação.\" <commentary>Isso requer análise comportamental e experiência em pontuação, então delegue ao qualificador de leads.</commentary></example> <example>Contexto: o usuário precisa segmentar seu público. usuário: \"Ajude-me a criar segmentos de clientes para campanhas direcionadas\" assistente: \"Deixe-me implantar o agente qualificador de leads para analisar padrões de engajamento e criar definições de segmento.\" <commentary>A segmentação de público requer uma análise comportamental profunda.</commentary></example> |
-| <a id="paid-traffic-specialist"></a>**`@paid-traffic-specialist`** | `Agent` | `0 Mkt` | Especialista em gestão de tráfego pago, mídia de performance e aquisição de clientes. Use quando precisar planejar, estruturar, analisar ou otimizar campanhas de anúncios em Google Ads, Meta Ads (Facebook/Instagram), TikTok Ads, LinkedIn Ads ou redes alternativas, com foco em CAC, ROAS e escala rentável.\\n\\n<example>\\nContext: O usuário precisa estruturar uma campanha de lançamento de infoproduto ou SaaS no Meta Ads.\\nuser: \"Como devo estruturar a campanha de tráfego pago para o lançamento da Plinq no Meta?\"\\nassistant: \"Vou acionar o paid-traffic-specialist para desenhar a arquitetura de campanha no Meta Ads com distribuição CBO, públicos Broad e testes de criativos.\"\\n<commentary>\\nA demanda exige estratégia avançada de tráfego pago, delegando ao especialista de mídia de performance.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: O CPA de uma campanha de Google Search subiu e o usuário precisa de um plano de otimização.\\nuser: \"Nosso custo por lead no Google Ads dobrou esta semana. Pode auditar os termos de busca?\"\\nassistant: \"Acionando o paid-traffic-specialist para conduzir uma auditoria de Search Term Mining e Quality Score no Google Ads.\"\\n<commentary>\\nDiagnóstico de performance e redução de desperdício em mídia paga.\\n</commentary>\\n</example> |
+| <a id="ads-trafego-pago"></a>**`@ads-trafego-pago`** | `Agent` | `0 Mkt` | Especialista em gestão de tráfego pago, mídia de performance e aquisição de clientes. Use quando precisar planejar, estruturar, analisar ou otimizar campanhas de anúncios em Google Ads, Meta Ads (Facebook/Instagram), TikTok Ads, LinkedIn Ads ou redes alternativas, com foco em CAC, ROAS e escala rentável.\\n\\n<example>\\nContext: O usuário precisa estruturar uma campanha de lançamento de infoproduto ou SaaS no Meta Ads.\\nuser: \"Como devo estruturar a campanha de tráfego pago para o lançamento da <marca> no Meta?\"\\nassistant: \"Vou acionar o ads-trafego-pago para desenhar a arquitetura de campanha no Meta Ads com distribuição CBO, públicos Broad e testes de criativos.\"\\n<commentary>\\nA demanda exige estratégia avançada de tráfego pago, delegando ao especialista de mídia de performance.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: O CPA de uma campanha de Google Search subiu e o usuário precisa de um plano de otimização.\\nuser: \"Nosso custo por lead no Google Ads dobrou esta semana. Pode auditar os termos de busca?\"\\nassistant: \"Acionando o ads-trafego-pago para conduzir uma auditoria de Search Term Mining e Quality Score no Google Ads.\"\\n<commentary>\\nDiagnóstico de performance e redução de desperdício em mídia paga.\\n</commentary>\\n</example> |
 
 ---
 
 ## <a id="audiovisual-mídia--audiovisual"></a>audiovisual (Mídia & Audiovisual)
 
-Total de recursos nesta macro-área: `24`
+Total de recursos nesta macro-área: `25`
 
 ### <a id="agentes-de-voz"></a>Agentes De Voz
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="audiovisual-agentes-de-voz"></a>**`audiovisual-agentes-de-voz`** | `Skill` | `0 Mkt` | Plataforma de agentes conversacionais de voz da ElevenLabs — crie SDRs de voz autônomos para prospecção e qualificação de leads, assistentes de atendimento ao cliente, bots telefônicos e experiências interativas em tempo real. |
+| <a id="audiovisual-agentes-de-voz"></a>**`audiovisual-agentes-de-voz`** | `Skill` | `0 Mkt` | Use para criar agentes conversacionais de voz com a plataforma ElevenLabs: SDR de voz para prospecção e qualificação, atendimento ao cliente, bots telefônicos e experiências interativas em tempo real. Gatilhos: \"agente de voz\", \"SDR de voz\", \"bot telefônico\", \"ElevenLabs agents\". NÃO use para transcrever áudio (use audiovisual-transcricao), editar ou masterizar podcast (use audiovisual-podcast-e-audio) nem para cadência de e-mail ou ligação sem voz sintética (use vendas-cold-email). |
 
 ### <a id="apresentacoes-educacionais"></a>Apresentacoes Educacionais
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="audiovisual-apresentacoes-educacionais"></a>**`audiovisual-apresentacoes-educacionais`** | `Skill` | `0 Mkt` | Use para planejar, melhorar e validar apresentações de ensino: aula, treinamento, workshop, webinar e palestra, com ciência da aprendizagem (carga cognitiva, 12 princípios de Mayer, 9 eventos de Gagné, design C.R.A.P.) e acessibilidade (WCAG 2.1 AA). Gatilhos: \"slides de aula\", \"apresentação de treinamento\", \"workshop\", \"webinar\", \"slides que ensinam\", \"revisar meus slides\". NÃO use para pitch de investidor ou deck de venda (use audiovisual-pitch-deck), para slides de código em Markdown (use audiovisual-slidev) nem para roteiro de videoaula (use video-script-writer). |
+| <a id="audiovisual-apresentacoes-educacionais"></a>**`audiovisual-apresentacoes-educacionais`** | `Skill` | `0 Mkt` | Use para planejar, melhorar e validar apresentações de ensino: aula, treinamento, workshop, webinar e palestra, com ciência da aprendizagem (carga cognitiva, 12 princípios de Mayer, 9 eventos de Gagné, design C.R.A.P.) e acessibilidade (WCAG 2.1 AA). Gatilhos: \"slides de aula\", \"apresentação de treinamento\", \"workshop\", \"webinar\", \"slides que ensinam\", \"revisar meus slides\". NÃO use para pitch de investidor ou deck de venda (use audiovisual-pitch-deck), para slides de código em Markdown (use audiovisual-slidev) nem para roteiro de videoaula (use o workflow copy-roteiro-de-video). |
 
 ### <a id="arte-conceitual"></a>Arte Conceitual
 
@@ -1084,7 +1094,13 @@ Total de recursos nesta macro-área: `24`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="audiovisual-banco-de-midias-openverse"></a>**`audiovisual-banco-de-midias-openverse`** | `Skill` | `0 Mkt` | Busca de fotos, ilustrações, vetores, áudios e vídeos de domínio público e Creative Commons (CC0, CC-BY) na API do Openverse (WordPress/openverse) com fallback resiliente Wikimedia Commons e atribuição legal pronta. |
+| <a id="audiovisual-banco-de-midias-openverse"></a>**`audiovisual-banco-de-midias-openverse`** | `Skill` | `0 Mkt` | Use para buscar fotos, ilustrações, vetores, áudios e vídeos livres (domínio público e Creative Commons CC0 e CC-BY) na API do Openverse, com fallback no Wikimedia Commons e atribuição legal pronta. Gatilhos: \"imagem livre\", \"Creative Commons\", \"banco de imagens gratuito\", \"Openverse\". NÃO use para fotos de estoque do Pexels (use o workflow audiovisual-banco-de-imagens-pexels) nem para gerar imagem com IA (use audiovisual-imagem-flux-prompts). |
+
+### <a id="criacao-de-pitch-deck"></a>Criacao De Pitch Deck
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="audiovisual-criacao-de-pitch-deck"></a>**`@audiovisual-criacao-de-pitch-deck`** | `Agent` | `0 Mkt` | Especialista em apresentações executivas, pitch decks de captação de investimento e narrativa de negócios. Use quando precisar estruturar decks para investidores (Venture Capital / Anjos), apresentações comerciais de alto impacto para C-Levels, keynotes institucionais ou slides automatizados via código (Slidev). <example> Context: O fundador precisa preparar o pitch deck para rodada Seed da startup. user: "Preciso montar o pitch deck de captação da <marca> para fundos de VC." assistant: "Vou acionar o audiovisual-criacao-de-pitch-deck para estruturar o deck na narrativa padrão de 10-12 slides (Problema, Solução, Mercado, Tração, Time, Ask) com foco no modelo YC." <commentary> Demanda de fundraising e apresentação executiva para investidores delegada ao audiovisual-criacao-de-pitch-deck. </commentary> </example> <example> Context: O time precisa de uma apresentação comercial técnica em formato Slidev com código interativo. user: "Crie uma apresentação técnica para diretoria da <marca> com slides interativos usando Slidev." assistant: "Acionando o audiovisual-criacao-de-pitch-deck para gerar o arquivo Markdown formatado para renderização Slidev com layout limpo e suporte a componentes." <commentary> Apresentação técnica moderna com ferramenta de slides por código. </commentary> </example> |
 
 ### <a id="download-de-video"></a>Download De Video
 
@@ -1102,13 +1118,13 @@ Total de recursos nesta macro-área: `24`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="audiovisual-imagem-flux-api"></a>**`audiovisual-imagem-flux-api`** | `Skill` | `0 Mkt` | Guia de integração da API BFL FLUX cobrindo endpoints, padrões de pesquisa assíncrona, limitação de taxa, tratamento de erros, webhooks e endpoints regionais com exemplos de código Python e TypeScript. |
+| <a id="audiovisual-imagem-flux-api"></a>**`audiovisual-imagem-flux-api`** | `Skill` | `0 Mkt` | Use para integrar a API da BFL (FLUX) em código: endpoints, polling assíncrono, limites de taxa, tratamento de erro, webhooks e endpoints regionais, com exemplos em Python e TypeScript. Gatilhos: \"FLUX API\", \"BFL API\", \"polling FLUX\", \"webhook FLUX\". NÃO use para escrever prompts de imagem (use audiovisual-imagem-flux-prompts). Gera código: só com autorização explícita (regra 1.5 do CLAUDE.md). |
 
 ### <a id="imagem-flux-prompts"></a>Imagem Flux Prompts
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="audiovisual-imagem-flux-prompts"></a>**`audiovisual-imagem-flux-prompts`** | `Skill` | `0 Mkt` | Guia completo para modelos de geração de imagens BFL FLUX. Abrange prompt, T2I, I2I, JSON estruturado, cores hexadecimais, tipografia, edição de múltiplas referências e práticas recomendadas específicas de modelo para famílias FLUX.2 e FLUX.1. |
+| <a id="audiovisual-imagem-flux-prompts"></a>**`audiovisual-imagem-flux-prompts`** | `Skill` | `0 Mkt` | Use para escrever prompts para os modelos de imagem FLUX.2 e FLUX.1 (BFL): texto para imagem, imagem para imagem, JSON estruturado, cores em hex, tipografia e edição com várias referências. Gatilhos: \"prompt FLUX\", \"gerar imagem com FLUX\", \"edição multi-referência\". NÃO use para integrar a API em código (use audiovisual-imagem-flux-api) nem para direção de arte e prompts em carrosséis (use social-direcao-de-arte-ia). |
 
 ### <a id="infografico"></a>Infografico
 
@@ -1138,19 +1154,19 @@ Total de recursos nesta macro-área: `24`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="audiovisual-pitch-deck"></a>**`audiovisual-pitch-deck`** | `Skill` | `0 Mkt` | Especialista em arquitetura, narrativa, storytelling financeiro e design de apresentações executivas (Pitch Decks para investidores no padrão Y Combinator e decks comerciais de alto impacto). |
+| <a id="audiovisual-pitch-deck"></a>**`audiovisual-pitch-deck`** | `Skill` | `0 Mkt` | Use para montar a narrativa e a estrutura de pitch decks para investidores (padrão Y Combinator) e decks comerciais de alto impacto, com storytelling financeiro e design executivo. Gatilhos: \"pitch deck\", \"deck de investidor\", \"rodada seed\", \"deck comercial\". NÃO use para slides de aula e treinamento (use audiovisual-apresentacoes-educacionais), para slides de código em Markdown (use audiovisual-slidev) nem para melhorar um slide isolado (use o workflow audiovisual-melhoria-de-slide). |
 
 ### <a id="podcast-e-audio"></a>Podcast E Audio
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="audiovisual-podcast-e-audio"></a>**`audiovisual-podcast-e-audio`** | `Skill` | `0 Mkt` | Especialista em pós-produção de áudio, mixagem e masterização de podcasts, conformidade ACX para audiobooks, transcrição com Whisper, direção de locução e sound design. Logo sonoro e identidade de áudio de marca ficam em brand-identidade-sonora. |
+| <a id="audiovisual-podcast-e-audio"></a>**`audiovisual-podcast-e-audio`** | `Skill` | `0 Mkt` | Use para pós-produção de áudio: edição, mixagem e masterização de podcasts, conformidade ACX de audiobooks, transcrição com Whisper, direção de locução e sound design. Gatilhos: \"masterizar podcast\", \"ACX\", \"audiobook\", \"locução\", \"limpar áudio\". NÃO use para logo sonoro e identidade de áudio da marca (use brand-identidade-sonora), para transcrição com ElevenLabs (use audiovisual-transcricao) nem para SEO de podcast (use seo-podcast). |
 
-### <a id="producer"></a>Producer
+### <a id="producao-de-video"></a>Producao De Video
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="audiovisual-producer"></a>**`@audiovisual-producer`** | `Agent` | `0 Mkt` | Produtor audiovisual e diretor criativo especializado em roteirização, engenharia de áudio, ganchos de alta retenção para vídeos curtos (Reels/TikTok/Shorts), VSLs de alta conversão, processamento de mídia e animação com código. Use quando precisar criar roteiros de vídeo, planejar hooks visuais e narrativos, masterizar podcasts ou orquestrar produções de vídeo programático. <example> Context: O usuário precisa de um roteiro dinâmico para Reels com foco em reter o público nos primeiros 3 segundos. user: "Preciso de um roteiro para um vídeo curto no Reels ensinando automação de CRM para a Plinq." assistant: "Vou acionar o audiovisual-producer para estruturar o roteiro com ganchos visuais e verbais nos primeiros 3 segundos, pattern interrupts e CTA final." <commentary> Demanda de roteirização e retenção para vídeo curto, acionando o produtor audiovisual especializado. </commentary> </example> <example> Context: O usuário quer estruturar uma Video Sales Letter (VSL) de 15 minutos para lançamento de produto. user: "Como estruturar a VSL do novo produto da WAIMonitor com prova social e mecanismo único?" assistant: "Acionando o audiovisual-producer para construir a estrutura em 5 atos da VSL, integrando o mecanismo único e ritmo narrativo cinematográfico." <commentary> Demanda de direct response audiovisual e narrativa persuasiva de alta conversão. </commentary> </example> |
+| <a id="audiovisual-producao-de-video"></a>**`@audiovisual-producao-de-video`** | `Agent` | `0 Mkt` | Produtor audiovisual e diretor criativo especializado em roteirização, engenharia de áudio, ganchos de alta retenção para vídeos curtos (Reels/TikTok/Shorts), VSLs de alta conversão, processamento de mídia e animação com código. Use quando precisar criar roteiros de vídeo, planejar hooks visuais e narrativos, masterizar podcasts ou orquestrar produções de vídeo programático. <example> Context: O usuário precisa de um roteiro dinâmico para Reels com foco em reter o público nos primeiros 3 segundos. user: "Preciso de um roteiro para um vídeo curto no Reels ensinando automação de CRM para a <marca>." assistant: "Vou acionar o audiovisual-producao-de-video para estruturar o roteiro com ganchos visuais e verbais nos primeiros 3 segundos, pattern interrupts e CTA final." <commentary> Demanda de roteirização e retenção para vídeo curto, acionando o produtor audiovisual especializado. </commentary> </example> <example> Context: O usuário quer estruturar uma Video Sales Letter (VSL) de 15 minutos para lançamento de produto. user: "Como estruturar a VSL do novo produto da <marca> com prova social e mecanismo único?" assistant: "Acionando o audiovisual-producao-de-video para construir a estrutura em 5 atos da VSL, integrando o mecanismo único e ritmo narrativo cinematográfico." <commentary> Demanda de direct response audiovisual e narrativa persuasiva de alta conversão. </commentary> </example> |
 
 ### <a id="qr-code"></a>Qr Code
 
@@ -1194,7 +1210,7 @@ Total de recursos nesta macro-área: `24`
 
 ## <a id="brand-identidade-da-marca"></a>brand (Identidade da Marca)
 
-Total de recursos nesta macro-área: `17`
+Total de recursos nesta macro-área: `13`
 
 ### <a id="audience"></a>Audience
 
@@ -1214,11 +1230,23 @@ Total de recursos nesta macro-área: `17`
 | :--- | :--- | :--- | :--- |
 | <a id="brand-design-system"></a>**`brand-design-system`** | `Skill` | `0 Mkt` | Use para montar o design system da marca como site de referência mais DESIGN.md (paleta com modo escuro, tipografia, espaço, forma, movimento, componentes e tokens), a partir da direção visual aprovada (etapa 7 do brand-builder). Gatilhos: \"design system da marca\", \"DESIGN.md\", \"tokens da marca\". NÃO use para decidir o estilo (use brand-visual-direction) nem para escrever o código de componentes em Tailwind e React (use site-tailwind-design-system). |
 
+### <a id="direcao-de-arte"></a>Direcao De Arte
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="brand-direcao-de-arte"></a>**`@brand-direcao-de-arte`** | `Agent` | `0 Mkt` | Diretor de Arte Sênior e Especialista em Branding com padrão de agência internacional (estilo Apple, Nike, Stripe, Airbnb, Notion). Especialista em neurodesign, hierarquia visual, psicologia das cores, tipografia contemporânea e direção estética para redes sociais, apresentações, landing pages e identidades de marca. Use quando precisar definir conceitos visuais de alto impacto, conceber direção de arte multiformato, gerar prompts de imagem multi-engine (Midjourney, Flux, ChatGPT, SD) ou conduzir auditoria e autocrítica estética intransigente. <example> Context: O usuário precisa de uma direção de arte impactante para a campanha de lançamento de um novo recurso. user: "Preciso criar a direção visual para o lançamento da nova funcionalidade da PR Pulse no Instagram e landing page." assistant: "Vou acionar o brand-direcao-de-arte para conceber o conceito criativo, estruturar 3 caminhos visuais divergentes, definir paleta funcional e tipografia moderna, orquestrando as skills de carrossel e landing page." <commentary> Demanda de concepção estética, direção de arte e consistência visual multiformato. </commentary> </example> <example> Context: O usuário quer prompts de imagem refinados para gerar assets visuais no Midjourney e Flux sem visual clichê de IA. user: "Gere os prompts de imagem para o novo produto da <marca> com estética minimalista e profissional." assistant: "Acionando o brand-direcao-de-arte para aplicar o filtro anti-slop visual, construir a atmosfera e gerar os prompts calibrados para Midjourney, Flux e ChatGPT Image com contraste e respiro profissional." <commentary> Demanda de engenharia estética de prompts de IA generativa com rigor de diretor de arte. </commentary> </example> |
+
 ### <a id="essence"></a>Essence
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="brand-essence"></a>**`brand-essence`** | `Skill` | `0 Mkt` | Use para definir ou aprofundar essência, crenças, história de origem, inimigo, posicionamento, categoria e arquétipo de uma marca (etapas 1 e 2 do brand-builder). Gatilhos: \"propósito\", \"posicionamento da marca\", \"Primal Branding\", \"arquétipo\". NÃO use para posicionar produto no mercado com GTM, categoria e proposta de valor de lançamento (use revenue-gtm-e-posicionamento) nem para analisar concorrentes (use revenue-inteligencia-competitiva). |
+
+### <a id="guardiao-de-voz"></a>Guardiao De Voz
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="brand-guardiao-de-voz"></a>**`@brand-guardiao-de-voz`** | `Agent` | `0 Mkt` | Especialista em consistência de marca e validação de voz. Use para garantir que todo o conteúdo de marketing corresponda às diretrizes de voz, tom e estilo da marca. Revisa o conteúdo quanto à consistência das mensagens, qualidade da linguagem e impacto emocional. Exemplos: <exemplo>Contexto: cópia da campanha de e-mail criada pelo usuário. usuário: \"Analise esta campanha de e-mail para verificar a consistência da voz da marca\" assistente: \"Usarei o agente brand-guardiao-de-voz para validar o tom, a mensagem e o alinhamento da marca." <commentary>A validação da voz da marca requer revisão especializada de acordo com as diretrizes.</commentary></example> <example>Contexto: o usuário precisa que a cópia da página de destino seja revisada. usuário: \"Verifique se esta página de destino se parece com a nossa marca\" assistente: \"Deixe-me implantar o agente de guarda-de-voz da marca para analisar a voz, o tom e a consistência das mensagens.\" <commentary>A revisão da consistência da marca garante que todo o conteúdo esteja alinhado com as diretrizes estabelecidas.</commentary></example> |
 
 ### <a id="identidade-sonora"></a>Identidade Sonora
 
@@ -1230,12 +1258,7 @@ Total de recursos nesta macro-área: `17`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="art-director"></a>**`@art-director`** | `Agent` | `0 Mkt` | Diretor de Arte Sênior e Especialista em Branding com padrão de agência internacional (estilo Apple, Nike, Stripe, Airbnb, Notion). Especialista em neurodesign, hierarquia visual, psicologia das cores, tipografia contemporânea e direção estética para redes sociais, apresentações, landing pages e identidades de marca. Use quando precisar definir conceitos visuais de alto impacto, conceber direção de arte multiformato, gerar prompts de imagem multi-engine (Midjourney, Flux, ChatGPT, SD) ou conduzir auditoria e autocrítica estética intransigente. <example> Context: O usuário precisa de uma direção de arte impactante para a campanha de lançamento de um novo recurso. user: "Preciso criar a direção visual para o lançamento da nova funcionalidade da PR Pulse no Instagram e landing page." assistant: "Vou acionar o art-director para conceber o conceito criativo, estruturar 3 caminhos visuais divergentes, definir paleta funcional e tipografia moderna, orquestrando as skills de carrossel e landing page." <commentary> Demanda de concepção estética, direção de arte e consistência visual multiformato. </commentary> </example> <example> Context: O usuário quer prompts de imagem refinados para gerar assets visuais no Midjourney e Flux sem visual clichê de IA. user: "Gere os prompts de imagem para o novo produto da WAIMonitor com estética minimalista e profissional." assistant: "Acionando o art-director para aplicar o filtro anti-slop visual, construir a atmosfera e gerar os prompts calibrados para Midjourney, Flux e ChatGPT Image com contraste e respiro profissional." <commentary> Demanda de engenharia estética de prompts de IA generativa com rigor de diretor de arte. </commentary> </example> |
-| <a id="conversion-optimizer"></a>**`@conversion-optimizer`** | `Agent` | `0 Mkt` | Especialista em otimização de taxa de conversão. Use para maximizar as taxas de conversão em ativos de marketing, aplicando princípios e psicologia comprovados de CRO. Revisa páginas de destino, texto do e-mail, texto do anúncio e CTAs para eficácia de conversão. Exemplos: <exemplo>Contexto: página inicial criada pelo usuário. usuário: \"Analise esta página de destino para otimização de conversão\" assistente: \"Usarei o agente otimizador de conversão para analisar proposta de valor, CTAs e elementos de persuasão.\" <commentary>CRO requer análise especializada de psicologia de conversão e práticas recomendadas.</commentary></example> <example>Contexto: o usuário precisa de e-mail otimizado. usuário: \"Como posso melhorar as conversões neste e-mail?\" assistente: \"Deixe-me implantar o agente otimizador de conversões para revisar o texto, o posicionamento do CTA e os pontos de atrito.\" <commentary>A otimização de conversão de e-mail requer conhecimento especializado em persuasão e psicologia do usuário.</commentary></example> |
-| <a id="researcher"></a>**`@researcher`** | `Agent` | `0 Mkt` | Especialista em pesquisa de mercado e análise competitiva. Use para conduzir pesquisas de mercado, analisar concorrentes, coletar insights do público, explorar tendências do setor e encontrar práticas recomendadas de marketing. Exemplos: <exemplo>Contexto: O usuário precisa de inteligência competitiva. usuário: \"Pesquise as estratégias de marketing dos nossos 5 principais concorrentes\" assistente: \"Usarei o agente pesquisador para conduzir análises competitivas abrangentes, incluindo mensagens, canais e posicionamento.\" <commentary>Isso requer uma pesquisa de mercado aprofundada, então delegue ao agente pesquisador.</commentary></example> <example>Contexto: o usuário deseja entender seu público. usuário: \"Quais são os pontos problemáticos do nosso mercado-alvo?\" assistente: \"Deixe-me implantar o agente pesquisador para coletar insights do público e análise dos pontos problemáticos.\" <commentary>A pesquisa de público requer a síntese de múltiplas fontes e a criação de insights acionáveis.</commentary></example> |
-| <a id="sales-enabler"></a>**`@sales-enabler`** | `Agent` | `0 Mkt` | Especialista em garantia de vendas e capacitação. Use para criar argumentos de venda personalizados, scripts de tratamento de objeções, correspondência de prova social e fluxos de trabalho de aceleração de negócios. Exemplos: <exemplo>Contexto: O usuário precisa de materiais de vendas. usuário: \"Crie um estudo de caso para nossos clientes corporativos\" assistente: \"Usarei o agente facilitador de vendas para desenvolver um estudo de caso atraente com dados de ROI e depoimentos.\" <commentary>A criação de estudos de caso requer mensagens de vendas e experiência em prova social.</commentary></example> <example>Contexto: o usuário deseja melhorar as conversas de vendas. usuário: \"Ajude nossa equipe de vendas a lidar com objeções de preços\" assistente: \"Deixe-me implantar o agente facilitador de vendas para criar scripts de tratamento de objeções e cartões de batalha competitivos." <commentary>O tratamento de objeções requer um conhecimento profundo da psicologia do comprador e do posicionamento competitivo.</commentary></example> |
-| <a id="upsell-maximizer"></a>**`@upsell-maximizer`** | `Agent` | `0 Mkt` | Especialista em expansão de receita. Use para identificar oportunidades de upsell, recomendações de produtos, previsão de expansão e estratégias de rastreamento de adoção de recursos. Exemplos: <exemplo>Contexto: o usuário deseja aumentar a receita dos clientes existentes. usuário: \"Como podemos aumentar a receita dos clientes atuais?\" assistente: \"Usarei o agente maximizador de upsell para identificar oportunidades de expansão e criar campanhas de upsell.\" <commentary>A expansão da receita requer análise de uso e tempo estratégico de oferta.</commentary></example> <example>Contexto: usuário lançando novos recursos. usuário: \"Promova nossos novos recursos premium para usuários existentes\" assistente: \"Deixe-me implantar o agente maximizador de vendas adicionais para criar campanhas de adoção de recursos com caminhos de atualização.\" <commentary>Campanhas de adoção de recursos exigem posicionamento e timing estratégicos.</commentary></example> |
-| <a id="web-builder"></a>**`@web-builder`** | `Agent` | `0 Mkt` | Construtor de sites e landing pages de conversão para as marcas de _brands/. Use quando o pedido for criar, montar ou reestruturar uma landing page, página de captura ou site de várias páginas: conduz marca, brief, arquitetura, copy, design a partir dos tokens, código (só com autorização explícita), teste no navegador e revisão de conversão, chamando copywriter, conversion-optimizer e seo-specialist. Não escreve só o texto (use copywriter), não audita página pronta (use conversion-optimizer) e não publica sem pedido. Exemplos: <example>Context: usuário quer uma página de captura. user: \"Monte a landing page do e-book da plus-pr\" assistant: \"Vou acionar o web-builder, que segue o workflow site-construcao-de-landing-page com portões de aprovação.\" <commentary>Construção de página de ponta a ponta.</commentary></example> <example>Context: usuário quer o site institucional. user: \"Preciso do site da experimentacao com home, serviços e contato\" assistant: \"Acionando o web-builder com o workflow site-construcao-de-site: primeiro a arquitetura, depois as páginas.\" <commentary>Site de várias páginas.</commentary></example> |
+| <a id="sip-marketing"></a>**`sip-marketing`** | `Skill` | `0 Mkt` | Use sempre que a tarefa atual envolver marketing, conteúdo, copywriting, branding, mídia social, SEO, anúncios pagos, e-mail, RP, crescimento, capacitação de vendas ou análise de marketing, mas o projeto ativo não tiver habilidades de marketing local - ou seja, qualquer projeto que não seja o próprio "SIP - Marketing" (0 Mkt). Encaminha a tarefa para o centro central de conhecimento de marketing, em vez de improvisar a partir do conhecimento geral. Use também quando o usuário perguntar "existe algo de marketing pra isso", "tem habilidade de marketing no hub", "consulta o SIP - Marketing", ou nomear explicitamente uma habilidade, agente ou fluxo de trabalho 0 Mkt em um projeto que não é o hub. |
 
 ### <a id="naming"></a>Naming
 
@@ -1261,12 +1284,6 @@ Total de recursos nesta macro-área: `17`
 | :--- | :--- | :--- | :--- |
 | <a id="brand-visual-style"></a>**`brand-visual-style`** | `Skill` | `0 Mkt` | Use para criar, extrair e aplicar um sistema visual portátil em um arquivo visual-style.md (cores, tipografia, layout, movimento e humor em um só arquivo que qualquer IA lê): criar do zero, extrair de um site, vídeo ou PDF de marca, aplicar em vídeo (HeyGen), slides HTML, Figma ou paper.design, ou consultar a galeria de estilos prontos (Suíço, Saul Bass, Game Boy etc.). Gatilhos: \"visual style\", \"estilo visual\", \"brand style\", \"style guide\". NÃO use para estratégia de marca, nome ou essência (use brand-builder), para decidir a direção visual da marca (use brand-visual-direction), para tokens e componentes de uma marca de _brands/ (use brand-design-system; o visual-style.md dela é exportado no passo 7b) nem para conceito de anúncio (use ads-criativos). |
 
-### <a id="voice-guardian"></a>Voice Guardian
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="brand-voice-guardian"></a>**`@brand-voice-guardian`** | `Agent` | `0 Mkt` | Especialista em consistência de marca e validação de voz. Use para garantir que todo o conteúdo de marketing corresponda às diretrizes de voz, tom e estilo da marca. Revisa o conteúdo quanto à consistência das mensagens, qualidade da linguagem e impacto emocional. Exemplos: <exemplo>Contexto: cópia da campanha de e-mail criada pelo usuário. usuário: \"Analise esta campanha de e-mail para verificar a consistência da voz da marca\" assistente: \"Usarei o agente guardião da voz da marca para validar o tom, a mensagem e o alinhamento da marca." <commentary>A validação da voz da marca requer revisão especializada de acordo com as diretrizes.</commentary></example> <example>Contexto: o usuário precisa que a cópia da página de destino seja revisada. usuário: \"Verifique se esta página de destino se parece com a nossa marca\" assistente: \"Deixe-me implantar o agente guardião da voz da marca para analisar a voz, o tom e a consistência das mensagens." <commentary>A revisão da consistência da marca garante que todo o conteúdo esteja alinhado com as diretrizes estabelecidas.</commentary></example> |
-
 ### <a id="voice-messaging"></a>Voice Messaging
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
@@ -1277,19 +1294,25 @@ Total de recursos nesta macro-área: `17`
 
 ## <a id="conteudo-produção-de-conteúdo"></a>conteudo (Produção de Conteúdo)
 
-Total de recursos nesta macro-área: `20`
+Total de recursos nesta macro-área: `22`
 
 ### <a id="aprovacao"></a>Aprovacao
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="conteudo-aprovacao"></a>**`/conteudo-aprovacao`** | `Workflow` | `0 Mkt` | Fluxo de trabalho de aprovação de conteúdo para colaboração em equipe |
+| <a id="conteudo-aprovacao"></a>**`/conteudo-aprovacao`** | `Workflow` | `0 Mkt` | Gera o fluxo de aprovação de uma peça de conteúdo (etapas, responsáveis, SLA e checklist por estágio). Use quando uma peça precisar passar por revisão antes de publicar. |
+
+### <a id="brainstorm"></a>Brainstorm
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="conteudo-brainstorm"></a>**`@conteudo-brainstorm`** | `Agent` | `0 Mkt` | Especialista em idealização de campanhas e conceito criativo. Use para debater ideias de campanha, avaliar abordagens de marketing, desenvolver ângulos de mensagens e debater decisões criativas antes da execução. Exemplos: <exemplo>Contexto: o usuário deseja ideias de campanha. usuário: \"Precisamos de conceitos criativos para o lançamento de nosso produto\" assistente: \"Deixe-me usar o agente conteudo-brainstorm para explorar ângulos de campanha e conceitos criativos para o lançamento." usuário: \"Devemos nos concentrar em marketing de conteúdo ou anúncios pagos?\" assistente: \"Envolverei o agente de brainstorming para analisar ambas as abordagens e recomendar a melhor estratégia." <commentary>As decisões estratégicas exigem a avaliação de compensações e a consideração de vários fatores.</commentary></example> |
 
 ### <a id="briefing"></a>Briefing
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="conteudo-briefing"></a>**`conteudo-briefing`** | `Skill` | `0 Mkt` | Gere resumos de conteúdo abrangentes para redatores, garantindo clareza, alinhamento e criação de conteúdo estratégico em todos os formatos. |
+| <a id="conteudo-briefing"></a>**`conteudo-briefing`** | `Skill` | `0 Mkt` | Use para montar briefings de conteúdo completos para redatores, com objetivo, público, ângulo, estrutura e critérios de aprovação, em qualquer formato. Gatilhos: \"briefing de conteúdo\", \"brief para redator\", \"pauta para freela\". NÃO use para briefing com foco em SEO e palavras-chave (use o workflow conteudo-briefing-de-seo), para estratégia e calendário (use conteudo-estrategia) nem para escrever o texto (use conteudo-post-de-blog ou copy-conversao). |
 | <a id="conteudo-briefing"></a>**`/conteudo-briefing`** | `Workflow` | `0 Mkt` | Gere resumos de conteúdo abrangentes para redatores, garantindo clareza, |
 
 ### <a id="briefing-de-seo"></a>Briefing De Seo
@@ -1297,6 +1320,12 @@ Total de recursos nesta macro-área: `20`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="conteudo-briefing-de-seo"></a>**`/conteudo-briefing-de-seo`** | `Workflow` | `0 Mkt` | Modelo de resumo de conteúdo e metodologia de criação para conteúdo otimizado para SEO. Use ao preparar briefings para redatores ou planejar novos conteúdos. |
+
+### <a id="criacao-multiformato"></a>Criacao Multiformato
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="conteudo-criacao-multiformato"></a>**`@conteudo-criacao-multiformato`** | `Agent` | `0 Mkt` | Especialista em criação de conteúdo para todos os tipos de conteúdo de marketing. |
 
 ### <a id="escrita-colaborativa"></a>Escrita Colaborativa
 
@@ -1366,7 +1395,7 @@ Total de recursos nesta macro-área: `20`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="conteudo-tendencias"></a>**`conteudo-tendencias`** | `Skill` | `0 Mkt` | Habilidade avançada de pesquisa de conteúdo e tópico que analisa tendências no Google Analytics, Google Trends, Substack, Medium, Reddit, LinkedIn, X, blogs, podcasts e YouTube para gerar esboços de artigos baseados em dados com base na análise da intenção do usuário |
+| <a id="conteudo-tendencias"></a>**`conteudo-tendencias`** | `Skill` | `0 Mkt` | Use para pesquisar tendências de tópicos em Google Trends, Google Analytics, Reddit, LinkedIn, X, Substack, Medium, blogs, podcasts e YouTube e gerar esboços de artigo a partir da intenção de busca. Gatilhos: \"o que está em alta\", \"tendência de conteúdo\", \"tema do momento\", \"esboço baseado em dados\". NÃO use para estratégia e calendário editorial (use conteudo-estrategia), sinais fracos de mercado (use o workflow conteudo-sinais-fracos) nem pesquisa de palavras-chave (use seo-palavras-chave). |
 | <a id="conteudo-tendencias"></a>**`/conteudo-tendencias`** | `Workflow` | `0 Mkt` | Habilidade avançada de pesquisa de conteúdo e tópico que analisa tendências em |
 
 ---
@@ -1418,6 +1447,12 @@ Total de recursos nesta macro-área: `14`
 | :--- | :--- | :--- | :--- |
 | <a id="copy-metodos-classicos"></a>**`copy-metodos-classicos`** | `Skill` | `0 Mkt` | Use para aplicar o método de um livro clássico de copywriting, persuasão e marketing a uma peça ou estratégia: Gary Halbert (Boron Letters), David Ogilvy, Eugene Schwartz (5 níveis de consciência), Dan Kennedy, Russell Brunson (Expert Secrets), Heath (Made to Stick), Seth Godin (Permission Marketing e Purple Cow) e StoryBrand. Gatilhos: \"nível de consciência\", \"método Halbert\", \"estilo Ogilvy\", \"StoryBrand\", \"copy de resposta direta\", \"ideia que gruda\". NÃO use para escrever a copy final de conversão com frameworks práticos (use copy-conversao), para landing page (use copy-landing-page), para roteiro de VSL (use copy-vsl) nem para psicologia de consumo (use revenue-psicologia). |
 
+### <a id="redacao-publicitaria"></a>Redacao Publicitaria
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="copy-redacao-publicitaria"></a>**`@copy-redacao-publicitaria`** | `Agent` | `0 Mkt` | Use este agente quando precisar criar textos de alta conversão e voltados para o engajamento para materiais de marketing, postagens em mídias sociais, páginas de destino, campanhas de e-mail, descrições de produtos ou qualquer conteúdo que precise chamar a atenção e impulsionar a ação. Exemplos:\\n\\n<exemplo>\\nContexto: o usuário está lançando um novo recurso de produto e precisa de uma cópia atraente para a seção principal da página de destino.\\nuser: \"Acabamos de adicionar um novo recurso de revisão de código com tecnologia de IA. Você pode escrever um título e um subtítulo principais para a página de destino?\"\\assistente: \"Vou usar a ferramenta Tarefa para iniciar o agente copy-redacao-publicitaria para criar uma cópia principal atraente que interrompa os visitantes e direcione conversões.\"\\n<commentary>\\nO usuário precisa de uma cópia de marketing que converta, então delegue ao agente copy-redacao-publicitaria para criar manchetes que chamem a atenção.\\n</commentary>\\n</example>\\n\\n<example>\\nContexto: o usuário deseja anunciar uma atualização de produto no Twitter/X para maximizar o engajamento.\\nuser: \"Acabamos de enviar GitHub Super IA Projects - Marketingauto-convites para AgentKits. Preciso de um tweet que deixe as pessoas entusiasmadas.\"\\assistente: \"Deixe-me usar o agente copy-redacao-publicitaria para criar um tweet que valha a pena viral, que capte a atenção e estimule o engajamento.\"\\n<commentary>\\nAnúncios em mídia social exigem experiência em redação viral, então use o copy-redacao-publicitaria agente.\\n</commentary>\\n</example>\\n\\n<exemplo>\\nContexto: o usuário está revisando materiais de marketing e o agente identifica proativamente uma cópia fraca.\\nuser: \"Aqui está o rascunho de nossa nova página de preços\"\\nassistente: \"Percebi que o título 'Nossos planos de preços' poderia ser mais atraente. Deixe-me usar o agente copy-redacao-publicitaria para sugerir alternativas que impulsionem conversões.\"\\n<commentary>\\nIdentificar proativamente oportunidades para melhorar o copy e sugerir o uso do agente copy-redacao-publicitaria.\\n</commentary>\\n</example>\\n\\n<example>\\nContexto: O usuário precisa de linhas de assunto de e-mail que aumentem as taxas de abertura.\\nuser: \"Escreva linhas de assunto para nossa campanha de e-mail de lançamento de produto\"\\assistente: \"Estou delegando ao agente copy-redacao-publicitaria para criar linhas de assunto com alta taxa de abertura que eliminam o ruído da caixa de entrada.\"\\n<commentary>\\nO marketing por e-mail requer uma cópia focada na conversão, então use o agente copy-redacao-publicitaria.\\n</commentary>\\n</example> |
+
 ### <a id="roteiro-de-video"></a>Roteiro De Video
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
@@ -1437,23 +1472,23 @@ Total de recursos nesta macro-área: `14`
 | <a id="copy-saas"></a>**`copy-saas`** | `Skill` | `0 Mkt` | Copywriter de SaaS e startups focado em posicionamento, mensagem e pesquisa de voz do cliente (VOC), com um fluxo de 10 fases para criar uma landing page. Use para definir posicionamento e proposta de valor, montar a hierarquia de mensagem, minerar a linguagem do cliente e planejar o processo de uma landing page de SaaS. NÃO use para cartas de venda, CTAs e persuasão de resposta direta (use copy-conversao), para redigir a página seção a seção ou auditar CRO (use copy-landing-page), para roteiro de VSL (use copy-vsl) nem para email (use email-copy). |
 | <a id="copy-saas"></a>**`/copy-saas`** | `Workflow` | `0 Mkt` | Redator de SaaS e startups focado em posicionamento, mensagem e pesquisa |
 
-### <a id="textos-e-conversão"></a>Textos e Conversão
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="copywriter"></a>**`@copywriter`** | `Agent` | `0 Mkt` | Use este agente quando precisar criar textos de alta conversão e voltados para o engajamento para materiais de marketing, postagens em mídias sociais, páginas de destino, campanhas de e-mail, descrições de produtos ou qualquer conteúdo que precise chamar a atenção e impulsionar a ação. Exemplos:\\n\\n<exemplo>\\nContexto: o usuário está lançando um novo recurso de produto e precisa de uma cópia atraente para a seção principal da página de destino.\\nuser: \"Acabamos de adicionar um novo recurso de revisão de código com tecnologia de IA. Você pode escrever um título e um subtítulo principais para a página de destino?\"\\assistente: \"Vou usar a ferramenta Tarefa para iniciar o agente redator para criar uma cópia principal atraente que interrompa os visitantes e direcione conversões.\"\\n<commentary>\\nO usuário precisa de uma cópia de marketing que converta, então delegue ao agente redator a criação de títulos que chamem a atenção.\\n</commentary>\\n</example>\\n\\n<example>\\nContexto: o usuário deseja anunciar uma atualização de produto no Twitter/X para maximizar o envolvimento.\\nuser: \"Acabamos de enviar GitHub Super IA Projects - Marketingauto-invites para AgentKits Precisa de um tweet. isso deixará as pessoas entusiasmadas.\"\\nassistente: \"Deixe-me usar o agente redator para criar um tweet digno de viral que capte a atenção e gere engajamento.\"\\n<commentary>\\nAnúncio de mídia social requer experiência em redação viral, então use o agente redator.\\n</commentary>\\n</example>\\n\\n<exemplo>\\nContexto: o usuário está revisando materiais de marketing e o agente identifica proativamente os pontos fracos copy.\\nuser: \"Aqui está o rascunho da nossa nova página de preços\"\\nassistente: \"Percebi que o título 'Nossos planos de preços' poderia ser mais atraente. Deixe-me usar o agente redator para sugerir alternativas que gerem conversões.\"\\n<comentário>\\nIdentifique proativamente oportunidades para melhorar o copy e sugira o uso do redator agente.\\n</commentary>\\n</example>\\n\\n<example>\\nContexto: o usuário precisa de linhas de assunto de e-mail que aumentem as taxas de abertura.\\nuser: \"Escreva linhas de assunto para nossa campanha de e-mail de lançamento de produto\"\\nassistant: \"Estou delegando ao agente redator a criação de linhas de assunto com alta taxa de abertura que eliminem o ruído da caixa de entrada.\"\\n<commentary>\\nO marketing por e-mail requer cópia com foco na conversão, então use um agente redator.\\n</commentary>\\n</example> |
-
 ### <a id="vsl"></a>Vsl
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="copy-vsl"></a>**`copy-vsl`** | `Skill` | `0 Mkt` | Redação de cartas de vendas de vídeo (VSL), scripts de vídeo de resposta direta, estrutura VSL de 8 partes de Conrado Adolpho, tratamento universal de objeções, ritmo slide a slide e dicas visuais de retenção de texto na tela. |
+| <a id="copy-vsl"></a>**`copy-vsl`** | `Skill` | `0 Mkt` | Use para escrever roteiro de VSL (Video Sales Letter) de resposta direta: estrutura em 8 partes de Conrado Adolpho, tratamento universal de objeções, ritmo slide a slide e textos de retenção na tela. Gatilhos: \"VSL\", \"carta de vendas em vídeo\", \"roteiro de vendas em vídeo\". NÃO use para carta de vendas escrita (use copy-conversao), roteiro de Reels e Shorts (use copy-hooks-video-curto) nem landing page (use copy-landing-page). |
 
 ---
 
 ## <a id="data-inteligência-de-dados"></a>data (Inteligência de Dados)
 
-Total de recursos nesta macro-área: `12`
+Total de recursos nesta macro-área: `13`
+
+### <a id="analise-de-desempenho"></a>Analise De Desempenho
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="data-analise-de-desempenho"></a>**`@data-analise-de-desempenho`** | `Agent` | `0 Mkt` | Especialista em análise de dados de marketing e insights de desempenho. |
 
 ### <a id="analise-de-funil"></a>Analise De Funil
 
@@ -1489,7 +1524,7 @@ Total de recursos nesta macro-área: `12`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="data-funil-e-coortes"></a>**`data-funil-e-coortes`** | `Skill` | `0 Mkt` | Especialista em análise de queda de funil (drop-off), matriz de retenção por coortes, ativação de usuários, otimização de onboarding e CRO de paywalls. |
+| <a id="data-funil-e-coortes"></a>**`data-funil-e-coortes`** | `Skill` | `0 Mkt` | Use para analisar queda de funil (drop-off), retenção por coortes, ativação de usuários, onboarding e paywall em produtos digitais. Gatilhos: \"drop-off\", \"coorte\", \"ativação\", \"onboarding que não converte\", \"paywall\". NÃO use para tracking e GA4 (use data-web-ga4), atribuição e relatório executivo (use data-atribuicao-e-relatorios) nem para executar teste A/B (use growth-testes-ab). |
 
 ### <a id="gerador-de-utm"></a>Gerador De Utm
 
@@ -1519,46 +1554,37 @@ Total de recursos nesta macro-área: `12`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="data-revisao-mensal"></a>**`/data-revisao-mensal`** | `Workflow` | `0 Mkt` | Revisão mensal de análises e modelo de insights |
+| <a id="data-revisao-mensal"></a>**`/data-revisao-mensal`** | `Workflow` | `0 Mkt` | Gera a revisão analítica mensal (tráfego, conversão, desempenho de conteúdo e campanhas) com comparação ao mês anterior. Use para consolidar os aprendizados do mês e definir prioridades do próximo. |
 
 ### <a id="web-ga4"></a>Web Ga4
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="data-web-ga4"></a>**`data-web-ga4`** | `Skill` | `0 Mkt` | Especialista em arquitetura de dados web, engenharia de rastreamento, implementação avançada de GA4, Google Tag Manager (Web e Server-Side), Consent Mode v2 e modelagem de eventos em BigQuery. |
+| <a id="data-web-ga4"></a>**`data-web-ga4`** | `Skill` | `0 Mkt` | Use para arquitetar dados web e implementar tracking: GA4, Google Tag Manager (web e server-side), Consent Mode v2, dataLayer e modelagem de eventos em BigQuery. Gatilhos: \"GA4\", \"GTM\", \"dataLayer\", \"Consent Mode\", \"evento de conversão\". NÃO use para atribuição multi-canal e relatório executivo (use data-atribuicao-e-relatorios), coortes e funil (use data-funil-e-coortes) nem para UTM de campanha (use o workflow data-gerador-de-utm). |
 
 ---
 
 ## <a id="email-email-marketing"></a>email (Email Marketing)
 
-Total de recursos nesta macro-área: `12`
+Total de recursos nesta macro-área: `8`
 
 ### <a id="automacao"></a>Automacao
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="email-automacao"></a>**`email-automacao`** | `Skill` | `0 Mkt` | Arquiteto de jornadas automatizadas de email e automações de ciclo de vida em CRMs (ActiveCampaign, HubSpot, Customer.io). Estrutura Welcome Series em 5 etapas, esteiras de onboarding e ativação de produto SaaS, fluxos de recuperação de carrinho abandonado, automações de reengajamento e Sunset Policy contra contatos inativos. NÃO use para estágios do contato, lead scoring e higiene de dados no CRM (use vendas-crm), copy de email (use email-copy), entregabilidade e DNS (use email-entregabilidade), prospecção fria (use vendas-cold-email) nem newsletters (use email-newsletter). |
+| <a id="email-automacao"></a>**`email-automacao`** | `Skill` | `0 Mkt` | Arquiteto de jornadas automatizadas de email e automações de ciclo de vida em CRMs (ActiveCampaign, HubSpot, Customer.io). Estrutura Welcome Series em 5 etapas, esteiras de onboarding e ativação de produto SaaS, fluxos de recuperação de carrinho abandonado, automações de reengajamento e Sunset Policy contra contatos inativos. NÃO use para estágios do contato, lead scoring e higiene de dados no CRM (use revenue-orquestracao-de-crm), copy de email (use email-copy), entregabilidade e DNS (use email-entregabilidade), prospecção fria (use vendas-cold-email) nem newsletters (use email-newsletter). |
 
 ### <a id="copy"></a>Copy
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="email-copy"></a>**`email-copy`** | `Skill` | `0 Mkt` | Mestre em redação persuasiva e copywriting de conversão para email marketing. Domina a engenharia de linhas de assunto de alta curiosidade, preheaders complementares, frameworks de narrativa (Story-Lesson-Offer, Soap Opera Sequence, Seinfeld emails), plain text vs HTML leve e otimização de Click-to-Open Rate (CTOR). |
+| <a id="email-copy"></a>**`email-copy`** | `Skill` | `0 Mkt` | Use para escrever e-mails de marketing que convertem: linhas de assunto, preheaders, narrativas (Story-Lesson-Offer, Soap Opera, Seinfeld), texto puro versus HTML leve e otimização de CTOR. Gatilhos: \"assunto de e-mail\", \"copy de e-mail\", \"sequência de e-mails\". NÃO use para montar a automação e o fluxo (use email-automacao), para DNS e reputação de envio (use email-entregabilidade), para newsletter editorial (use email-newsletter) nem para cadência de prospecção fria (use vendas-cold-email). |
 
 ### <a id="entregabilidade"></a>Entregabilidade
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="email-entregabilidade"></a>**`email-entregabilidade`** | `Skill` | `0 Mkt` | Engenheiro de infraestrutura técnica e proteção de entrega de e-mail (Inbox Placement). Auditoria e configuração de registros de DNS (SPF, DKIM 2048-bit, DMARC com política p=reject, BIMI), gerenciamento de aquecimento gradual (Warm-up de 21 dias), higiene profunda de listas contra spam traps e monitora amigável no Google Postmaster Tools. |
-
-### <a id="fluxos-e-automação"></a>Fluxos e Automação
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="b2b-sales-director"></a>**`@b2b-sales-director`** | `Agent` | `0 Mkt` | Diretor de vendas B2B, RevOps e conformidade comercial. Use quando precisar estruturar processos de vendas consultivas complexas, implementar metodologias de qualificação (MEDDIC, BANT, SPIN), arquitetar esteiras de outbound, gerenciar riscos de fechamento de negócios e assegurar compliance regulatório (LGPD/GDPR e contratos). <example> Context: O time comercial precisa estruturar um processo de vendas enterprise com múltiplos tomadores de decisão. user: "Como estruturo o funil de vendas complexas da Plinq para fechar contratos anuais acima de R$ 50k?" assistant: "Vou acionar o b2b-sales-director para desenhar a régua de qualificação MEDDIC, mapear o Economic Buyer e arquitetar a cadência de follow-up multicanal." <commentary> Demanda de estratégia e governança de vendas B2B complexas delegada ao diretor comercial. </commentary> </example> <example> Context: O usuário precisa de uma cadência de prospecção fria para diretores de marketing respeitando normas de privacidade. user: "Crie uma cadência de outbound cold email de 4 toques para a WAIMonitor em conformidade com a LGPD." assistant: "Acionando o b2b-sales-director para redigir a cadência com foco em dor de negócio, personalização sem atrito e mecanismo claro de opt-out conforme LGPD." <commentary> Outbound B2B combinado com rigor de conformidade e governança. </commentary> </example> |
-| <a id="continuity-specialist"></a>**`@continuity-specialist`** | `Agent` | `0 Mkt` | Especialista em retenção e engajamento de clientes. Use para estratégias de detecção de rotatividade, campanhas de reengajamento, automação de NPS e sequências de coleta de depoimentos. Exemplos: <exemplo>Contexto: o usuário está vendo uma rotatividade de clientes. usuário: \"Nossa taxa de retenção de clientes está caindo\" assistente: \"Usarei o agente especialista em continuidade para analisar padrões de rotatividade e projetar campanhas de reengajamento.\" <commentary>A estratégia de retenção requer análise comportamental e experiência em marketing de ciclo de vida.</commentary></example> <example>Contexto: o usuário deseja feedback do cliente. usuário: \"Configurar um programa de pesquisa NPS\" assistente: \"Deixe-me implantar o agente especialista em continuidade para projetar uma automação NPS com sequências de acompanhamento.\" <commentary>Os programas NPS exigem tempo estratégico e fluxos de trabalho de resposta.</commentary></example> |
-| <a id="marketing-manager"></a>**`@marketing-manager`** | `Agent` | `0 Mkt` | Revisor de persona do gerente de marketing (38 anos, empresa de médio porte). Use para revisar o conteúdo da perspectiva de um gerente de marketing experiente. Avalia o conteúdo para colaboração em equipe, escalabilidade, necessidades empresariais e implementação prática. Exemplos: <exemplo>Contexto: conteúdo de marketing B2B criado pelo usuário. usuário: \"Analise isso da perspectiva de um gerente de marketing\" assistente: \"Utilizarei o agente gerente de marketing para avaliar do ponto de vista de um gerente experiente: necessidades da equipe, integração do fluxo de trabalho e considerações empresariais.\" <commentary>A perspectiva do gerente fornece insights sobre implementação prática e dinâmica da equipe.</commentary></example> |
-| <a id="project-manager"></a>**`@project-manager`** | `Agent` | `0 Mkt` | Especialista em gestão e coordenação de campanhas. Use para acompanhar o progresso da campanha, coordenar atividades de marketing, gerenciar prazos e fornecer relatórios de status. Exemplos: <exemplo>Contexto: o usuário precisa de supervisão da campanha. usuário: \"Verifique o status da nossa campanha de lançamento de produto\" assistente: \"Usarei o agente gerente de projeto para revisar o progresso da campanha e fornecer um relatório de status.\" <commentary>A coordenação da campanha requer o rastreamento de vários fluxos de trabalho e prazos.</commentary></example> <example>Contexto: usuário gerenciando várias campanhas. usuário: \"Dê-me uma visão geral de todas as campanhas de marketing ativas\" assistente: \"Deixe-me usar o agente gerente de projeto para consolidar o status da campanha em todas as iniciativas.\" <commentary>O gerenciamento de múltiplas campanhas requer monitoramento e relatórios sistemáticos.</commentary></example> |
+| <a id="email-entregabilidade"></a>**`email-entregabilidade`** | `Skill` | `0 Mkt` | Use para proteger a entregabilidade de e-mail (inbox placement): registros DNS (SPF, DKIM, DMARC, BIMI), aquecimento de domínio de 21 dias, higiene de lista contra spam traps e monitoramento de reputação no Google Postmaster. Gatilhos: \"caiu no spam\", \"SPF DKIM DMARC\", \"warm-up\", \"reputação de domínio\". NÃO use para escrever o e-mail (use email-copy) nem para montar sequências e automações (use email-automacao). |
 
 ### <a id="modelos"></a>Modelos
 
@@ -1570,20 +1596,20 @@ Total de recursos nesta macro-área: `12`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="email-newsletter"></a>**`email-newsletter`** | `Skill` | `0 Mkt` | Coach de redação que extrai conteúdo educacional de suas experiências diárias e o transforma em rascunhos de boletins informativos prontos para publicação, combinados com manuais editoriais, estratégias de crescimento de boletins informativos, estruturas de curadoria e modelos do setor (Tecnologia, Fintech, RH, Vendas, Operações). |
+| <a id="email-newsletter"></a>**`email-newsletter`** | `Skill` | `0 Mkt` | Use para transformar a experiência diária do autor em rascunhos de newsletter prontos para publicar, com playbooks editoriais, estratégias de crescimento, curadoria e modelos por setor (Tech, Fintech, RH, Vendas, Operações). Gatilhos: \"newsletter\", \"edição semanal\", \"crescer newsletter\". NÃO use para sequências de nutrição e automação (use email-automacao), para copy de e-mail promocional (use email-copy) nem para artigo de blog (use conteudo-post-de-blog). |
 | <a id="email-newsletter"></a>**`/email-newsletter`** | `Workflow` | `0 Mkt` | Treinador de redação que extrai conteúdo educacional de suas experiências diárias |
+
+### <a id="orquestracao-de-campanhas"></a>Orquestracao De Campanhas
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="email-orquestracao-de-campanhas"></a>**`@email-orquestracao-de-campanhas`** | `Agent` | `0 Mkt` | Especialista em orquestração de campanhas de e-mail. Use para criar modelos de sequência, personalização dinâmica, estratégias de otimização de tempo de envio e estruturas de teste A/B. Exemplos: <exemplo>Contexto: o usuário precisa configurar a automação de e-mail. usuário: \"Crie uma sequência de e-mail de boas-vindas para novos assinantes\" assistente: \"Usarei o agente email-orquestracao-de-campanhas para criar uma sequência de boas-vindas com personalização e timing ideal.\" <commentary>O design da sequência de e-mail requer experiência em automação e otimização de engajamento.</commentary></example> <example>Contexto: O usuário deseja melhorar o desempenho do e-mail. usuário: \"Nossas taxas de abertura de e-mail estão diminuindo\" assistente: \"Deixe-me implantar o agente email-orquestracao-de-campanhas para auditar seus e-mails e criar um plano de testes A/B.\" <commentary>A otimização de e-mail requer profundo conhecimento da capacidade de entrega e dos fatores de engajamento.</commentary></example> |
 
 ### <a id="otimizacao-de-assunto"></a>Otimizacao De Assunto
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="email-otimizacao-de-assunto"></a>**`/email-otimizacao-de-assunto`** | `Workflow` | `0 Mkt` | Teste A/B de variações de linha de assunto usando estruturas de copywriting comprovadas. Preveja taxas de abertura com base no desempenho histórico. |
-
-### <a id="wizard"></a>Wizard
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="email-wizard"></a>**`@email-wizard`** | `Agent` | `0 Mkt` | Especialista em orquestração de campanhas de e-mail. Use para criar modelos de sequência, personalização dinâmica, estratégias de otimização de tempo de envio e estruturas de teste A/B. Exemplos: <exemplo>Contexto: o usuário precisa configurar a automação de e-mail. usuário: \"Crie uma sequência de e-mail de boas-vindas para novos assinantes\" assistente: \"Usarei o agente assistente de e-mail para criar uma sequência de boas-vindas com personalização e timing ideal.\" <commentary>O design da sequência de e-mail requer experiência em automação e otimização de engajamento.</commentary></example> <example>Contexto: o usuário deseja melhorar o desempenho do e-mail. usuário: \"Nossas taxas de abertura de e-mail estão diminuindo\" assistente: \"Deixe-me implantar o agente assistente de e-mail para auditar seus e-mails e criar um plano de testes A/B.\" <commentary>A otimização de e-mail requer profundo conhecimento da capacidade de entrega e dos fatores de engajamento.</commentary></example> |
 
 ---
 
@@ -1602,7 +1628,7 @@ Total de recursos nesta macro-área: `24`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="geral-arquitetura-de-projeto"></a>**`geral-arquitetura-de-projeto`** | `Skill` | `0 Mkt` | Use ao criar ou reorganizar as pastas de um projeto de marketing, ao decidir onde uma peça (arquivo de marca, postagem, argumento de venda, relatório de monitoramento, ativo, dados, referência, plano) deve ser salva ou quando uma habilidade precisa do mapa de destino do projeto antes de escrever um arquivo. |
+| <a id="geral-arquitetura-de-projeto"></a>**`geral-arquitetura-de-projeto`** | `Skill` | `0 Mkt` | Use ao criar ou reorganizar as pastas de um projeto de marketing, ao decidir onde uma peça (arquivo de marca, estratégia, campanha, post, pitch de imprensa, relatório de monitoramento, ativo, dados, plano) deve ser salva, quando o projeto tiver mais de uma marca ou produto, ou quando uma habilidade precisar do mapa de destino do projeto antes de escrever um arquivo. |
 
 ### <a id="briefing-matinal"></a>Briefing Matinal
 
@@ -1615,6 +1641,12 @@ Total de recursos nesta macro-área: `24`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="geral-conformidade-lgpd"></a>**`geral-conformidade-lgpd`** | `Skill` | `0 Mkt` | Use para conformidade de marketing digital: LGPD e GDPR, consentimento (Consent Mode v2), formulários de captura, revisão de contratos, NDAs de influenciadores e análise de termos de uso. É triagem para orientar o trabalho de marketing; a decisão jurídica final é de advogado. Gatilhos: \"LGPD\", \"GDPR\", \"consentimento\", \"política de privacidade\", \"NDA\", \"contrato de influenciador\". NÃO use para implementar tags e eventos de rastreamento (use data-web-ga4) nem para regras de e-mail e entregabilidade (use email-entregabilidade). |
+
+### <a id="coordenacao-de-campanhas"></a>Coordenacao De Campanhas
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="geral-coordenacao-de-campanhas"></a>**`@geral-coordenacao-de-campanhas`** | `Agent` | `0 Mkt` | Especialista em gestão e coordenação de campanhas. Use para acompanhar o progresso da campanha, coordenar atividades de marketing, gerenciar prazos e fornecer relatórios de status. Exemplos: <exemplo>Contexto: o usuário precisa de supervisão da campanha. usuário: \"Verificar o status da nossa campanha de lançamento de produto\" assistente: \"Utilizarei o agente geral-coordenacao-de-campanhas para revisar o progresso da campanha e fornecer um relatório de status.\" <commentary>A coordenação da campanha requer o acompanhamento de vários fluxos de trabalho e prazos.</commentary></example> <example>Contexto: usuário gerenciando múltiplas campanhas. usuário: \"Dê-me uma visão geral de todas as campanhas de marketing ativas\" assistente: \"Deixe-me usar o agente geral-coordenacao-de-campanhas para consolidar o status da campanha em todas as iniciativas.\" <commentary>O gerenciamento de múltiplas campanhas requer monitoramento e relatórios sistemáticos.</commentary></example> |
 
 ### <a id="diagrama-mermaid"></a>Diagrama Mermaid
 
@@ -1634,11 +1666,23 @@ Total de recursos nesta macro-área: `24`
 | :--- | :--- | :--- | :--- |
 | <a id="geral-extracao-e-plano-de-acao"></a>**`/geral-extracao-e-plano-de-acao`** | `Workflow` | `0 Mkt` | Extração de conteúdo unificada e planejamento de ações. Use quando o usuário disser "tapeçaria <URL>", "tecer <URL>", "ajude-me a planejar <URL>", "extrair e planejar <URL>", "tornar este <URL> acionável" ou frases semelhantes indicando que deseja extrair conteúdo e criar um plano de ação. Detecta automaticamente o tipo de conteúdo (vídeo do YouTube, artigo, PDF) e processa de acordo. |
 
+### <a id="gestao-de-documentacao"></a>Gestao De Documentacao
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="geral-gestao-de-documentacao"></a>**`@geral-gestao-de-documentacao`** | `Agent` | `0 Mkt` | Use este agente quando precisar gerenciar documentação de marketing, estabelecer diretrizes de marca, analisar e atualizar documentação existente com base em alterações de campanha, escrever ou atualizar Requisitos de Desenvolvimento de Marketing (MDRs), organizar documentação para produtividade da equipe de marketing ou produzir relatórios resumidos de documentação. Isso inclui tarefas como revisar a estrutura da documentação, garantir que os documentos estejam atualizados com os ativos da campanha, criar nova documentação para as campanhas e manter a consistência em toda a documentação de marketing.\\n\\nExemplos:\\n- <exemplo>\\n Contexto: depois de lançar uma nova campanha, a documentação precisa ser atualizada.\\n usuário: \"Acabamos de lançar a campanha de reconhecimento da marca do quarto trimestre\"\\n assistente: \"Vou usar o agente geral-gestao-de-documentacao para atualizar o documentação para esta campanha\"\\n <commentary>\\n Desde o lançamento da nova campanha, use o agente geral-gestao-de-documentacao para garantir que a documentação seja atualizada adequadamente.\\n </commentary>\\n</example>\\n- <example>\\n Contexto: A documentação de marketing precisa de revisão e organização.\\n usuário: \"Você pode revisar nossa pasta de documentos e ter certeza de que tudo está devidamente organizado?\"\\n assistente: \"Vou iniciar o agente geral-gestao-de-documentacao para analisar e organizar a documentação\"\\n <commentary>\\n O usuário está solicitando revisão e organização da documentação, que é a especialidade do agente geral-gestao-de-documentacao.\\n </commentary>\\n</example>\\n- <example>\\n Contexto: Necessidade de estabelecer documentação de diretrizes de marca.\\n usuário: \"Precisamos documentar a voz de nossa marca e estilo de conteúdo assistente de padrões\"\\n: \"Deixe-me usar o agente geral-gestao-de-documentacao para estabelecer e documentar essas diretrizes da marca\"\\n <commentary>\\n Criar a documentação das diretrizes da marca é uma responsabilidade central do agente geral-gestao-de-documentacao.\\n </commentary>\\n</example> |
+
 ### <a id="mapa-de-stakeholders"></a>Mapa De Stakeholders
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="geral-mapa-de-stakeholders"></a>**`/geral-mapa-de-stakeholders`** | `Workflow` | `0 Mkt` | Use ao projetar estrutura organizacional (topologias de equipe, alinhamento da Lei de Conway), mapear as partes interessadas por interesse de poder para iniciativas de mudança, definir contratos de interface de equipe (APIs, SLAs, direitos de decisão, transferências), avaliar a maturidade de capacidade (DORA, CMMC, modelos ágeis de maturidade), planejar reestruturações organizacionais (funcionais para equipes de produto, equipes de plataforma, serviços compartilhados) ou quando o usuário mencionar "design organizacional", "estrutura de equipe", "mapa de partes interessadas", "interfaces de equipe", "maturidade de capacidade", "Lei de Conway" ou "RACI". |
+
+### <a id="navegador-de-comandos"></a>Navegador De Comandos
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="geral-navegador-de-comandos"></a>**`@geral-navegador-de-comandos`** | `Agent` | `0 Mkt` | Assistente de comandos: entende a intenção do usuário e sugere o workflow, skill ou agente certo. Não é preciso memorizar nomes. Examples: <example>Context: User doesn't know which command to use. user: \"Quero escrever um post de blog\" assistant: \"Vou usar o geral-navegador-de-comandos para achar o melhor comando para essa tarefa.\" <commentary>Descoberta de comando exige entender a intenção e casar com o que existe no .agent/.</commentary></example> |
 
 ### <a id="navegador-de-skills"></a>Navegador De Skills
 
@@ -1651,13 +1695,30 @@ Total de recursos nesta macro-área: `24`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="design-direcao-criativa"></a>**`/design-direcao-criativa`** | `Workflow` | `0 Mkt` | Workflow de direção de arte e criação visual em 6 etapas: entendimento, conceito, direção de arte com 3 vias divergentes, paleta funcional, tipografia e layout, com prompts de IA multi-engine e autocrítica (0 a 10). Use para criar conceitos visuais, direções de campanha, identidades ou peças de alto padrão estético. |
-| <a id="analytics-specialist"></a>**`@analytics-specialist`** | `Agent` | `0 Mkt` | Especialista em análise de dados de marketing e insights de desempenho. |
-| <a id="command-helper"></a>**`@command-helper`** | `Agent` | `0 Mkt` | Assistente de comando inteligente que entende a intenção do usuário e sugere comandos relevantes. Os usuários descrevem o que desejam fazer e o agente recomenda os melhores comandos/agentes. Não há necessidade de memorizar comandos. Exemplos: <exemplo>Contexto: O usuário não sabe qual comando usar. usuário: \"Quero escrever uma postagem no blog\" assistente: \"Usarei o agente auxiliar de comando para encontrar o melhor comando para sua tarefa.\" <commentary>A descoberta de comandos requer a compreensão da intenção e a correspondência com os comandos disponíveis.</commentary></example> |
-| <a id="content-creator"></a>**`@content-creator`** | `Agent` | `0 Mkt` | Especialista em criação de conteúdo para todos os tipos de conteúdo de marketing. |
-| <a id="docs-manager"></a>**`@docs-manager`** | `Agent` | `0 Mkt` | Use este agente quando precisar gerenciar documentação de marketing, estabelecer diretrizes de marca, analisar e atualizar documentação existente com base em alterações de campanha, escrever ou atualizar Requisitos de Desenvolvimento de Marketing (MDRs), organizar documentação para produtividade da equipe de marketing ou produzir relatórios resumidos de documentação. Isso inclui tarefas como revisar a estrutura da documentação, garantir que os documentos estejam atualizados com os ativos da campanha, criar nova documentação para campanhas e manter a consistência em toda a documentação de marketing.\\n\\nExemplos:\\n- <exemplo>\\n Contexto: após o lançamento de uma nova campanha, a documentação precisa ser atualizada.\\n usuário: \"Acabamos de lançar a campanha de reconhecimento da marca do quarto trimestre\"\\n assistente: \"Usarei o agente docs-manager para atualizar a documentação para isso campanha\"\\n <commentary>\\n Desde o lançamento da nova campanha, use o agente docs-manager para garantir que a documentação seja atualizada adequadamente.\\n </commentary>\\n</example>\\n- <example>\\n Contexto: a documentação de marketing precisa de revisão e organização.\\n usuário: \"Você pode revisar nossa pasta de documentos e ter certeza de que tudo está devidamente organizado?\"\\n assistente: \"Vou iniciar o docs-manager agente para analisar e organizar a documentação\"\\n <commentary>\\n O usuário está solicitando revisão e organização da documentação, que é a especialidade do agente docs-manager.\\n </commentary>\\n</example>\\n- <example>\\n Contexto: Necessidade de estabelecer a documentação das diretrizes da marca.\\n usuário: \"Precisamos documentar a voz da nossa marca e os padrões de estilo de conteúdo\"\\n assistente: \"Deixe-me usar o agente docs-manager para estabelecer e documentar essas diretrizes da marca\"\\n <commentary>\\n Criar documentação de diretrizes da marca é uma responsabilidade central do agente docs-manager.\\n </commentary>\\n</example> |
-| <a id="marketing-strategist"></a>**`@marketing-strategist`** | `Agent` | `0 Mkt` | Orquestrador geral da estratégia de marketing que coordena todas as atividades de marketing. |
-| <a id="planner"></a>**`@planner`** | `Agent` | `0 Mkt` | Especialista em planejamento e estratégia de campanhas. Use para criar planos de marketing abrangentes, cronogramas de campanha, alocação de orçamento, calendários de conteúdo e estratégias de mix de canais. Exemplos: <exemplo>Contexto: o usuário precisa de um plano de marketing. usuário: \"Crie um plano de marketing do primeiro trimestre para o lançamento de nosso produto\" assistente: \"Usarei o agente planejador para desenvolver um plano de marketing abrangente com cronograma, orçamento e estratégia de canal." <commentary>O planejamento da campanha requer uma abordagem estruturada para metas, táticas e recursos.</commentary></example> <example>Contexto: o usuário deseja planejamento de conteúdo. usuário: \"Crie um calendário de conteúdo para os próximos 3 meses\" assistente: \"Deixe-me chamar o agente planejador para criar um calendário de conteúdo alinhado com seus objetivos de marketing." <commentary>O planejamento de conteúdo requer alinhamento estratégico e coordenação de recursos.</commentary></example> |
-| <a id="sexy-canvas-strategist"></a>**`@sexy-canvas-strategist`** | `Agent` | `0 Mkt` | Utilize quando o usuário deseja uma leitura consultiva de um texto, vídeo, imagem, produto ou ideia através do Sexy Canvas (auditar, sugerir, adaptar, direcionar antes de criar, ou uma “visão dos 14”), ou perguntar por que algo não atrai, converte ou engaja. Fornece uma opinião e uma transferência, nunca a peça final. |
+
+### <a id="parecer-sexy-canvas"></a>Parecer Sexy Canvas
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="geral-parecer-sexy-canvas"></a>**`@geral-parecer-sexy-canvas`** | `Agent` | `0 Mkt` | Utilize quando o usuário deseja uma leitura consultiva de um texto, vídeo, imagem, produto ou ideia através do Sexy Canvas (auditar, sugerir, adaptar, direcionar antes de criar, ou uma “visão dos 14”), ou perguntar por que algo não atrai, converte ou engaja. Fornece uma opinião e uma transferência, nunca a peça final. |
+
+### <a id="persona-fundador-startup"></a>Persona Fundador Startup
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="geral-persona-fundador-startup"></a>**`@geral-persona-fundador-startup`** | `Agent` | `0 Mkt` | Revisor da persona do fundador da startup (28 anos, fundador em estágio inicial). Use para revisar conteúdo da perspectiva de um jovem fundador de uma startup. Avalia o conteúdo quanto à velocidade, growth hacking, potencial de viralidade, adequação ao mercado do fundador e execução fragmentada. Exemplos: <exemplo>Contexto: conteúdo de marketing de inicialização criado pelo usuário. usuário: \"Revise isso da perspectiva do fundador de uma startup\" assistente: \"Usarei o agente geral-persona-fundador-startup para avaliar do ponto de vista do fundador: potencial de crescimento, velocidade de lançamento no mercado e restrições de recursos.\" <commentary>A perspectiva do fundador da startup se concentra no crescimento rápido e na execução fragmentada.</commentary></example> |
+
+### <a id="persona-gerente-de-marketing"></a>Persona Gerente De Marketing
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="geral-persona-gerente-de-marketing"></a>**`@geral-persona-gerente-de-marketing`** | `Agent` | `0 Mkt` | Persona revisora (não é um cargo de execução): simula uma gerente de marketing de 38 anos, empresa de porte médio, revendo conteúdo pronto. Use for reviewing content from the perspective of an experienced marketing manager. Evaluates content for team collaboration, scalability, enterprise needs, and practical implementation. Examples: <example>Context: User created B2B marketing content. user: \"Review this from a marketing manager's perspective\" assistant: \"I'll use the geral-persona-gerente-de-marketing agent to evaluate from an experienced manager's viewpoint—team needs, workflow integration, and enterprise considerations.\" <commentary>Manager perspective provides insights on practical implementation and team dynamics.</commentary></example> |
+
+### <a id="persona-solopreneur"></a>Persona Solopreneur
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="geral-persona-solopreneur"></a>**`@geral-persona-solopreneur`** | `Agent` | `0 Mkt` | Revisor de persona Solopreneur (32 anos, freelancer/consultor). Use para revisar o conteúdo da perspectiva de um profissional independente ou proprietário de uma pequena empresa. Avalia o conteúdo quanto à facilidade de autoatendimento, eficiência de tempo, acessibilidade e implementação DIY. Exemplos: <exemplo>Contexto: conteúdo criado pelo usuário para pequenas empresas. usuário: \"Revise isso da perspectiva de um solopreneur\" assistente: \"Usarei o agente geral-persona-solopreneur para avaliar do ponto de vista empresarial de uma pessoa - restrições de tempo, sensibilidade orçamentária e autoimplementação.\" <commentary>A perspectiva do solopreneur destaca preocupações práticas para profissionais independentes.</commentary></example> |
 
 ### <a id="planejamento-diario"></a>Planejamento Diario
 
@@ -1699,7 +1760,7 @@ Total de recursos nesta macro-área: `24`
 
 ## <a id="growth-growth-hacking"></a>growth (Growth Hacking)
 
-Total de recursos nesta macro-área: `9`
+Total de recursos nesta macro-área: `11`
 
 ### <a id="aquisicao-de-demanda"></a>Aquisicao De Demanda
 
@@ -1707,17 +1768,29 @@ Total de recursos nesta macro-área: `9`
 | :--- | :--- | :--- | :--- |
 | <a id="growth-aquisicao-de-demanda"></a>**`/growth-aquisicao-de-demanda`** | `Workflow` | `0 Mkt` | Geração de demanda multicanal, otimização de mídia paga, estratégia de SEO e programas de parceria para startups Série A+. Inclui calculadora CAC, manuais de canal, integração HubSpot e táticas de expansão internacional. Use ao planejar campanhas de geração de demanda, otimizar mídia paga, construir estratégias de SEO, estabelecer parcerias ou quando o usuário mencionar geração de demanda, anúncios pagos, anúncios do LinkedIn, anúncios do Google, CAC, aquisição, geração de leads ou geração de pipeline. |
 
+### <a id="aquisicao-de-usuarios"></a>Aquisicao De Usuarios
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="growth-aquisicao-de-usuarios"></a>**`@growth-aquisicao-de-usuarios`** | `Agent` | `0 Mkt` | Especialista em growth hacking e aquisição de usuários. |
+
+### <a id="atracao-de-leads"></a>Atracao De Leads
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="growth-atracao-de-leads"></a>**`@growth-atracao-de-leads`** | `Agent` | `0 Mkt` | Especialista em geração de leads e marketing no topo do funil (TOFU). Use para pesquisa de palavras-chave, inteligência de conteúdo da concorrência, geração de landing pages, SEO programático e estratégias de distribuição de conteúdo. Exemplos: <exemplo>Contexto: o usuário deseja melhorar o tráfego de pesquisa orgânica. usuário: \"Precisamos ter uma classificação mais elevada para palavras-chave relacionadas ao produto\" assistente: \"Vou usar o agente de atração de crescimento de leads para conduzir pesquisas de palavras-chave e desenvolver uma estratégia de conteúdo de SEO." usuário: \"Criar páginas de destino para o lançamento de nosso novo produto\" assistente: \"Deixe-me implantar o agente de atração de crescimento de leads para gerar uma cópia da página de destino de alta conversão.\" <commentary>A geração de páginas de destino requer experiência em redação com foco na conversão.</commentary></example> |
+
+### <a id="expansao-de-receita"></a>Expansao De Receita
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="growth-expansao-de-receita"></a>**`@growth-expansao-de-receita`** | `Agent` | `0 Mkt` | Especialista em expansão de receita. Use para identificar oportunidades de upsell, recomendações de produtos, previsão de expansão e estratégias de rastreamento de adoção de recursos. Exemplos: <exemplo>Contexto: o usuário deseja aumentar a receita dos clientes existentes. usuário: \"Como podemos aumentar a receita dos clientes atuais?\" assistente: \"Usarei o agente de expansão de crescimento de receita para identificar oportunidades de expansão e criar campanhas de upsell.\" <commentary>A expansão da receita requer análise de uso e timing estratégico de oferta.</commentary></example> <example>Contexto: usuário lançando novos recursos. usuário: \"Promova nossos novos recursos premium para usuários existentes\" assistente: \"Deixe-me implantar o agente de expansão de crescimento para criar campanhas de adoção de recursos com caminhos de atualização.\" <commentary>Campanhas de adoção de recursos exigem posicionamento e timing estratégicos.</commentary></example> |
+
 ### <a id="experimentos-gtm"></a>Experimentos Gtm
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="growth-experimentos-gtm"></a>**`growth-experimentos-gtm`** | `Skill` | `0 Mkt` | Biblioteca com 500+ experimentos de Go-to-Market para B2B (growth hacking, growth marketing, sales, PLG, ABM, pricing, retenção, expansão, GEO/AI search, founder-led, AI-native GTM) com hipótese, métrica e benchmark, baseada em autoridades do segmento (Kyle Poyar/Growth Unhinged, Tom Tunguz/Theory Ventures, Reforge, CXL/Speero, Clay, ChartMogul, McKinsey, Gartner, SaaStr, PricingSaaS). Use sempre que o usuário pedir ideias de experimentos B2B, growth experiments, testes A/B, hipóteses para destravar funil B2B, sugestões de outbound, ABM, PLG, SEO, GEO, pricing, sales methodologies, retenção, NRR, expansão, indicação, ou inspiração para conteúdo de growth. Trigger também ao detectar "experimentos", "testes", "ideias de growth", "como aumentar conversão/CAC/NRR/MRR", "playbook", "reduzir churn", "aumentar pipeline", ou pedidos de curadoria de táticas para SaaS, indústria, agro, enterprise, serviço B2B. NÃO use para estratégia geral de growth e métricas (use growth-frameworks), para rodar o teste A/B em si (use growth-testes-ab) nem para experimentos de B2C ou conteúdo de redes sociais. |
-
-### <a id="experimentos-e-retenção"></a>Experimentos e Retenção
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="startup-founder"></a>**`@startup-founder`** | `Agent` | `0 Mkt` | Revisor da persona do fundador da startup (28 anos, fundador em estágio inicial). Use para revisar conteúdo da perspectiva de um jovem fundador de uma startup. Avalia o conteúdo quanto à velocidade, growth hacking, potencial de viralidade, adequação ao mercado do fundador e execução fragmentada. Exemplos: <exemplo>Contexto: conteúdo de marketing de inicialização criado pelo usuário. usuário: \"Revise isso da perspectiva do fundador de uma startup\" assistente: \"Usarei o agente fundador da startup para avaliar do ponto de vista do fundador: potencial de crescimento, velocidade de lançamento no mercado e restrições de recursos.\" <commentary>A perspectiva do fundador da startup se concentra no crescimento rápido e na execução fragmentada.</commentary></example> |
 
 ### <a id="frameworks"></a>Frameworks
 
@@ -1731,47 +1804,41 @@ Total de recursos nesta macro-área: `9`
 | :--- | :--- | :--- | :--- |
 | <a id="growth-indicacao-e-afiliados"></a>**`growth-indicacao-e-afiliados`** | `Skill` | `0 Mkt` | Use para desenhar programa de indicação de clientes (recompensa nos dois lados), programa de afiliados e parceiros, modelo de comissão e embaixadores, e para calcular o coeficiente viral (K-factor). Gatilhos: \"programa de indicação\", \"afiliados\", \"comissão\", \"embaixadores\", \"K-factor\", \"loop viral\". NÃO use para estratégia geral de growth (AARRR, North Star, experimentos ICE: use growth-frameworks), retenção e churn (use growth-retencao-e-churn) nem copy de anúncio (use ads-copy-de-anuncio). |
 
+### <a id="retencao-de-clientes"></a>Retencao De Clientes
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="growth-retencao-de-clientes"></a>**`@growth-retencao-de-clientes`** | `Agent` | `0 Mkt` | Especialista em retenção e engajamento de clientes. Use para estratégias de detecção de rotatividade, campanhas de reengajamento, automação de NPS e sequências de coleta de depoimentos. Exemplos: <exemplo>Contexto: o usuário está vendo uma rotatividade de clientes. usuário: \"Nossa taxa de retenção de clientes está caindo\" assistente: \"Usarei o agente de retenção de crescimento de clientes para analisar padrões de rotatividade e projetar campanhas de reengajamento.\" <commentary>A estratégia de retenção requer análise comportamental e experiência em marketing de ciclo de vida.</commentary></example> <example>Contexto: o usuário deseja feedback do cliente. usuário: \"Configurar um programa de pesquisa NPS\" assistente: \"Deixe-me implantar o agente de retenção de crescimento de clientes para projetar uma automação NPS com sequências de acompanhamento.\" <commentary>Os programas NPS exigem tempo estratégico e fluxos de trabalho de resposta.</commentary></example> |
+
 ### <a id="retencao-e-churn"></a>Retencao E Churn
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="growth-retencao-e-churn"></a>**`growth-retencao-e-churn`** | `Skill` | `0 Mkt` | Engineer high-converting retention engines, cancel flows, dynamic save offers, exit surveys, and dunning systems to slash voluntary and involuntary subscription churn. Also covers customer health scoring, churn prediction, expansion (upsell) signals, QBR (revisão trimestral) e renovação de contrato. NÃO use para estágios do contato e lead scoring no CRM (use vendas-crm) nem para atribuição de marketing (use data-atribuicao-e-relatorios). |
-
-### <a id="specialist"></a>Specialist
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="growth-specialist"></a>**`@growth-specialist`** | `Agent` | `0 Mkt` | Especialista em growth hacking e aquisição de usuários. |
+| <a id="growth-retencao-e-churn"></a>**`growth-retencao-e-churn`** | `Skill` | `0 Mkt` | Engineer high-converting retention engines, cancel flows, dynamic save offers, exit surveys, and dunning systems to slash voluntary and involuntary subscription churn. Also covers customer health scoring, churn prediction, expansion (upsell) signals, QBR (revisão trimestral) e renovação de contrato. NÃO use para estágios do contato e lead scoring no CRM (use revenue-orquestracao-de-crm) nem para atribuição de marketing (use data-atribuicao-e-relatorios). |
 
 ### <a id="teste-ab"></a>Teste Ab
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="growth-teste-ab"></a>**`/growth-teste-ab`** | `Workflow` | `0 Mkt` | Estrutura de teste A/B para otimização de marketing |
+| <a id="growth-teste-ab"></a>**`/growth-teste-ab`** | `Workflow` | `0 Mkt` | Gera o plano de um teste A/B de marketing (hipótese, variantes, critério estatístico e cronograma mínimo). Use quando for testar um elemento de e-mail, landing page, anúncio ou site. |
 
 ### <a id="testes-ab"></a>Testes Ab
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="growth-testes-ab"></a>**`growth-testes-ab`** | `Skill` | `0 Mkt` | Especialista em estratégia, estatística, desenho de hipóteses e governança de testes A/B, A/B/n e multivariados (MVT) para produtos digitais e páginas de conversão. |
+| <a id="growth-testes-ab"></a>**`growth-testes-ab`** | `Skill` | `0 Mkt` | Use para desenhar a estratégia e a estatística de testes A/B, A/B/n e multivariados: hipóteses, tamanho de amostra, significância e governança do programa de testes. Gatilhos: \"teste A/B\", \"hipótese de teste\", \"significância\", \"MVT\". NÃO use para executar o passo a passo de um teste pontual (use o workflow growth-teste-ab), para auditar a página (use site-cro) nem para analisar o funil (use data-funil-e-coortes). |
 
 ---
 
 ## <a id="persona-clientes--persona"></a>persona (Clientes & Persona)
 
-Total de recursos nesta macro-área: `8`
+Total de recursos nesta macro-área: `7`
 
 ### <a id="analise-de-feedback"></a>Analise De Feedback
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="persona-analise-de-feedback"></a>**`/persona-analise-de-feedback`** | `Workflow` | `0 Mkt` | Sintetize o feedback do usuário de vários canais e identifique padrões para informar decisões sobre produtos. Use ao analisar feedback, priorizar solicitações de recursos, realizar pesquisas de NPS ou compreender o sentimento do usuário. Abrange coleta de feedback, categorização, estruturas de priorização e fechamento do ciclo de feedback. |
-
-### <a id="builder"></a>Builder
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="persona-builder"></a>**`@persona-builder`** | `Agent` | `0 Mkt` | Agente interativo de descoberta da personalidade do cliente. Use quando precisar criar perfis detalhados de clientes por meio de conversas. Faz perguntas estratégicas com opções inteligentes, coleta respostas progressivamente e constrói buyer personas abrangentes. Exemplos: <exemplo>Contexto: o usuário deseja entender seu cliente. usuário: \"Ajude-me a entender quem é meu cliente ideal\" assistente: \"Usarei o agente construtor de persona para conduzir uma sessão interativa de descoberta e construir seu perfil de cliente." <commentary>Construir personas requer questionamento e síntese progressivos.</commentary></example> |
 
 ### <a id="criacao-de-persona"></a>Criacao De Persona
 
@@ -1785,11 +1852,11 @@ Total de recursos nesta macro-área: `8`
 | :--- | :--- | :--- | :--- |
 | <a id="persona-descoberta-de-clientes"></a>**`persona-descoberta-de-clientes`** | `Skill` | `0 Mkt` | Use para validar ideia, problema e solução com clientes: Mom Test, entrevista de problema e de solução, Customer Development (Steve Blank), descoberta contínua de produto (Teresa Torres) e pesquisas (surveys). Gatilhos: \"validar ideia\", \"entrevista com clientes\", \"Mom Test\", \"descoberta de produto\". NÃO use para definir ICP e personas (use persona-icp), gravar entrevista de podcast (use audiovisual-podcast-e-audio) nem pesquisar preço (use revenue-preco). |
 
-### <a id="descoberta-de-clientes"></a>Descoberta de Clientes
+### <a id="descoberta-interativa"></a>Descoberta Interativa
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="solopreneur"></a>**`@solopreneur`** | `Agent` | `0 Mkt` | Revisor de persona Solopreneur (32 anos, freelancer/consultor). Use para revisar o conteúdo da perspectiva de um profissional independente ou proprietário de uma pequena empresa. Avalia o conteúdo quanto à facilidade de autoatendimento, eficiência de tempo, acessibilidade e implementação DIY. Exemplos: <exemplo>Contexto: conteúdo criado pelo usuário para pequenas empresas. usuário: \"Revise isso da perspectiva de um solopreneur\" assistente: \"Usarei o agente solopreneur para avaliar do ponto de vista empresarial de uma pessoa - restrições de tempo, sensibilidade orçamentária e autoimplementação.\" <commentary>A perspectiva do solopreneur destaca preocupações práticas para profissionais independentes.</commentary></example> |
+| <a id="persona-descoberta-interativa"></a>**`@persona-descoberta-interativa`** | `Agent` | `0 Mkt` | Agente interativo de descoberta da personalidade do cliente. Use quando precisar criar perfis detalhados de clientes por meio de conversas. Faz perguntas estratégicas com opções inteligentes, coleta respostas progressivamente e constrói buyer personas abrangentes. Exemplos: <exemplo>Contexto: o usuário deseja entender seu cliente. usuário: \"Ajude-me a entender quem é meu cliente ideal\" assistente: \"Usarei o agente persona-descoberta-interativa para conduzir uma sessão interativa de descoberta e construir seu perfil de cliente." <commentary>Construir personas requer questionamento e síntese progressiva.</commentary></example> |
 
 ### <a id="entrevistas-de-descoberta"></a>Entrevistas De Descoberta
 
@@ -1821,11 +1888,11 @@ Total de recursos nesta macro-área: `2`
 | :--- | :--- | :--- | :--- |
 | <a id="pr-assessoria-de-imprensa"></a>**`pr-assessoria-de-imprensa`** | `Skill` | `0 Mkt` | Use when planejar estratégias de imprensa, produzir pautas e press releases para veículos de comunicação, redigir pitches individualizados para jornalistas, estruturar Data PR com dados proprietários, conduzir newsjacking reativo de notícias quentes, preparar media training para entrevistas ou emitir notas oficiais e holding statements de gestão de crise, detectar sinais precoces de crise, coordenar a resposta e conduzir a recuperação de reputação. Triggers: \"assessoria de imprensa\", \"press release\", \"pitch para jornalista\", \"falar com repórter\", \"gancho de notícia\", \"disparar para a mídia\", \"divulgação na imprensa\", \"nota oficial\", \"comunicação de crise\", \"media kit\", \"clipping\", \"earned media\". NÃO use para posts de redes sociais (use social-estrategia) nem para backlinks e menções com foco em SEO (use seo-autoridade-e-backlinks). |
 
-### <a id="specialist"></a>Specialist
+### <a id="relacoes-publicas"></a>Relacoes Publicas
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="pr-specialist"></a>**`@pr-specialist`** | `Agent` | `0 Mkt` | Especialista em Relações Públicas (PR), assessoria de imprensa e gestão de reputação institucional. Use quando precisar redigir press releases de alto interesse jornalístico, construir pitches para a imprensa, montar listas de mídia segmentadas, gerenciar crises de imagem ou articular pautas em veículos de comunicação de massa e nicho. <example> Context: A startup está lançando uma nova funcionalidade com IA e precisa divulgar para portais de negócios e tecnologia. user: "Preciso de um press release anunciando o novo monitor de IA da WAIMonitor para enviar ao Startupi e NeoFeed." assistant: "Vou acionar o pr-specialist para redigir o press release com gancho factual e ângulo noticioso, estruturado no padrão de redação jornalística e dados de mercado." <commentary> Demanda de assessoria de imprensa e redação jornalística institucional delegada ao especialista de PR. </commentary> </example> <example> Context: O usuário precisa de um pitch personalizado para apresentar o fundador como fonte para uma matéria de tendências. user: "Como abordo jornalistas do Valor Econômico para sugerir uma pauta sobre monitoramento de marca em tempo real?" assistant: "Acionando o pr-specialist para elaborar um email-pitch conciso, com tese provocativa, estatísticas exclusivas e oferta de porta-voz." <commentary> Estratégia de pitching para veículos de alta relevância com foco em autoridade institucional. </commentary> </example> |
+| <a id="pr-relacoes-publicas"></a>**`@pr-relacoes-publicas`** | `Agent` | `0 Mkt` | Especialista em Relações Públicas (PR), assessoria de imprensa e gestão de reputação institucional. Use quando precisar redigir press releases de alto interesse jornalístico, construir pitches para a imprensa, montar listas de mídia segmentadas, gerenciar crises de imagem ou articular pautas em veículos de comunicação de massa e nicho. <example> Context: A startup está lançando uma nova funcionalidade com IA e precisa divulgar para portais de negócios e tecnologia. user: "Preciso de um press release anunciando a nova funcionalidade da <marca> para enviar ao Startupi e NeoFeed." assistant: "Vou acionar o pr-relacoes-publicas para redigir o press release com gancho factual e ângulo noticioso, estruturado no padrão de redação jornalística e dados de mercado." <commentary> Demanda de assessoria de imprensa e redação jornalística institucional delegada ao especialista de PR. </commentary> </example> <example> Context: O usuário precisa de um pitch personalizado para apresentar o fundador como fonte para uma matéria de tendências. user: "Como abordo jornalistas do Valor Econômico para sugerir uma pauta sobre monitoramento de marca em tempo real?" assistant: "Acionando o pr-relacoes-publicas para elaborar um email-pitch conciso, com tese provocativa, estatísticas exclusivas e oferta de porta-voz." <commentary> Estratégia de pitching para veículos de alta relevância com foco em autoridade institucional. </commentary> </example> |
 
 ---
 
@@ -1837,7 +1904,7 @@ Total de recursos nesta macro-área: `10`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="produto-agile"></a>**`produto-agile`** | `Skill` | `0 Mkt` | Gerenciamento ágil de produtos, práticas Scrum e colaboração em equipe para desenvolvimento iterativo de produtos. |
+| <a id="produto-agile"></a>**`produto-agile`** | `Skill` | `0 Mkt` | Use para gestão ágil de produto: Scrum, rituais, backlog e colaboração do time em desenvolvimento iterativo. Gatilhos: \"Scrum\", \"backlog\", \"sprint\", \"cerimônias ágeis\". NÃO use para planejar uma sprint específica (use o workflow produto-planejamento-de-sprint), escrever PRD (use produto-prd) nem histórias de usuário (use o workflow produto-historias-de-usuario). |
 | <a id="produto-agile"></a>**`/produto-agile`** | `Workflow` | `0 Mkt` | Gerenciamento ágil de produtos, práticas Scrum e colaboração em equipe para |
 
 ### <a id="especificacao-de-funcionalidade"></a>Especificacao De Funcionalidade
@@ -1887,7 +1954,7 @@ Total de recursos nesta macro-área: `10`
 
 ## <a id="revenue-estratégia-de-receita-revenue"></a>revenue (Estratégia de Receita (Revenue))
 
-Total de recursos nesta macro-área: `21`
+Total de recursos nesta macro-área: `25`
 
 ### <a id="analise-competitiva"></a>Analise Competitiva
 
@@ -1906,7 +1973,7 @@ Total de recursos nesta macro-área: `21`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="revenue-checklist-de-lancamento-de-campanha"></a>**`/revenue-checklist-de-lancamento-de-campanha`** | `Workflow` | `0 Mkt` | Lista de verificação da campanha de pré-lançamento para garantir que nada seja esquecido |
+| <a id="revenue-checklist-de-lancamento-de-campanha"></a>**`/revenue-checklist-de-lancamento-de-campanha`** | `Workflow` | `0 Mkt` | Gera o checklist de pré-lançamento de uma campanha, com cronograma T-14 a T+1 e matriz de sign-off. Use antes de colocar uma campanha no ar para garantir que nada ficou de fora. |
 
 ### <a id="criacao-de-campanha"></a>Criacao De Campanha
 
@@ -1924,13 +1991,13 @@ Total de recursos nesta macro-área: `21`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="revenue-gtm-e-posicionamento"></a>**`revenue-gtm-e-posicionamento`** | `Skill` | `0 Mkt` | Estratégia Go-To-Market (GTM), gerenciamento de marketing de produto (PMM), design de categoria, tela de proposta de valor, estrutura STP (segmentação, segmentação, posicionamento), análise pré-morte e orquestração de lançamento multifuncional. |
+| <a id="revenue-gtm-e-posicionamento"></a>**`revenue-gtm-e-posicionamento`** | `Skill` | `0 Mkt` | Use para estratégia de go-to-market e marketing de produto: posicionamento, Category Design, Value Proposition Canvas, STP (segmentação, alvo e posicionamento), pré-mortem e coordenação de lançamento entre áreas. Gatilhos: \"GTM\", \"posicionar produto\", \"proposta de valor\", \"STP\", \"categoria\". NÃO use para posicionamento e essência da marca (use brand-essence), plano de lançamento detalhado (use revenue-lancamento) nem análise de concorrentes (use revenue-inteligencia-competitiva). |
 
 ### <a id="inteligencia-competitiva"></a>Inteligencia Competitiva
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="revenue-inteligencia-competitiva"></a>**`revenue-inteligencia-competitiva`** | `Skill` | `0 Mkt` | Inteligência competitiva estratégica, paisagismo de mercado, desmontagem de concorrentes, criação de cartas de batalha, análise de fosso, pesquisa de vitórias/perdas e mapeamento de diferenciação. |
+| <a id="revenue-inteligencia-competitiva"></a>**`revenue-inteligencia-competitiva`** | `Skill` | `0 Mkt` | Use para inteligência competitiva estratégica: mapa de mercado, teardown de concorrente, battlecard, análise de fosso (moat), pesquisa win/loss e mapa de diferenciação. Gatilhos: \"analisar concorrente\", \"battlecard\", \"win/loss\", \"teardown\", \"diferenciação\". NÃO use para posicionar o próprio produto (use revenue-gtm-e-posicionamento), monitorar preço de concorrente (use o workflow revenue-monitoramento-de-preco-concorrente) nem anúncios de concorrentes (use o workflow ads-extracao-de-anuncios-concorrentes). |
 
 ### <a id="lancamento"></a>Lancamento
 
@@ -1962,6 +2029,30 @@ Total de recursos nesta macro-área: `21`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="revenue-oferta"></a>**`revenue-oferta`** | `Skill` | `0 Mkt` | Use para montar uma oferta irresistível pelo método de Alex Hormozi (\"$100M Offers\"): equação de valor, empilhamento de bônus, garantia (inversão de risco), escassez, nome pela fórmula M-A-G-I-C, e bibliotecas de headlines, CTAs e objeções. Gatilhos: \"oferta irresistível\", \"Grand Slam Offer\", \"empilhar bônus\", \"garantia\", \"quebrar objeção\". NÃO use para definir preço e pacotes de SaaS (use revenue-preco), copy completa de página (use copy-landing-page) nem roteiro de VSL (use copy-vsl). |
+
+### <a id="orquestracao-de-crm"></a>Orquestracao De Crm
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="revenue-orquestracao-de-crm"></a>**`revenue-orquestracao-de-crm`** | `Skill` | `0 Mkt` | Orquestração de RevOps e CRM em nível de estratégia (não execução de ponta de vendas). Cobre estágios do contato, modelo de lead scoring (demográfico, comportamental e decaimento), temperatura do lead, segmentação, rotina de higiene de dados, pontos de integração entre marketing, CRM e vendas, roteamento de leads, automações de CRM e RevOps. Use para definir como os contatos evoluem, são pontuados e segmentados no CRM. NÃO use para desenhar e implementar as automações de email (use email-automacao), qualificação MEDDIC e BANT e previsão de vendas (use vendas-pipeline), prospecção e cadência de SDR/BDR (use vendas-prospeccao-de-leads), conformidade com LGPD e GDPR (use geral-conformidade-lgpd) nem relatórios de atribuição (use data-atribuicao-e-relatorios). |
+
+### <a id="orquestracao-de-estrategia"></a>Orquestracao De Estrategia
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="revenue-orquestracao-de-estrategia"></a>**`@revenue-orquestracao-de-estrategia`** | `Agent` | `0 Mkt` | Orquestrador geral da estratégia de marketing que coordena todas as atividades de marketing. |
+
+### <a id="pesquisa-de-mercado"></a>Pesquisa De Mercado
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="revenue-pesquisa-de-mercado"></a>**`@revenue-pesquisa-de-mercado`** | `Agent` | `0 Mkt` | Especialista em pesquisa de mercado e análise competitiva. Use para conduzir pesquisas de mercado, analisar concorrentes, coletar insights do público, explorar tendências do setor e encontrar práticas recomendadas de marketing. Exemplos: <exemplo>Contexto: O usuário precisa de inteligência competitiva. usuário: \"Pesquise as estratégias de marketing dos nossos 5 principais concorrentes\" assistente: \"Usarei o agente de pesquisa de receita para conduzir análises competitivas abrangentes, incluindo mensagens, canais e posicionamento.\" <commentary>Isso requer uma pesquisa de mercado aprofundada, então delegue ao agente de pesquisa de receita.</commentary></example> <example>Contexto: o usuário deseja entender seu público. usuário: \"Quais são os pontos problemáticos do nosso mercado-alvo?\" assistente: \"Deixe-me implantar o agente de pesquisa de receita para coletar insights do público e análise dos pontos problemáticos.\" <commentary>A pesquisa de público requer a síntese de múltiplas fontes e a criação de insights acionáveis.</commentary></example> |
+
+### <a id="planejamento-de-campanha"></a>Planejamento De Campanha
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="revenue-planejamento-de-campanha"></a>**`@revenue-planejamento-de-campanha`** | `Agent` | `0 Mkt` | Especialista em planejamento e estratégia de campanhas. Use para criar planos de marketing abrangentes, cronogramas de campanha, alocação de orçamento, calendários de conteúdo e estratégias de mix de canais. Exemplos: <exemplo>Contexto: o usuário precisa de um plano de marketing. usuário: \"Crie um plano de marketing do primeiro trimestre para o lançamento de nosso produto\" assistente: \"Usarei o agente de planejamento de receita para desenvolver um plano de marketing abrangente com cronograma, orçamento e estratégia de canal.\" <commentary>O planejamento da campanha requer uma abordagem estruturada para metas, táticas e recursos.</commentary></example> <example>Contexto: o usuário deseja planejamento de conteúdo. usuário: \"Construa um calendário de conteúdo para os próximos 3 meses\" assistente: \"Deixe-me invocar o agente de planejamento de receita para criar um calendário de conteúdo alinhado com seus objetivos de marketing.\" <commentary>O planejamento de conteúdo requer alinhamento estratégico e coordenação de recursos.</commentary></example> |
 
 ### <a id="plano-de-lancamento"></a>Plano De Lancamento
 
@@ -1999,7 +2090,7 @@ Total de recursos nesta macro-área: `21`
 
 ## <a id="seo-seo--mecanismos-de-busca"></a>seo (SEO & Mecanismos de Busca)
 
-Total de recursos nesta macro-área: `20`
+Total de recursos nesta macro-área: `19`
 
 ### <a id="agrupamento-de-palavras-chave"></a>Agrupamento De Palavras Chave
 
@@ -2035,7 +2126,7 @@ Total de recursos nesta macro-área: `20`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="seo-checklist-semanal"></a>**`/seo-checklist-semanal`** | `Workflow` | `0 Mkt` | Lista de verificação semanal de manutenção e otimização de SEO |
+| <a id="seo-checklist-semanal"></a>**`/seo-checklist-semanal`** | `Workflow` | `0 Mkt` | Gera o checklist semanal de manutenção e otimização de SEO. Use para organizar as tarefas de SEO da semana por dia (rankings, saúde técnica, conteúdo, link building, concorrência). |
 
 ### <a id="conteudo"></a>Conteudo
 
@@ -2055,17 +2146,17 @@ Total de recursos nesta macro-área: `20`
 | :--- | :--- | :--- | :--- |
 | <a id="seo-on-page"></a>**`seo-on-page`** | `Skill` | `0 Mkt` | Use ao auditar fatores de SEO na página, tags de título, meta descrições, títulos, arquiteturas de links internos, qualidade do conteúdo, sinais EAT, atualização e deterioração do conteúdo ou para diagnosticar por que uma página caiu nas classificações de pesquisa. NÃO use para backlinks, link building ou autoridade de domínio (use seo-autoridade-e-backlinks). |
 
+### <a id="otimizacao-de-busca"></a>Otimizacao De Busca
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="seo-otimizacao-de-busca"></a>**`@seo-otimizacao-de-busca`** | `Agent` | `0 Mkt` | Especialista em otimização de mecanismos de pesquisa. Use para otimizar conteúdo para mecanismos de pesquisa, mantendo a qualidade e a legibilidade. Revisa o conteúdo para otimização de palavras-chave, SEO na página, SEO técnico e potencial de recursos SERP. Exemplos: <exemplo>Contexto: postagem de blog criada pelo usuário. usuário: \"Otimizar esta postagem do blog para SEO\" assistente: \"Usarei o agente seo-otimizacao-de-busca para revisar o uso de palavras-chave, meta tags, estrutura e elementos técnicos.\" <commentary>A otimização de SEO requer conhecimento especializado de algoritmos de pesquisa e práticas recomendadas.</commentary></example> <example>Contexto: O usuário precisa de auditoria de SEO. usuário: \"Por que esta página não é classificada?\" assistente: \"Deixe-me implantar o agente seo-otimizacao-de-busca para analisar problemas de SEO e fornecer recomendações de otimização.\" <commentary>Os diagnósticos de SEO exigem uma análise sistemática de vários fatores de classificação.</commentary></example> |
+
 ### <a id="otimizacao-de-conteudo"></a>Otimizacao De Conteudo
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="seo-otimizacao-de-conteudo"></a>**`/seo-otimizacao-de-conteudo`** | `Workflow` | `0 Mkt` | Otimize o conteúdo para mecanismos de pesquisa com análise de palavras-chave, pontuação de legibilidade, meta descrições e comparação de concorrentes. Use isso quando os usuários quiserem melhorar o SEO, otimizar postagens de blog ou analisar conteúdo para desempenho de pesquisa. |
-
-### <a id="otimização-para-busca"></a>Otimização para Busca
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="attraction-specialist"></a>**`@attraction-specialist`** | `Agent` | `0 Mkt` | Especialista em geração de leads e marketing no topo do funil (TOFU). Use para pesquisa de palavras-chave, inteligência de conteúdo da concorrência, geração de landing pages, SEO programático e estratégias de distribuição de conteúdo. Exemplos: <exemplo>Contexto: o usuário deseja melhorar o tráfego de pesquisa orgânica. usuário: \"Precisamos ter uma classificação mais elevada para palavras-chave relacionadas ao produto\" assistente: \"Vou usar o agente especialista em atração para conduzir pesquisas de palavras-chave e desenvolver uma estratégia de conteúdo de SEO." usuário: \"Crie páginas de destino para o lançamento de nosso novo produto\" assistente: \"Deixe-me implantar o agente especialista em atração para gerar uma cópia da página de destino de alta conversão." <commentary>A geração de páginas de destino requer experiência em redação com foco na conversão.</commentary></example> |
 
 ### <a id="palavras-chave"></a>Palavras Chave
 
@@ -2089,7 +2180,7 @@ Total de recursos nesta macro-área: `20`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="seo-relatorio-de-desempenho"></a>**`seo-relatorio-de-desempenho`** | `Skill` | `0 Mkt` | Acompanhamento abrangente de desempenho de SEO e GEO, relatórios executivos, detecção de anomalias, alertas de volatilidade de classificação e análises de KPI no Google, Bing e mecanismos de pesquisa de IA generativos (Perplexity, SearchGPT, Claude, Gemini). |
+| <a id="seo-relatorio-de-desempenho"></a>**`seo-relatorio-de-desempenho`** | `Skill` | `0 Mkt` | Use para acompanhar e reportar o desempenho de SEO e GEO: relatório executivo, detecção de anomalias, alertas de volatilidade de ranking e KPIs no Google, Bing e buscadores de IA (Perplexity, SearchGPT, Claude, Gemini). Gatilhos: \"relatório de SEO\", \"queda de ranking\", \"tráfego orgânico caiu\", \"KPI de SEO\". NÃO use para dados brutos do Search Console (use o workflow seo-search-console), otimizar para ser citado por IA (use seo-geo) nem relatório de marketing geral (use data-atribuicao-e-relatorios). |
 
 ### <a id="schema-markup"></a>Schema Markup
 
@@ -2102,12 +2193,6 @@ Total de recursos nesta macro-área: `20`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="seo-search-console"></a>**`/seo-search-console`** | `Workflow` | `0 Mkt` | Assistente de indexação do Google Search Console. Use quando o usuário deseja rastrear o status de indexação da página, comparar o mapa do site com as páginas indexadas do GSC, gerenciar o rastreamento de envios ou mover falsos positivos (páginas indexadas por inspeção de URL, mas ainda não exportadas pelo GSC) para a lista indexada. Mantém dois arquivos de rastreamento (indexed.md, to-index.md) com suporte para priorização. |
-
-### <a id="specialist"></a>Specialist
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="seo-specialist"></a>**`@seo-specialist`** | `Agent` | `0 Mkt` | Especialista em otimização de mecanismos de pesquisa. Use para otimizar conteúdo para mecanismos de pesquisa, mantendo a qualidade e a legibilidade. Revisa o conteúdo para otimização de palavras-chave, SEO na página, SEO técnico e potencial de recursos SERP. Exemplos: <exemplo>Contexto: postagem de blog criada pelo usuário. usuário: \"Otimizar esta postagem do blog para SEO\" assistente: \"Usarei o agente especialista em SEO para revisar o uso de palavras-chave, meta tags, estrutura e elementos técnicos.\" <commentary>A otimização de SEO requer conhecimento especializado de algoritmos de pesquisa e práticas recomendadas.</commentary></example> <example>Contexto: o usuário precisa de auditoria de SEO. usuário: \"Por que esta página não é classificada?\" assistente: \"Deixe-me implantar o agente especialista em SEO para analisar problemas de SEO e fornecer recomendações de otimização.\" <commentary>Os diagnósticos de SEO exigem uma análise sistemática de vários fatores de classificação.</commentary></example> |
 
 ### <a id="tecnico"></a>Tecnico
 
@@ -2125,7 +2210,7 @@ Total de recursos nesta macro-área: `20`
 
 ## <a id="site-sites--páginas-de-conversão"></a>site (Sites & Páginas de Conversão)
 
-Total de recursos nesta macro-área: `12`
+Total de recursos nesta macro-área: `14`
 
 ### <a id="arquitetura"></a>Arquitetura
 
@@ -2137,7 +2222,7 @@ Total de recursos nesta macro-área: `12`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="site-auditoria-de-interface"></a>**`site-auditoria-de-interface`** | `Skill` | `0 Mkt` | Use ANTES de alterar uma página, seção ou componente que já existe (site, landing page, interface): lê o estado atual, inventaria o que há, checa redundância e só propõe lacunas reais, com prova. Gatilhos: \"melhorar a página\", \"mexer no layout\", \"adicionar uma seção\", \"redesenhar a home\", \"adicionar componente\", quando já existe código ou página publicada. NÃO use para criar uma página do zero (use build-landing-page), para auditar conversão (use site-cro), para desenhar a interface (use site-interface-de-conversao) nem para revisar conformidade de código de UI (use site-diretrizes-web-codigo). |
+| <a id="site-auditoria-de-interface"></a>**`site-auditoria-de-interface`** | `Skill` | `0 Mkt` | Use ANTES de alterar uma página, seção ou componente que já existe (site, landing page, interface): lê o estado atual, inventaria o que há, checa redundância e só propõe lacunas reais, com prova. Gatilhos: \"melhorar a página\", \"mexer no layout\", \"adicionar uma seção\", \"redesenhar a home\", \"adicionar componente\", quando já existe código ou página publicada. NÃO use para criar uma página do zero (use o workflow site-construcao-de-landing-page), para auditar conversão (use site-cro), para desenhar a interface (use site-interface-de-conversao) nem para revisar conformidade de código de UI (use site-diretrizes-web-codigo). |
 | <a id="site-auditoria-de-interface"></a>**`/site-auditoria-de-interface`** | `Workflow` | `0 Mkt` | Antes de alterar uma página, seção ou componente que já existe: lê o estado atual, inventaria o que há, checa redundância e só propõe lacunas reais, com prova. Não serve para criar página do zero nem para auditar conversão. |
 
 ### <a id="construcao-de-landing-page"></a>Construcao De Landing Page
@@ -2151,6 +2236,12 @@ Total de recursos nesta macro-área: `12`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="site-construcao-de-site"></a>**`/site-construcao-de-site`** | `Workflow` | `0 Mkt` | Constrói um site de várias páginas para uma marca de _brands/: arquitetura (mapa, URLs, menu), design system a partir dos tokens da marca, páginas na ordem de importância (cada uma pelo /build-landing-page), SEO técnico básico e teste no navegador. Gatilhos: \"crie o site\", \"monte o site institucional\", \"site de várias páginas\", \"reestruture o site\". Para uma única página use /build-landing-page. |
+
+### <a id="construcao-web"></a>Construcao Web
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="site-construcao-web"></a>**`@site-construcao-web`** | `Agent` | `0 Mkt` | Construtor de sites e landing pages de conversão para as marcas de _brands/. Use quando o pedido for criar, montar ou reestruturar uma landing page, página de captura ou site de várias páginas: conduz marca, brief, arquitetura, copy, design a partir dos tokens, código (só com autorização explícita), teste no navegador e revisão de conversão, chamando copy-redacao-publicitaria, site-otimizacao-de-conversao e seo-otimizacao-de-busca. Não escreve só o texto (use copy-redacao-publicitaria), não audita página pronta (use site-otimizacao-de-conversao) e não publica sem pedido. Exemplos: <example>Context: usuário quer uma página de captura. user: \"Monte a landing page do e-book da plus-pr\" assistant: \"Vou acionar o site-construcao-web, que segue o workflow site-construcao-de-landing-page com portões de aprovação.\" <commentary>Construção de página de ponta a ponta.</commentary></example> <example>Context: usuário quer o site institucional. user: \"Preciso do site da experimentacao com home, serviços e contato\" assistant: \"Acionando o site-construcao-web com o workflow site-construcao-de-site: primeiro a arquitetura, depois as páginas.\" <commentary>Site de várias páginas.</commentary></example> |
 
 ### <a id="cro"></a>Cro
 
@@ -2175,6 +2266,12 @@ Total de recursos nesta macro-área: `12`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="site-interface-de-conversao"></a>**`site-interface-de-conversao`** | `Skill` | `0 Mkt` | Use para desenhar a interface de uma página ou site de conversão: hierarquia visual, cor e contraste (60-30-10, WCAG AA), tipografia, espaçamento, componentes, movimento, versão para celular e checklist de acessibilidade. Gatilhos: \"design da landing page\", \"hierarquia visual\", \"paleta e contraste\", \"layout\", \"UI\", \"UX\", \"acessibilidade\". NÃO use para planejar a estrutura do site, URLs e navegação (use site-arquitetura), para auditoria de conversão de uma página pronta (use site-cro), para o texto da página (use copy-landing-page), para identidade visual da marca (use brand-visual-direction e brand-design-system), para código de componentes (use site-tailwind-design-system e site-react-desempenho) nem para alterar uma página existente sem duplicar o que já há (use site-auditoria-de-interface). |
+
+### <a id="otimizacao-de-conversao"></a>Otimizacao De Conversao
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="site-otimizacao-de-conversao"></a>**`@site-otimizacao-de-conversao`** | `Agent` | `0 Mkt` | Especialista em otimização de taxa de conversão. Use para maximizar as taxas de conversão em ativos de marketing, aplicando princípios e psicologia comprovados de CRO. Revisa páginas de destino, texto do e-mail, texto do anúncio e CTAs para eficácia de conversão. Exemplos: <exemplo>Contexto: página inicial criada pelo usuário. usuário: \"Analise esta página de destino para otimização de conversão\" assistente: \"Usarei o agente site-otimizacao-de-conversao para analisar proposta de valor, CTAs e elementos de persuasão.\" <commentary>CRO requer análise especializada de psicologia de conversão e melhores práticas.</commentary></example> <example>Contexto: o usuário precisa de e-mail otimizado. usuário: \"Como posso melhorar as conversões neste e-mail?\" assistente: \"Deixe-me implantar o agente site-otimizacao-de-conversao para revisar o texto, o posicionamento do CTA e os pontos de atrito.\" <commentary>A otimização de conversão de e-mail requer conhecimento especializado em persuasão e psicologia do usuário.</commentary></example> |
 
 ### <a id="react-composicao"></a>React Composicao
 
@@ -2206,17 +2303,23 @@ Total de recursos nesta macro-área: `17`
 | :--- | :--- | :--- | :--- |
 | <a id="social-analise-de-desempenho"></a>**`/social-analise-de-desempenho`** | `Workflow` | `0 Mkt` | Analisa o desempenho da campanha de mídia social em todas as plataformas com métricas de engajamento, cálculos de ROI e insights de público para decisões de marketing baseadas em dados |
 
+### <a id="calendario-e-distribuicao"></a>Calendario E Distribuicao
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="social-calendario-e-distribuicao"></a>**`@social-calendario-e-distribuicao`** | `Agent` | `0 Mkt` | Estrategista sênior de redes sociais, distribuição orgânica e comunidades. Use quando precisar planejar calendários editoriais, criar carrosséis de alta retenção no Instagram e LinkedIn, estruturar estratégias de crescimento em canais sociais e engajar audiências com conteúdo nativo.\\n\\n<example>\\nContext: O usuário precisa de uma sequência de carrosséis para o LinkedIn para gerar autoridade B2B.\\nuser: \"Preciso de um carrossel educativo para o LinkedIn da <marca> sobre monitoramento de marca.\"\\nassistant: \"Vou acionar o social-calendario-e-distribuicao para estruturar o carrossel lâmina a lâmina, definindo hook de capa, payoff e save-bait com foco em retenção.\"\\n<commentary>\\nDemanda de estratégia de redes sociais e carrossel de autoridade.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: O usuário quer um calendário editorial mensal omnichannel.\\nuser: \"Pode planejar a grade de conteúdo do Instagram e LinkedIn da <marca> para o próximo mês?\"\\nassistant: \"Acionando o social-calendario-e-distribuicao para desenhar o calendário editorial omnichannel alinhado aos pilares de conteúdo da marca.\"\\n<commentary>\\nPlanejamento de distribuição e linhas editoriais em mídias sociais.\\n</commentary>\\n</example> |
+
 ### <a id="carrossel"></a>Carrossel
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="social-carrossel"></a>**`social-carrossel`** | `Skill` | `0 Mkt` | Planeja e redige copy lâmina a lâmina para carrosséis de Instagram e LinkedIn otimizados para renderização em modelos de imagem de IA. Aplica teto rígido de ~25 palavras de corpo por lâmina, gancho agressivo no slide 1, entrega de valor imediata no slide 2 (sem enrolação), 1 ideia por lâmina com metáfora visual tangível, slide de salvamento (Save-Bait) com checklist/matriz, frase screenshotable e modo de auditoria com scorecard de 7 regras. Conecta dinamicamente com as marcas de _brands/. |
+| <a id="social-carrossel"></a>**`social-carrossel`** | `Skill` | `0 Mkt` | Use para planejar e redigir carrosséis de Instagram e LinkedIn lâmina a lâmina, com teto de cerca de 25 palavras por lâmina, gancho forte no slide 1, valor no slide 2 e uma ideia com metáfora visual por lâmina, prontos para renderizar em modelos de imagem de IA. Gatilhos: \"carrossel\", \"lâminas\", \"slides do Instagram\". NÃO use para a direção de arte e prompts de imagem do carrossel (use social-direcao-de-arte-ia), para estratégia social (use social-estrategia) nem para post de LinkedIn em texto (use social-linkedin). |
 
 ### <a id="checklist-diario"></a>Checklist Diario
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="social-checklist-diario"></a>**`/social-checklist-diario`** | `Workflow` | `0 Mkt` | Lista de verificação diária de gerenciamento de mídia social |
+| <a id="social-checklist-diario"></a>**`/social-checklist-diario`** | `Workflow` | `0 Mkt` | Gera o checklist diário de gestão de redes sociais (comunidade, publicação, engajamento e métricas). Use para organizar a rotina diária de social media por bloco de tempo. |
 
 ### <a id="conceito-de-thumbnail"></a>Conceito De Thumbnail
 
@@ -2234,7 +2337,7 @@ Total de recursos nesta macro-área: `17`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="social-direcao-de-arte-ia"></a>**`social-direcao-de-arte-ia`** | `Skill` | `0 Mkt` | Direção de arte e injeção automática de Design System em prompts de modelos de imagem de IA (ChatGPT/GPT Image 2, FLUX, Midjourney) para carrosséis em proporção 4:5 (1080x1350). Implementa o Workflow do Slide Âncora (geração de 3 variantes do hook e do primeiro slide de valor; travamento do vencedor como imagem de referência anexada para clonar layout, paleta e consistência estética nas lâminas seguintes), checklist de qualidade de 7 pontos e conexão dinâmica com as marcas de _brands/. |
+| <a id="social-direcao-de-arte-ia"></a>**`social-direcao-de-arte-ia`** | `Skill` | `0 Mkt` | Use para dirigir a arte de carrosséis 4:5 (1080x1350) gerados por IA: injeção do design system da marca em prompts de ChatGPT/GPT Image, FLUX e Midjourney e fluxo do Slide Âncora (3 variantes do hook e travamento do vencedor como referência). Gatilhos: \"prompt de imagem do carrossel\", \"slide âncora\", \"arte do carrossel com IA\". NÃO use para escrever a copy das lâminas (use social-carrossel), para prompts FLUX avulsos (use audiovisual-imagem-flux-prompts) nem para decidir a direção visual da marca (use brand-visual-direction). |
 
 ### <a id="estrategia"></a>Estrategia
 
@@ -2259,12 +2362,6 @@ Total de recursos nesta macro-área: `17`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="social-linkedin"></a>**`social-linkedin`** | `Skill` | `0 Mkt` | Use para criar presença e autoridade orgânica no LinkedIn: auditar e reescrever o perfil, escrever posts e carrosséis de alto desempenho, usar fórmulas de post e montar um sistema de conteúdo de liderança de pensamento que gera leads inbound. Gatilhos: \"post de LinkedIn\", \"perfil do LinkedIn\", \"headline\", \"liderança de pensamento\", \"conteúdo para LinkedIn\", \"autoridade no LinkedIn\". NÃO use para anúncios no LinkedIn (use ads-multiplataforma), para estratégia de várias redes ao mesmo tempo (use social-estrategia) nem para prospecção por mensagem direta (use vendas-cold-email). |
-
-### <a id="media-strategist"></a>Media Strategist
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="social-media-strategist"></a>**`@social-media-strategist`** | `Agent` | `0 Mkt` | Estrategista sênior de redes sociais, distribuição orgânica e comunidades. Use quando precisar planejar calendários editoriais, criar carrosséis de alta retenção no Instagram e LinkedIn, estruturar estratégias de crescimento em canais sociais e engajar audiências com conteúdo nativo.\\n\\n<example>\\nContext: O usuário precisa de uma sequência de carrosséis para o LinkedIn para gerar autoridade B2B.\\nuser: \"Preciso de um carrossel educativo para o LinkedIn da Waimonitor sobre monitoramento de marca.\"\\nassistant: \"Vou acionar o social-media-strategist para estruturar o carrossel lâmina a lâmina, definindo hook de capa, payoff e save-bait com foco em retenção.\"\\n<commentary>\\nDemanda de estratégia de redes sociais e carrossel de autoridade.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: O usuário quer um calendário editorial mensal omnichannel.\\nuser: \"Pode planejar a grade de conteúdo do Instagram e LinkedIn da Plinq para o próximo mês?\"\\nassistant: \"Acionando o social-media-strategist para desenhar o calendário editorial omnichannel alinhado aos pilares de conteúdo da marca.\"\\n<commentary>\\nPlanejamento de distribuição e linhas editoriais em mídias sociais.\\n</commentary>\\n</example> |
 
 ### <a id="otimizacao-de-post-linkedin"></a>Otimizacao De Post Linkedin
 
@@ -2301,13 +2398,13 @@ Total de recursos nesta macro-área: `17`
 
 ## <a id="vendas-vendas-b2b--prospecção"></a>vendas (Vendas B2B & Prospecção)
 
-Total de recursos nesta macro-área: `13`
+Total de recursos nesta macro-área: `14`
 
 ### <a id="cold-email"></a>Cold Email
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="vendas-cold-email"></a>**`vendas-cold-email`** | `Skill` | `0 Mkt` | Especialista em prospecção ativa B2B via cold email e cadências outbound. Domina a personalização em 4 níveis (icebreakers contextuais), estrutura de emails curtos de alto impacto, cadências de follow-up multitoque sem passivo-agressividade, CTAs de baixo atrito e infraestrutura de caixas secundárias. NÃO use para encontrar decisores, montar lista de leads, enriquecer contatos ou monitorar sinais de compra (use vendas-prospeccao-de-leads), nem para pontuar e rotear leads no CRM (use vendas-crm). |
+| <a id="vendas-cold-email"></a>**`vendas-cold-email`** | `Skill` | `0 Mkt` | Especialista em prospecção ativa B2B via cold email e cadências outbound. Domina a personalização em 4 níveis (icebreakers contextuais), estrutura de emails curtos de alto impacto, cadências de follow-up multitoque sem passivo-agressividade, CTAs de baixo atrito e infraestrutura de caixas secundárias. NÃO use para encontrar decisores, montar lista de leads, enriquecer contatos ou monitorar sinais de compra (use vendas-prospeccao-de-leads), nem para pontuar e rotear leads no CRM (use revenue-orquestracao-de-crm). |
 | <a id="vendas-cold-email"></a>**`/vendas-cold-email`** | `Workflow` | `0 Mkt` | Gera sequências de e-mail frio com variações de assunto para teste A/B e timing de follow-up. Aponta para a skill vendas-cold-email. |
 
 ### <a id="cold-email-multicanal"></a>Cold Email Multicanal
@@ -2316,17 +2413,17 @@ Total de recursos nesta macro-área: `13`
 | :--- | :--- | :--- | :--- |
 | <a id="vendas-cold-email-multicanal"></a>**`/vendas-cold-email-multicanal`** | `Workflow` | `0 Mkt` | Gera modelos de e-mail frio, mensagens de LinkedIn e follow-ups. Aponta para a habilidade vendas-cold-email. |
 
-### <a id="crm"></a>Crm
+### <a id="direcao-b2b"></a>Direcao B2B
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="vendas-crm"></a>**`vendas-crm`** | `Skill` | `0 Mkt` | CRM e marketing de ciclo de vida em nível de estratégia. Cobre estágios do contato, modelo de lead scoring (demográfico, comportamental e decaimento), temperatura do lead, segmentação, rotina de higiene de dados, pontos de integração entre marketing, CRM e vendas, roteamento de leads, automações de CRM e RevOps. Use para definir como os contatos evoluem, são pontuados e segmentados no CRM. NÃO use para desenhar e implementar as automações de email (use email-automacao), qualificação MEDDIC e BANT e previsão de vendas (use vendas-pipeline), conformidade com LGPD e GDPR (use geral-conformidade-lgpd) nem relatórios de atribuição (use data-atribuicao-e-relatorios). |
+| <a id="vendas-direcao-b2b"></a>**`@vendas-direcao-b2b`** | `Agent` | `0 Mkt` | Diretor de vendas B2B, RevOps e conformidade comercial. Use quando precisar estruturar processos de vendas consultivas complexas, implementar metodologias de qualificação (MEDDIC, BANT, SPIN), arquitetar esteiras de outbound, gerenciar riscos de fechamento de negócios e assegurar compliance regulatório (LGPD/GDPR e contratos). <example> Context: O time comercial precisa estruturar um processo de vendas enterprise com múltiplos tomadores de decisão. user: "Como estruturo o funil de vendas complexas da <marca> para fechar contratos anuais acima de R$ 50k?" assistant: "Vou acionar o vendas-direcao-b2b para desenhar a régua de qualificação MEDDIC, mapear o Economic Buyer e arquitetar a cadência de follow-up multicanal." <commentary> Demanda de estratégia e governança de vendas B2B complexas delegada ao diretor comercial. </commentary> </example> <example> Context: O usuário precisa de uma cadência de prospecção fria para diretores de marketing respeitando normas de privacidade. user: "Crie uma cadência de outbound cold email de 4 toques para a <marca> em conformidade com a LGPD." assistant: "Acionando o vendas-direcao-b2b para redigir a cadência com foco em dor de negócio, personalização sem atrito e mecanismo claro de opt-out conforme LGPD." <commentary> Outbound B2B combinado com rigor de conformidade e governança. </commentary> </example> |
 
-### <a id="estratégia-comercial"></a>Estratégia Comercial
+### <a id="habilitacao-comercial"></a>Habilitacao Comercial
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="pitch-deck-creator"></a>**`@pitch-deck-creator`** | `Agent` | `0 Mkt` | Especialista em apresentações executivas, pitch decks de captação de investimento e narrativa de negócios. Use quando precisar estruturar decks para investidores (Venture Capital / Anjos), apresentações comerciais de alto impacto para C-Levels, keynotes institucionais ou slides automatizados via código (Slidev). <example> Context: O fundador precisa preparar o pitch deck para rodada Seed da startup. user: "Preciso montar o pitch deck de captação da WAIMonitor para fundos de VC." assistant: "Vou acionar o pitch-deck-creator para estruturar o deck na narrativa padrão de 10-12 slides (Problema, Solução, Mercado, Tração, Time, Ask) com foco no modelo YC." <commentary> Demanda de fundraising e apresentação executiva para investidores delegada ao pitch-deck-creator. </commentary> </example> <example> Context: O time precisa de uma apresentação comercial técnica em formato Slidev com código interativo. user: "Crie uma apresentação técnica para diretoria da Plinq com slides interativos usando Slidev." assistant: "Acionando o pitch-deck-creator para gerar o arquivo Markdown formatado para renderização Slidev com layout limpo e suporte a componentes." <commentary> Apresentação técnica moderna com ferramenta de slides por código. </commentary> </example> |
+| <a id="vendas-habilitacao-comercial"></a>**`@vendas-habilitacao-comercial`** | `Agent` | `0 Mkt` | Especialista em garantia de vendas e capacitação. Use para criar argumentos de venda personalizados, scripts de tratamento de objeções, correspondência de prova social e fluxos de trabalho de aceleração de negócios. Exemplos: <exemplo>Contexto: O usuário precisa de materiais de vendas. usuário: \"Crie um estudo de caso para nossos clientes corporativos\" assistente: \"Usarei o agente vendas-habilitacao-comercial para desenvolver um estudo de caso atraente com dados de ROI e depoimentos.\" <commentary>A criação de estudo de caso requer mensagens de vendas e experiência em prova social.</commentary></example> <example>Contexto: O usuário deseja melhorar as conversas de vendas. usuário: \"Ajude nossa equipe de vendas a lidar com objeções de preços\" assistente: \"Deixe-me implantar o agente de vendas-habilitacao-comercial para criar scripts de tratamento de objeções e cartões de batalha competitivos.\" <commentary>O tratamento de objeções requer profundo conhecimento da psicologia do comprador e do posicionamento competitivo.</commentary></example> |
 
 ### <a id="materiais-de-venda"></a>Materiais De Venda
 
@@ -2339,7 +2436,7 @@ Total de recursos nesta macro-área: `13`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="vendas-metodologias-b2b"></a>**`vendas-metodologias-b2b`** | `Skill` | `0 Mkt` | Especialista em metodologias consagradas de vendas consultivas e negociação complexa B2B (Challenger Sale, SPIN Selling, Sandler System e Never Split the Difference). |
+| <a id="vendas-metodologias-b2b"></a>**`vendas-metodologias-b2b`** | `Skill` | `0 Mkt` | Use para aplicar metodologias de venda consultiva e negociação B2B complexa: Challenger Sale, SPIN Selling, Sandler System e Never Split the Difference. Gatilhos: \"SPIN\", \"Challenger\", \"Sandler\", \"negociação difícil\", \"venda consultiva\". NÃO use para gestão de pipeline e previsão (use vendas-pipeline), cadência de prospecção fria (use vendas-cold-email) nem material de venda (use vendas-materiais-de-venda). |
 
 ### <a id="personalizacao-em-escala"></a>Personalizacao Em Escala
 
@@ -2351,7 +2448,7 @@ Total de recursos nesta macro-área: `13`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="vendas-pipeline"></a>**`vendas-pipeline`** | `Skill` | `0 Mkt` | Especialista em orquestração de pipeline comercial B2B, qualificação rigorosa (MEDDIC e BANT), previsão de receita (Forecasting), gestão de risco de negócios, preparação de reuniões de descoberta, passagem de bastão de Vendas para Sucesso do Cliente e comissionamento de vendas (OTE, aceleradores, cota). NÃO use para materiais de venda como deck, case, depoimento, script de demo, objeções e RFP (use vendas-materiais-de-venda), QBR e renovação de contrato (use growth-retencao-e-churn), pontuação de leads, higiene de CRM e RevOps (use vendas-crm), técnicas de conversação e negociação (use vendas-metodologias-b2b), cold email e cadências de prospecção (use vendas-cold-email), automação de email e réguas de nutrição (use email-automacao) nem atribuição de marketing (use data-atribuicao-e-relatorios). |
+| <a id="vendas-pipeline"></a>**`vendas-pipeline`** | `Skill` | `0 Mkt` | Especialista em orquestração de pipeline comercial B2B, qualificação rigorosa (MEDDIC e BANT), previsão de receita (Forecasting), gestão de risco de negócios, preparação de reuniões de descoberta, passagem de bastão de Vendas para Sucesso do Cliente e comissionamento de vendas (OTE, aceleradores, cota). NÃO use para materiais de venda como deck, case, depoimento, script de demo, objeções e RFP (use vendas-materiais-de-venda), QBR e renovação de contrato (use growth-retencao-e-churn), pontuação de leads, higiene de CRM e RevOps (use revenue-orquestracao-de-crm), técnicas de conversação e negociação (use vendas-metodologias-b2b), cold email e cadências de prospecção (use vendas-cold-email), automação de email e réguas de nutrição (use email-automacao) nem atribuição de marketing (use data-atribuicao-e-relatorios). |
 
 ### <a id="pitch-de-patrocinio"></a>Pitch De Patrocinio
 
@@ -2363,7 +2460,13 @@ Total de recursos nesta macro-área: `13`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="vendas-prospeccao-de-leads"></a>**`vendas-prospeccao-de-leads`** | `Skill` | `0 Mkt` | Use para encontrar e preparar prospectos B2B antes do contato: achar decisores por cargo, porte e setor, montar lista de leads, enriquecer contatos (e-mail, telefone, tecnologia usada), conferir e-mails antes do envio e monitorar sinais de compra como rodada de investimento, vagas abertas e troca de tecnologia. Gatilhos: \"ache decisores\", \"lista de prospects\", \"pesquisa de leads\", \"enriquecer contatos\", \"sinais de compra\", \"quem está contratando\", \"Apollo\". NÃO use para escrever o e-mail frio ou a cadência (use vendas-cold-email), pontuar e rotear leads ou limpar o CRM (use vendas-crm), nem para qualificar um negócio com MEDDIC ou BANT (use vendas-pipeline). |
+| <a id="vendas-prospeccao-de-leads"></a>**`vendas-prospeccao-de-leads`** | `Skill` | `0 Mkt` | Use para encontrar e preparar prospectos B2B antes do contato: achar decisores por cargo, porte e setor, montar lista de leads, enriquecer contatos (e-mail, telefone, tecnologia usada), conferir e-mails antes do envio e monitorar sinais de compra como rodada de investimento, vagas abertas e troca de tecnologia. Gatilhos: \"ache decisores\", \"lista de prospects\", \"pesquisa de leads\", \"enriquecer contatos\", \"sinais de compra\", \"quem está contratando\", \"Apollo\". NÃO use para escrever o e-mail frio ou a cadência (use vendas-cold-email), pontuar e rotear leads ou limpar o CRM (use revenue-orquestracao-de-crm), nem para qualificar um negócio com MEDDIC ou BANT (use vendas-pipeline). |
 | <a id="vendas-prospeccao-de-leads"></a>**`/vendas-prospeccao-de-leads`** | `Workflow` | `0 Mkt` | Sugere empresas-alvo e estratégia de contato. Aponta para a skill vendas-prospeccao-de-leads. |
+
+### <a id="qualificacao-de-leads"></a>Qualificacao De Leads
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="vendas-qualificacao-de-leads"></a>**`@vendas-qualificacao-de-leads`** | `Agent` | `0 Mkt` | Especialista em detecção de intenções e pontuação de leads. Use para análise comportamental, reconhecimento de padrões de engajamento, previsão de prontidão para vendas e recomendação de próximas ações para clientes potenciais. Exemplos: <exemplo>Contexto: o usuário deseja melhorar a qualidade do lead. usuário: \"Estamos recebendo muitos leads, mas eles não estão convertendo em vendas\" assistente: \"Vou usar o agente vendas-qualificacao-de-leads para criar um modelo de pontuação de leads e critérios de qualificação.\" <commentary>Isso requer análise comportamental e experiência em pontuação, então delegue para vendas-qualificacao-de-leads.</commentary></example> <example>Contexto: O usuário precisa segmentar seu público. usuário: \"Ajude-me a criar segmentos de clientes para campanhas direcionadas\" assistente: \"Deixe-me implantar o agente de vendas-qualificação-de-leads para analisar padrões de engajamento e criar definições de segmento.\" <commentary>A segmentação de público requer uma análise comportamental profunda.</commentary></example> |
 
 ---
