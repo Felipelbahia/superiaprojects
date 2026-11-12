@@ -32,18 +32,18 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Pipelines de Dados & Transformação](#pipelines-de-dados--transformação) (`2`)
 - [Arquitetura de Software & Engenharia](#arquitetura-de-software--engenharia) (`42` recursos)
   - [Padrões Arquiteturais & Boas Práticas](#padrões-arquiteturais--boas-práticas) (`42`)
-- [Backend & APIs](#backend--apis) (`20` recursos)
-  - [Design & Integração de APIs (REST / GraphQL)](#design--integração-de-apis-rest--graphql) (`11`)
+- [Backend & APIs](#backend--apis) (`21` recursos)
+  - [Design & Integração de APIs (REST / GraphQL)](#design--integração-de-apis-rest--graphql) (`12`)
   - [Node.js, Go & Microsserviços](#nodejs-go--microsserviços) (`2`)
   - [Python & Backends de Alta Performance](#python--backends-de-alta-performance) (`5`)
   - [Serviços de Autenticação & Pagamentos](#serviços-de-autenticação--pagamentos) (`2`)
 - [Database & Storage](#database--storage) (`6` recursos)
   - [Bancos Relacionais (PostgreSQL & SQL)](#bancos-relacionais-postgresql--sql) (`3`)
   - [Modelagem & Migrações de Banco](#modelagem--migrações-de-banco) (`3`)
-- [DevOps & Cloud Infra](#devops--cloud-infra) (`65` recursos)
+- [DevOps & Cloud Infra](#devops--cloud-infra) (`64` recursos)
   - [Infraestrutura como Código (Terraform / Cloud)](#infraestrutura-como-código-terraform--cloud) (`3`)
   - [Orquestração Kubernetes & Contêineres](#orquestração-kubernetes--contêineres) (`2`)
-  - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`60`)
+  - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`59`)
 - [Frontend & UI/UX](#frontend--uiux) (`215` recursos)
   - [Acessibilidade Web (A11y & WCAG)](#acessibilidade-web-a11y--wcag) (`4`)
   - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`189`)
@@ -149,7 +149,7 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Roteiro Mais Falado](#roteiro-mais-falado) (`1`)
   - [Saas](#saas) (`2`)
   - [Vsl](#vsl) (`1`)
-- [data (Inteligência de Dados)](#data-inteligência-de-dados) (`13` recursos)
+- [data (Inteligência de Dados)](#data-inteligência-de-dados) (`14` recursos)
   - [Analise De Desempenho](#analise-de-desempenho) (`1`)
   - [Analise De Funil](#analise-de-funil) (`1`)
   - [Analytics De Produto](#analytics-de-produto) (`1`)
@@ -159,6 +159,7 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Funil E Coortes](#funil-e-coortes) (`1`)
   - [Gerador De Utm](#gerador-de-utm) (`1`)
   - [Interpretacao De Analytics](#interpretacao-de-analytics) (`1`)
+  - [Métricas e Atribuição](#métricas-e-atribuição) (`1`)
   - [Posthog](#posthog) (`1`)
   - [Relatorio Executivo](#relatorio-executivo) (`1`)
   - [Revisao Mensal](#revisao-mensal) (`1`)
@@ -171,9 +172,8 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Newsletter](#newsletter) (`2`)
   - [Orquestracao De Campanhas](#orquestracao-de-campanhas) (`1`)
   - [Otimizacao De Assunto](#otimizacao-de-assunto) (`1`)
-- [geral (Geral & Governança)](#geral-geral--governança) (`24` recursos)
+- [geral (Geral & Governança)](#geral-geral--governança) (`23` recursos)
   - [Anti Slop](#anti-slop) (`2`)
-  - [Arquitetura De Projeto](#arquitetura-de-projeto) (`1`)
   - [Briefing Matinal](#briefing-matinal) (`1`)
   - [Conformidade Lgpd](#conformidade-lgpd) (`1`)
   - [Coordenacao De Campanhas](#coordenacao-de-campanhas) (`1`)
@@ -401,13 +401,14 @@ Total de recursos nesta macro-área: `42`
 
 ## <a id="backend--apis"></a>Backend & APIs
 
-Total de recursos nesta macro-área: `20`
+Total de recursos nesta macro-área: `21`
 
 ### <a id="design--integração-de-apis-rest--graphql"></a>Design & Integração de APIs (REST / GraphQL)
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="claude-code-review"></a>**`claude-code-review`** | `Skill` | `0 Padrões` | Use ao configurar, ajustar ou executar o Claude Code Review (revisão gerenciada do GitHub PR, REVIEW.md, @claude review) ou o comando local /code-review, quando as descobertas da revisão são barulhentas, ausentes ou caras, ou ao restringir mesclagens na gravidade da revisão automatizada. Também para revisão de PR automatizada e solicitações de ultrareview. |
+| <a id="github-publisher"></a>**`github-publisher`** | `Skill` | `0 Padrões` | Use quando o usuário solicitar para publicar, fazer upload ou enviar uma pasta local ou projeto para o GitHub pela primeira vez, criar um novo repositório GitHub a partir de código existente, ou "subir o projeto pro GitHub" / "criar repositório", e quando um repositório estiver prestes a ser compartilhado (tornado público, um colaborador adicionado, o link enviado para alguém) - inclusive quando disserem que já está limpo ou que estão com pressa. |
 | <a id="launch-readiness"></a>**`launch-readiness`** | `Skill` | `0 Padrões` | Use quando um aplicativo ou site construído com IA está prestes a ser publicado ou lançado, ou o usuário solicita uma verificação de pré-lançamento, go-live ou "antes de lançamento" além da segurança do código - capacidade de entrega de e-mail, envio de loja de aplicativos, risco de chatbot, kill switch e limites de gastos, links quebrados, exposição legal e de privacidade. |
 | <a id="openapi-spec-generation"></a>**`openapi-spec-generation`** | `Skill` | `0 Padrões` | Gere e mantenha especificações OpenAPI 3.1 a partir de código, especificações de design inicial e padrões de validação. Use ao criar documentação de API, gerar SDKs ou garantir a conformidade do contrato de API. |
 | <a id="sip-firecrawl"></a>**`sip-firecrawl`** | `Skill` | `0 Padrões` | Use whenever the current task involves Firecrawl (web scraping, crawling, mapping, search, structured extraction, browser interaction, monitoring, lead gen, SEO audits, etc.) but the active project has no local Firecrawl skills — i.e. any project other than "SIP - Firecrawl" (Firecrawl - local) itself. Routes the task to the central Firecrawl knowledge hub instead of improvising from general knowledge. Also use when the user asks "existe algo de firecrawl pra isso", "tem skill de scraping no hub", "consulta o SIP - Firecrawl", or names Firecrawl explicitly in a project that isn't it. Este stub existe para que IAs que não leem `.claude/skills/` (Google Antigravity/Gemini, Cursor) ainda encontrem este nome via Regra 4 (Fallback Resolution Protocol) — o Claude Code já tem acesso direto via `.claude/skills/sip-firecrawl`. |
@@ -469,7 +470,7 @@ Total de recursos nesta macro-área: `6`
 
 ## <a id="devops--cloud-infra"></a>DevOps & Cloud Infra
 
-Total de recursos nesta macro-área: `65`
+Total de recursos nesta macro-área: `64`
 
 ### <a id="infraestrutura-como-código-terraform--cloud"></a>Infraestrutura como Código (Terraform / Cloud)
 
@@ -495,7 +496,6 @@ Total de recursos nesta macro-área: `65`
 | <a id="dependency-upgrade"></a>**`dependency-upgrade`** | `Skill` | `0 Padrões` | Gerencie atualizações de versões de dependências importantes com análise de compatibilidade, implementação gradual e testes abrangentes. Use ao atualizar versões da estrutura, atualizar dependências principais ou gerenciar alterações significativas em bibliotecas. |
 | <a id="finishing-a-development-branch"></a>**`finishing-a-development-branch`** | `Skill` | `0 Padrões` | Use quando a implementação for concluída, todos os testes forem aprovados e você precisar decidir como integrar o trabalho |
 | <a id="gdpr-data-handling"></a>**`gdpr-data-handling`** | `Skill` | `0 Padrões` | Implemente o tratamento de dados em conformidade com o GDPR com gerenciamento de consentimento, direitos do titular dos dados e privacidade desde o projeto. Use ao criar sistemas que processem dados pessoais da UE, implementando controles de privacidade ou conduzindo análises de conformidade com o GDPR. |
-| <a id="github-publisher"></a>**`github-publisher`** | `Skill` | `0 Padrões` | Use quando o usuário solicitar para publicar, fazer upload ou enviar uma pasta local ou projeto para o GitHub pela primeira vez, criar um novo repositório GitHub a partir de código existente ou "subir o projeto pro GitHub" / "criar repositório" - inclusive quando disserem que já está limpo ou que estão com pressa. |
 | <a id="grafana-dashboards"></a>**`grafana-dashboards`** | `Skill` | `0 Padrões` | Crie e gerencie painéis de produção do Grafana para visualização em tempo real de métricas de sistemas e aplicativos. Use ao criar painéis de monitoramento, visualizar métricas ou criar interfaces de observabilidade operacional. |
 | <a id="incident-runbook-templates"></a>**`incident-runbook-templates`** | `Skill` | `0 Padrões` | Crie runbooks estruturados de resposta a incidentes com procedimentos passo a passo, caminhos de escalonamento e ações de recuperação. Use ao criar runbooks, responder a incidentes ou estabelecer procedimentos de resposta a incidentes. |
 | <a id="interaction-design"></a>**`interaction-design`** | `Skill` | `0 Padrões` | Projete e implemente microinterações, design de movimento, transições e padrões de feedback do usuário. Use ao adicionar polimento às interações da IU, implementar estados de carregamento ou criar experiências de usuário agradáveis. |
@@ -1482,7 +1482,7 @@ Total de recursos nesta macro-área: `14`
 
 ## <a id="data-inteligência-de-dados"></a>data (Inteligência de Dados)
 
-Total de recursos nesta macro-área: `13`
+Total de recursos nesta macro-área: `14`
 
 ### <a id="analise-de-desempenho"></a>Analise De Desempenho
 
@@ -1537,6 +1537,12 @@ Total de recursos nesta macro-área: `13`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="data-interpretacao-de-analytics"></a>**`/data-interpretacao-de-analytics`** | `Workflow` | `0 Mkt` | Interprete dados GA4 e GSC com benchmarks, indicadores de status e insights acionáveis |
+
+### <a id="métricas-e-atribuição"></a>Métricas e Atribuição
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="sip-geral"></a>**`sip-geral`** | `Skill` | `0 Mkt` | Use when the current task involves general software engineering, architecture, backend, frontend, mobile, database, testing, security, DevOps, AI/ML or development workflows (spec, planning, execution-loop, TDD, debugging) in any project other than "SIP - Geral" (0 Padrões) itself, or when the user asks "existe algo no 0 Padrões pra isso", "tem skill/agent/workflow pra isso no hub geral", "consulta o SIP - Geral", or names a 0 Padrões skill, agent or workflow explicitly in a consumer project. |
 
 ### <a id="posthog"></a>Posthog
 
@@ -1615,7 +1621,7 @@ Total de recursos nesta macro-área: `8`
 
 ## <a id="geral-geral--governança"></a>geral (Geral & Governança)
 
-Total de recursos nesta macro-área: `24`
+Total de recursos nesta macro-área: `23`
 
 ### <a id="anti-slop"></a>Anti Slop
 
@@ -1623,12 +1629,6 @@ Total de recursos nesta macro-área: `24`
 | :--- | :--- | :--- | :--- |
 | <a id="geral-anti-slop"></a>**`geral-anti-slop`** | `Skill` | `0 Mkt` | Detecta e remove padrões de escrita de IA do texto. Use ao aprimorar rascunhos, limpar conteúdo gerado por IA ou garantir que a escrita pareça autenticamente humana. Invoque com "passar pelo detector de resíduos", "limpar" ou "remover impressões digitais de IA". |
 | <a id="geral-anti-slop"></a>**`/geral-anti-slop`** | `Workflow` | `0 Mkt` | Detecta e remove padrões de escrita de IA do texto. Use ao polir |
-
-### <a id="arquitetura-de-projeto"></a>Arquitetura De Projeto
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="geral-arquitetura-de-projeto"></a>**`geral-arquitetura-de-projeto`** | `Skill` | `0 Mkt` | Use ao criar ou reorganizar as pastas de um projeto de marketing, ao decidir onde uma peça (arquivo de marca, estratégia, campanha, post, pitch de imprensa, relatório de monitoramento, ativo, dados, plano) deve ser salva, quando o projeto tiver mais de uma marca ou produto, ou quando uma habilidade precisar do mapa de destino do projeto antes de escrever um arquivo. |
 
 ### <a id="briefing-matinal"></a>Briefing Matinal
 

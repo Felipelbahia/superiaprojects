@@ -139,6 +139,7 @@ A significant change is not finished until its evidence is shown: the check that
   - Main libraries: <names>
   - Last checked: AAAA-MM-DD (Context7)
   ```
+- **Shareable by clone:** a project with runnable code keeps the onboarding kit (skill `github-publisher`, `references/onboarding-kit.md`: runtime version file, a minimum version that fails early, versioned lockfile, `.env.example`, README section "Como rodar em outra máquina"). Push to a private repository early; share it (public, collaborator, link sent) only after the clean-clone proof, with the command and result shown.
 - **Reuse before build:** skill `oss-scout` before building a capability a mature library may cover.
 
 ## 12. Code done means

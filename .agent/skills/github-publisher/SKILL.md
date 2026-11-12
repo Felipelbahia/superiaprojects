@@ -1,7 +1,7 @@
 ---
 # Repository: https://github.com/Felipelbahia/superiaprojects
 name: github-publisher
-description: Use when the user asks to publish, upload or push a local folder or project to GitHub for the first time, create a new GitHub repository from existing code, or "subir o projeto pro GitHub" / "criar repositório" - including when they say it is already clean or they are in a hurry.
+description: Use when the user asks to publish, upload or push a local folder or project to GitHub for the first time, create a new GitHub repository from existing code, or "subir o projeto pro GitHub" / "criar repositório", and when a repository is about to be shared (made public, a collaborator added, the link sent to someone) - including when they say it is already clean or they are in a hurry.
 author: Futuro Mercado / Felipe Bahia (@felipelbahia)
 license: MIT
 ---
@@ -10,6 +10,8 @@ license: MIT
 ## Overview
 
 Publishing is irreversible: once a key or a private file reaches GitHub, deleting it later does not unpublish it (forks, caches, clones). So nothing is staged before the folder is audited, and nothing is pushed before the staged list is checked. "Already clean", "já testei" and "tô com pressa" change none of the steps.
+
+Push early: the first push to a **private** repository is encouraged as soon as the audit passes (backup and history from day one) and never waits for the onboarding kit. **Sharing** does: a project with runnable code is made public, gets a collaborator or has its link sent only after Step 9.
 
 ## Step 1 — Ask once, in one message
 
@@ -67,7 +69,7 @@ ls -d node_modules dist build .next out __pycache__ .venv venv .DS_Store 2>/dev/
 
 - License: `gh repo license view <key> > LICENSE` (e.g. `mit`, `apache-2.0`), then fill the year and owner.
 - CI: one minimal workflow in `.github/workflows/ci.yml` running the project's existing lint/test commands; see skill `github-actions-templates`.
-- No `README.md`: create a minimal one (name + one line + how to run).
+- `README.md` (always, not only if asked): project with runnable code → the section "Como rodar em outra máquina" and the files of `references/onboarding-kit.md` (items 1-7); without runnable code → name + one line. A missing piece of the kit is reported, and does not block a private push.
 
 ## Step 6 — Stage and verify, then commit
 
@@ -87,7 +89,7 @@ git branch -M main
 gh repo create <owner>/<name> --private --source=. --remote=origin --push --description "<desc>"
 ```
 
-Use `--public` only with the user's explicit "public". Do not add `--license`/`--gitignore`/`--add-readme` here: with `--source` the files come from the local repo (Step 5).
+Use `--public` only with the user's explicit "public", and for a project with runnable code only after Step 9 (public at creation is sharing). Do not add `--license`/`--gitignore`/`--add-readme` here: with `--source` the files come from the local repo (Step 5).
 
 ## Step 8 — Verify the result
 
@@ -99,12 +101,23 @@ git ls-tree -r --name-only origin/main | grep -E '(^|/)(\.env|.*service-account.
 
 Report the URL, the visibility and what was kept local (ignored files), with the commands' output as evidence.
 
+## Step 9 — Before sharing (REQUIRED for runnable code)
+
+Before `gh repo edit --visibility public`, `gh repo create --public`, adding a collaborator (`gh api repos/<owner>/<name>/collaborators/<user> -X PUT`) or sending the link:
+
+1. Items 1-7 of `references/onboarding-kit.md` are in the repository (list the files and quote the README section title).
+2. Run the clean-clone proof (item 8) in a temporary folder and show the command and its last lines.
+3. Proof failed or kit incomplete → **do not share**: fix, commit, push, prove again. The private repository stays as it is.
+
+Project without runnable code: no proof needed; say so in the report.
+
 ## Never
 
 - `git add` before Step 4, or `git push --force`, or a `master` branch.
 - Publish from inside a parent repo without the user's choice (Step 3).
 - Treat "already clean" as evidence: run the audit.
 - Script `gh auth login`.
+- Share a project with runnable code (public, collaborator, link) without the clean-clone proof of Step 9.
 
 ## Common Mistakes
 
@@ -114,3 +127,5 @@ Report the URL, the visibility and what was kept local (ignored files), with the
 | Only checking file names for secrets | Run the content grep; keys get pasted into `config.js` |
 | Ignoring a source file that contains a key | Move the key out and rotate it; ignoring breaks the project and the key stays in your hands |
 | Declaring success after `gh repo create` | Step 8: list the remote files and confirm the URL and visibility |
+| Holding the first private push until the README is perfect | Push privately as soon as the audit passes; the onboarding kit gates sharing, not backup |
+| Proving the version lock with `npm ci --node-version=…` | It does not simulate the old runtime; run the install with the real old runtime (onboarding kit, item 8) |

@@ -120,7 +120,7 @@ Siga rigorosamente a esteira segura da skill [`github-publisher`](file:///Users/
      ```
    - Se encontrar qualquer segredo real em arquivo de código, **PARE** e mova para `.env` antes de prosseguir.
 3. **Inicialização Git, Staging Verificado e Primeiro Commit:**
-   - Garantir repositório inicializado na branch `main` e `README.md` mínimo presente:
+   - Garantir repositório inicializado na branch `main` e `README.md` mínimo presente. Com módulo `code` (código executável), o README mínimo inclui a seção "Como rodar em outra máquina" e o projeto ganha os arquivos do kit de onboarding (itens 1-7 de `github-publisher/references/onboarding-kit.md`: versão do runtime em arquivo, versão mínima que falha cedo, lockfile, `.env.example`, aviso das pastas de IA, symlinks documentados). A prova do clone limpo (item 8) é exigida antes de compartilhar o repositório, não antes do primeiro push privado (skill `github-publisher`, Step 9):
      ```bash
      git -C "<project_root>" init -b main
      git -C "<project_root>" add -A
