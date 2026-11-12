@@ -8,17 +8,21 @@ Atualizado em 2026-11-12. Se este mapa divergir de uma regra de skill, **vale es
 | Agent | `.agent/agents/<nome>.md` | `name` + `description` | fixo pelas regras; link em `.claude/agents/` |
 | Workflow (`/comando`) | `.agent/workflows/<nome>.md` | `description`, `disable-model-invocation: true` | fixo pelas regras; link em `.claude/commands/` e `.cursor/commands/` |
 | Módulo de regras | `.agent/skills/project-initializer/modules/<nome>.md` | | o `CLAUDE.md` é gerado deles (`assemble_rules.py`); nunca editar o `CLAUDE.md` à mão |
-| Scripts do kit e testes | `.agent/scripts/` · `.agent/scripts/tests/test_<script>.py` | | código: segue o `STANDARDS.md` |
+| Regras do kit nesta máquina | `CLAUDE.md` (gerado por `assemble_rules.py`, + bloco `## Project`) → `GEMINI.md`, `AGENTS.md`, `.cursorrules`, `.agent/rules/` (cópias do `sync_rules.py`) | | fora do git; nunca à mão: editar o módulo e remontar |
+| Modelo público de regras | `CLAUDE.example.md` (+ `ClaudeExample.md`) | | versionado; base do `install.sh`; sem o bloco `## Project` do kit; manter alinhado aos módulos |
+| Scripts do kit e testes | `.agent/scripts/` · `.agent/scripts/tests/test_<script ou assunto>.py` | | código: segue o `STANDARDS.md` |
+| Dados compartilhados de skills | `.agent/.shared/<skill>/` | | versionado (ex.: dados do `ui-ux-pro-max`) |
 | Prompt para colar | `prompts-template/NN-<assunto>.md` (versionado, com `<SUPER_IA_PROJECTS_PATH>`) + `projetos/prompts/NN-<assunto>.md` (cópia local, caminho absoluto) | `NN-` = número do prompt | aposentados em `_arquivo/` nas duas pastas; as duas cópias com o mesmo texto |
 | Prompt de instalação do SIP | `prompts/instalar-skill-sip-geral.md` | | padrão SIP (`superiaprojects-criar-sip`) |
 | Ficha de projeto | `projetos/<Nome do Projeto>.md` · índice de SIPs em `projetos/_sips.md` | linha "Última sincronização com o kit" | fora do git |
 | Registro de instalação de SIP | `instalacoes/<projeto>.md` | | fora do git; só o `README.md` versionado |
 | SIPs consumidos | `.agent/SIPS-CONSUMIDOS.md` | | mantido pelo prompt de instalação de cada SIP |
-| Catálogo e contagens | `.agent/CATALOG.md`, `.agent/catalog.html`, `.agent/catalog-data.js`, `.agent/ARCHITECTURE.md` | | gerados por script (`generate_catalog.py`, `sync_entrypoints.py --write-docs`); nunca à mão |
+| Catálogo | `.agent/CATALOG.md`, `.agent/catalog.html`, `.agent/catalog-data.js` | | gerados pelo `generate_catalog.py`; nunca à mão. As fontes `.agent/catalog-app.css` e `.agent/catalog-app.js` são escritas à mão (o script as copia) |
+| Arquitetura e contagens | `.agent/ARCHITECTURE.md` | | à mão, exceto o bloco de contagens (`sync_entrypoints.py --write-docs`, que também atualiza o bloco do `README.md` quando ele tem o marcador) |
 | Relatório de projetos vs kit | `.agent/plans/Relatório de projetos vs kit.md` | | gerado pelo `projects_audit.py` |
 | Documentação pública do repositório | raiz: `README.md`, `README.en.md`, `SETUP.md`, `STANDARDS.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md` | | imagens em `assets/` |
 | Documentação de terceiros | `.agent/vendor/` | | fora do git |
-| Código (scripts, hooks, configs) | segue o `STANDARDS.md` | | fora do mapa; hook em `.githooks/` |
+| Código (scripts, hooks, configs) | segue o `STANDARDS.md` | | fora do mapa; hook em `.githooks/`; CI e templates de issue em `.github/` |
 | Planos, loops, handoffs, artefatos do Antigravity, backups de regras | `.agent/plans/` | `execution-loops/AAAA_MM_DD/<Título>/NN Nome.md`, `handoffs/`, `{Tarefa} [PLAN\|TASK\|WALKTHROUGH].md` | fixo pelas regras do kit; fora do git |
 | Itens adiados | `inbox/` (resolvidos em `inbox/arquivo/`) | `NNN-assunto.md` | fixo pelas regras do kit; fora do git, só o `README.md` versionado |
 | Memória de longo prazo | `memory.md` | `Problema → Solução` | fixo pelas regras do kit; ainda não existe (ver Inconsistências) |
@@ -46,4 +50,4 @@ O que as regras dizem versus a árvore real. Nada foi movido; mudança só com a
 - `memory.md` não existe, mas a seção Learn das regras manda atualizá-lo quando um problema crítico é resolvido ou uma decisão é tomada.
 - `.agent/eduzz_workflow.json`: exportação de workflow versionada na raiz do `.agent/` desde o commit inicial, sem ser parte do kit (o lugar natural seria o SIP- N8N ou o projeto dono do workflow).
 - `.firecrawl/install-check.md` (jul/2026): sobra local do Firecrawl, que saiu do núcleo do kit (ignorado pelo git).
-- Os prompts existem em duas cópias (`prompts-template/` e `projetos/prompts/`) que precisam ser mantidas iguais à mão; hoje o `02` diverge entre elas (pendência registrada no handoff de 2026-11-12).
+- Os prompts existem em duas cópias (`prompts-template/` e `projetos/prompts/`) que precisam ser mantidas iguais à mão; hoje divergem `02`, `02b`, `README.md` e `HISTORICO.md`; `03` e `06` só no nome do kit (pendência registrada no handoff de 2026-11-12).

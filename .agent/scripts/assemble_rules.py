@@ -9,7 +9,8 @@ Usage (from the project root):
 Modules live in .agent/skills/project-initializer/modules/<name>.md. They are concatenated in a
 fixed order (never the order given) and every "## " heading outside code fences is numbered.
 Re-running over a file it assembled keeps the project's ## Project, ## Stack and ## Local rules blocks
-and moves other hand-written sections into ## Local rules. A file from the old model is refused
+and moves other hand-written sections into ## Local rules. Sections of the kit and the text before the first
+section are regenerated; local edits there are not kept and are reported. A file from the old model is refused
 unless --replace is given (back it up first). Then run sync_rules.py to copy the result to GEMINI.md,
 AGENTS.md and the other rule files.
 """
@@ -58,12 +59,23 @@ def fence_states(lines: list[str]) -> list[bool]:
     return states
 
 
+def section_starts(lines: list[str]) -> list[int]:
+    return [i for i, (line, outside) in enumerate(zip(lines, fence_states(lines))) if outside and line.startswith("## ")]
+
+
 def split_sections(text: str) -> list[list[str]]:
     """Split at "## " lines outside code fences. Each section starts with its heading; the preamble is dropped."""
     lines = text.split("\n")
-    starts = [i for i, (line, outside) in enumerate(zip(lines, fence_states(lines))) if outside and line.startswith("## ")]
+    starts = section_starts(lines)
     ends = starts[1:] + [len(lines)]
     return [lines[start:end] for start, end in zip(starts, ends)]
+
+
+def preamble(text: str) -> list[str]:
+    """The text before the first "## " section, trailing blank lines trimmed."""
+    lines = text.split("\n")
+    starts = section_starts(lines)
+    return trim(lines[:starts[0]] if starts else lines)
 
 
 def section_title(heading: str) -> str:
@@ -82,23 +94,35 @@ def demote(lines: list[str]) -> list[str]:
             for line, outside in zip(lines, fence_states(lines))]
 
 
-def module_titles(modules_dir: Path) -> set[str]:
-    """Titles of every "## " section in the module files present in modules_dir."""
-    titles = set()
+def normalized(section: list[str]) -> list[str]:
+    """A section with its heading reduced to "## Title", trailing blank lines trimmed."""
+    return trim([f"## {section_title(section[0])}", *section[1:]])
+
+
+def module_sections(modules_dir: Path) -> dict[str, tuple[str, list[str]]]:
+    """Title -> (module name, normalized text) for every "## " section of the module files present in modules_dir."""
+    sections = {}
     for name in ORDER:
         path = modules_dir / f"{name}.md"
         if path.is_file():
-            titles.update(section_title(section[0]) for section in split_sections(path.read_text(encoding="utf-8")))
-    return titles
+            for section in split_sections(path.read_text(encoding="utf-8")):
+                sections[section_title(section[0])] = (name, normalized(section))
+    return sections
 
 
-def reassemble(existing: str, fresh: str, used: list[str], modules_dir: Path) -> tuple[str, list[str]]:
-    """Fresh module text plus the project's own blocks from an assembled file. Returns (text, moved titles)."""
-    known = module_titles(modules_dir)
-    blocks, moved, moved_texts = {}, [], []
+def reassemble(existing: str, fresh: str, used: list[str], modules_dir: Path) -> tuple[str, list[str], list[str]]:
+    """Fresh module text plus the project's own blocks from an assembled file.
+    Returns (text, moved titles, replaced: regenerated sections or preamble whose local text was not kept)."""
+    known = module_sections(modules_dir)
+    blocks, moved, moved_texts, replaced = {}, [], [], []
+    if preamble(existing) != preamble(fresh):
+        replaced.append("preamble (text before the first section)")
     for section in split_sections(existing):
         title = section_title(section[0])
         if title in known:
+            module, text = known[title]
+            if module not in used or normalized(section) != text:
+                replaced.append(title)
             continue
         if title in KEPT_TITLES and title not in blocks:
             blocks[title] = "\n".join(trim(section))
@@ -118,7 +142,7 @@ def reassemble(existing: str, fresh: str, used: list[str], modules_dir: Path) ->
     for title in KEPT_TITLES:
         if title in blocks:
             text += "\n" + blocks[title] + "\n"
-    return text, moved
+    return text, moved, replaced
 
 
 def main() -> int:
@@ -147,12 +171,12 @@ def main() -> int:
         return 2
 
     existing = out.read_text(encoding="utf-8") if out.exists() else ""
-    moved = []
+    moved, replaced = [], []
     if not existing.strip():
         text = fresh
     elif MARKER in existing:
         used = [n for n in ORDER if n in names]
-        text, moved = reassemble(existing, fresh, used, args.modules_dir)
+        text, moved, replaced = reassemble(existing, fresh, used, args.modules_dir)
     elif args.replace:
         text = fresh
     else:
@@ -162,6 +186,9 @@ def main() -> int:
 
     if moved:
         print(f"⚠️ moved to ## Local rules: {', '.join(moved)}", file=sys.stderr)
+    if replaced:
+        print(f"⚠️ regenerated from the kit, local text not kept (check the diff with your backup): {', '.join(replaced)}",
+              file=sys.stderr)
     out.write_text(text, encoding="utf-8")
     used = [n for n in ORDER if n in names]
     print(f"✅ {out} assembled from: {', '.join(used)}. Next: run sync_rules.py")

@@ -169,6 +169,33 @@ class PreserveLocalBlocksTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(self.out.read_text(encoding="utf-8"), base)
 
+    def test_hand_edit_inside_a_kit_section_is_reported(self):
+        base = self.fresh("core,code")
+        self.out.write_text(base.replace("rule\n", "rule\nmy own tweak\n"), encoding="utf-8")
+        result = self.assemble("core,code")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertNotIn("my own tweak", self.out.read_text(encoding="utf-8"))
+        self.assertIn("Code rules", result.stderr)
+
+    def test_section_of_a_module_not_assembled_is_reported(self):
+        self.out.write_text(self.fresh("core") + "\n## Code rules\nhand-written code rules\n", encoding="utf-8")
+        result = self.assemble("core")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Code rules", result.stderr)
+
+    def test_edited_preamble_is_reported(self):
+        base = self.fresh("core")
+        self.out.write_text(base.replace("> header", "> header\nlocal note"), encoding="utf-8")
+        result = self.assemble("core")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("preamble", result.stderr.lower())
+
+    def test_unchanged_reassembly_prints_no_warning(self):
+        self.out.write_text(self.fresh("core,code") + "\n" + LOCAL_BLOCKS["Project"], encoding="utf-8")
+        result = self.assemble("core,code")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertNotIn("⚠️", result.stderr)
+
     def test_old_model_file_is_refused_without_replace(self):
         old = "# CLAUDE.md\n\n## Project Defines Gate\nold local rule\n"
         self.out.write_text(old, encoding="utf-8")
