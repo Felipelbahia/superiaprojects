@@ -60,7 +60,7 @@ Arquivo: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent
 
 <!-- skills:start (gerado por build_sip_index.py — não edite à mão) -->
 
-Total: 201.
+Total: 202.
 
 | Skill | Use quando |
 | --- | --- |
@@ -153,6 +153,7 @@ Total: 201.
 | `linkerd-patterns` | Implement Linkerd service mesh patterns for lightweight, security-focused service mesh deployments. Use when setting up Linkerd, configuring traffic policies, or implementing zero-trust networking with minimal overhead. |
 | `lint-and-validate` | Automatic quality control, linting, and static analysis procedures. Use after every code modification to ensure syntax correctness and project standards. Triggers onKeywords: lint, format, check, validate, types, static analysis. |
 | `llm-evaluation` | Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback, and benchmarking. Use when testing LLM performance, measuring AI application quality, or establishing evaluation frameworks. |
+| `mapa-de-destinos` | Use when about to save a deliverable that is not source code (report, document, content piece, campaign, press material, data export, workflow export, study) and the project has no documented place for it, when creating or aligning a project, when a project gains more than one brand or product, or when someone asks where a kind of file should go. |
 | `market-sizing-analysis` | This skill should be used when the user asks to "calculate TAM", "determine SAM", "estimate SOM", "size the market", "calculate market opportunity", "what's the total addressable market", or requests market sizing analysis for a startup or business opportunity. |
 | `mcp-builder` | MCP (Model Context Protocol) server building principles. Tool design, resource patterns, best practices. |
 | `memory-forensics` | Master memory forensics techniques including memory acquisition, process analysis, and artifact extraction using Volatility and related tools. Use when analyzing memory dumps, investigating incidents, or performing malware analysis from RAM captures. |
