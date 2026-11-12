@@ -8,15 +8,21 @@ Usage (from the project root):
 
 Modules live in .agent/skills/project-initializer/modules/<name>.md. They are concatenated in a
 fixed order (never the order given) and every "## " heading outside code fences is numbered.
-Then run sync_rules.py to copy the result to GEMINI.md, AGENTS.md and the other rule files.
+Re-running over a file it assembled keeps the project's ## Project, ## Stack and ## Local rules blocks
+and moves other hand-written sections into ## Local rules. A file from the old model is refused
+unless --replace is given (back it up first). Then run sync_rules.py to copy the result to GEMINI.md,
+AGENTS.md and the other rule files.
 """
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
 ORDER = ["core", "sip-access", "code", "interface", "content", "automation"]
 DEFAULT_DIR = Path(__file__).resolve().parent.parent / "skills" / "project-initializer" / "modules"
+MARKER = "Before acting (mandatory sequence)"
+KEPT_TITLES = ("Project", "Stack", "Local rules")
 
 
 def assemble(names: list[str], title: str, out_name: str, modules_dir: Path) -> str:
@@ -40,12 +46,89 @@ def assemble(names: list[str], title: str, out_name: str, modules_dir: Path) -> 
     return f"# {out_name} - {title}\n\n" + "\n".join(lines)
 
 
+def fence_states(lines: list[str]) -> list[bool]:
+    """For each line: True when it is outside a code fence (fence lines count as inside)."""
+    states, in_fence = [], False
+    for line in lines:
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+            states.append(False)
+        else:
+            states.append(not in_fence)
+    return states
+
+
+def split_sections(text: str) -> list[list[str]]:
+    """Split at "## " lines outside code fences. Each section starts with its heading; the preamble is dropped."""
+    lines = text.split("\n")
+    starts = [i for i, (line, outside) in enumerate(zip(lines, fence_states(lines))) if outside and line.startswith("## ")]
+    ends = starts[1:] + [len(lines)]
+    return [lines[start:end] for start, end in zip(starts, ends)]
+
+
+def section_title(heading: str) -> str:
+    return re.sub(r"^\d+\.\s+", "", heading[3:]).strip()
+
+
+def trim(lines: list[str]) -> list[str]:
+    while lines and not lines[-1].strip():
+        lines = lines[:-1]
+    return lines
+
+
+def demote(lines: list[str]) -> list[str]:
+    """Move the headings outside code fences one level down (## Deploy -> ### Deploy)."""
+    return [("#" + line) if outside and re.match(r"#+ ", line) else line
+            for line, outside in zip(lines, fence_states(lines))]
+
+
+def module_titles(modules_dir: Path) -> set[str]:
+    """Titles of every "## " section in the module files present in modules_dir."""
+    titles = set()
+    for name in ORDER:
+        path = modules_dir / f"{name}.md"
+        if path.is_file():
+            titles.update(section_title(section[0]) for section in split_sections(path.read_text(encoding="utf-8")))
+    return titles
+
+
+def reassemble(existing: str, fresh: str, used: list[str], modules_dir: Path) -> tuple[str, list[str]]:
+    """Fresh module text plus the project's own blocks from an assembled file. Returns (text, moved titles)."""
+    known = module_titles(modules_dir)
+    blocks, moved, moved_texts = {}, [], []
+    for section in split_sections(existing):
+        title = section_title(section[0])
+        if title in known:
+            continue
+        if title in KEPT_TITLES and title not in blocks:
+            blocks[title] = "\n".join(trim(section))
+        else:
+            moved.append(title)
+            moved_texts.append("\n".join(trim(demote(section))))
+
+    if "Project" in blocks:
+        blocks["Project"] = "\n".join(
+            f"- Modules: {', '.join(used)}" if line.lstrip().startswith("- Modules:") else line
+            for line in blocks["Project"].split("\n")
+        )
+    if moved_texts:
+        blocks["Local rules"] = "\n\n".join([blocks.get("Local rules", "## Local rules"), *moved_texts])
+
+    text = fresh
+    for title in KEPT_TITLES:
+        if title in blocks:
+            text += "\n" + blocks[title] + "\n"
+    return text, moved
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--modules", help="comma-separated module names (core is mandatory)")
     parser.add_argument("--title", default="Project rules")
     parser.add_argument("--out", default="CLAUDE.md")
     parser.add_argument("--modules-dir", type=Path, default=DEFAULT_DIR)
+    parser.add_argument("--replace", action="store_true",
+                        help="overwrite a rules file that is not assembled from the kit modules, after you backed it up")
     parser.add_argument("--list", action="store_true", help="print the available modules in assembly order")
     args = parser.parse_args()
 
@@ -58,10 +141,27 @@ def main() -> int:
     names = [n.strip() for n in args.modules.split(",") if n.strip()]
     out = Path(args.out)
     try:
-        text = assemble(names, args.title, out.name, args.modules_dir)
+        fresh = assemble(names, args.title, out.name, args.modules_dir)
     except ValueError as err:
         print(f"❌ {err}", file=sys.stderr)
         return 2
+
+    existing = out.read_text(encoding="utf-8") if out.exists() else ""
+    moved = []
+    if not existing.strip():
+        text = fresh
+    elif MARKER in existing:
+        used = [n for n in ORDER if n in names]
+        text, moved = reassemble(existing, fresh, used, args.modules_dir)
+    elif args.replace:
+        text = fresh
+    else:
+        print(f"❌ {out} is not assembled from the kit modules (old model). Make a backup, then rerun with --replace.",
+              file=sys.stderr)
+        return 3
+
+    if moved:
+        print(f"⚠️ moved to ## Local rules: {', '.join(moved)}", file=sys.stderr)
     out.write_text(text, encoding="utf-8")
     used = [n for n in ORDER if n in names]
     print(f"✅ {out} assembled from: {', '.join(used)}. Next: run sync_rules.py")
