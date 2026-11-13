@@ -5,6 +5,7 @@ Usage: python3 .agent/scripts/check_sip_hub.py "<hub path>" <resolver skill name
 Exit 0 when every check passes, 1 otherwise. Read-only.
 """
 
+import os
 import re
 import subprocess
 import unicodedata
@@ -88,7 +89,7 @@ def main() -> int:
     if len(sys.argv) != 3:
         print(__doc__)
         return 2
-    hub, skill = Path(sys.argv[1]).absolute(), sys.argv[2]
+    hub, skill = Path(os.path.abspath(sys.argv[1])), sys.argv[2]
     failed = 0
     results = checks(hub, skill)
     for label, ok, detail in results:

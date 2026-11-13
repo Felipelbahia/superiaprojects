@@ -23,7 +23,12 @@ import re
 import subprocess
 import unicodedata
 import sys
+import importlib.util
 from pathlib import Path
+
+_spec = importlib.util.spec_from_file_location("assemble_rules", Path(__file__).resolve().parent / "assemble_rules.py")
+assemble_rules = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(assemble_rules)
 
 BASE = Path("/Users/macbookpro/Documents/IA Projects")
 DEFAULT_ROOTS = ["Compartilhado", "Pessoal", "Plinq", "Projetos", "WaiMonitor", "_Plataforma"]
@@ -131,6 +136,27 @@ def rules_model(text: str) -> str:
     return "none"
 
 
+def rules_current(folder: Path) -> bool:
+    """True when ./CLAUDE.md equals the kit's current remount of its own `- Modules:` line (read-only: remounts in memory)."""
+    path = folder / "CLAUDE.md"
+    if not path.is_file():
+        return False
+    existing = read_text(path)
+    block = existing.rsplit("\n## Project\n", 1)[-1] if "\n## Project\n" in existing else ""
+    m = re.search(r"^- Modules:\s*(.+)$", block, re.M)
+    title = re.match(r"# CLAUDE\.md - (.*)", existing)
+    if not (m and title):
+        return False
+    names = [n.strip() for n in m.group(1).split(",") if n.strip()]
+    try:
+        fresh = assemble_rules.assemble(names, title.group(1), "CLAUDE.md", assemble_rules.DEFAULT_DIR)
+        used = [n for n in assemble_rules.ORDER if n in names]
+        text = assemble_rules.reassemble(existing, fresh, used, assemble_rules.DEFAULT_DIR)[0]
+    except (ValueError, OSError):
+        return False
+    return text.rstrip() == existing.rstrip()
+
+
 def profile_filled(text: str) -> bool:
     """True when a `- Produces:` line has a real value (the core module ships a `<...>` placeholder)."""
     return any(not m.group(1).startswith("<") for m in re.finditer(r"^\s*-\s*\**Produces:\**[ \t]*(\S.*)$", text, re.M))
@@ -192,6 +218,7 @@ def audit(folder: Path, fichas=None, kit_agent: Path = KIT / ".agent"):
     dest_map = (folder / "docs" / "mapa-de-destinos.md").is_file() or (folder / "mapa-de-destinos.md").is_file()
     duplicate = (folder / "CLAUDE.md").is_file() and (folder / ".claude" / "CLAUDE.md").is_file()
     stack = stack_state(text)
+    current = model == "modular" and rules_current(folder)
     synced, kit_changed = sync_state((fichas or {}).get(nfc_path(folder)))
     return {
         "path": folder,
@@ -207,7 +234,8 @@ def audit(folder: Path, fichas=None, kit_agent: Path = KIT / ".agent"):
         "launch": launch_profile_state(folder),
         "loops": "new" if loops_new else ("legacy" if loops_old else "-"),
         "handoffs": "new" if hand_new else ("legacy" if hand_old else "-"),
-        "up_to_date": model == "modular" and profile and sip and dest_map and not duplicate and not linked,
+        "rules_current": current,
+        "up_to_date": model == "modular" and profile and sip and dest_map and not duplicate and not linked and current,
         "synced": synced,
         "kit_changed": kit_changed,
     }
@@ -227,7 +255,7 @@ def render(rows) -> str:
         "",
         f"> Gerado em {today} por `.agent/scripts/projects_audit.py`. **Somente leitura**: nenhum arquivo de projeto foi alterado.",
         "> *Modelo* = `modular` (regras montadas pelos módulos do kit) · `old` (regras anteriores a 2026-11-12) · `none` · *Perfil* = bloco `## Project` preenchido · *SIP geral* = `sip-geral` instalado · *Mapa* = `docs/mapa-de-destinos.md` · *.claude/CLAUDE.md* = `yes` quando duplica o `./CLAUDE.md` (regras em dobro) · *.agent → kit* = `yes` quando a pasta `.agent` do projeto é um link para o `.agent` do kit (planos, regras e skills do projeto caem dentro do kit; as regras de `.agent/rules/` não são lidas como do projeto) · *Stack* = bloco `## Stack` (`yes`; `old` = título sem o formato) · *Contract* = tem `_projectdefines/` · *Launch* = o BRIEF tem a seção Launch profile (`-` = sem contrato).",
-        "> *Situação* `em dia` = Modelo `modular` + Perfil + SIP geral + Mapa + sem `.claude/CLAUDE.md` duplicado + `.agent` próprio.",
+        "> *Situação* `em dia` = Modelo `modular` + Perfil + SIP geral + Mapa + sem `.claude/CLAUDE.md` duplicado + `.agent` próprio + regras iguais à remontagem atual dos módulos (o `CLAUDE.md` bate com o que `assemble_rules.py` geraria hoje; o texto local em `## Project`, `## Stack` e `## Local rules` não conta).",
         "> *Sincronizado em* = data da linha \"Última sincronização com o kit\" na ficha (`nunca` = ficha sem a linha; `sem ficha` = nenhuma ficha aponta para esta pasta) · *Kit mudou desde então* = commits do kit em `.agent/` depois do hash registrado (os arquivos de regra do kit não são versionados; mudança não commitada não conta).",
         "> *Loops/Handoffs*: `new` = `.agent/plans/…` · `legacy` = na raiz do projeto (continua valendo até migrar) · `-` = não existe.",
         "",

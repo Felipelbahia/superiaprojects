@@ -55,6 +55,19 @@ class CheckSipHub(unittest.TestCase):
         # Assert
         self.assertEqual(result.returncode, 0, result.stdout)
 
+    def test_relative_path_with_dotdot_matches_the_resolver(self):
+        # Arrange: resolver cites the real absolute path; the hub is given as "../<name>" from a sibling folder
+        import os
+        hub = build_hub()
+        resolver = hub / ".agent/skills/sip-teste/SKILL.md"
+        resolver.write_text(resolver.read_text(encoding="utf-8").replace(str(hub), os.path.realpath(hub)), encoding="utf-8")
+        sibling = Path(tempfile.mkdtemp())
+        rel = os.path.relpath(os.path.realpath(hub), os.path.realpath(sibling))
+        # Act
+        result = subprocess.run([sys.executable, str(SCRIPT), rel, "sip-teste"], capture_output=True, text=True, cwd=sibling)
+        # Assert
+        self.assertEqual(result.returncode, 0, result.stdout)
+
     def test_whole_inbox_ignored_fails_readme_check(self):
         hub = build_hub()
         (hub / ".gitignore").write_text("inbox/\ninstalacoes/\n")

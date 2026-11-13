@@ -17,7 +17,7 @@ assemble_mod = importlib.util.module_from_spec(_aspec)
 _aspec.loader.exec_module(assemble_mod)
 
 # Built from the real kit modules, so a renamed heading in core.md breaks these tests.
-MODULAR_RULES = assemble_mod.assemble(["core", "code"], "Demo", "CLAUDE.md", assemble_mod.DEFAULT_DIR)
+MODULAR_RULES = assemble_mod.assemble(["core", "sip-access", "code"], "Demo", "CLAUDE.md", assemble_mod.DEFAULT_DIR)
 FILLED_PROFILE = "\n## Project\n- Produces: software\n- Modules: core, sip-access, code\n"
 OLD_RULES = "# CLAUDE.md\n\n### Project Defines Gate\n\n### Latest Docs First (Context7 MCP)\n"
 
@@ -65,6 +65,25 @@ class ProjectsAuditTest(unittest.TestCase):
         row = audit_mod.audit(folder, fichas)
         # Assert
         self.assertEqual(row["synced"], "2026-11-12")
+
+    def test_rules_behind_the_current_modules_are_not_up_to_date(self):
+        # Arrange: the project was assembled before a module line was added to the kit
+        p = self.complete_project()
+        lines = MODULAR_RULES.split("\n")
+        stale = "\n".join(lines[:20] + lines[21:])
+        write(p / "CLAUDE.md", stale + FILLED_PROFILE)
+        # Act
+        row = audit_mod.audit(p)
+        # Assert
+        self.assertFalse(row["rules_current"])
+        self.assertFalse(row["up_to_date"])
+
+    def test_local_rules_do_not_break_rules_current(self):
+        # Arrange
+        p = self.complete_project()
+        write(p / "CLAUDE.md", MODULAR_RULES + FILLED_PROFILE + "\n## Local rules\n- Use tabs.\n")
+        # Act / Assert
+        self.assertTrue(audit_mod.audit(p)["rules_current"])
 
     def test_old_rules_are_classified_old_and_behind(self):
         p = self.root / "old"
