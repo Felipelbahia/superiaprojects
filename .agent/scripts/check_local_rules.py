@@ -42,7 +42,9 @@ def heading_key(line: str) -> str:
 
 def sections(text: str) -> list[tuple[str, list[str]]]:
     """[(heading line or '', content lines)] split at every markdown heading outside code fences."""
-    out, head, body, fence = [], "", [], False
+    out: list[tuple[str, list[str]]] = []
+    head, fence = "", False
+    body: list[str] = []
     for raw in text.splitlines():
         if raw.strip().startswith(("```", "~~~")):
             fence = not fence
@@ -108,7 +110,7 @@ def index_by_len(generic: set[str]) -> dict:
 
 
 def local_rules_section(text: str) -> str:
-    match = re.search(r"^## Local rules\s*$", text, re.M)
+    match = re.search(r"^## Local rules\s*$", text, re.MULTILINE)
     return text[match.end():] if match else text
 
 
@@ -146,7 +148,8 @@ def findings(old_path: Path, new_path: Path, adapted_path: Path | None = None, b
     new_lines = set(own_candidates(new_text))
 
     by_len = index_by_len(generic)
-    missing, cut = [], []
+    missing: list[str] = []
+    cut: list[str] = []
     for head, body in sections(read(old_path)):
         key = heading_key(head) if head else ""
         title = re.sub(r"^#+\s*", "", key)
