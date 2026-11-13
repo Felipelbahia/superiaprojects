@@ -14,6 +14,7 @@ For projects that produce text: e-mails, posts, articles, scripts, press release
   | Copy, social, video, growth, marketing strategy | `sip-marketing` |
   | Press, PR, media monitoring | `sip-imprensa` |
   | E-mail campaigns, segments, Mautic, Mailgun | `sip-mautic` |
+  | Web research, scraping, crawling, extraction | `sip-firecrawl` |
 
 - **Automatable checks:** what a script can check (required metadata fields, broken links, dates, words to avoid from `brand/`) becomes a check in the project's `verification.json` of skill `deliverable-verification` (`forbidden`, `required_mentions`; links and dates as `custom_checks`) and runs before every delivery.
 - Bulk e-mail or a new sending domain: run skill `launch-readiness` (deliverability) first.
