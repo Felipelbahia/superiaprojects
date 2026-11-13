@@ -203,6 +203,9 @@ Vale para qualquer sessão (celular, desktop ou Remote Control) que use o servid
 
 *(Nota: Este projeto é 100% Backend / MCP / Scripts sem interfaces gráficas; seções de Mobile e Frontend UI foram removidas)*
 
+| Request Type | Keywords | Mode | Result |
+| --- | --- | --- | --- |
+| **KNOWLEDGE / MCP**| "consult", "project", "remember"| EDIT   | Direct Execution / Plan conforme escopo     |
 - **Domínios do roteamento:** AI & Brain, Project Knowledge Hub, MCP Tools, Automation, Quick Memory.
 - **Skills-chave do projeto:** `clean-code`, `brainstorming`, `execution-loop`, `rag-implementation`, `n8n-workflow-patterns`, `api-patterns`, `plan-writing`.
 - **`STANDARDS.md`** cobre arquitetura, configurações de MCP, nomes e convenções, e substitui `CODEBASE.md`, `ARCHITECTURE.md` e `PATTERNS.md` (que não existem neste projeto 100% backend). A ficha deste projeto está em `projetos/Remote Brain.md` no `0 Padrões`.
