@@ -30,7 +30,7 @@ Declared once, at setup, and kept current. It says which rule modules this file 
 
 ## Rule files parity
 
-`GEMINI.md` and `CLAUDE.md` stay 100% identical. Claude Code reads `./CLAUDE.md` (or `./.claude/CLAUDE.md`, **never both**: it loads the two). Antigravity reads `./.agent/rules/GEMINI.md` and/or `./GEMINI.md`. After editing one, run `python .agent/scripts/sync_rules.py`.
+`GEMINI.md` and `CLAUDE.md` stay 100% identical. Claude Code reads `./CLAUDE.md` (or `./.claude/CLAUDE.md`, **never both**: it loads the two). Antigravity reads `./.agent/rules/GEMINI.md` and/or `./GEMINI.md`. After editing one, run `python .agent/scripts/sync_rules.py`. When the kit's modules change, a project's `CLAUDE.md` falls behind on its own: re-run `assemble_rules.py` (same modules) and `sync_rules.py`. That is routine; check first that the diff has only module lines. Updating an old rules file: keep only the project's own rules, whole (`check_local_rules.py <backup> CLAUDE.md` must say `ok`), and drop the old generic text.
 
 ## Before acting (mandatory sequence)
 
@@ -77,7 +77,7 @@ Read only when the trigger applies, and only if the file exists. With `_projectd
 
 ## Plans, inbox, artifacts
 
-- Everything under `.agent/plans/` (local, git-ignored; `_projectdefines/` and `memory.md` are versioned). One plan per task.
+- Everything under `.agent/plans/` (local, always listed in the project's `.gitignore`: add the line if missing; `_projectdefines/` and `memory.md` are versioned). One plan per task.
   - Plans/loops: `execution-loops/AAAA_MM_DD/<Short Title>/NN Name.md` (inside a loop the plan is `02 Plan.md`; plan only is `00 Plan.md`; the counter never resets).
   - Handoffs: `handoffs/`. Audits: `{task-slug}.md`.
   - In edit mode, look for an existing plan of the objective first.

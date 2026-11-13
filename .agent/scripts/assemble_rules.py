@@ -24,6 +24,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from check_local_rules import review_text  # noqa: E402
+
 ORDER = ["core", "sip-access", "code", "interface", "content", "automation"]
 DEFAULT_DIR = Path(__file__).resolve().parent.parent / "skills" / "project-initializer" / "modules"
 MARKER = "Before acting (mandatory sequence)"
@@ -216,6 +219,13 @@ def main() -> int:
         text, moved, replaced, removed = reassemble(existing, fresh, used, args.modules_dir)
     elif args.replace:
         text = fresh
+        review = review_text(existing)
+        if review:
+            text = text.rstrip("\n") + "\n\n## Local rules\n\n### A revisar (do arquivo antigo)\n\n" \
+                "Classifique: regra do projeto fica inteira (e vai para o corpo de `## Local rules`); texto genérico do kit antigo sai.\n\n" \
+                + review + "\n"
+            print("⚠️ A revisar: the old file's own text was kept under ## Local rules / A revisar. Classify it, then run check_local_rules.py <backup> <new>.",
+                  file=sys.stderr)
     else:
         print(f"❌ {out} is not assembled from the kit modules (old model). Make a backup, then rerun with --replace.",
               file=sys.stderr)

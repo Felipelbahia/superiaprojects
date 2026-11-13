@@ -53,6 +53,24 @@ class ProjectsAuditTest(unittest.TestCase):
         self.assertFalse(row["duplicate"])
         self.assertTrue(row["up_to_date"])
 
+    def test_local_rules_state_without_backup_is_sem_backup(self):
+        row = audit_mod.audit(self.complete_project())
+        self.assertEqual(row["local_rules"], "sem backup")
+
+    def test_local_rules_state_ok_when_backup_rules_are_whole_in_claude_md(self):
+        p = self.complete_project()
+        rule = "- Every table in the shared database MUST carry the [jobs] prefix, no exceptions."
+        write(p / ".agent/plans/rules-backup-2026-11-12/CLAUDE.md", f"## Regras\n{rule}\n")
+        write(p / "CLAUDE.md", MODULAR_RULES + FILLED_PROFILE + f"\n## Local rules\n{rule}\n")
+        self.assertEqual(audit_mod.audit(p)["local_rules"], "ok")
+
+    def test_local_rules_state_falta_when_a_backup_rule_is_cut(self):
+        p = self.complete_project()
+        rule = "- Every table in the shared database MUST carry the [jobs] prefix, no exceptions."
+        write(p / ".agent/plans/rules-backup-2026-11-12/CLAUDE.md", f"## Regras\n{rule}\n")
+        write(p / "CLAUDE.md", MODULAR_RULES + FILLED_PROFILE + "\n## Local rules\n- Every table in the shared database MUST carry\n")
+        self.assertEqual(audit_mod.audit(p)["local_rules"], "falta")
+
     def test_ficha_citing_an_accented_path_matches_a_decomposed_folder(self):
         # Arrange: Finder stores "Previsão" decomposed (NFD); the ficha cites the path composed (NFC)
         import unicodedata

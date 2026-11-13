@@ -271,6 +271,22 @@ class PreserveLocalBlocksTest(unittest.TestCase):
         self.assertNotIn("old local rule", text)
         self.assertTrue(text.startswith("# CLAUDE.md - T\n"))
 
+    def test_replace_carries_the_old_files_own_rules_to_review_and_drops_generic_text(self):
+        # Arrange: an old-model file with one project rule (long, whole) and old generic kit text
+        own = "- Every table in the shared database MUST carry the [jobs] prefix, no exceptions."
+        generic = "**MANDATORY: Every user request must pass through the Socratic Gate before ANY tool use or implementation.**"
+        self.out.write_text(f"# CLAUDE.md\n\n## Regras do Projeto\n{own}\n\n## Socratic\n{generic}\n", encoding="utf-8")
+        # Act
+        result = self.assemble("core", "--replace")
+        # Assert: own rule whole under ## Local rules (review block), generic text gone
+        self.assertEqual(result.returncode, 0, result.stderr)
+        text = self.out.read_text(encoding="utf-8")
+        self.assertIn("## Local rules", text)
+        self.assertIn("A revisar", text)
+        self.assertIn(own, text)
+        self.assertNotIn(generic, text)
+        self.assertIn("A revisar", result.stderr + result.stdout)
+
     def test_empty_existing_file_is_assembled_normally(self):
         self.out.write_text("", encoding="utf-8")
         result = self.assemble("core")

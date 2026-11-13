@@ -26,6 +26,9 @@ import sys
 import importlib.util
 from pathlib import Path
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import check_local_rules  # noqa: E402
+
 _spec = importlib.util.spec_from_file_location("assemble_rules", Path(__file__).resolve().parent / "assemble_rules.py")
 assemble_rules = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(assemble_rules)
@@ -205,6 +208,16 @@ def sync_state(ficha) -> tuple:
         return date, "?"
 
 
+def local_rules_state(folder: Path) -> str:
+    """ok / falta (own rule cut, missing or old generic text left) / sem backup, from check_local_rules.py."""
+    backups = sorted((folder / ".agent" / "plans").glob("rules-backup-*/CLAUDE.md"))
+    if not backups or not (folder / "CLAUDE.md").is_file():
+        return "sem backup"
+    adapted = backups[-1].parent / "adaptadas.md"
+    cut, missing, junk = check_local_rules.findings(backups[-1], folder / "CLAUDE.md", adapted if adapted.is_file() else None)
+    return "falta" if (cut or missing or junk) else "ok"
+
+
 def audit(folder: Path, fichas=None, kit_agent: Path = KIT / ".agent"):
     linked = agent_linked_to_kit(folder, kit_agent)
     text = "\n".join(read_text(p) for p in rule_paths(folder, skip_agent=linked))
@@ -235,6 +248,7 @@ def audit(folder: Path, fichas=None, kit_agent: Path = KIT / ".agent"):
         "loops": "new" if loops_new else ("legacy" if loops_old else "-"),
         "handoffs": "new" if hand_new else ("legacy" if hand_old else "-"),
         "rules_current": current,
+        "local_rules": local_rules_state(folder),
         "up_to_date": model == "modular" and profile and sip and dest_map and not duplicate and not linked and current,
         "synced": synced,
         "kit_changed": kit_changed,
@@ -257,19 +271,20 @@ def render(rows) -> str:
         "> *Modelo* = `modular` (regras montadas pelos módulos do kit) · `old` (regras anteriores a 2026-11-12) · `none` · *Perfil* = bloco `## Project` preenchido · *SIP geral* = `sip-geral` instalado · *Mapa* = `docs/mapa-de-destinos.md` · *.claude/CLAUDE.md* = `yes` quando duplica o `./CLAUDE.md` (regras em dobro) · *.agent → kit* = `yes` quando a pasta `.agent` do projeto é um link para o `.agent` do kit (planos, regras e skills do projeto caem dentro do kit; as regras de `.agent/rules/` não são lidas como do projeto) · *Stack* = bloco `## Stack` (`yes`; `old` = título sem o formato) · *Contract* = tem `_projectdefines/` · *Launch* = o BRIEF tem a seção Launch profile (`-` = sem contrato).",
         "> *Situação* `em dia` = Modelo `modular` + Perfil + SIP geral + Mapa + sem `.claude/CLAUDE.md` duplicado + `.agent` próprio + regras iguais à remontagem atual dos módulos (o `CLAUDE.md` bate com o que `assemble_rules.py` geraria hoje; o texto local em `## Project`, `## Stack` e `## Local rules` não conta).",
         "> *Sincronizado em* = data da linha \"Última sincronização com o kit\" na ficha (`nunca` = ficha sem a linha; `sem ficha` = nenhuma ficha aponta para esta pasta) · *Kit mudou desde então* = commits do kit em `.agent/` depois do hash registrado (os arquivos de regra do kit não são versionados; mudança não commitada não conta).",
+        "> *Regras locais* = `check_local_rules.py` entre o backup `.agent/plans/rules-backup-*/CLAUDE.md` e o `CLAUDE.md` atual: `ok` (cada regra própria inteira, sem texto antigo do kit) · `falta` (regra cortada, esquecida ou lixo antigo: rode o check e corrija) · `sem backup` (não dá para conferir). Só informa; não muda a Situação.",
         "> *Loops/Handoffs*: `new` = `.agent/plans/…` · `legacy` = na raiz do projeto (continua valendo até migrar) · `-` = não existe.",
         "",
         f"**{len(rows)} projetos encontrados · {len(rows) - len(behind)} com as regras novas · {len(behind)} atrás do kit.**",
         "",
-        "| Projeto | Tipo | Modelo | Perfil | SIP geral | Mapa | .claude/CLAUDE.md | .agent → kit | Stack | Contract | Launch | Loops | Handoffs | Situação | Sincronizado em | Kit mudou desde então |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "| Projeto | Tipo | Modelo | Perfil | SIP geral | Mapa | .claude/CLAUDE.md | .agent → kit | Stack | Contract | Launch | Loops | Handoffs | Regras locais | Situação | Sincronizado em | Kit mudou desde então |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows:
         rel = os.path.relpath(r["path"], BASE)
         lines.append(
             f"| {rel} | {r['type']} | {r['model']} | {mark(r['profile'])} | {mark(r['sip'])} | {mark(r['map'])} | "
             f"{mark(r['duplicate'])} | {mark(r['agent_linked'])} | {mark(r['stack'])} | "
-            f"{mark(r['contract'])} | {r['launch']} | {r['loops']} | {r['handoffs']} | {'em dia' if r['up_to_date'] else 'atrás'} | "
+            f"{mark(r['contract'])} | {r['launch']} | {r['loops']} | {r['handoffs']} | {r['local_rules']} | {'em dia' if r['up_to_date'] else 'atrás'} | "
             f"{r['synced']} | {r['kit_changed']} |"
         )
     lines += [
