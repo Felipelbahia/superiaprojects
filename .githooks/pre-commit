@@ -6,6 +6,12 @@ set -u
 cd "$(git rev-parse --show-toplevel)" || exit 1
 
 failed=0
+
+# Minimum Python (pyproject.toml requires-python): fail early with a clear message
+if ! python3 -c 'import sys; sys.exit(sys.version_info < (3, 11))'; then
+  echo "pre-commit: Python 3.11 or newer is required (found $(python3 --version 2>&1))" >&2
+  exit 1
+fi
 run_check() {
   local label="$1"; shift
   local out

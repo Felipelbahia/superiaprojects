@@ -87,6 +87,26 @@ class SyncEntrypointsCheck(unittest.TestCase):
         result = self.check()
         self.assertEqual(result.returncode, 0, result.stdout)
 
+    def git_init(self, ignore: str):
+        subprocess.run(["git", "init", "-q"], cwd=self.project, check=True)
+        write(self.project / ".gitignore", ignore)
+
+    def test_missing_link_ignored_by_gitignore_passes(self):
+        # Arrange: a fresh clone has the stub but not the machine-local link to the hub
+        skill(self.project, "sip-x")
+        self.git_init(".claude/skills/sip-*\n")
+        # Act
+        result = self.check()
+        # Assert
+        self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_missing_link_not_ignored_still_fails(self):
+        skill(self.project, "sip-x")
+        self.git_init("node_modules/\n")
+        result = self.check()
+        self.assertEqual(result.returncode, 1, result.stdout)
+        self.assertIn("missing/broken symlink: .claude/skills/sip-x", result.stdout)
+
     def test_hub_whose_agent_folder_is_a_symlink_passes(self):
         shared = self.tmp / "shared-agent"
         write(shared / "skills" / "sip-x" / "SKILL.md", "---\nname: sip-x\ndescription: x\n---\n")

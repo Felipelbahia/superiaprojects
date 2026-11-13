@@ -21,6 +21,7 @@ Only symlinks are ever created or removed; a real file or folder in a target is 
 import argparse
 import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -70,6 +71,14 @@ def is_hub_skill_link(link: Path, name: str) -> bool:
     )
 
 
+def is_gitignored(link: Path) -> bool:
+    """True when git ignores this path: a machine-local link (e.g. .claude/skills/sip-*) that a clone never has."""
+    try:
+        return subprocess.run(["git", "check-ignore", "-q", str(link)], cwd=ROOT, capture_output=True).returncode == 0
+    except OSError:
+        return False
+
+
 def link_targets(path: Path) -> list[Path]:
     """The link's own target (one hop, absolute) and its fully resolved path: a hub may itself use symlinks."""
     if not path.is_symlink():
@@ -116,6 +125,8 @@ def sync_links(check_only: bool) -> list[str]:
                 problems.append(f"REAL (not symlink) in {target_rel}: {name} - resolve by hand")
                 continue
             if check_only:
+                if not link.is_symlink() and is_gitignored(link):
+                    continue  # missing, and the project's .gitignore says this link is machine-local
                 problems.append(f"missing/broken symlink: {target_rel}/{name}")
             else:
                 if link.is_symlink():

@@ -1,4 +1,4 @@
-"""Cross-file check: step numbers that projetos/_sips.md cites must match the install-prompt template."""
+"""Cross-file check: step numbers that the SIP registry/manifest reference cites must match the install-prompt template."""
 
 import re
 import unittest
@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 SKILL = ROOT / ".agent/skills/superiaprojects-criar-sip/SKILL.md"
-SIPS = ROOT / "projetos/_sips.md"
+SIPS = ROOT / ".agent/skills/superiaprojects-criar-sip/references/sips-registro-e-manifesto.md"
 
 # _sips.md section heading -> template step it talks about
 SECTION_STEP = {
