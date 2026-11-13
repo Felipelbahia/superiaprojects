@@ -21,6 +21,7 @@ import json
 import os
 import re
 import subprocess
+import unicodedata
 import sys
 from pathlib import Path
 
@@ -144,13 +145,18 @@ def launch_profile_state(folder: Path) -> str:
     return "yes" if brief.is_file() and "Launch profile" in read_text(brief) else "no"
 
 
+def nfc_path(path: Path) -> Path:
+    """Composed Unicode: macOS may hand back a folder decomposed (NFD) while a ficha cites it composed (NFC)."""
+    return Path(unicodedata.normalize("NFC", str(path)))
+
+
 def ficha_index() -> dict:
     """Map each project folder to its ficha in `projetos/`, via the first backticked path after 'Repositório / Caminho'."""
     index = {}
     for ficha in FICHAS.glob("*.md"):
         m = re.search(r"Repositório / Caminho:\*\*\s*`([^`]+)`", read_text(ficha))
         if m:
-            index[Path(m.group(1))] = ficha
+            index[nfc_path(Path(m.group(1)))] = ficha
     return index
 
 
@@ -186,7 +192,7 @@ def audit(folder: Path, fichas=None, kit_agent: Path = KIT / ".agent"):
     dest_map = (folder / "docs" / "mapa-de-destinos.md").is_file() or (folder / "mapa-de-destinos.md").is_file()
     duplicate = (folder / "CLAUDE.md").is_file() and (folder / ".claude" / "CLAUDE.md").is_file()
     stack = stack_state(text)
-    synced, kit_changed = sync_state((fichas or {}).get(folder))
+    synced, kit_changed = sync_state((fichas or {}).get(nfc_path(folder)))
     return {
         "path": folder,
         "type": project_type(folder),

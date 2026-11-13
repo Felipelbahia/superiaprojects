@@ -53,6 +53,19 @@ class ProjectsAuditTest(unittest.TestCase):
         self.assertFalse(row["duplicate"])
         self.assertTrue(row["up_to_date"])
 
+    def test_ficha_citing_an_accented_path_matches_a_decomposed_folder(self):
+        # Arrange: Finder stores "Previsão" decomposed (NFD); the ficha cites the path composed (NFC)
+        import unicodedata
+        folder = self.root / unicodedata.normalize("NFD", "Previsão")
+        write(folder / "CLAUDE.md", MODULAR_RULES + FILLED_PROFILE)
+        ficha = self.root / "ficha.md"
+        write(ficha, "> **Última sincronização com o kit:** 2026-11-12 (kit @ abc1234)\n")
+        fichas = {Path(unicodedata.normalize("NFC", str(folder))): ficha}
+        # Act
+        row = audit_mod.audit(folder, fichas)
+        # Assert
+        self.assertEqual(row["synced"], "2026-11-12")
+
     def test_old_rules_are_classified_old_and_behind(self):
         p = self.root / "old"
         write(p / "CLAUDE.md", OLD_RULES)
