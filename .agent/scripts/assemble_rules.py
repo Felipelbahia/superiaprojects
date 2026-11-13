@@ -9,9 +9,13 @@ Usage (from the project root):
 Modules live in .agent/skills/project-initializer/modules/<name>.md. They are concatenated in a
 fixed order (never the order given) and every "## " heading outside code fences is numbered.
 Re-running over a file it assembled keeps the project's ## Project, ## Stack and ## Local rules blocks
-and moves other hand-written sections into ## Local rules. Sections of the kit and the text before the first
-section are regenerated; local edits there are not kept and are reported. A file from the old model is refused
-unless --replace is given (back it up first). Then run sync_rules.py to copy the result to GEMINI.md,
+and moves other hand-written sections into ## Local rules. In ## Project, the first top-level "- Modules:" line
+is rewritten with the modules used, in the fixed order; if the line is missing it is not created. Sections of
+the kit and the text before the first section are regenerated, and sections of a module left out are removed;
+local edits there are not kept and are reported. Code fences (``` or ~~~) are respected; an assembled file with an
+unclosed fence is refused (exit 4) and left untouched (an old-model file goes by --replace); a module
+with an unclosed fence stops the assembly (exit 2). A file from the old model is refused (exit 3) unless
+--replace is given (back it up first). Then run sync_rules.py to copy the result to GEMINI.md,
 AGENTS.md and the other rule files.
 """
 
@@ -34,29 +38,52 @@ def assemble(names: list[str], title: str, out_name: str, modules_dir: Path) -> 
     if "core" not in wanted:
         raise ValueError("module 'core' is mandatory")
 
-    lines, number, in_fence = [], 0, False
+    lines = []
     for name in (n for n in ORDER if n in wanted):
-        for line in (modules_dir / f"{name}.md").read_text(encoding="utf-8").rstrip("\n").split("\n"):
-            if line.lstrip().startswith("```"):
-                in_fence = not in_fence
-            elif not in_fence and line.startswith("## "):
-                number += 1
-                line = f"## {number}. {line[3:]}"
-            lines.append(line)
-        lines.append("")
+        module = (modules_dir / f"{name}.md").read_text(encoding="utf-8").rstrip("\n").split("\n")
+        opener = fence_scan(module)[1]
+        if opener is not None:
+            raise ValueError(f"module '{name}' has an unclosed code fence opened at line {opener + 1}")
+        lines += module + [""]
+    number = 0
+    for i, outside in enumerate(fence_states(lines)):
+        if outside and lines[i].startswith("## "):
+            number += 1
+            lines[i] = f"## {number}. {lines[i][3:]}"
     return f"# {out_name} - {title}\n\n" + "\n".join(lines)
+
+
+FENCE = re.compile(r"^ {0,3}(`{3,}|~{3,})(.*)$")
+
+
+def fence_scan(lines: list[str]) -> tuple[list[bool], int | None]:
+    """CommonMark-style fences (``` or ~~~, closed by the same character, at least as long, with nothing after it).
+    Returns, for each line, True when it is outside a fence (fence lines count as inside), and the index of the
+    opening line of a fence left unclosed (None when every fence is closed)."""
+    states, opener = [], None
+    for i, line in enumerate(lines):
+        match = FENCE.match(line)
+        if opener is None:
+            if match and not (match.group(1)[0] == "`" and "`" in match.group(2)):
+                opener = i
+            states.append(opener is None)
+        else:
+            mark = FENCE.match(lines[opener]).group(1)
+            if match and match.group(1)[0] == mark[0] and len(match.group(1)) >= len(mark) and not match.group(2).strip():
+                opener = None
+            states.append(False)
+    return states, opener
 
 
 def fence_states(lines: list[str]) -> list[bool]:
     """For each line: True when it is outside a code fence (fence lines count as inside)."""
-    states, in_fence = [], False
-    for line in lines:
-        if line.lstrip().startswith("```"):
-            in_fence = not in_fence
-            states.append(False)
-        else:
-            states.append(not in_fence)
-    return states
+    return fence_scan(lines)[0]
+
+
+def unclosed_fence_line(text: str) -> int | None:
+    """1-based line of a fence opened and never closed, or None."""
+    opener = fence_scan(text.split("\n"))[1]
+    return None if opener is None else opener + 1
 
 
 def section_starts(lines: list[str]) -> list[int]:
@@ -110,18 +137,21 @@ def module_sections(modules_dir: Path) -> dict[str, tuple[str, list[str]]]:
     return sections
 
 
-def reassemble(existing: str, fresh: str, used: list[str], modules_dir: Path) -> tuple[str, list[str], list[str]]:
+def reassemble(existing: str, fresh: str, used: list[str], modules_dir: Path) -> tuple[str, list[str], list[str], list[str]]:
     """Fresh module text plus the project's own blocks from an assembled file.
-    Returns (text, moved titles, replaced: regenerated sections or preamble whose local text was not kept)."""
+    Returns (text, moved titles, replaced: regenerated sections or preamble whose local text was not kept,
+    removed: sections of a module left out)."""
     known = module_sections(modules_dir)
-    blocks, moved, moved_texts, replaced = {}, [], [], []
+    blocks, moved, moved_texts, replaced, removed = {}, [], [], [], []
     if preamble(existing) != preamble(fresh):
         replaced.append("preamble (text before the first section)")
     for section in split_sections(existing):
         title = section_title(section[0])
         if title in known:
             module, text = known[title]
-            if module not in used or normalized(section) != text:
+            if module not in used:
+                removed.append(title)
+            elif normalized(section) != text:
                 replaced.append(title)
             continue
         if title in KEPT_TITLES and title not in blocks:
@@ -131,10 +161,12 @@ def reassemble(existing: str, fresh: str, used: list[str], modules_dir: Path) ->
             moved_texts.append("\n".join(trim(demote(section))))
 
     if "Project" in blocks:
-        blocks["Project"] = "\n".join(
-            f"- Modules: {', '.join(used)}" if line.lstrip().startswith("- Modules:") else line
-            for line in blocks["Project"].split("\n")
-        )
+        lines = blocks["Project"].split("\n")
+        for i, line in enumerate(lines):
+            if line.startswith("- Modules:"):
+                lines[i] = f"- Modules: {', '.join(used)}"
+                break
+        blocks["Project"] = "\n".join(lines)
     if moved_texts:
         blocks["Local rules"] = "\n\n".join([blocks.get("Local rules", "## Local rules"), *moved_texts])
 
@@ -142,7 +174,7 @@ def reassemble(existing: str, fresh: str, used: list[str], modules_dir: Path) ->
     for title in KEPT_TITLES:
         if title in blocks:
             text += "\n" + blocks[title] + "\n"
-    return text, moved, replaced
+    return text, moved, replaced, removed
 
 
 def main() -> int:
@@ -171,12 +203,17 @@ def main() -> int:
         return 2
 
     existing = out.read_text(encoding="utf-8") if out.exists() else ""
-    moved, replaced = [], []
+    moved, replaced, removed = [], [], []
+    unclosed = unclosed_fence_line(existing) if MARKER in existing else None
+    if unclosed is not None:
+        print(f"❌ {out} has an unclosed code fence opened at line {unclosed}. Close it and rerun; nothing was written.",
+              file=sys.stderr)
+        return 4
     if not existing.strip():
         text = fresh
     elif MARKER in existing:
         used = [n for n in ORDER if n in names]
-        text, moved, replaced = reassemble(existing, fresh, used, args.modules_dir)
+        text, moved, replaced, removed = reassemble(existing, fresh, used, args.modules_dir)
     elif args.replace:
         text = fresh
     else:
@@ -188,6 +225,9 @@ def main() -> int:
         print(f"⚠️ moved to ## Local rules: {', '.join(moved)}", file=sys.stderr)
     if replaced:
         print(f"⚠️ regenerated from the kit, local text not kept (check the diff with your backup): {', '.join(replaced)}",
+              file=sys.stderr)
+    if removed:
+        print(f"⚠️ removed (module not assembled; check the diff with your backup): {', '.join(removed)}",
               file=sys.stderr)
     out.write_text(text, encoding="utf-8")
     used = [n for n in ORDER if n in names]

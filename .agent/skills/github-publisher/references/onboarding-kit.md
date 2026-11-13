@@ -7,7 +7,7 @@ Source: kit inbox item 025 (2026-11-12), reference implementation in Ilazos - Si
 ## The kit (any stack)
 
 1. **Runtime version pinned in a file:** `.nvmrc` (Node), `.python-version` (Python), or the stack's equivalent.
-2. **Minimum version that fails early:** Node uses `engines` in `package.json` **plus** `.npmrc` with `engine-strict=true` (without the `.npmrc`, `engines` is only a warning nobody reads). Python uses `requires-python` in `pyproject.toml`.
+2. **Minimum version that fails early:** Node uses `engines` in `package.json` **plus** `.npmrc` with `engine-strict=true` (without the `.npmrc`, `engines` is only a warning nobody reads). The `.npmrc` is **versioned** and holds configuration only; a registry token goes in `~/.npmrc` or as `${NPM_TOKEN}`, never literal (owner decision 2026-11-12). Python uses `requires-python` in `pyproject.toml`.
 3. **Lockfile versioned** (`package-lock.json`, `uv.lock`, `poetry.lock`…), and the README uses the reproducible install (`npm ci`, `uv sync`…).
 4. **`.env.example` versioned** with every variable. The project runs without `.env` whenever possible (fallbacks in code), or the README names exactly which variables are required.
 5. **README section "Como rodar em outra máquina":**

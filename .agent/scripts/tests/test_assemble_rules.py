@@ -196,6 +196,64 @@ class PreserveLocalBlocksTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertNotIn("⚠️", result.stderr)
 
+    def test_unclosed_fence_is_refused_and_file_left_untouched(self):
+        # Arrange: a fence opened inside a kit section and never closed, then the project's blocks
+        broken = self.fresh("core,code").replace("rule\n", "rule\n```bash\nnpm test\n") + "\n" + LOCAL_BLOCKS["Project"]
+        self.out.write_text(broken, encoding="utf-8")
+        # Act
+        result = self.assemble("core,code")
+        # Assert
+        self.assertEqual(result.returncode, 4, result.stderr)
+        self.assertEqual(self.out.read_text(encoding="utf-8"), broken)
+        self.assertIn("unclosed", result.stderr)
+        self.assertIn(f"line {broken.split(chr(10)).index('```bash') + 1}", result.stderr)
+
+    def test_tilde_fence_keeps_a_module_heading_inside_local_rules(self):
+        local = "## Local rules\n~~~\n## Code rules\nexample\n~~~\nAFTER\n"
+        self.out.write_text(self.fresh("core,code") + "\n" + local, encoding="utf-8")
+        result = self.assemble("core,code")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(local.rstrip("\n"), self.out.read_text(encoding="utf-8"))
+        self.assertNotIn("⚠️", result.stderr)
+
+    def test_longer_fence_is_not_closed_by_a_shorter_one(self):
+        local = "## Local rules\n````\n```\n## Code rules\n```\n````\nAFTER\n"
+        self.out.write_text(self.fresh("core,code") + "\n" + local, encoding="utf-8")
+        result = self.assemble("core,code")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(local.rstrip("\n"), self.out.read_text(encoding="utf-8"))
+        self.assertNotIn("⚠️", result.stderr)
+
+    def test_nested_modules_line_is_kept(self):
+        project = LOCAL_BLOCKS["Project"] + "- Notes:\n  - Modules: chosen after the 2026 review\n"
+        self.out.write_text(self.fresh("core,code") + "\n" + project, encoding="utf-8")
+        result = self.assemble("core,code")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("  - Modules: chosen after the 2026 review", self.out.read_text(encoding="utf-8"))
+
+    def test_section_of_a_module_left_out_is_reported_as_removed(self):
+        self.out.write_text(self.fresh("core,code"), encoding="utf-8")
+        result = self.assemble("core")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        removed = [l for l in result.stderr.splitlines() if "removed" in l]
+        self.assertTrue(removed and "Code rules" in removed[0], result.stderr)
+        self.assertFalse(any("regenerated" in l and "Code rules" in l for l in result.stderr.splitlines()))
+
+    def test_replace_overwrites_an_old_model_file_with_an_unclosed_fence(self):
+        self.out.write_text("# old\n## Rules\n```\ncode\n", encoding="utf-8")
+        self.assertEqual(self.assemble("core").returncode, 3)
+        result = self.assemble("core", "--replace")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue(self.out.read_text(encoding="utf-8").startswith("# CLAUDE.md - T\n"))
+
+    def test_module_with_an_unclosed_fence_is_rejected(self):
+        (self.mods / "code.md").write_text("## Code rules\n```\nnever closed\n", encoding="utf-8")
+        result = self.assemble("core,code")
+        self.assertEqual(result.returncode, 2, result.stderr)
+        self.assertIn("code", result.stderr)
+        self.assertIn("unclosed", result.stderr)
+        self.assertFalse(self.out.exists())
+
     def test_old_model_file_is_refused_without_replace(self):
         old = "# CLAUDE.md\n\n## Project Defines Gate\nold local rule\n"
         self.out.write_text(old, encoding="utf-8")

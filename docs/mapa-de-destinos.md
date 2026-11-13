@@ -12,7 +12,7 @@ Atualizado em 2026-11-12. Se este mapa divergir de uma regra de skill, **vale es
 | Modelo público de regras | `CLAUDE.example.md` (+ `ClaudeExample.md`) | | versionado; base do `install.sh`; sem o bloco `## Project` do kit; manter alinhado aos módulos |
 | Scripts do kit e testes | `.agent/scripts/` · `.agent/scripts/tests/test_<script ou assunto>.py` | | código: segue o `STANDARDS.md` |
 | Dados compartilhados de skills | `.agent/.shared/<skill>/` | | versionado (ex.: dados do `ui-ux-pro-max`) |
-| Prompt para colar | `prompts-template/NN-<assunto>.md` (versionado, com `<SUPER_IA_PROJECTS_PATH>`) + `projetos/prompts/NN-<assunto>.md` (cópia local, caminho absoluto) | `NN-` = número do prompt | aposentados em `_arquivo/` nas duas pastas; as duas cópias com o mesmo texto |
+| Prompt para colar | `prompts-template/NN-<assunto>.md` (versionado, com `<SUPER_IA_PROJECTS_PATH>`) + `projetos/prompts/NN-<assunto>.md` (cópia local, caminho absoluto) | `NN-` = número do prompt | aposentados em `_arquivo/` nas duas pastas; as duas cópias deveriam ter o mesmo texto, exceto o caminho (hoje divergem: ver Inconsistências) |
 | Prompt de instalação do SIP | `prompts/instalar-skill-sip-geral.md` | | padrão SIP (`superiaprojects-criar-sip`) |
 | Ficha de projeto | `projetos/<Nome do Projeto>.md` · índice de SIPs em `projetos/_sips.md` | linha "Última sincronização com o kit" | fora do git |
 | Registro de instalação de SIP | `instalacoes/<projeto>.md` | | fora do git; só o `README.md` versionado |
@@ -51,3 +51,4 @@ O que as regras dizem versus a árvore real. Nada foi movido; mudança só com a
 - `.agent/eduzz_workflow.json`: exportação de workflow versionada na raiz do `.agent/` desde o commit inicial, sem ser parte do kit (o lugar natural seria o SIP- N8N ou o projeto dono do workflow).
 - `.firecrawl/install-check.md` (jul/2026): sobra local do Firecrawl, que saiu do núcleo do kit (ignorado pelo git).
 - Os prompts existem em duas cópias (`prompts-template/` e `projetos/prompts/`) que precisam ser mantidas iguais à mão; hoje divergem `02`, `02b`, `README.md` e `HISTORICO.md`; `03` e `06` só no nome do kit (pendência registrada no handoff de 2026-11-12).
+- Os 5 arquivos de `_arquivo/` (`08`, `09`, `10`, `11`, `template-inteligencia.md`) também divergem entre as duas pastas além do caminho (outros marcadores e o nome do kit). São prompts aposentados: a diferença não afeta o uso, mas o texto dos dois lados não é o mesmo.
