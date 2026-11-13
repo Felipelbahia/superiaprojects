@@ -87,7 +87,7 @@ python3 -m unittest discover -s .agent/scripts/tests -q
 
 - `.agent/` é a fonte de tudo; `.claude/` e `.cursor/` só têm links para ela. Não copie nem apague os links à mão.
 - Os arquivos de regras (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`) ficam fora do git: gere os seus com `CLAUDE.example.md` e `install.sh`.
-- Um clone limpo ainda mostra 1 erro nos testes (`test_sip_docs`, que lê uma ficha local fora do git). É um problema conhecido, em decisão do dono.
+- Um clone limpo ainda tem 2 problemas conhecidos, em decisão do dono: 1 erro nos testes (`test_sip_docs`, que lê uma ficha local fora do git) e 7 `ERROR: missing/broken symlink: .claude/skills/sip-*` no `sync_entrypoints.py --check` (esses links só existem onde o SIP está instalado).
 
 ## 📋 Como usar no dia a dia
 
