@@ -72,6 +72,23 @@ O script `./install.sh`:
 
 ---
 
+## 💻 Como rodar em outra máquina
+
+Os scripts do kit usam só a biblioteca padrão do Python: não há `npm`, `uv` nem arquivo `.env`.
+
+```bash
+git clone https://github.com/Felipelbahia/superiaprojects.git
+cd superiaprojects
+python3 --version                                   # 3.11 ou mais novo (`.python-version`)
+git config core.hooksPath .githooks                 # ativa o hook de commit
+python3 .agent/scripts/sync_entrypoints.py --check  # confere skills, agents e workflows
+python3 -m unittest discover -s .agent/scripts/tests -q
+```
+
+- `.agent/` é a fonte de tudo; `.claude/` e `.cursor/` só têm links para ela. Não copie nem apague os links à mão.
+- Os arquivos de regras (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`) ficam fora do git: gere os seus com `CLAUDE.example.md` e `install.sh`.
+- Um clone limpo ainda mostra 1 erro nos testes (`test_sip_docs`, que lê uma ficha local fora do git). É um problema conhecido, em decisão do dono.
+
 ## 📋 Como usar no dia a dia
 
 ### 🤖 Roteamento Inteligente de Agentes
