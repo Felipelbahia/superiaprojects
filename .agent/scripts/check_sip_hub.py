@@ -7,6 +7,7 @@ Exit 0 when every check passes, 1 otherwise. Read-only.
 
 import re
 import subprocess
+import unicodedata
 import sys
 import tempfile
 from pathlib import Path
@@ -38,6 +39,11 @@ def tables_fresh(hub: Path, skill: str) -> tuple[bool, str]:
     return out.returncode == 0, (out.stderr or out.stdout).strip().splitlines()[0] if (out.stderr or out.stdout).strip() else ""
 
 
+def nfc(text: str) -> str:
+    """Composed Unicode: macOS may hand back a path decomposed (NFD) while the text cites it composed."""
+    return unicodedata.normalize("NFC", text)
+
+
 def checks(hub: Path, skill: str) -> list[tuple[str, bool, str]]:
     resolver = hub / ".agent" / "skills" / skill / "SKILL.md"
     prompt = hub / "prompts" / f"instalar-skill-{skill}.md"
@@ -57,7 +63,8 @@ def checks(hub: Path, skill: str) -> list[tuple[str, bool, str]]:
         ("resolver: section '## Atualização'", "## Atualização" in r, ""),
         ("resolver: 'Última atualização do hub: AAAA-MM-DD' with a real date",
          bool(re.search(r"Última atualização do hub: \d{4}-\d{2}-\d{2}", r)), ""),
-        ("resolver: cites the prompt path", f"{hub}/prompts/instalar-skill-{skill}.md" in r, ""),
+        ("resolver: cites the prompt path",
+         nfc(f"{hub}/prompts/instalar-skill-{skill}.md") in nfc(r), ""),
         ("resolver: contribution as inbox/NNN-<assunto>.md", "inbox/NNN-" in r, ""),
         ("prompt: manifest line 'Para atualizar: cole de novo'", "Para atualizar: cole de novo" in p, ""),
         ("prompt: runs sync_entrypoints.py --check", "sync_entrypoints.py" in p and "--check" in p, ""),

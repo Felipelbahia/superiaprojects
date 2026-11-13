@@ -12,14 +12,14 @@ REGIONS = "".join(f"<!-- {k}:start -->\n<!-- {k}:end -->\n" for k in ("skills", 
 SECTIONS = "## O quê\n## Como\n## Onde\n## Por quê\n## Para quê\n## Quem\n## Efeitos e impactos\n## Exemplos\n## Gatilho para sair da inbox\n## Enquanto isso\n"
 
 
-def build_hub() -> Path:
-    hub = Path(tempfile.mkdtemp()) / "SIP - Teste"
+def build_hub(name: str = "SIP - Teste", cite: str | None = None) -> Path:
+    hub = Path(tempfile.mkdtemp()) / name
     (hub / ".agent/skills/sip-teste").mkdir(parents=True)
     (hub / "prompts").mkdir()
     (hub / "inbox").mkdir()
     (hub / "instalacoes").mkdir()
     (hub / ".agent/skills/sip-teste/SKILL.md").write_text(
-        f"## Atualização\n- Última atualização do hub: 2026-11-11\n- cole `\"{hub}/prompts/instalar-skill-sip-teste.md\"`\n"
+        f"## Atualização\n- Última atualização do hub: 2026-11-11\n- cole `\"{cite or hub}/prompts/instalar-skill-sip-teste.md\"`\n"
         f"Crie `\"{hub}/inbox/NNN-<assunto>.md\"`\n" + REGIONS)
     (hub / "prompts/instalar-skill-sip-teste.md").write_text(
         "rode sync_entrypoints.py --check\n- Para atualizar: cole de novo \"x\"\n"
@@ -39,6 +39,20 @@ def run(hub: Path) -> subprocess.CompletedProcess:
 class CheckSipHub(unittest.TestCase):
     def test_conforming_hub_passes(self):
         result = run(build_hub())
+        self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_accented_hub_path_stored_decomposed_still_matches_the_resolver(self):
+        # Arrange: Finder stores "Previsão" decomposed (NFD); the resolver text cites it composed (NFC)
+        import unicodedata
+        nfd = unicodedata.normalize("NFD", "SIP - Previsão")
+        hub = build_hub(nfd)
+        resolver = hub / ".agent/skills/sip-teste/SKILL.md"
+        import os
+        text = resolver.read_text(encoding="utf-8").replace(str(hub), os.path.realpath(hub))  # /var -> /private/var
+        resolver.write_text(unicodedata.normalize("NFC", text), encoding="utf-8")
+        # Act: the hub given as "." from inside it, as a pre-commit hook does
+        result = subprocess.run([sys.executable, str(SCRIPT), ".", "sip-teste"], capture_output=True, text=True, cwd=hub)
+        # Assert
         self.assertEqual(result.returncode, 0, result.stdout)
 
     def test_whole_inbox_ignored_fails_readme_check(self):
