@@ -53,7 +53,7 @@ O `brand-builder` trata `brand/produtos/{produto}/` como raiz de marca do produt
 
 | | Mesmo projeto, `marcas/{marca}/` | Um repositório por marca |
 |---|---|---|
-| Configuração de skills e regras | Uma só, no projeto | Repetida em cada repositório (paridade de `CLAUDE.md`, `GEMINI.md`, `AGENTS.md` por marca) |
+| Configuração de skills e regras | Uma só, no projeto | Repetida em cada repositório (paridade de `CLAUDE.md` e `AGENTS.md` por marca) |
 | Inteligência de mercado compartilhada | Fácil: `inteligencia/` na raiz | Precisa ser duplicada ou apontada (ver abaixo) |
 | Isolamento (acesso, histórico, equipes diferentes) | Fraco | Total |
 | Visão do portfólio (campanhas de todas as marcas) | Direta | Exige olhar repositório por repositório |

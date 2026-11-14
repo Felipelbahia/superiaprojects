@@ -22,12 +22,12 @@ Each AI reads a different folder. Never copy; symlink (script does it):
 
 | AI | Rules | Skills | Agents | Workflows / commands |
 |---|---|---|---|---|
-| Google Antigravity | `.agent/rules/GEMINI.md` | `.agent/skills/` | `.agent/agents/` | `.agent/workflows/` |
+| Google Antigravity | `AGENTS.md` | `.agent/skills/` | `.agent/agents/` | `.agent/workflows/` |
 | Claude Code | `CLAUDE.md`, `.claude/CLAUDE.md` | `.claude/skills/` | `.claude/agents/` | `.claude/commands/` |
 | Cursor | `.cursorrules` | reads `.claude/skills/` | reads `.claude/agents/` | `.cursor/commands/` |
 | Codex / OpenCode / others | `AGENTS.md` | - | - | - |
 
-Rule files (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, `.cursorrules`, `.claude/CLAUDE.md`, `.agent/rules/*`) must stay identical: `sync_rules.py`.
+Rule files (`CLAUDE.md`, `AGENTS.md`, plus `.cursorrules` and `.claude/CLAUDE.md` when they exist) must stay identical: `sync_rules.py`. `GEMINI.md` and `.agent/rules/` are legacy (`sync_rules.py --clean-legacy`).
 
 ## Scripts
 

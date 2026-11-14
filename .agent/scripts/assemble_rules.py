@@ -15,8 +15,8 @@ the kit and the text before the first section are regenerated, and sections of a
 local edits there are not kept and are reported. Code fences (``` or ~~~) are respected; an assembled file with an
 unclosed fence is refused (exit 4) and left untouched (an old-model file goes by --replace); a module
 with an unclosed fence stops the assembly (exit 2). A file from the old model is refused (exit 3) unless
---replace is given (back it up first). Then run sync_rules.py to copy the result to GEMINI.md,
-AGENTS.md and the other rule files.
+--replace is given (back it up first). Then run sync_rules.py to copy the result to AGENTS.md
+(and to .cursorrules / .claude/CLAUDE.md when they exist).
 """
 
 import argparse

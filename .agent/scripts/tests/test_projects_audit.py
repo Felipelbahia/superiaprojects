@@ -124,6 +124,16 @@ class ProjectsAuditTest(unittest.TestCase):
         self.assertTrue(row["duplicate"])
         self.assertFalse(row["up_to_date"])
 
+    def test_legacy_rule_files_are_flagged_and_block(self):
+        for legacy in ("GEMINI.md", ".agent/rules/CLAUDE.md"):
+            p = self.complete_project()
+            self.assertFalse(audit_mod.audit(p)["legacy_rules"])
+            write(p / legacy, MODULAR_RULES + FILLED_PROFILE)
+            row = audit_mod.audit(p)
+            self.assertTrue(row["legacy_rules"], legacy)
+            self.assertFalse(row["up_to_date"], legacy)
+            (p / legacy).unlink()
+
     def test_legacy_map_at_root_is_accepted(self):
         p = self.complete_project()
         (p / "docs/mapa-de-destinos.md").unlink()

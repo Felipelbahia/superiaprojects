@@ -30,7 +30,7 @@ Declared once, at setup, and kept current. It says which rule modules this file 
 
 ## Rule files parity
 
-`GEMINI.md` and `CLAUDE.md` stay 100% identical. Claude Code reads `./CLAUDE.md` (or `./.claude/CLAUDE.md`, **never both**: it loads the two). Antigravity reads `./.agent/rules/GEMINI.md` and/or `./GEMINI.md`. After editing one, run `python .agent/scripts/sync_rules.py`. When the kit's modules change, a project's `CLAUDE.md` falls behind on its own: re-run `assemble_rules.py` (same modules) and `sync_rules.py`. That is routine; check first that the diff has only module lines. Updating an old rules file: keep only the project's own rules, whole (`check_local_rules.py <backup> CLAUDE.md` must say `ok`), and drop the old generic text.
+`CLAUDE.md` and `AGENTS.md` at the project root stay 100% identical: Claude Code reads `./CLAUDE.md` (or `./.claude/CLAUDE.md`, **never both**: it loads the two), Antigravity and other tools read `./AGENTS.md`. `GEMINI.md` and `.agent/rules/` are legacy: never create them (`python .agent/scripts/sync_rules.py --clean-legacy` removes old copies, asking first). After editing one, run `python .agent/scripts/sync_rules.py`. When the kit's modules change, a project's `CLAUDE.md` falls behind on its own: re-run `assemble_rules.py` (same modules) and `sync_rules.py`. That is routine; check first that the diff has only module lines. Updating an old rules file: keep only the project's own rules, whole (`check_local_rules.py <backup> CLAUDE.md` must say `ok`), and drop the old generic text.
 
 ## Before acting (mandatory sequence)
 

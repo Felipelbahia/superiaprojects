@@ -83,7 +83,7 @@ Ordem sugerida: 001, 002, 003 (maior retorno na origem); depois 010, 006, 007; o
 6. **Sincronize**, a partir da raiz do `0 Padrões`:
    - `python3 .agent/scripts/generate_catalog.py` (sempre que uma skill muda);
    - `python3 .agent/scripts/sync_entrypoints.py` (se mudou frontmatter, agente ou workflow; `--check` só valida);
-   - `python3 .agent/scripts/sync_rules.py` (se mudou qualquer arquivo de regras: `CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, `.cursorrules`, que precisam ficar idênticos).
+   - `python3 .agent/scripts/sync_rules.py` (se mudou qualquer arquivo de regras: `CLAUDE.md`, `AGENTS.md`, e `.cursorrules`/`.claude/CLAUDE.md` se existirem; precisam ficar idênticos).
 7. **Cópias locais:** verifique se algum projeto tem cópia local da skill (`find "/Users/macbookpro/Documents/IA Projects" -maxdepth 7 -path "*/.agent/skills/<nome>" -type d`). Em 2026-11-10 só o `0 Padrões` tinha `execution-loop`. Cópia nunca é a fonte; se achar, sincronize ou avise.
 8. **Registre:** atualize o `Status` do arquivo do item para `aplicado em AAAA-MM-DD` com o commit e o link do teste, e a tabela acima. Depois **mova o arquivo para `inbox/arquivo/`** (pedido do Felipe em 2026-11-11). Não apague o arquivo.
 9. **Não faça commit** sem o Felipe pedir. O repositório `0 Padrões` já tinha alterações não commitadas em 2026-11-10 (catálogo, traduções, remoção de `firecrawl-agent`) que não são deste trabalho: não as inclua sem perguntar.

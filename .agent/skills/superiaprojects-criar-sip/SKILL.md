@@ -596,7 +596,7 @@ symlink `.claude/skills/sip-<dominio>` no 0 Padrões):**
   Não copie a data literal para o stub: ela mudaria em dois lugares e divergiria
   (por isso o stub aponta para o resolver).
 - **Por que é obrigatório:** a Regra 4 (Fallback Resolution Protocol) do
-  `CLAUDE.md`/`GEMINI.md` faz todo projeto do ecossistema procurar por
+  `CLAUDE.md`/`AGENTS.md` faz todo projeto do ecossistema procurar por
   nome em `0 Padrões/.agent/skills/` como 2ª prioridade — isso vale
   globalmente, pra qualquer projeto, sem precisar instalar nada caso a
   caso. Sem este stub, Google Antigravity/Gemini/Cursor em **nenhum**

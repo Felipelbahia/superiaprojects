@@ -8,7 +8,7 @@ trigger: always_on
 > **INSTRUÇÃO DE CONFIGURAÇÃO (TEMPLATE):**
 > Este arquivo é o modelo agnóstico de regras do **Super IA Projects**.
 > Para ativá-lo no seu ambiente:
-> 1. Copie este arquivo para a raiz do seu projeto como `CLAUDE.md` (e/ou `GEMINI.md` e `AGENTS.md`):
+> 1. Copie este arquivo para a raiz do seu projeto como `CLAUDE.md` (e uma cópia idêntica como `AGENTS.md`):
 >    ```bash
 >    cp ClaudeExample.md CLAUDE.md
 >    ```
@@ -49,7 +49,7 @@ Declared once, at setup, and kept current. It says which rule modules this file 
 
 ## 3. Rule files parity
 
-`GEMINI.md` and `CLAUDE.md` stay 100% identical. Claude Code reads `./CLAUDE.md` (or `./.claude/CLAUDE.md`, **never both**: it loads the two). Antigravity reads `./.agent/rules/GEMINI.md` and/or `./GEMINI.md`. After editing one, run `python .agent/scripts/sync_rules.py`.
+`CLAUDE.md` and `AGENTS.md` at the project root stay 100% identical: Claude Code reads `./CLAUDE.md` (or `./.claude/CLAUDE.md`, **never both**: it loads the two), Antigravity and other tools read `./AGENTS.md`. `GEMINI.md` and `.agent/rules/` are legacy: never create them (`python .agent/scripts/sync_rules.py --clean-legacy` removes old copies, asking first). After editing one, run `python .agent/scripts/sync_rules.py`.
 
 ## 4. Before acting (mandatory sequence)
 

@@ -62,9 +62,10 @@ instalacoes/*
 
 # Regras locais personalizadas da máquina (usar CLAUDE.example.md como base)
 CLAUDE.md
-GEMINI.md
 AGENTS.md
+GEMINI.md
 .agent/rules/
+# (GEMINI.md e .agent/rules/ são legado: o kit não os gera mais; seguem ignorados para não subirem por engano)
 .claude/CLAUDE.md
 .cursorrules
 

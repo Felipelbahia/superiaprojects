@@ -54,9 +54,9 @@ class AssembleRulesTest(unittest.TestCase):
         self.assertIn("mobile", result.stderr)
 
     def test_out_name_goes_in_header(self):
-        result = run(self.root, "--modules", "core", "--out", "GEMINI.md", "--modules-dir", str(self.mods))
+        result = run(self.root, "--modules", "core", "--out", "AGENTS.md", "--modules-dir", str(self.mods))
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertTrue((self.root / "GEMINI.md").read_text(encoding="utf-8").startswith("# GEMINI.md - Project rules"))
+        self.assertTrue((self.root / "AGENTS.md").read_text(encoding="utf-8").startswith("# AGENTS.md - Project rules"))
 
     def test_real_modules_all_exist_and_assemble(self):
         names = run(self.root, "--list").stdout.split()

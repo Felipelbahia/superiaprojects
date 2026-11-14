@@ -136,7 +136,7 @@ Baseada no projeto Futuro Mercado (Marketing - FM), que a testou, com os ajustes
 
 ```text
 <projeto>/
-├── CLAUDE.md  GEMINI.md  AGENTS.md   # regras do projeto (paridade); acesso ao 0 Mkt pelo sip-marketing
+├── CLAUDE.md  AGENTS.md   # regras do projeto (paridade); acesso ao 0 Mkt pelo sip-marketing
 ├── STANDARDS.md                      # nome de arquivo e metadados de peça (inclui `campanha:`)
 ├── brand/                            # raiz da marca
 │   ├── 00-intake.md … brandbook.md   # fundações (etapas do brand-builder)

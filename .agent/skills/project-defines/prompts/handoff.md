@@ -1,6 +1,6 @@
 # Prompt — Handoff to the coding agent
 
-Use at the start of any session in a project that has `_projectdefines/`. If the project's rules file (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`) does not carry the "Project Defines Gate", paste this block into it as well.
+Use at the start of any session in a project that has `_projectdefines/`. If the project's rules file (`CLAUDE.md`, `AGENTS.md`) does not carry the "Project Defines Gate", paste this block into it as well.
 
 ```
 Read the Panel of _projectdefines/IMPLEMENTATION-PLAN.md first, then only the documents the next item touches (reading map in project-defines/conformance.md).

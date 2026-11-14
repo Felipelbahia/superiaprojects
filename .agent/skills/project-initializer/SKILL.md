@@ -39,7 +39,6 @@ Depois de cada resposta, diga em 1 linha o que ela define (módulo de regras, SI
 ### Fase 2: Configuração Estrita de Arquivos de Regras (.agent, Claude, Antigravity & Cursor)
 No diretório raiz do novo projeto (`<project_root>`):
 1. **Criar Diretórios de Regras:**
-   - Criar a pasta `<project_root>/.agent/rules/`.
    - Criar a pasta `<project_root>/.claude/` (para skills, agents e commands; **não** para um `CLAUDE.md`).
 2. **Montar as Regras por Módulos (nunca recortar à mão):**
    - Os módulos ficam em `modules/` nesta skill (`core`, `sip-access`, `code`, `interface`, `content`, `automation`). Na raiz do projeto, monte com os aprovados na Fase 1 (sempre `core` e `sip-access`):
@@ -48,7 +47,7 @@ No diretório raiz do novo projeto (`<project_root>`):
      ```
      Se o `CLAUDE.md` já existir: montado pelos módulos, o script mantém `## Project`, `## Stack` e `## Local rules` no fim (só reescreve a linha `- Modules:`, na ordem fixa do kit; se a linha faltar, ela não é criada) e move para `## Local rules`, avisando, as seções cujo título não é de módulo do kit; seções do kit e o texto antes da primeira seção são regenerados, e as de módulo que saiu da montagem são removidas (edição local ali não é mantida; o script avisa quais mudaram e quais saíram); cerca de código aberta e não fechada → o script recusa (código 4) sem gravar; no modelo antigo, o script recusa (código 3): copie os arquivos de regra para `.agent/plans/rules-backup-AAAA-MM-DD/`, rode de novo com `--replace` e passe as regras do arquivo antigo para `## Local rules` (como no prompt 01, passo 3). **Antes de mover cada regra antiga para `## Local rules`, pergunte se ela é sobre o assunto de um SIP** (firecrawl, n8n, marketing…): confira se o SIP já a tem (`<kit>/.agent/skills/sip-<nome>/SKILL.md` e o `SKILL.md` do hub); se não tem, vira item na `inbox/` do hub (formato do `inbox/README.md` do hub), não `## Local rules`. Caso real: a "Regra Global" do Firecrawl virou regra local ou sumiu na remontagem.
    - Acrescente ao fim do `CLAUDE.md` o bloco `## Project` preenchido, se ainda não estiver lá (o `## Stack`, com módulo `code`, é escrito só na Fase 4, depois do Context7).
-   - Gere as cópias com `cd "<project_root>" && python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/sync_rules.py"` (depois `--check` → "Parity OK"): `GEMINI.md`, `AGENTS.md`, `.cursorrules` na raiz e `GEMINI.md`, `CLAUDE.md`, `AGENTS.md` em `.agent/rules/`. **Não gerar `.claude/CLAUDE.md`**: o Claude Code carrega ele e o `./CLAUDE.md` juntos (regras em dobro).
+   - Gere as cópias com `cd "<project_root>" && python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/sync_rules.py"` (depois `--check` → "Parity OK"): `AGENTS.md` na raiz, cópia idêntica do `CLAUDE.md` (`GEMINI.md`, `.cursorrules` e `.agent/rules/` são legado: não gerar). **Não gerar `.claude/CLAUDE.md`**: o Claude Code carrega ele e o `./CLAUDE.md` juntos (regras em dobro).
    - Instale o `sip-geral` (`/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/instalar-skill-sip-geral.md`) e cada SIP escolhido (prompt na tabela de `_sips.md`). Agents/workflows de cada SIP: se o prompt perguntar, responda "nenhum"; se ele instalar todos sem perguntar (modelo anterior, inbox SIP-020 do kit), execute só o passo do resolver e pule os passos de agents/workflows. Eles ficam no SIP e só vêm para o projeto se o dono pedir.
 3. **Mapa de destinos:** siga a skill `mapa-de-destinos` (conversa de criação a partir do `Produces`, uma pergunta por vez) e crie `<project_root>/docs/mapa-de-destinos.md`. Código fica fora do mapa.
 4. **Gerar Padrões Locais (`STANDARDS.md`) e Memória de Longo Prazo (`memory.md`):**
@@ -61,7 +60,7 @@ No diretório raiz do novo projeto (`<project_root>`):
        - **`_projectdefines/`**: se o projeto usar a skill `project-defines`, **tudo** dentro de `_projectdefines/` (`BRIEF.md`, `PRD.md`, `ARCHITECTURE.md`, `APP-FLOW.md`, `PATTERNS.md`, `SCHEMA.md`, `IMPLEMENTATION-PLAN.md`) **TEM que subir para o GitHub**.
        - **Memória, padrões e exemplo de ambiente**: `memory.md`, `STANDARDS.md` e `.env.example`.
        - **`.npmrc` sem token** (projeto Node): só configuração, como `engine-strict=true` (trava de versão do kit de onboarding); token de registro vai em `~/.npmrc` ou como `${NPM_TOKEN}`, nunca literal (decisão do dono 2026-11-12).
-       - **Arquivos de regra Multi-IA**: `CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, `.cursorrules` e `.agent/rules/` (ficam fora do git *só* no `0 Padrões`; num projeto novo, **DEVEM ser versionados**).
+       - **Arquivos de regra Multi-IA**: `CLAUDE.md` e `AGENTS.md` (ficam fora do git *só* no `0 Padrões`; num projeto novo, **DEVEM ser versionados**).
      - **DEVE SER IGNORADO (incluir obrigatoriamente no `<project_root>/.gitignore`):**
        - **Variáveis de ambiente e segredos**: `.env`, `.env.*`, `*.env`, `.env.local`, `.env.*.local` — seguidas **obrigatoriamente depois** pelas exceções `!.env.example` e `!*.env.example` (a ordem importa: uma negação antes de `.env.*` ou `*.env` é anulada e esconde o exemplo; `.env.*` cobre variantes e backups como `.env.bak-*`, `.env.old`, `.env.production`), além de `certs/`, `*.pem`, `*.key`, `*.p12`, `*.crt`, `*service-account*.json`, `credentials*.json`. (O `.npmrc` **não** entra aqui: ele é versionado, ver abaixo.)
        - **Planos e artefatos temporários de execução**: `.agent/plans/` e `plans/` (acumulam muitos arquivos de rascunho/loops locais que são "lixo" no repositório remoto — ficam apenas locais; o contrato que sobe é `_projectdefines/`).
@@ -129,7 +128,7 @@ Siga rigorosamente a esteira segura da skill [`github-publisher`](file:///Users/
      ```
    - **Verificação obrigatória do Stage (`git diff --cached --name-only`):**
      - Confirmar que **NÃO** há `.env`, `.env.local`, `.agent/plans/`, `plans/`, `node_modules/`, `dist/` ou chaves privadas na lista.
-     - Confirmar que **ESTÃO** presentes no stage: `CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, `.cursorrules`, `STANDARDS.md`, `memory.md`, `.env.example`, `.gitignore` e, se existir, toda a pasta `_projectdefines/`.
+     - Confirmar que **ESTÃO** presentes no stage: `CLAUDE.md`, `AGENTS.md`, `STANDARDS.md`, `memory.md`, `.env.example`, `.gitignore` e, se existir, toda a pasta `_projectdefines/`.
    - Realizar o primeiro commit:
      ```bash
      git -C "<project_root>" commit -m "feat: initial commit"
@@ -149,7 +148,7 @@ Siga rigorosamente a esteira segura da skill [`github-publisher`](file:///Users/
    - Atualizar o campo `> **Repositório GitHub:**` em `/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/projetos/<nome-do-projeto>.md` com a URL retornada por `gh repo view`.
    - Exibir um resumo claro para o usuário contendo:
      - Caminho local do novo projeto e URL do repositório GitHub criado (visibilidade e confirmação do primeiro push).
-     - Regras gêmeas geradas (`GEMINI.md`, `CLAUDE.md`, `AGENTS.md`, `.cursorrules`), `STANDARDS.md` e `memory.md`.
+     - Regras gêmeas geradas (`CLAUDE.md`, `AGENTS.md`), `STANDARDS.md` e `memory.md`.
      - Confirmação do que subiu no Git (`memory.md`, `_projectdefines/` se houver, `.env.example`, regras) e do que ficou protegido localmente via `.gitignore` (`.env`, `.agent/plans/`, `plans/`, deps/builds).
      - Link para a ficha técnica no `0 Padrões/projetos/`.
      - Próximos passos recomendados.
@@ -158,7 +157,7 @@ Siga rigorosamente a esteira segura da skill [`github-publisher`](file:///Users/
 
 ## 🔒 Regras Universais para Qualquer Modelo de IA
 
-1. **Paridade Dual Absoluta:** Os arquivos `GEMINI.md` e `CLAUDE.md` DEVEM permanecer 100% iguais. Se o modelo alterar um, DEVE atualizar o outro.
+1. **Paridade Dual Absoluta:** Os arquivos `CLAUDE.md` e `AGENTS.md` DEVEM permanecer 100% iguais. Se o modelo alterar um, DEVE atualizar o outro.
 2. **Isolamento de Skills Locais:** Skills criadas para este projeto DEVEM ser salvas APENAS em `<project_root>/.agent/skills/<skill-name>/SKILL.md`. NUNCA grave na pasta global do `0 Padrões` sem autorização explícita. *(Exceção autorizada pelo usuário: `project-defines` é uma skill global do `0 Padrões`.)*
 3. **Acesso a skills de fora:** pelo `sip-geral` e pelos SIPs instalados (`.agent/SIPS-CONSUMIDOS.md`).
 4. **Docs first (Context7 MCP):** antes de escolher, instalar ou codificar com qualquer tecnologia, consulte o Context7 (ou a documentação oficial, se o MCP não estiver disponível). A documentação de hoje vence a memória, os templates antigos e o código antigo do repositório.

@@ -18,7 +18,7 @@ AI-assisted coding frequently suffers from unstable context, contradictory rules
 
 **Super IA Projects** solves this by providing a unified, battle-tested agentic engineering system:
 
-- 🎯 **True Multi-AI Parity (Dual Rules Engine):** 100% identical rules automatically synchronized across `CLAUDE.md`, `GEMINI.md`, and `.cursorrules`.
+- 🎯 **True Multi-AI Parity (Dual Rules Engine):** 100% identical rules automatically synchronized between `CLAUDE.md` (Claude Code) and `AGENTS.md` (Antigravity and other tools), both at the root. Coming from an older kit? `GEMINI.md` and `.agent/rules/` are legacy: `python3 .agent/scripts/sync_rules.py --clean-legacy` lists what is left and deletes only after you say yes (anything that differs from `CLAUDE.md` is kept for you to review).
 - 🧩 **Modular & Composable Skills:** Over 220 plug-and-play skills covering web & mobile development, automation pipelines, robust web scraping (Firecrawl), and clean architecture.
 - 🔄 **The Execution Loop:** A strict, auditable delivery methodology: *Brainstorm → Spec → Plan → Execution → QA (scored 0 to 10 with verifiable proof)*. If any QA criterion scores below 10, the skill restarts the cycle on its own (Debug → Spec) and tries again — up to 5 cycles — instead of shipping something "mostly done".
 - 🏭 **SIPs (Specialist Super IA Projects):** Hub projects that concentrate all the intelligence (skills, agents, workflows) of a specific domain (e.g. n8n, marketing) in one place, shared on demand with any project that needs it — without duplicating knowledge across repos.

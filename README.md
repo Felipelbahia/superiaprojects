@@ -32,7 +32,7 @@ O desenvolvimento com agentes autônomos de IA frequentemente sofre com contexto
 
 O **Super IA Projects** resolve isso fornecendo uma arquitetura unificada:
 
-- 🎯 **Compatibilidade Multi-IA Real (Paridade Dual):** Regras 100% idênticas sincronizadas automaticamente entre `CLAUDE.md`, `GEMINI.md` e `.cursorrules`.
+- 🎯 **Compatibilidade Multi-IA Real (Paridade Dual):** Regras 100% idênticas sincronizadas automaticamente entre `CLAUDE.md` (Claude Code) e `AGENTS.md` (Antigravity e outras IAs), os dois na raiz.
 - 🧩 **Skills Modulares & Agnósticas:** Mais de 210 skills prontas cobrindo desenvolvimento web, mobile, web scraping robusto (Firecrawl) e arquitetura.
 - 🔄 **Loop de Execução (Execution Loop):** Metodologia rígida de entrega: *Brainstorm → Espec → Plan → Execução → QA (com notas 0 a 10 e evidências verificáveis)*. Se algum critério da Rubrica de QA tirar nota menor que 10, a skill reinicia o ciclo sozinha (Debug → Espec) e tenta de novo — até 5 ciclos — em vez de entregar algo "quase pronto".
 - 🏭 **SIPs (Super IA Projects especialistas):** Projetos-hub que concentram toda a inteligência (skills, agents, workflows) de um domínio específico (ex: n8n, marketing) em um único lugar, compartilhada sob demanda com qualquer projeto que precise — sem duplicar conhecimento em cada repositório.
@@ -86,7 +86,7 @@ python3 -m unittest discover -s .agent/scripts/tests -q
 ```
 
 - `.agent/` é a fonte de tudo; `.claude/` e `.cursor/` só têm links para ela. Não copie nem apague os links à mão.
-- Os arquivos de regras (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`) ficam fora do git: gere os seus com `CLAUDE.example.md` e `install.sh`.
+- Os arquivos de regras (`CLAUDE.md`, `AGENTS.md`) ficam fora do git: gere os seus com `CLAUDE.example.md` e `install.sh`. Veio de uma versão antiga do kit? `GEMINI.md` e `.agent/rules/` são legado: `python3 .agent/scripts/sync_rules.py --clean-legacy` lista o que sobrou e só apaga com o seu sim (o que diverge do `CLAUDE.md` fica para você revisar).
 - Os links `.claude/skills/sip-*` só existem onde o SIP está instalado; o `--check` não os cobra quando o `.gitignore` os ignora.
 - Mínimo: Python 3.11 (`pyproject.toml`, `.python-version`; o hook de commit para com erro claro em versão menor).
 

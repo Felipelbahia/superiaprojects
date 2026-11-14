@@ -9,7 +9,7 @@ license: MIT
 ---
 # Brainstorming (Socratic Gate + Discovery)
 
-You build what you believe your human partner wants, and that belief is usually thinner than it feels. This skill finds out what they actually want, and why, before anything gets built. It is the full protocol behind the **Socratic Gate** in CLAUDE.md / GEMINI.md.
+You build what you believe your human partner wants, and that belief is usually thinner than it feels. This skill finds out what they actually want, and why, before anything gets built. It is the full protocol behind the **Socratic Gate** in CLAUDE.md / AGENTS.md.
 
 People often haven't finished working out what they want. Good questions help them think it through. When you understand the why, you make the hundred decisions they never mention the way they would have made them.
 

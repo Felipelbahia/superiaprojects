@@ -11,7 +11,7 @@ REGRAS (valem para todos os passos):
 
 1. Leitura e inventário (nada é alterado neste passo):
    - PRIMEIRO: `for d in .agent .agent/rules .agent/plans .agent/skills; do test -L "$d" && echo "$d -> $(readlink "$d")"; done`. Se `.agent` (ou uma dessas subpastas) for um link para o `.agent` do kit (`<SUPER_IA_PROJECTS_PATH>/.agent`), PARE e me pergunte: este prompt gravaria regras, planos, skills e o catálogo dentro do kit. Só continue depois que eu decidir (ex.: trocar o link por uma pasta `.agent/` própria).
-   - Leia os arquivos de regra existentes (`./CLAUDE.md`, `./.claude/CLAUDE.md`, `./GEMINI.md`, `./AGENTS.md`, `./.cursorrules`, `.agent/rules/*`, `STANDARDS.md`), se existirem.
+   - Leia os arquivos de regra existentes (`./CLAUDE.md`, `./.claude/CLAUDE.md`, `./AGENTS.md`, `./.cursorrules`, `STANDARDS.md`, e o legado `./GEMINI.md` e `.agent/rules/*`, só para não perder regra local), se existirem.
    - Liste, arquivo por arquivo, as regras ESPECÍFICAS deste projeto, citando o texto (não resuma de memória): comandos, variáveis de ambiente, convenções, exceções, pastas. Separe do que é texto genérico do kit antigo (seções como "Fallback Resolution Protocol", "Latest Docs First", "Socratic Gate", "Firecrawl: MCP vs Execução Local"), que será substituído pelos módulos.
    - Abra a ficha do projeto em "<SUPER_IA_PROJECTS_PATH>/projetos/" (ache pela linha "Repositório / Caminho") e leia a linha "Última sincronização com o kit: DATA (kit @ HASH)". Se existir, rode `git -C "<SUPER_IA_PROJECTS_PATH>" log --oneline HASH..HEAD -- CLAUDE.md .agent` e diga, em português simples, o que mudou no kit que afeta este projeto. Se o HASH não existir mais no kit, diga "não verificado" e compare por conteúdo (`diff` das regras). Se a ficha não tiver essa linha, trate como primeira adoção.
    - Rode `python3 "<SUPER_IA_PROJECTS_PATH>/.agent/scripts/projects_audit.py" --no-write` e leia a linha deste projeto.
@@ -22,7 +22,8 @@ REGRAS (valem para todos os passos):
    - Mostre o resumo (módulos `core` + `sip-access` + escolhidos, agente primário, SIPs) e só siga depois do meu "ok".
 
 3. Montagem das regras (nunca recortar à mão):
-   - Backup antes de tudo: copie TODOS os arquivos de regra lidos no passo 1 para `.agent/plans/rules-backup-AAAA-MM-DD/`, na mesma estrutura (o `sync_rules.py` vai sobrescrever `GEMINI.md`, `AGENTS.md`, `.cursorrules` e `.agent/rules/*`).
+   - Backup antes de tudo: copie TODOS os arquivos de regra lidos no passo 1 para `.agent/plans/rules-backup-AAAA-MM-DD/`, na mesma estrutura (o `sync_rules.py` vai sobrescrever `AGENTS.md` e, se existirem, `.cursorrules` e `.claude/CLAUDE.md`; o legado `GEMINI.md` e `.agent/rules/*` ele não toca).
+   - Legado: no fim do passo, rode `python3 .agent/scripts/sync_rules.py --clean-legacy` (ou o caminho do kit). Ele lista `GEMINI.md` e `.agent/rules/*`, pergunta, e só apaga o que é idêntico ao `CLAUDE.md`; o que diverge fica e você me mostra para decidirmos.
    - Monte:
      ```
      python3 "<SUPER_IA_PROJECTS_PATH>/.agent/scripts/assemble_rules.py" --modules core,sip-access,<escolhidos> --title "<Nome do Projeto>" --out "<project_root>/CLAUDE.md"
@@ -53,7 +54,7 @@ REGRAS (valem para todos os passos):
 
 8. Ambiente e `.gitignore`:
    - `.env.example` completo: `comm -23 <(grep -oE "^[A-Za-z_][A-Za-z0-9_]*=" .env | sort -u) <(grep -oE "^[A-Za-z_][A-Za-z0-9_]*=" .env.example | sort -u)`; o que sobrar entra no `.env.example` (só o nome) ou é justificado como não usado em código.
-   - `.gitignore`: `.env*` (com exceção `!.env.example`), `.agent/plans/` e `plans/` ignorados; `_projectdefines/`, `memory.md`, `STANDARDS.md`, `.env.example`, `docs/` e os arquivos de regra (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, `.cursorrules`, `.agent/rules/`) NUNCA ignorados.
+   - `.gitignore`: `.env*` (com exceção `!.env.example`), `.agent/plans/` e `plans/` ignorados; `_projectdefines/`, `memory.md`, `STANDARDS.md`, `.env.example`, `docs/` e os arquivos de regra (`CLAUDE.md`, `AGENTS.md`) NUNCA ignorados.
    - Testes (com módulo `code`): rode a suíte inteira e cole a saída. Teste que já falha: registre nome e causa no resumo; NÃO apague, pule nem afrouxe (decisão minha). Sem `.githooks/pre-commit`: proponha o hook com a parte rápida da suíte (passo "Hook de commit" de `<SUPER_IA_PROJECTS_PATH>/.agent/skills/project-initializer/SKILL.md`) e só instale com o meu "ok"; se houver teste que já falha na parte rápida, diga que o hook recusaria todo commit e pergunte antes.
    - `memory.md` na raiz: se faltar, crie (memória de longo prazo, formato `Problema → Solução`, versionado).
    - Planos e handoffs ficam em `.agent/plans/execution-loops/` e `.agent/plans/handoffs/`. Se o projeto já tem `execution-loops/` ou `handoffs/` na raiz, NÃO mova (legado até eu pedir).

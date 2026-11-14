@@ -42,6 +42,7 @@ FICHAS = KIT / "projetos"
 KIT_RULE_PATHS = ["CLAUDE.md", "GEMINI.md", "AGENTS.md", ".cursorrules", ".agent"]
 RULE_FILES = ["CLAUDE.md", "AGENTS.md", "GEMINI.md", ".cursorrules"]
 AGENT_RULE_FILES = [Path(".agent/rules") / n for n in ("CLAUDE.md", "GEMINI.md", "AGENTS.md")]
+LEGACY_RULE_PATHS = [Path("GEMINI.md"), *AGENT_RULE_FILES]  # the standard is CLAUDE.md + AGENTS.md at the root
 PRUNE = {
     "node_modules", ".git", ".venv", "venv", "__pycache__", "dist", "build", ".next", ".agent", ".agents", ".claude",
     "Output", "snapshot", "skills", "bak", ".firecrawl", "data", "temporario",
@@ -230,6 +231,7 @@ def audit(folder: Path, fichas=None, kit_agent: Path = KIT / ".agent"):
     sip = any((folder / d / "skills" / "sip-geral").exists() for d in ((".claude",) if linked else (".agent", ".claude")))
     dest_map = (folder / "docs" / "mapa-de-destinos.md").is_file() or (folder / "mapa-de-destinos.md").is_file()
     duplicate = (folder / "CLAUDE.md").is_file() and (folder / ".claude" / "CLAUDE.md").is_file()
+    legacy_rules = any((folder / p).is_file() for p in LEGACY_RULE_PATHS) and not linked
     stack = stack_state(text)
     current = model == "modular" and rules_current(folder)
     synced, kit_changed = sync_state((fichas or {}).get(nfc_path(folder)))
@@ -241,6 +243,7 @@ def audit(folder: Path, fichas=None, kit_agent: Path = KIT / ".agent"):
         "sip": sip,
         "map": dest_map,
         "duplicate": duplicate,
+        "legacy_rules": legacy_rules,
         "agent_linked": linked,
         "stack": stack,
         "contract": (folder / "_projectdefines").is_dir(),
@@ -249,7 +252,7 @@ def audit(folder: Path, fichas=None, kit_agent: Path = KIT / ".agent"):
         "handoffs": "new" if hand_new else ("legacy" if hand_old else "-"),
         "rules_current": current,
         "local_rules": local_rules_state(folder),
-        "up_to_date": model == "modular" and profile and sip and dest_map and not duplicate and not linked and current,
+        "up_to_date": model == "modular" and profile and sip and dest_map and not duplicate and not legacy_rules and not linked and current,
         "synced": synced,
         "kit_changed": kit_changed,
     }
@@ -268,7 +271,7 @@ def render(rows) -> str:
         "# Relatório de projetos vs kit",
         "",
         f"> Gerado em {today} por `.agent/scripts/projects_audit.py`. **Somente leitura**: nenhum arquivo de projeto foi alterado.",
-        "> *Modelo* = `modular` (regras montadas pelos módulos do kit) · `old` (regras anteriores a 2026-11-12) · `none` · *Perfil* = bloco `## Project` preenchido · *SIP geral* = `sip-geral` instalado · *Mapa* = `docs/mapa-de-destinos.md` · *.claude/CLAUDE.md* = `yes` quando duplica o `./CLAUDE.md` (regras em dobro) · *.agent → kit* = `yes` quando a pasta `.agent` do projeto é um link para o `.agent` do kit (planos, regras e skills do projeto caem dentro do kit; as regras de `.agent/rules/` não são lidas como do projeto) · *Stack* = bloco `## Stack` (`yes`; `old` = título sem o formato) · *Contract* = tem `_projectdefines/` · *Launch* = o BRIEF tem a seção Launch profile (`-` = sem contrato).",
+        "> *Modelo* = `modular` (regras montadas pelos módulos do kit) · `old` (regras anteriores a 2026-11-12) · `none` · *Perfil* = bloco `## Project` preenchido · *SIP geral* = `sip-geral` instalado · *Mapa* = `docs/mapa-de-destinos.md` · *.claude/CLAUDE.md* = `yes` quando duplica o `./CLAUDE.md` (regras em dobro) · *Legado* = `yes` quando o projeto ainda tem `GEMINI.md` ou `.agent/rules/` (o padrão é `CLAUDE.md` + `AGENTS.md` na raiz; remova com `python3 .agent/scripts/sync_rules.py --clean-legacy`, que pergunta antes) · *.agent → kit* = `yes` quando a pasta `.agent` do projeto é um link para o `.agent` do kit (planos, regras e skills do projeto caem dentro do kit; as regras de `.agent/rules/` não são lidas como do projeto) · *Stack* = bloco `## Stack` (`yes`; `old` = título sem o formato) · *Contract* = tem `_projectdefines/` · *Launch* = o BRIEF tem a seção Launch profile (`-` = sem contrato).",
         "> *Situação* `em dia` = Modelo `modular` + Perfil + SIP geral + Mapa + sem `.claude/CLAUDE.md` duplicado + `.agent` próprio + regras iguais à remontagem atual dos módulos (o `CLAUDE.md` bate com o que `assemble_rules.py` geraria hoje; o texto local em `## Project`, `## Stack` e `## Local rules` não conta).",
         "> *Sincronizado em* = data da linha \"Última sincronização com o kit\" na ficha (`nunca` = ficha sem a linha; `sem ficha` = nenhuma ficha aponta para esta pasta) · *Kit mudou desde então* = commits do kit em `.agent/` depois do hash registrado (os arquivos de regra do kit não são versionados; mudança não commitada não conta).",
         "> *Regras locais* = `check_local_rules.py` entre o backup `.agent/plans/rules-backup-*/CLAUDE.md` e o `CLAUDE.md` atual: `ok` (cada regra própria inteira, sem texto antigo do kit) · `falta` (regra cortada, esquecida ou lixo antigo: rode o check e corrija) · `sem backup` (não dá para conferir). Só informa; não muda a Situação.",
@@ -276,21 +279,21 @@ def render(rows) -> str:
         "",
         f"**{len(rows)} projetos encontrados · {len(rows) - len(behind)} com as regras novas · {len(behind)} atrás do kit.**",
         "",
-        "| Projeto | Tipo | Modelo | Perfil | SIP geral | Mapa | .claude/CLAUDE.md | .agent → kit | Stack | Contract | Launch | Loops | Handoffs | Regras locais | Situação | Sincronizado em | Kit mudou desde então |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "| Projeto | Tipo | Modelo | Perfil | SIP geral | Mapa | .claude/CLAUDE.md | Legado | .agent → kit | Stack | Contract | Launch | Loops | Handoffs | Regras locais | Situação | Sincronizado em | Kit mudou desde então |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows:
         rel = os.path.relpath(r["path"], BASE)
         lines.append(
             f"| {rel} | {r['type']} | {r['model']} | {mark(r['profile'])} | {mark(r['sip'])} | {mark(r['map'])} | "
-            f"{mark(r['duplicate'])} | {mark(r['agent_linked'])} | {mark(r['stack'])} | "
+            f"{mark(r['duplicate'])} | {mark(r['legacy_rules'])} | {mark(r['agent_linked'])} | {mark(r['stack'])} | "
             f"{mark(r['contract'])} | {r['launch']} | {r['loops']} | {r['handoffs']} | {r['local_rules']} | {'em dia' if r['up_to_date'] else 'atrás'} | "
             f"{r['synced']} | {r['kit_changed']} |"
         )
     lines += [
         "",
         "## Como usar",
-        "- **Atrás do kit, ou `Kit mudou` = `sim`:** rode o prompt `projetos/prompts/01-atualizar-projeto-existente.md` no projeto (primeira adoção ou atualização; grava a data na ficha). Ele cobre cada coluna `no`: monta as regras pelos módulos (Modelo), preenche o `## Project` (Perfil), instala o `sip-geral`, cria o mapa de destinos e trata o `.claude/CLAUDE.md` duplicado (só apaga com o seu ok).",
+        "- **Atrás do kit, ou `Kit mudou` = `sim`:** rode o prompt `projetos/prompts/01-atualizar-projeto-existente.md` no projeto (primeira adoção ou atualização; grava a data na ficha). Ele cobre cada coluna `no`: monta as regras pelos módulos (Modelo), preenche o `## Project` (Perfil), instala o `sip-geral`, cria o mapa de destinos e trata o `.claude/CLAUDE.md` duplicado e o legado `GEMINI.md`/`.agent/rules/` (só apaga com o seu ok).",
         "- **`.agent → kit` = `yes`:** NÃO rode o 01 antes de decidir com o dono: o projeto escreveria dentro do kit. Primeiro troque o link por uma pasta `.agent/` própria (com aprovação), depois alinhe.",
         "- **Aplicação com interface e sem contrato:** candidata ao modo brownfield (`projetos/prompts/03-adotar-contrato-brownfield.md`).",
         "- **Contract `yes` e Launch `no`:** o contrato foi aprovado antes do perfil de lançamento; propor ao dono a adoção da seção (`project-defines/launch-profile.md`), sem editar o BRIEF aprovado por conta própria.",

@@ -31,6 +31,14 @@ else
     echo "ℹ️  CLAUDE.md já existe, preservando seu arquivo local."
 fi
 
+# 2b. AGENTS.md (Antigravity e outras IAs) é a cópia idêntica do CLAUDE.md; só é criado se não existir.
+if [ ! -f "AGENTS.md" ]; then
+    echo "📋 Criando AGENTS.md (cópia do CLAUDE.md para Antigravity e outras IAs)..."
+    python3 .agent/scripts/sync_rules.py
+fi
+# GEMINI.md e .agent/rules/ são legado: só avisa, nunca apaga sozinho.
+python3 .agent/scripts/sync_rules.py --check || echo "ℹ️  Arquivos de regra fora de paridade: rode python3 .agent/scripts/sync_rules.py quando quiser alinhar."
+
 # 3. Sincronizar Entrypoints (Claude Code, Antigravity, Cursor)
 echo "🔗 Sincronizando symlinks para Claude Code e Cursor..."
 python3 .agent/scripts/sync_entrypoints.py

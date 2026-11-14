@@ -15,7 +15,7 @@ Source: kit inbox item 025 (2026-11-12), reference implementation in Ilazos - Si
    - copyable steps: clone → runtime version → install → `.env` → run;
    - the **"it worked" criterion** (e.g. "`npm run build` ends with `Complete!`");
    - a table of common problems (symptom → cause → fix).
-6. **Note about the AI folders** (`.agent/`, `CLAUDE.md`, `GEMINI.md`, `AGENTS.md`): they cite paths of this machine, are not needed to run the project, and on another machine only the local skills work.
+6. **Note about the AI folders** (`.agent/`, `CLAUDE.md`, `AGENTS.md`): they cite paths of this machine, are not needed to run the project, and on another machine only the local skills work.
 7. **Versioned symlinks documented** (e.g. `.claude/skills/<skill>` → `.agent/skills/<skill>`), with the Windows note: run `git config --global core.symlinks true` before cloning.
 8. **Proof:** a clean clone in a temporary folder installs and builds with no extra steps. Run it from the remote (or the local repo), never inside the original folder:
    ```bash

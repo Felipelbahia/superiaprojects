@@ -15,8 +15,8 @@ ENTRYPOINTS = SCRIPTS / "sync_entrypoints.py"
 RULES = SCRIPTS / "sync_rules.py"
 
 
-def run(script: Path, cwd: Path, *args: str) -> subprocess.CompletedProcess:
-    return subprocess.run([sys.executable, str(script), *args], cwd=cwd, capture_output=True, text=True)
+def run(script: Path, cwd: Path, *args: str, stdin: str = "") -> subprocess.CompletedProcess:
+    return subprocess.run([sys.executable, str(script), *args], cwd=cwd, capture_output=True, text=True, input=stdin)
 
 
 def write(path: Path, text: str) -> Path:
@@ -148,11 +148,14 @@ class SyncEntrypointsCheck(unittest.TestCase):
         self.assertIn("points elsewhere", result.stdout)
 
 
+BRAIN_FILES = ("contextos.md", "licoes.md", "decisoes.md")
+
+
 class SyncRulesCheck(unittest.TestCase):
     def setUp(self):
         self.root = Path(tempfile.mkdtemp())
         self.claude = write(self.root / "CLAUDE.md", "# CLAUDE.md\nSame rules. See CLAUDE.md.\n")
-        self.gemini = write(self.root / ".agent" / "rules" / "GEMINI.md", "# GEMINI.md\nSame rules. See GEMINI.md.\n")
+        self.agents = write(self.root / "AGENTS.md", "# AGENTS.md\nSame rules. See AGENTS.md.\n")
 
     def snapshot(self):
         return {p: p.read_bytes() for p in self.root.rglob("*") if p.is_file()}
@@ -176,6 +179,86 @@ class SyncRulesCheck(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("CLAUDE.md", result.stdout)
         self.assertEqual(before, self.snapshot())
+
+
+RULES_TEXT = "# CLAUDE.md\nSame rules. See CLAUDE.md.\n"
+
+
+class SyncRulesWrite(unittest.TestCase):
+    """The standard is CLAUDE.md + AGENTS.md at the root; GEMINI.md and .agent/rules/ are legacy."""
+
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+        self.claude = write(self.root / "CLAUDE.md", RULES_TEXT)
+
+    def names(self):
+        return sorted(str(p.relative_to(self.root)) for p in self.root.rglob("*") if p.is_file())
+
+    def test_sync_writes_only_claude_and_agents(self):
+        result = run(RULES, self.root)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertEqual(self.names(), ["AGENTS.md", "CLAUDE.md"])
+        self.assertEqual((self.root / "AGENTS.md").read_text(encoding="utf-8").splitlines()[0], "# AGENTS.md")
+
+    def test_sync_does_not_touch_existing_legacy_files(self):
+        legacy = write(self.root / "GEMINI.md", "# GEMINI.md\nOld rules.\n")
+        rules = write(self.root / ".agent" / "rules" / "CLAUDE.md", "# CLAUDE.md\nOld rules.\n")
+        run(RULES, self.root)
+        self.assertEqual(self.claude.read_text(encoding="utf-8"), RULES_TEXT)  # a newer legacy file is never the source
+        self.assertEqual(legacy.read_text(encoding="utf-8"), "# GEMINI.md\nOld rules.\n")
+        self.assertEqual(rules.read_text(encoding="utf-8"), "# CLAUDE.md\nOld rules.\n")
+
+    def test_cursorrules_is_synced_only_when_it_exists(self):
+        run(RULES, self.root)
+        self.assertFalse((self.root / ".cursorrules").exists())
+        write(self.root / ".cursorrules", "Different.\n")
+        self.assertEqual(run(RULES, self.root, "--check").returncode, 1)
+        run(RULES, self.root)
+        self.assertEqual(run(RULES, self.root, "--check").returncode, 0)
+
+    def test_check_warns_about_legacy_without_failing(self):
+        run(RULES, self.root)
+        write(self.root / "GEMINI.md", "# GEMINI.md\nOld rules.\n")
+        result = run(RULES, self.root, "--check")
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn("GEMINI.md", result.stdout)
+        self.assertIn("--clean-legacy", result.stdout)
+
+
+class SyncRulesCleanLegacy(unittest.TestCase):
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+        write(self.root / "CLAUDE.md", RULES_TEXT)
+        write(self.root / "AGENTS.md", "# AGENTS.md\nSame rules. See AGENTS.md.\n")
+        self.gemini = write(self.root / "GEMINI.md", "# GEMINI.md\nSame rules. See GEMINI.md.\n")
+        self.rules = write(self.root / ".agent" / "rules" / "CLAUDE.md", RULES_TEXT)
+
+    def test_without_confirmation_nothing_is_deleted(self):
+        for answer in ("n\n", ""):
+            result = run(RULES, self.root, "--clean-legacy", stdin=answer)
+            self.assertEqual(result.returncode, 0, result.stdout)
+            self.assertTrue(self.gemini.exists() and self.rules.exists())
+            self.assertIn("GEMINI.md", result.stdout)
+
+    def test_confirmed_removes_identical_legacy_and_the_empty_folder(self):
+        result = run(RULES, self.root, "--clean-legacy", stdin="s\n")
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertFalse(self.gemini.exists())
+        self.assertFalse((self.root / ".agent" / "rules").exists())
+        self.assertTrue((self.root / "CLAUDE.md").exists() and (self.root / "AGENTS.md").exists())
+
+    def test_diverged_legacy_is_never_deleted_and_is_named(self):
+        write(self.gemini, "# GEMINI.md\nA local rule only here.\n")
+        result = run(RULES, self.root, "--clean-legacy", stdin="s\n")
+        self.assertTrue(self.gemini.exists())
+        self.assertIn("GEMINI.md", result.stdout)
+        self.assertIn("differs", result.stdout)
+        self.assertFalse(self.rules.exists())  # the identical one still went
+
+    def test_folder_with_other_files_is_kept(self):
+        other = write(self.root / ".agent" / "rules" / "notes.md", "mine\n")
+        run(RULES, self.root, "--clean-legacy", stdin="s\n")
+        self.assertTrue(other.exists())
 
 
 if __name__ == "__main__":
