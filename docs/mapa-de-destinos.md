@@ -6,6 +6,7 @@ Atualizado em 2026-11-12. Se este mapa divergir de uma regra de skill, **vale es
 |---|---|---|---|
 | Skill | `.agent/skills/<nome>/SKILL.md` (+ `references/`, `scripts/`, `tests/`) | nome em kebab-case | fixo pelas regras; exposta por link em `.claude/skills/<nome>`; skill aposentada em `.agent/skills/_arquivo/` (a pasta nasce com a primeira aposentadoria; os scripts de catálogo não a enxergam) |
 | Agent | `.agent/agents/<nome>.md` | `name` + `description` | fixo pelas regras; link em `.claude/agents/` |
+| Cérebro de agente (memória de um agente que adotou `autonomy`) | `.agent/agents/agents_brains/<nome>/` (`contextos.md`, `licoes.md`, `decisoes.md`, `referencias/`, `inbox/`) | `<nome>` = nome do agente | modelo da skill `writing-agents`; sem link (não é agente: o sync e o catálogo só listam `*.md` do topo de `agents/`); validado por `sync_entrypoints.py --check`; no projeto, o mesmo caminho guarda só as lições dele |
 | Workflow (`/comando`) | `.agent/workflows/<nome>.md` | `description`, `disable-model-invocation: true` | fixo pelas regras; link em `.claude/commands/` e `.cursor/commands/` |
 | Módulo de regras | `.agent/skills/project-initializer/modules/<nome>.md` | | o `CLAUDE.md` é gerado deles (`assemble_rules.py`); nunca editar o `CLAUDE.md` à mão |
 | Regras do kit nesta máquina | `CLAUDE.md` (gerado por `assemble_rules.py`, + bloco `## Project`) → `AGENTS.md` (cópia do `sync_rules.py`; `GEMINI.md` e `.agent/rules/` são legado) | | fora do git; nunca à mão: editar o módulo e remontar |

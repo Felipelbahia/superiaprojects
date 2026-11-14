@@ -151,6 +151,91 @@ class SyncEntrypointsCheck(unittest.TestCase):
 BRAIN_FILES = ("contextos.md", "licoes.md", "decisoes.md")
 
 
+class SyncEntrypointsBrain(unittest.TestCase):
+    """An agent that declares `autonomy` adopted the brain model; the others are not checked."""
+
+    def setUp(self):
+        self.project = Path(tempfile.mkdtemp()) / "project"
+
+    def agent(self, autonomy: str = "propose", name: str = "dir"):
+        extra = f"autonomy: {autonomy}\n" if autonomy else ""
+        write(self.project / ".agent" / "agents" / f"{name}.md", f"---\nname: {name}\ndescription: Use when testing\n{extra}---\n")
+        link = self.project / ".claude" / "agents" / f"{name}.md"
+        link.parent.mkdir(parents=True, exist_ok=True)
+        link.symlink_to(f"../../.agent/agents/{name}.md")
+
+    def brain(self, skip: tuple[str, ...] = (), name: str = "dir"):
+        base = self.project / ".agent" / "agents" / "agents_brains" / name
+        base.mkdir(parents=True, exist_ok=True)
+        for item in BRAIN_FILES:
+            if item not in skip:
+                write(base / item, "x\n")
+        if "inbox" not in skip:
+            (base / "inbox").mkdir(exist_ok=True)
+
+    def check(self):
+        return run(ENTRYPOINTS, self.project, "--check")
+
+    def test_complete_brain_passes(self):
+        self.agent()
+        self.brain()
+        result = self.check()
+        self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_contexts_level_is_valid(self):
+        self.agent("contexts")
+        self.brain()
+        result = self.check()
+        self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_missing_brain_folder_fails(self):
+        self.agent()
+        result = self.check()
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("agent dir has no brain", result.stdout)
+
+    def test_missing_brain_file_fails_and_names_it(self):
+        self.agent()
+        self.brain(skip=("licoes.md",))
+        result = self.check()
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("licoes.md", result.stdout)
+
+    def test_missing_inbox_fails(self):
+        self.agent()
+        self.brain(skip=("inbox",))
+        result = self.check()
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("inbox", result.stdout)
+
+    def test_invalid_autonomy_fails(self):
+        self.agent("free")
+        self.brain()
+        result = self.check()
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("autonomy", result.stdout)
+
+    def test_agent_without_autonomy_is_not_checked(self):
+        self.agent("")
+        result = self.check()
+        self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_empty_skills_line_does_not_swallow_the_next_field(self):
+        write(self.project / ".agent" / "agents" / "dir.md", "---\nname: dir\ndescription: Use when testing\nskills:\nautonomy: propose\n---\n")
+        link = self.project / ".claude" / "agents" / "dir.md"
+        link.parent.mkdir(parents=True)
+        link.symlink_to("../../.agent/agents/dir.md")
+        self.brain()
+        result = self.check()
+        self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_brains_folder_is_not_counted_as_an_agent(self):
+        self.agent()
+        self.brain()
+        result = self.check()
+        self.assertIn("agents=1 ", result.stdout)
+
+
 class SyncRulesCheck(unittest.TestCase):
     def setUp(self):
         self.root = Path(tempfile.mkdtemp())

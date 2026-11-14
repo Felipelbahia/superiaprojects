@@ -2,8 +2,8 @@
 
 > Índice central de todas as Skills, Workflows e Agentes da Plataforma (0 Padrões + 0 Mkt)
 
-**Total Geral:** `698` recursos | **Skills:** `310` | **Workflows:** `225` | **Agentes:** `163`
-**Fontes Integradas:** `0 Mkt` (247) · `0 Padrões` (451)
+**Total Geral:** `699` recursos | **Skills:** `311` | **Workflows:** `225` | **Agentes:** `163`
+**Fontes Integradas:** `0 Mkt` (247) · `0 Padrões` (452)
 
 ---
 
@@ -44,9 +44,9 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Infraestrutura como Código (Terraform / Cloud)](#infraestrutura-como-código-terraform--cloud) (`3`)
   - [Orquestração Kubernetes & Contêineres](#orquestração-kubernetes--contêineres) (`2`)
   - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`59`)
-- [Frontend & UI/UX](#frontend--uiux) (`215` recursos)
+- [Frontend & UI/UX](#frontend--uiux) (`216` recursos)
   - [Acessibilidade Web (A11y & WCAG)](#acessibilidade-web-a11y--wcag) (`4`)
-  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`189`)
+  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`190`)
   - [Design Systems & Estilização Moderna](#design-systems--estilização-moderna) (`10`)
   - [Frameworks Web Modernos (React & Next.js)](#frameworks-web-modernos-react--nextjs) (`12`)
 - [Gestão de Produtos e Projetos](#gestão-de-produtos-e-projetos) (`16` recursos)
@@ -555,7 +555,7 @@ Total de recursos nesta macro-área: `64`
 
 ## <a id="frontend--uiux"></a>Frontend & UI/UX
 
-Total de recursos nesta macro-área: `215`
+Total de recursos nesta macro-área: `216`
 
 ### <a id="acessibilidade-web-a11y--wcag"></a>Acessibilidade Web (A11y & WCAG)
 
@@ -654,6 +654,7 @@ Total de recursos nesta macro-área: `215`
 | <a id="vector-index-tuning"></a>**`vector-index-tuning`** | `Skill` | `0 Padrões` | Otimize o desempenho do índice vetorial para latência, recuperação e memória. Use ao ajustar parâmetros HNSW, selecionar estratégias de quantização ou dimensionar infraestrutura de pesquisa vetorial. |
 | <a id="workflow-orchestration-patterns"></a>**`workflow-orchestration-patterns`** | `Skill` | `0 Padrões` | Projete fluxos de trabalho duráveis ​​com Temporal para sistemas distribuídos. Abrange fluxo de trabalho versus separação de atividades, padrões de saga, gerenciamento de estado e restrições de determinismo. Use ao criar processos de longa execução, transações distribuídas ou orquestração de microsserviços. |
 | <a id="workflow-patterns"></a>**`workflow-patterns`** | `Skill` | `0 Padrões` | Use esta habilidade ao implementar tarefas de acordo com o fluxo de trabalho TDD do Conductor, lidar com pontos de verificação de fase, gerenciar commits git para tarefas ou compreender o protocolo de verificação. |
+| <a id="writing-agents"></a>**`writing-agents`** | `Skill` | `0 Padrões` | Use ao criar um novo agente para o kit, adicionar memória ou aprendizado a um agente, decidir quanta autonomia um agente tem ou revisar se um arquivo de agente segue o modelo do kit. |
 | <a id="writing-plans"></a>**`writing-plans`** | `Skill` | `0 Padrões` | Use quando você tiver especificações ou requisitos para uma tarefa de várias etapas, antes de tocar no código |
 | <a id="c4-architecture"></a>**`/c4-architecture`** | `Workflow` | `0 Padrões` | Fluxo de trabalho de documentação da arquitetura C4 |
 | <a id="ci_describe_pr"></a>**`/ci_describe_pr`** | `Workflow` | `0 Padrões` | Gere descrições abrangentes de PR seguindo modelos de repositório |
@@ -946,7 +947,7 @@ Total de recursos nesta macro-área: `24`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="skill-resolver"></a>**`skill-resolver`** | `Skill` | `0 Padrões` | Use whenever a capability seems relevant to the current task but no matching skill appears in the currently loaded skills list — this is common in Antigravity Kit projects (any repo with a .agent/skills/ directory, a .agent/rules/ directory, or a CLAUDE.md/GEMINI.md that references "0 Padrões"), because Claude Code only auto-discovers SKILL.md files under .claude/skills/ and ~/.claude/skills/, never under .agent/skills/. Also use when the user names a skill by name that doesn't show up in the listing, or asks things like "existe skill pra isso", "do we have a skill for X", "check 0 Padrões for a skill". Searches the project's own .agent/skills/ (and .agents/skills/ for older, unmigrated setups), then the global library at 0 Padrões/.agent/skills/, then 0 Mkt/ for marketing, SEO, copywriting or growth topics. |
+| <a id="skill-resolver"></a>**`skill-resolver`** | `Skill` | `0 Padrões` | Use whenever a capability seems relevant to the current task but no matching skill appears in the currently loaded skills list — this is common in Antigravity Kit projects (any repo with a .agent/skills/ directory, or a CLAUDE.md/AGENTS.md that references "0 Padrões"), because Claude Code only auto-discovers SKILL.md files under .claude/skills/ and ~/.claude/skills/, never under .agent/skills/. Also use when the user names a skill by name that doesn't show up in the listing, or asks things like "existe skill pra isso", "do we have a skill for X", "check 0 Padrões for a skill". Searches the project's own .agent/skills/ (and .agents/skills/ for older, unmigrated setups), then the global library at 0 Padrões/.agent/skills/, then 0 Mkt/ for marketing, SEO, copywriting or growth topics. |
 
 ---
 

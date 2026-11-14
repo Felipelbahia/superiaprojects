@@ -39,13 +39,17 @@ LINKS = [
 COUNT_START = "<!-- kit-counts:start -->"
 COUNT_END = "<!-- kit-counts:end -->"
 
+# An agent that declares `autonomy` adopted the brain model (skill writing-agents).
+AUTONOMY_LEVELS = ("propose", "contexts")
+BRAIN_FILES = ("contextos.md", "licoes.md", "decisoes.md")
+
 
 def frontmatter(path: Path) -> dict:
     text = path.read_text(encoding="utf-8", errors="ignore")
     m = re.match(r"---\n(.*?)\n---", text, re.S)
     if not m:
         return {}
-    return {k.strip(): v.strip().strip("\"'") for k, v in re.findall(r"^([A-Za-z_-]+):\s*(.*)$", m.group(1), re.M)}
+    return {k.strip(): v.strip().strip("\"'") for k, v in re.findall(r"^([A-Za-z_-]+):[ \t]*(.*)$", m.group(1), re.M)}
 
 
 def sources(kind_dir: str, kind: str):
@@ -55,6 +59,19 @@ def sources(kind_dir: str, kind: str):
     if kind == "dir":
         return sorted(p for p in base.iterdir() if p.is_dir() and (p / "SKILL.md").exists())
     return sorted(p for p in base.glob("*.md"))  # top level only: _arquivo/ stays hidden
+
+
+def brain_errors(name: str, autonomy: str) -> list[str]:
+    errors = []
+    if autonomy not in AUTONOMY_LEVELS:
+        errors.append(f"agent {name} has invalid autonomy {autonomy!r} (use one of: {', '.join(AUTONOMY_LEVELS)})")
+    brain = AGENT / "agents" / "agents_brains" / name
+    if not brain.is_dir():
+        return [*errors, f"agent {name} has no brain: missing .agent/agents/agents_brains/{name}/"]
+    errors += [f"agent {name} brain misses {item}" for item in BRAIN_FILES if not (brain / item).is_file()]
+    if not (brain / "inbox").is_dir():
+        errors.append(f"agent {name} brain misses inbox/")
+    return errors
 
 
 def is_hub_skill_link(link: Path, name: str) -> bool:
@@ -164,6 +181,8 @@ def validate() -> tuple[list[str], dict]:
             errors.append(f"agent name != filename: {a.name} (name: {fm.get('name')!r})")
         if not fm.get("description"):
             errors.append(f"agent without description: {a.name}")
+        if "autonomy" in fm:
+            errors += brain_errors(a.stem, fm["autonomy"])
         known = skill_names | hub_skill_names(a)
         for ref in re.split(r"[,\s]+", fm.get("skills", "")):
             if ref and ref.split("/")[0] not in known:
