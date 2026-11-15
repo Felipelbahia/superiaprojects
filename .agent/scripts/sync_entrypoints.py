@@ -43,6 +43,22 @@ COUNT_END = "<!-- kit-counts:end -->"
 AUTONOMY_LEVELS = ("propose", "contexts")
 BRAIN_FILES = ("contextos.md", "licoes.md", "decisoes.md")
 
+# Models mapping from Antigravity to Claude Code
+MODEL_MAP_ANTIGRAVITY_TO_CLAUDE = {
+    "flash_lite": "haiku",
+    "flash": "haiku",
+    "pro": "sonnet",
+}
+
+GENERATED_AGENT_HEADER_PREFIX = "<!-- antigravity-kit:generated"
+
+
+def convert_agent_for_claude(src_path: Path, target_model: str) -> str:
+    text = src_path.read_text(encoding="utf-8")
+    converted = re.sub(r"^model:[ \t]*.*$", f"model: {target_model}", text, flags=re.M)
+    header = f"<!-- antigravity-kit:generated from ../../.agent/agents/{src_path.name} (model: {target_model}) -->\n"
+    return header + converted
+
 
 def frontmatter(path: Path) -> dict:
     text = path.read_text(encoding="utf-8", errors="ignore")
@@ -129,8 +145,48 @@ def sync_links(check_only: bool) -> list[str]:
         wanted = {}
         for s in srcs:
             wanted[s.name] = os.path.join(*([".."] * depth), ".agent", kind_dir, s.name)
-        for name, rel in wanted.items():
+        for s in srcs:
+            name = s.name
+            rel = wanted[name]
             link = target / name
+
+            # Check if this agent needs model conversion for .claude/agents
+            is_claude_agent = (kind_dir == "agents" and target_rel == ".claude/agents")
+            fm = frontmatter(s) if is_claude_agent else {}
+            src_model = fm.get("model", "inherit")
+            target_model = MODEL_MAP_ANTIGRAVITY_TO_CLAUDE.get(src_model) if is_claude_agent else None
+
+            if target_model:
+                expected_content = convert_agent_for_claude(s, target_model)
+                if link.is_symlink():
+                    if check_only:
+                        problems.append(f"symlink should be converted file for agent with model {src_model}: {target_rel}/{name}")
+                        continue
+                    link.unlink()
+
+                if link.exists():
+                    if not link.is_file():
+                        problems.append(f"REAL (not file) in {target_rel}: {name} - resolve by hand")
+                        continue
+                    current_content = link.read_text(encoding="utf-8", errors="ignore")
+                    if not current_content.startswith(GENERATED_AGENT_HEADER_PREFIX):
+                        problems.append(f"REAL (not symlink) in {target_rel}: {name} - resolve by hand")
+                        continue
+                    if current_content != expected_content:
+                        if check_only:
+                            problems.append(f"out of date generated agent: {target_rel}/{name}")
+                            continue
+                        link.write_text(expected_content, encoding="utf-8")
+                        print(f"  updated converted {target_rel}/{name}")
+                    continue
+                else:
+                    if check_only:
+                        problems.append(f"missing generated agent: {target_rel}/{name}")
+                        continue
+                    link.write_text(expected_content, encoding="utf-8")
+                    print(f"  generated converted {target_rel}/{name}")
+                    continue
+
             if link.is_symlink() and os.readlink(link) == rel and link.exists():
                 continue
             if kind == "dir" and is_hub_skill_link(link, name):
@@ -139,6 +195,16 @@ def sync_links(check_only: bool) -> list[str]:
                 problems.append(f"symlink points elsewhere, left untouched: {target_rel}/{name} -> {os.readlink(link)}")
                 continue
             if link.exists():
+                if is_claude_agent and link.is_file() and not link.is_symlink():
+                    first_line = link.read_text(encoding="utf-8", errors="ignore").splitlines()[0] if link.stat().st_size > 0 else ""
+                    if first_line.startswith(GENERATED_AGENT_HEADER_PREFIX):
+                        if check_only:
+                            problems.append(f"generated file should be symlink for inherit model: {target_rel}/{name}")
+                            continue
+                        link.unlink()
+                        link.symlink_to(rel)
+                        print(f"  converted back to symlink {target_rel}/{name}")
+                        continue
                 problems.append(f"REAL (not symlink) in {target_rel}: {name} - resolve by hand")
                 continue
             if check_only:
@@ -152,17 +218,26 @@ def sync_links(check_only: bool) -> list[str]:
                 print(f"  linked {target_rel}/{name}")
         if target.is_dir():
             for existing in target.iterdir():
-                if not existing.is_symlink() or existing.name in wanted:
+                if existing.name in wanted:
                     continue
-                raw = os.readlink(existing)
-                ours = (not os.path.isabs(raw) and raw.startswith("../") and "/.agent/" in raw) and not existing.exists()
-                if not ours:
-                    continue  # only dangling links we could have created; absolute/foreign links are never removed
-                if check_only:
-                    problems.append(f"orphan symlink: {target_rel}/{existing.name}")
-                else:
-                    existing.unlink()
-                    print(f"  removed orphan {target_rel}/{existing.name}")
+                if existing.is_symlink():
+                    raw = os.readlink(existing)
+                    ours = (not os.path.isabs(raw) and raw.startswith("../") and "/.agent/" in raw) and not existing.exists()
+                    if not ours:
+                        continue  # only dangling links we could have created; absolute/foreign links are never removed
+                    if check_only:
+                        problems.append(f"orphan symlink: {target_rel}/{existing.name}")
+                    else:
+                        existing.unlink()
+                        print(f"  removed orphan {target_rel}/{existing.name}")
+                elif existing.is_file():
+                    first_line = existing.read_text(encoding="utf-8", errors="ignore").splitlines()[0] if existing.stat().st_size > 0 else ""
+                    if first_line.startswith(GENERATED_AGENT_HEADER_PREFIX):
+                        if check_only:
+                            problems.append(f"orphan generated agent: {target_rel}/{existing.name}")
+                        else:
+                            existing.unlink()
+                            print(f"  removed orphan generated {target_rel}/{existing.name}")
     return problems
 
 

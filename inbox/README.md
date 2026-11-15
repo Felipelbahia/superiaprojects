@@ -68,7 +68,9 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | SIP-020 | Manifestos dos consumidores de SIP sem a linha "Para atualizar" (0 Padrões concluído em 2026-11-11; restam 16 entradas em 8 projetos) | `.agent/SIPS-CONSUMIDOS.md` dos 8 consumidores externos | Baixa |
 | 021 | ~~Stubs de SIP do 0 Padrões sem a seção "Atualização"~~ (aplicado 2026-11-11, em `arquivo/`) | 7 stubs `sip-*` + `superiaprojects-criar-sip` (Passo 5) | Média |
 | 022 | ~~`.gitignore` padrão: backups de `.env` e 0 Padrões sem regras de `.env`~~ (aplicado 2026-11-11, em `arquivo/`) | `project-initializer` + `.gitignore` do 0 Padrões + `github-publisher` | Média |
+| 023 | ~~`.claude/CLAUDE.md` duplicado e regras antigas~~ (resolvido na auditoria geral em 2026-11-15, em `arquivo/`) | todos os projetos com regras | Alta |
 | 025 | Kit de onboarding para clonar e rodar em outra máquina (versão do runtime, trava de versão, README com passo a passo, prova do clone limpo). **Parcial:** regra nas skills e no módulo `code` em 2026-11-12; retrofit dos projetos em andamento na propagação do kit (rastreador) | `project-initializer` + `github-publisher` + retrofit dos projetos | Média |
+| 032 | ~~Regras locais perdidas ou lixo antigo achados pelo check_local_rules.py~~ (resolvido na auditoria em 2026-11-15, em `arquivo/`) | #22, #42, #44 e ecossistema | Alta |
 
 
 Ordem sugerida: 001, 002, 003 (maior retorno na origem); depois 010, 006, 007; o resto quando fizer sentido. Os itens 001 a 003 mexem no mesmo arquivo: aplique em sequência, com um commit por item. Os itens 011 a 017 vieram do SIP Astro (`/Users/macbookpro/Documents/IA Projects/_Plataforma/Base Sites - Astro`, 2026-11-10); 011 a 015 também mexem no `execution-loop`, então entram na mesma fila sequencial (sugestão: 011 e 014 primeiro).

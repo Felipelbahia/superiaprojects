@@ -346,5 +346,79 @@ class SyncRulesCleanLegacy(unittest.TestCase):
         self.assertTrue(other.exists())
 
 
+class SyncEntrypointsModelConversion(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.project = self.tmp / "project"
+        skill(self.project, "local-skill")
+        link_skill(self.project, "local-skill", "../../.agent/skills/local-skill")
+
+    def run_sync(self, *args):
+        return run(ENTRYPOINTS, self.project, *args)
+
+    def test_agent_with_inherit_model_creates_symlink(self):
+        write(self.project / ".agent" / "agents" / "agent-inherit.md", "---\nname: agent-inherit\ndescription: Test agent\nmodel: inherit\n---\n# Agent\n")
+        res = self.run_sync()
+        self.assertEqual(res.returncode, 0, res.stdout)
+        dest = self.project / ".claude" / "agents" / "agent-inherit.md"
+        self.assertTrue(dest.is_symlink())
+        self.assertEqual(self.run_sync("--check").returncode, 0)
+
+    def test_agent_with_flash_lite_creates_converted_file(self):
+        write(self.project / ".agent" / "agents" / "agent-fast.md", "---\nname: agent-fast\ndescription: Fast agent\nmodel: flash_lite\n---\n# Fast Agent\n")
+        res = self.run_sync()
+        self.assertEqual(res.returncode, 0, res.stdout)
+        dest = self.project / ".claude" / "agents" / "agent-fast.md"
+        self.assertFalse(dest.is_symlink())
+        self.assertTrue(dest.is_file())
+        content = dest.read_text(encoding="utf-8")
+        self.assertIn("<!-- antigravity-kit:generated", content)
+        self.assertIn("model: haiku", content)
+        self.assertNotIn("model: flash_lite", content)
+        self.assertEqual(self.run_sync("--check").returncode, 0)
+
+    def test_agent_with_pro_creates_converted_file(self):
+        write(self.project / ".agent" / "agents" / "agent-pro.md", "---\nname: agent-pro\ndescription: Pro agent\nmodel: pro\n---\n# Pro Agent\n")
+        res = self.run_sync()
+        self.assertEqual(res.returncode, 0, res.stdout)
+        dest = self.project / ".claude" / "agents" / "agent-pro.md"
+        self.assertFalse(dest.is_symlink())
+        content = dest.read_text(encoding="utf-8")
+        self.assertIn("model: sonnet", content)
+        self.assertEqual(self.run_sync("--check").returncode, 0)
+
+    def test_converted_agent_out_of_date_fails_check(self):
+        write(self.project / ".agent" / "agents" / "agent-fast.md", "---\nname: agent-fast\ndescription: Fast agent\nmodel: flash_lite\n---\n# Fast Agent\n")
+        self.run_sync()
+        self.assertEqual(self.run_sync("--check").returncode, 0)
+        # Edit source without syncing
+        write(self.project / ".agent" / "agents" / "agent-fast.md", "---\nname: agent-fast\ndescription: Fast agent\nmodel: flash_lite\n---\n# Fast Agent Modified\n")
+        res = self.run_sync("--check")
+        self.assertNotEqual(res.returncode, 0)
+        self.assertIn("out of date", res.stdout)
+        # Run sync and check passes again
+        self.run_sync()
+        self.assertEqual(self.run_sync("--check").returncode, 0)
+
+    def test_unexpected_real_file_fails_check(self):
+        write(self.project / ".agent" / "agents" / "fake.md", "---\nname: fake\ndescription: Fake\nmodel: inherit\n---\n# Fake\n")
+        dest = write(self.project / ".claude" / "agents" / "fake.md", "# Real file not generated\n")
+        res = self.run_sync("--check")
+        self.assertNotEqual(res.returncode, 0)
+        self.assertIn("REAL (not symlink)", res.stdout)
+
+    def test_model_changed_from_flash_lite_to_inherit_replaces_file_with_symlink(self):
+        src = write(self.project / ".agent" / "agents" / "toggle.md", "---\nname: toggle\ndescription: Toggle\nmodel: flash_lite\n---\n# Toggle\n")
+        self.run_sync()
+        dest = self.project / ".claude" / "agents" / "toggle.md"
+        self.assertFalse(dest.is_symlink())
+        self.assertTrue(dest.is_file())
+        # Change model back to inherit
+        write(src, "---\nname: toggle\ndescription: Toggle\nmodel: inherit\n---\n# Toggle\n")
+        self.run_sync()
+        self.assertTrue(dest.is_symlink())
+        self.assertEqual(self.run_sync("--check").returncode, 0)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -83,6 +83,7 @@ Read only when the trigger applies, and only if the file exists. With `_projectd
   - In edit mode, look for an existing plan of the objective first.
 - **Inbox:** deferred items go to `inbox/NNN-subject.md` at the project root (format: `inbox/README.md`). Not analyzed until the owner asks. Resolved ones move to `inbox/arquivo/`, never deleted.
 - **System artifacts (Antigravity: `implementation_plan`, `task`, `walkthrough`):** save a copy at the end as `.agent/plans/{Task Name} [PLAN|TASK|WALKTHROUGH].md` (human-readable name, never delete).
+- **Subagent context containment (Clean Return Protocol):** heavy payloads (logs, raw terminal output, full code dumps, multi-page drafts) belong on disk (`.agent/plans/`, `scratchpad/`, or destination map paths), never in chat messages. A subagent's return message to the coordinator must be strictly executive: (1) one-line status; (2) 3-5 bullets summarizing results with clickable links to files on disk; (3) blocking questions or open decisions only. Never dump raw terminal stdout/stderr or whole files in the reply.
 
 ## Learn
 

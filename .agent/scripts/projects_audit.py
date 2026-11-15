@@ -34,7 +34,7 @@ assemble_rules = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(assemble_rules)
 
 BASE = Path("/Users/macbookpro/Documents/IA Projects")
-DEFAULT_ROOTS = ["Compartilhado", "Pessoal", "Plinq", "Projetos", "WaiMonitor", "_Plataforma"]
+DEFAULT_ROOTS = ["Compartilhado", "ILazos", "Pessoal", "Plinq", "Projetos", "WaiMonitor", "_Plataforma"]
 KIT = BASE / "_Plataforma" / "0 Padrões"
 DEFAULT_OUT = KIT / ".agent" / "plans" / "Relatório de projetos vs kit.md"
 

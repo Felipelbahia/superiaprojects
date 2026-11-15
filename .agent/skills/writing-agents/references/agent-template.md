@@ -30,6 +30,7 @@ The steps it follows on every run, in order. Include a step that maps the task t
 What the owner receives: shape, language, where files go (`docs/mapa-de-destinos.md`).
 Always ends with the list of files written outside the brain (this is how "without saying so" in Limites is kept).
 Say where each deliverable is saved. If `docs/mapa-de-destinos.md` or the row for it is missing: tell the owner and propose the row before saving (pointer to skill `mapa-de-destinos`, not a dependency); never leave a dead path.
+When acting as a subagent, follow the Clean Return Protocol: return an executive summary (3-5 bullets) with clickable links to files on disk; never dump raw terminal output, whole code files, or verbose drafts into the reply.
 
 ## Memória
 On activation, read in this order:
@@ -53,6 +54,7 @@ Never edit this file: write the proposal in `inbox/` of the brain. A change the 
 | `name` | equals the file name without `.md` |
 | `description` | starts with "Use when", triggers only (a summary of the process makes the model skip the body). Bad: "Use when a migration needs a reviewer to check locks, rollbacks and indexes" (lists what the agent does). Good: "Use when a database migration is about to run" (names the situation) |
 | `tools` | the minimum the role needs: each tool has a step that uses it, listed in `decisoes.md`; do not copy a full list |
+| `model` | `inherit` (default, uses caller's model), `flash_lite` (fast/routine, converted to `haiku` for Claude Code), or `pro` (deep reasoning, converted to `sonnet` for Claude Code) |
 | `skills` | only the ones a step names, and a step names only skills listed here; each must exist (`sync_entrypoints.py --check` fails otherwise) |
 | `autonomy` | `propose` or `contexts`, always chosen on purpose (see `SKILL.md`) |
 

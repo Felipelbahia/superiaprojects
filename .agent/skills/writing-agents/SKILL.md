@@ -24,7 +24,7 @@ Scope: agents only (workflows and skills have their own rules: `writing-skills`)
 ## Create an agent
 
 1. Confirm the role does not exist: `ls .agent/agents/` and `.agent/CATALOG.md`. Reuse before build.
-2. Copy `references/agent-template.md` to `.agent/agents/<name>.md`. Fill every section; `description` is triggers only ("Use when ..."). Write only what the owner said or this skill requires; anything you add (limits, role claims, skills, tools) is a builder choice, listed in `decisoes.md` as `pendente de confirmação`. Every limit needs a step that keeps it; each tool in `tools` needs a step that uses it; a step names only skills listed in `skills:`; `description` names the situation, never what the agent does.
+2. Copy `references/agent-template.md` to `.agent/agents/<name>.md`. Fill every section; `description` is triggers only ("Use when ..."). Choose `model:` based on role complexity (`inherit` default; `flash_lite` for fast routine execution, converted to `haiku` for Claude Code; `pro` for deep reasoning, converted to `sonnet`). Write only what the owner said or this skill requires; anything you add (limits, role claims, skills, tools) is a builder choice, listed in `decisoes.md` as `pendente de confirmação`. Every limit needs a step that keeps it; each tool in `tools` needs a step that uses it; a step names only skills listed in `skills:`; `description` names the situation, never what the agent does.
 3. Choose `autonomy` on purpose and tell the owner which one:
 
    | Level | The agent may | Default |

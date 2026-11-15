@@ -19,3 +19,8 @@ Problema → Solução, só o que não se deduz do código.
 - **Bug achado no teste:** `frontmatter()` de `sync_entrypoints.py` lia `\s*` depois de `chave:`, que come a quebra de linha: um campo vazio (`skills:`) engolia a linha seguinte (`autonomy: propose` virava nome de skill). Corrigido para `[ \t]*`, com teste.
 - **Fechamento do QA (ciclo 7):** para eliminar desvios do construtor em `decisoes.md`, a skill adotou atomicidade estrita ("uma frase por item, um rótulo por item"), conjunto fechado de rótulos (`briefing`, `dono (parafraseado)`, `construtor`) e consistência de premissa em todas as seções. O teste verde final zerou os CONTRADICTED (10/10 na rubrica).
 - Loop: `.agent/plans/execution-loops/2026_11_14/Skill de Construção de Agentes/`.
+
+## 2026-11-14 — mapeamento de modelos e contenção de contexto de subagentes
+- **Problema:** (1) Modelos leves do Antigravity (`flash_lite`) não existem no Claude Code (`haiku`), e arquivos reais em `.claude/agents/` geravam erro no sync. (2) Subagentes com retornos longos (logs, dumps de código) saturavam a janela de contexto do orquestrador.
+- **Solução:** (1) `sync_entrypoints.py` converte automaticamente `flash_lite`/`flash` para `haiku` e `pro` para `sonnet` gerando arquivos em `.claude/agents/` com cabeçalho identificador `<!-- antigravity-kit:generated ... -->`; `inherit` continua symlink puro; `--check` valida paridade e integridade. (2) Protocolo de Retorno Limpo formalizado em `core.md`/`AGENTS.md` e `agent-template.md`: payloads pesados ficam no disco, e a resposta ao chat limita-se a status, 3-5 bullets executivos com links e perguntas bloqueantes.
+- Loop: `.agent/plans/execution-loops/2026_11_14/Mapeamento de Modelos e Economia de Contexto/`.
