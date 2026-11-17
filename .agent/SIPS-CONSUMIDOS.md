@@ -14,7 +14,7 @@ duplo como consumidor".
 
 ## SIP- N8N (`sip-n8n`)
 - Hub: /Users/macbookpro/Documents/IA Projects/_Plataforma/SIP- N8N
-- Instalado/atualizado em: 2026-11-06
+- Instalado/atualizado em: 2026-11-17
 - Skill: sip-n8n
 - Agents: n8n-agent
 - Workflows: nenhum
@@ -22,7 +22,7 @@ duplo como consumidor".
 
 ## SIP - Mautic (`sip-mautic`)
 - Hub: /Users/macbookpro/Documents/IA Projects/Plinq/Martech/Mautic
-- Instalado/atualizado em: 2026-11-05
+- Instalado/atualizado em: 2026-11-17
 - Skill: sip-mautic
 - Agents: nenhum
 - Workflows: nenhum
@@ -30,7 +30,7 @@ duplo como consumidor".
 
 ## SIP - Firecrawl (`sip-firecrawl`)
 - Hub: /Users/macbookpro/Documents/IA Projects/_Plataforma/Firecrawl - local
-- Instalado/atualizado em: 2026-11-06
+- Instalado/atualizado em: 2026-11-17
 - Skill: sip-firecrawl
 - Agents: nenhum
 - Workflows: nenhum
@@ -38,7 +38,7 @@ duplo como consumidor".
 
 ## SIP - Trends e Previsão de Demanda (`sip-trends-previsao-demanda`)
 - Hub: /Users/macbookpro/Documents/IA Projects/Compartilhado/Previsão de Demanda
-- Instalado/atualizado em: 2026-11-05
+- Instalado/atualizado em: 2026-11-17
 - Skill: sip-trends-previsao-demanda
 - Agents: nenhum
 - Workflows: nenhum
@@ -46,7 +46,7 @@ duplo como consumidor".
 
 ## SIP - Imprensa & PR (`sip-imprensa`)
 - Hub: /Users/macbookpro/Documents/IA Projects/Compartilhado/RSS Feed
-- Instalado/atualizado em: 2026-11-06
+- Instalado/atualizado em: 2026-11-17
 - Skill: sip-imprensa
 - Agents: nenhum
 - Workflows:
@@ -59,7 +59,7 @@ duplo como consumidor".
 
 ## SIP - Astro (`sip-astro`)
 - Hub: /Users/macbookpro/Documents/IA Projects/_Plataforma/Base Sites - Astro
-- Instalado/atualizado em: 2026-11-07
+- Instalado/atualizado em: 2026-11-17
 - Skill: sip-astro (stub global + symlink `.claude/skills/sip-astro`; redirecionador: as skills astro-* são lidas por caminho absoluto no hub, não instaladas)
 - Agents: nenhum
 - Workflows: nenhum
@@ -67,7 +67,7 @@ duplo como consumidor".
 
 ## SIP - Marketing (`sip-marketing`)
 - Hub: /Users/macbookpro/Documents/IA Projects/_Plataforma/0 Mkt
-- Instalado/atualizado em: 2026-11-09
+- Instalado/atualizado em: 2026-11-17
 - Skill: sip-marketing (stub global + symlink `.claude/skills/sip-marketing`; redirecionador: skills, agents e workflows do 0 Mkt são lidos por caminho absoluto no hub, não instalados)
 - Agents: nenhum (lidos no hub)
 - Workflows: nenhum (lidos no hub)

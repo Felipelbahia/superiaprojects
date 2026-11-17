@@ -2,8 +2,8 @@
 
 > Índice central de todas as Skills, Workflows e Agentes da Plataforma (0 Padrões + 0 Mkt)
 
-**Total Geral:** `686` recursos | **Skills:** `309` | **Workflows:** `225` | **Agentes:** `152`
-**Fontes Integradas:** `0 Mkt` (247) · `0 Padrões` (439)
+**Total Geral:** `687` recursos | **Skills:** `310` | **Workflows:** `225` | **Agentes:** `152`
+**Fontes Integradas:** `0 Mkt` (247) · `0 Padrões` (440)
 
 ---
 
@@ -26,8 +26,8 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
 
 ## 📌 Sumário de Categorias
 
-- [AI, Data & ML](#ai-data--ml) (`10` recursos)
-  - [Engenharia de Prompts & Avaliação de LLMs](#engenharia-de-prompts--avaliação-de-llms) (`4`)
+- [AI, Data & ML](#ai-data--ml) (`11` recursos)
+  - [Engenharia de Prompts & Avaliação de LLMs](#engenharia-de-prompts--avaliação-de-llms) (`5`)
   - [Modelos de IA & Machine Learning](#modelos-de-ia--machine-learning) (`4`)
   - [Pipelines de Dados & Transformação](#pipelines-de-dados--transformação) (`2`)
 - [Arquitetura de Software & Engenharia](#arquitetura-de-software--engenharia) (`39` recursos)
@@ -317,12 +317,13 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
 
 ## <a id="ai-data--ml"></a>AI, Data & ML
 
-Total de recursos nesta macro-área: `10`
+Total de recursos nesta macro-área: `11`
 
 ### <a id="engenharia-de-prompts--avaliação-de-llms"></a>Engenharia de Prompts & Avaliação de LLMs
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
+| <a id="atualizar-sips"></a>**`atualizar-sips`** | `Skill` | `0 Padrões` | Use when the owner wants to check whether the SIPs installed in the current project are up to date, or to update them ("atualizar os SIPs", "tem atualização dos SIPs?", "os SIPs estão em dia?", "update my SIPs", "check SIP updates"). Runs a read-only status against the project's .agent/SIPS-CONSUMIDOS.md and, with the owner's ok, re-runs each SIP's install prompt. |
 | <a id="llm-evaluation"></a>**`llm-evaluation`** | `Skill` | `0 Padrões` | Implemente estratégias de avaliação abrangentes para aplicações LLM usando métricas automatizadas, feedback humano e benchmarking. Use ao testar o desempenho do LLM, medir a qualidade da aplicação de IA ou estabelecer estruturas de avaliação. |
 | <a id="prompt-engineering-patterns"></a>**`prompt-engineering-patterns`** | `Skill` | `0 Padrões` | Domine técnicas avançadas de engenharia imediata para maximizar o desempenho, a confiabilidade e a controlabilidade do LLM na produção. Use ao otimizar prompts, melhorar os resultados do LLM ou projetar modelos de prompt de produção. |
 | <a id="prompt-optimize"></a>**`/prompt-optimize`** | `Workflow` | `0 Padrões` | Otimize os prompts de produção com padrões CoT, poucos disparos e IA constitucional |
@@ -2126,7 +2127,7 @@ Total de recursos nesta macro-área: `19`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="seo-geo"></a>**`seo-geo`** | `Skill` | `0 Mkt` | Use ao otimizar conteúdo para Generative Engine Optimization (GEO), citações de IA, Perplexity, Google AI Overviews, SearchGPT, Claude ou Gemini; tornar o conteúdo da marca citável por LLMs; ou estabelecer autoridade de entidade em Knowledge Graphs. NÃO use para criar novo conteúdo do zero com pesquisas e citações de especialistas (use conteudo-pesquisa), para artigos de SEO baseados em palavras-chave (use seo-conteudo) ou para marcação de dados estruturados (use seo-schema-markup). |
+| <a id="seo-geo"></a>**`seo-geo`** | `Skill` | `0 Mkt` | Use ao otimizar conteúdo para Generative Engine Optimization (GEO), citações de IA, Perplexity, Google AI Overviews, SearchGPT, Claude ou Gemini; tornar o conteúdo da marca citável por LLMs; ou estabelecer autoridade de entidade em Knowledge Graphs; também para executar a varredura geo_checker.py (JSON-LD, autor, data, H2) em uma pasta de páginas HTML/JSX/TSX antes de publicar. NÃO use para título, meta descrição, Open Graph ou verificações H1 (use a varredura seo_checker.py no seo-tecnico), para criar novo conteúdo do zero com pesquisas e citações de especialistas (use conteudo-pesquisa), para artigos de SEO baseados em palavras-chave (use seo-conteudo) ou para marcação de dados estruturados (use seo-schema-markup). |
 
 ### <a id="on-page"></a>On Page
 
@@ -2174,7 +2175,7 @@ Total de recursos nesta macro-área: `19`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="seo-schema-markup"></a>**`seo-schema-markup`** | `Skill` | `0 Mkt` | Use quando o usuário solicitar "adicionar marcação de esquema", "gerar dados estruturados", "JSON-LD", "rich snippets", "esquema de perguntas frequentes", "adicionar resultados aprimorados de perguntas frequentes", "Quero avaliações com estrelas no Google", "marcação de produto" ou "esquema de receita". Gera marcação de dados estruturados (Schema.org JSON-LD) para permitir resultados avançados em mecanismos de pesquisa, incluindo trechos de perguntas frequentes, cartões de instruções, listas de produtos, avaliações e muito mais. Para otimização de metatags, consulte otimizador de metatags. Para SEO técnico mais amplo, consulte seo-técnico. |
+| <a id="seo-schema-markup"></a>**`seo-schema-markup`** | `Skill` | `0 Mkt` | Use quando o usuário solicitar "adicionar marcação de esquema", "gerar dados estruturados", "JSON-LD", "rich snippets", "esquema de perguntas frequentes", "Quero avaliações com estrelas no Google", "marcação de produto" ou "esquema de receita". Gera marcação de dados estruturados (Schema.org JSON-LD) para permitir resultados aprimorados onde o Google ainda os mostra (Produto, Revisão, Artigo e outros). A pesquisa aprimorada de perguntas frequentes e instruções foi desativada (consulte seo-on-page/references/regras-de-referencia-google.md). Para otimização de metatags, consulte otimizador de metatags. Para SEO técnico mais amplo, consulte seo-técnico. |
 
 ### <a id="search-console"></a>Search Console
 
@@ -2186,7 +2187,7 @@ Total de recursos nesta macro-área: `19`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="seo-tecnico"></a>**`seo-tecnico`** | `Skill` | `0 Mkt` | Use ao realizar auditorias técnicas de SEO, diagnosticar problemas de rastreamento ou indexação, auditar Core Web Vitals (LCP, INP, CLS), configurar robots.txt (incluindo rastreadores de IA como GPTBot), validar mapas de sites XML, corrigir códigos de status HTTP ou diagnosticar quedas de velocidade do site. NÃO use para backlinks ou link building (use seo-autoridade-e-backlinks). |
+| <a id="seo-tecnico"></a>**`seo-tecnico`** | `Skill` | `0 Mkt` | Use ao realizar auditorias técnicas de SEO, diagnosticar problemas de rastreamento ou indexação, auditar Core Web Vitals (LCP, INP, CLS), configurar robots.txt (incluindo rastreadores de IA como GPTBot), validar mapas de sites XML, corrigir códigos de status HTTP ou diagnosticar quedas de velocidade do site; também para executar a varredura seo_checker.py (título, meta descrição, Open Graph, H1, imagem alt) em uma pasta de páginas HTML/JSX/TSX antes de publicar um site ou página de destino. NÃO use para backlinks ou link building (use seo-autoridade-e-backlinks), para conteúdo manual e auditorias de qualidade on-page (use seo-on-page) ou para preparação de citações de IA (use seo-geo). |
 
 ### <a id="wordpress"></a>Wordpress
 

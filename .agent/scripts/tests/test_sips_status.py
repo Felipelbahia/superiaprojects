@@ -75,6 +75,28 @@ class SipsStatusTests(unittest.TestCase):
             self.assertEqual(r.returncode, 1)
             self.assertIn("não existe", r.stdout)
 
+    def test_real_stub_with_direct_claude_link_is_up_to_date(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub = make_hub(root, "2026-11-12", ["a"])
+            proj = make_project(root, hub, "2026-11-12", "agents a; workflows nenhum", link=False)
+            stub = proj / ".agent" / "skills" / "sip-x"
+            stub.mkdir()
+            (stub / "SKILL.md").write_text("stub", encoding="utf-8")
+            (proj / ".claude" / "skills" / "sip-x").symlink_to(hub / ".agent" / "skills" / "sip-x")
+            r = run(proj)
+            self.assertEqual(r.returncode, 0, r.stdout)
+            self.assertIn("[em dia]", r.stdout)
+
+    def test_real_stub_without_claude_link_still_flags(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub = make_hub(root, "2026-11-12", ["a"])
+            proj = make_project(root, hub, "2026-11-12", "agents a; workflows nenhum", link=False)
+            (proj / ".agent" / "skills" / "sip-x").mkdir()
+            r = run(proj)
+            self.assertEqual(r.returncode, 1)
+
     def test_no_manifest(self):
         with tempfile.TemporaryDirectory() as t:
             r = run(Path(t))

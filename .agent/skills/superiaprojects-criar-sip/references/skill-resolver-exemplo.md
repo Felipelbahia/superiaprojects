@@ -136,6 +136,15 @@ revisando aquela edição), nunca edite `.agent/skills/` do hub direto. Em vez d
 - A data em que **cada projeto** instalou ou atualizou fica no
   `.agent/SIPS-CONSUMIDOS.md` dele. Se for anterior à data acima, ofereça
   rodar o prompt.
+- **Propagar para todos os consumidores (dono do hub):** depois de mudar este
+  hub, rode o comando abaixo (simulação por padrão; `--apply` grava). Ele lê
+  `"<CAMINHO_DO_HUB>/instalacoes/"`, refaz links quebrados, atualiza a data do
+  manifesto de cada projeto e o registro em `instalacoes/` (pulado no projeto com conflito) e deixa agents/workflows novos como nota na
+  `inbox/` do projeto (nunca instala sozinho). Se o dono pedir "propaga" /
+  "atualiza todos os consumidores" estando neste hub, é este comando:
+  `python3 "<CAMINHO_DO_0_PADROES>/.agent/scripts/propagar_sip.py" "<CAMINHO_DO_HUB>"`
+  (acrescente `--apply` depois de ver a simulação, e `--scan "<pasta dos projetos>"`
+  para achar consumidores que não estão registrados).
 
 ## Se nada bater
 

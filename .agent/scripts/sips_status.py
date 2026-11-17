@@ -81,6 +81,12 @@ def link_problem(link: Path, hub: Path) -> str | None:
     return None
 
 
+def is_single_link(project: Path, resolver: str) -> bool:
+    """True when the project keeps a real stub at .agent/skills/<resolver> (the 0 Padrões exception)."""
+    stub = project / ".agent" / "skills" / resolver
+    return stub.is_dir() and not stub.is_symlink()
+
+
 def check_entry(project: Path, e: dict) -> dict:
     hub = Path(e.get("Hub", "")).expanduser()
     resolver = e["resolver"]
@@ -105,16 +111,19 @@ def check_entry(project: Path, e: dict) -> dict:
     if not e.get("Para atualizar"):
         reasons.append("manifesto sem a linha 'Para atualizar'")
     # links: resolver always; agents/workflows only the chosen ones
-    for base in (".agent", ".claude"):
+    # Exception (0 Padrões): `.agent/skills/<resolver>` is a real stub folder, so the only link is `.claude/` straight to the hub.
+    single = is_single_link(project, resolver)
+    for base in ((".claude",) if single else (".agent", ".claude")):
         p = link_problem(project / base / "skills" / resolver, hub)
         if p:
             reasons.append(f"{base}/skills/{resolver}: {p}")
     chosen = {"agents": names(e.get("Agents", "")), "workflows": names(e.get("Workflows", ""))}
     for kind, items in chosen.items():
         for n in items:
-            p = link_problem(project / ".agent" / kind / f"{n}.md", hub)
+            where = Path(".claude") / ("agents" if kind == "agents" else "commands") if single else Path(".agent") / kind
+            p = link_problem(project / where / f"{n}.md", hub)
             if p:
-                reasons.append(f".agent/{kind}/{n}.md: {p}")
+                reasons.append(f"{where}/{n}.md: {p}")
     # news
     seen_a, seen_w = seen_in_hub(e.get("Vistos no hub", ""))
     for kind, seen in (("agents", seen_a), ("workflows", seen_w)):

@@ -81,6 +81,7 @@ E em 0 Padrões:
 8. Symlink .claude/skills/sip-<dominio> -> hub (0 Padrões como consumidor, sempre; agents/workflows: pergunto nenhum / todos / quais)
 9. Entrada(s) no .gitignore do 0 Padrões pra cada symlink novo do passo 8
 10. Registro em <hub>/instalacoes/0-padroes.md
+    (o registro é o que o `propagar_sip.py` lê para achar os consumidores; todo prompt de instalação precisa gravá-lo)
 11. 0 Padrões/.agent/SIPS-CONSUMIDOS.md (manifesto local, novo ou atualizado)
 Confirma?
 ```
@@ -229,6 +230,15 @@ edição sem curadoria propagaria pra todo mundo instantaneamente. Em vez disso:
 - A data em que **cada projeto** instalou ou atualizou fica no
   `.agent/SIPS-CONSUMIDOS.md` dele. Se for anterior à data acima, ofereça
   rodar o prompt.
+- **Propagar para todos os consumidores (dono do hub):** depois de mudar este
+  hub, rode o comando abaixo (simulação por padrão; `--apply` grava). Ele lê
+  `"{{HUB_PATH}}/instalacoes/"`, refaz links quebrados, atualiza a data do
+  manifesto de cada projeto e o registro em `instalacoes/` (pulado no projeto com conflito) e deixa agents/workflows novos como nota na
+  `inbox/` do projeto (nunca instala sozinho). Se o dono pedir "propaga" /
+  "atualiza todos os consumidores" estando neste hub, é este comando:
+  `python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/propagar_sip.py" "{{HUB_PATH}}"`
+  (acrescente `--apply` depois de ver a simulação, e `--scan "<pasta dos projetos>"`
+  para achar consumidores que não estão registrados).
 
 ## Se nada bater
 
