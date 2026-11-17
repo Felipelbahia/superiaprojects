@@ -1,4 +1,4 @@
-Atualizar os fatos verificados das skills de lançamento e segurança
+Segurança e legal: atualizar os fatos verificados das skills de lançamento e segurança
 
 Skills: <SUPER_IA_PROJECTS_PATH>/.agent/skills/launch-readiness/ (legal-matrix.md, legal-preflight.md, store-readiness.md, ops-resilience.md, chatbot-guardrails.md, templates/runbook-cra.md) e .../vibecoding-security-audit/supabase-rls.md.
 Escopo desta rodada: [tudo | só a matriz legal | só lojas | só Supabase | só as células [N] | as linhas L07, L11 ...].

@@ -29,7 +29,7 @@ $ARGUMENTS
 |-----------|---------------------------|
 | **Web App** | frontend-specialist, backend-specialist, test-engineer |
 | **API** | backend-specialist, security-auditor, test-engineer |
-| **UI/Design** | frontend-specialist, seo-specialist, performance-optimizer |
+| **UI/Design** | frontend-specialist, performance-optimizer |
 | **Database** | database-architect, backend-specialist, security-auditor |
 | **Full Stack** | project-planner, frontend-specialist, backend-specialist, devops-engineer |
 | **Debug** | debugger, explorer-agent, test-engineer |
@@ -98,7 +98,6 @@ Onaylıyor musunuz? (Y/N)
 | `devops-engineer` | Ops | CI/CD, Docker, Deploy |
 | `mobile-developer` | Mobile | React Native, Flutter |
 | `performance-optimizer` | Speed | Lighthouse, Profiling |
-| `seo-specialist` | SEO | Meta, Schema, Rankings |
 | `documentation-writer` | Docs | README, API docs |
 | `debugger` | Debug | Error analysis |
 | `game-developer` | Games | Unity, Godot |
@@ -119,7 +118,6 @@ Identify ALL domains this task touches:
 □ DevOps       → devops-engineer
 □ Mobile       → mobile-developer
 □ Performance  → performance-optimizer
-□ SEO          → seo-specialist
 □ Planning     → project-planner
 ```
 

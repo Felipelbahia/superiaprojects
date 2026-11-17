@@ -1,1 +1,0 @@
-../../.agent/agents/seo-content-planner.md

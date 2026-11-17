@@ -1,1 +1,0 @@
-../../.agent/agents/seo-cannibalization-detector.md

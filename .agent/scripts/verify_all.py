@@ -102,15 +102,6 @@ VERIFICATION_SUITE = [
         ]
     },
     
-    # P5: SEO & Content
-    {
-        "category": "SEO & Content",
-        "checks": [
-            ("SEO Check", ".agent/skills/seo-fundamentals/scripts/seo_checker.py", False),
-            ("GEO Check", ".agent/skills/geo-fundamentals/scripts/geo_checker.py", False),
-        ]
-    },
-    
     # P6: Performance (requires URL)
     {
         "category": "Performance",

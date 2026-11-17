@@ -29,7 +29,7 @@ Answers "no" skip the module entirely. Do not run or recite a module the answers
 - Report only FAIL and WARN; PASS is one line.
 - A legal item marked `não verificado` is a prompt to check the source, never a fact to repeat.
 - Policy or terms text is out of scope: check that they exist and match what the code does.
-- Overlaps resolve elsewhere: privacy mechanics in `gdpr-data-handling`, a11y in `accessibility-compliance`, SEO in `seo-fundamentals`, speed in `performance-profiling`.
+- Overlaps resolve elsewhere: privacy mechanics in `gdpr-data-handling`, a11y in `accessibility-compliance`, SEO in the marketing hub (`sip-marketing`, project 0 Mkt), speed in `performance-profiling`.
 
 ## Common Mistakes
 

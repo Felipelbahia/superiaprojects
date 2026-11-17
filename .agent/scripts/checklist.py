@@ -18,8 +18,16 @@ Priority Order:
     P4: UX Audit (psychology laws, accessibility)
     P5: SEO Check (meta tags, structure)
     P6: Performance (lighthouse - requires URL)
+
+Not applicable (per project):
+    A project may declare in `.agent/checklist.json` that a non-critical check does not
+    apply to it, always with a reason. The check is skipped and shown as such:
+        {"not_applicable": {"UX Audit": "no web app; email HTML is validated by scripts/validate_html_templates.py"}}
+    Critical checks (Security Scan, Lint Check) cannot be declared. An empty reason,
+    an unknown check name or invalid JSON stops the checklist with exit 1.
 """
 
+import json
 import sys
 import subprocess
 import argparse
@@ -67,6 +75,40 @@ PERFORMANCE_CHECKS = [
     ("Lighthouse Audit", ".agent/skills/performance-profiling/scripts/lighthouse_audit.py", True),
     ("Playwright E2E", ".agent/skills/webapp-testing/scripts/playwright_runner.py", False),
 ]
+
+PROJECT_CONFIG = ".agent/checklist.json"
+
+
+def load_not_applicable(project_path: Path) -> dict:
+    """Return {check name: reason} declared by the project; exit 1 if the declaration is invalid."""
+    config_path = project_path / PROJECT_CONFIG
+    if not config_path.is_file():
+        return {}
+    try:
+        declared = json.loads(config_path.read_text(encoding="utf-8")).get("not_applicable", {})
+    except (json.JSONDecodeError, AttributeError) as e:
+        print_error(f"{PROJECT_CONFIG}: invalid ({e})")
+        sys.exit(1)
+    checks = {name: required for name, _, required in CORE_CHECKS + PERFORMANCE_CHECKS}
+    errors = []
+    for name, reason in declared.items():
+        if name not in checks:
+            errors.append(f"unknown check '{name}' (valid: {', '.join(checks)})")
+        elif checks[name]:
+            errors.append(f"'{name}' is critical and cannot be declared not applicable")
+        elif not isinstance(reason, str) or not reason.strip():
+            errors.append(f"'{name}' needs a reason")
+    for error in errors:
+        print_error(f"{PROJECT_CONFIG}: {error}")
+    if errors:
+        sys.exit(1)
+    return {name: reason.strip() for name, reason in declared.items()}
+
+
+def not_applicable_result(name: str, reason: str) -> dict:
+    print_warning(f"{name}: not applicable ({reason})")
+    return {"name": name, "passed": True, "output": "", "skipped": True, "reason": reason}
+
 
 def check_script_exists(script_path: Path) -> bool:
     """Check if script file exists"""
@@ -165,7 +207,8 @@ def print_summary(results: List[dict]):
         else:
             status = f"{Colors.RED}❌{Colors.ENDC}"
         
-        print(f"{status} {r['name']}")
+        reason = f": not applicable ({r['reason']})" if r.get("reason") else ""
+        print(f"{status} {r['name']}{reason}")
     
     print()
     
@@ -206,12 +249,16 @@ Examples:
     print(f"URL: {args.url if args.url else 'Not provided (performance checks skipped)'}")
     
     results = []
-    
+    not_applicable = load_not_applicable(project_path)
+
     shared_repo_path = Path(__file__).resolve().parent.parent.parent
 
     # Run core checks
     print_header("📋 CORE CHECKS")
     for name, script_path, required in CORE_CHECKS:
+        if name in not_applicable:
+            results.append(not_applicable_result(name, not_applicable[name]))
+            continue
         script = project_path / script_path
         if not check_script_exists(script):
             script = shared_repo_path / script_path
@@ -229,6 +276,9 @@ Examples:
     if args.url and not args.skip_performance:
         print_header("⚡ PERFORMANCE CHECKS")
         for name, script_path, required in PERFORMANCE_CHECKS:
+            if name in not_applicable:
+                results.append(not_applicable_result(name, not_applicable[name]))
+                continue
             script = project_path / script_path
             if not check_script_exists(script):
                 script = shared_repo_path / script_path

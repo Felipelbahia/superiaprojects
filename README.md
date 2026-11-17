@@ -130,7 +130,7 @@ Dentro da pasta `prompts-template/`, você encontra roteiros prontos para:
 
 - `01-atualizar-projeto-existente.md`: Alinhar um projeto já existente ao kit, na primeira vez ou depois de atualizações, sem perder as regras locais.
 - `02-criar-projeto-do-zero.md`: Inicializar um projeto do zero via `project-initializer`.
-- `04-buscar-bibliotecas-prontas.md`: Avaliar reuso de software open source via `oss-scout`.
+- `04-oss-scout.md`: Procurar solução pronta (nos nossos projetos e em open source) antes de construir, via `oss-scout`.
 
 ---
 

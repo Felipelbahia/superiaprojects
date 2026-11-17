@@ -98,7 +98,7 @@ Inside `prompts-template/`, you will find ready-to-use recipes:
 
 - `01-atualizar-projeto-existente.md`: Align an existing project with the kit, the first time or after kit updates, keeping its local rules.
 - `02-criar-projeto-do-zero.md`: Scaffold new applications from scratch via `project-initializer`.
-- `04-buscar-bibliotecas-prontas.md`: Evaluate open-source library reuse with `oss-scout`.
+- `04-oss-scout.md`: Look for a ready-made solution (in our own projects and in open source) before building, via `oss-scout`.
 
 ---
 

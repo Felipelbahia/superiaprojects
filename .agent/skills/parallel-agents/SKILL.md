@@ -110,7 +110,6 @@ Agents: security-auditor → penetration-tester → synthesis
 | `documentation-writer` | Documentation | "write docs", "create README", "generate API docs" |
 | `performance-optimizer` | Performance | "slow", "optimize", "profiling" |
 | `project-planner` | Planning | "plan", "roadmap", "milestones" |
-| `seo-specialist` | SEO | "SEO", "meta tags", "search ranking" |
 | `game-developer` | Game Development | "game", "Unity", "Godot", "Phaser" |
 
 ---

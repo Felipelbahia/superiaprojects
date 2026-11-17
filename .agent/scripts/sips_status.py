@@ -1,0 +1,187 @@
+#!/usr/bin/env python3
+"""sips_status.py - read-only: for a project, shows which installed SIPs are behind their hub.
+
+Usage:
+    python3 sips_status.py [PROJECT_ROOT]          # default: current directory
+    python3 sips_status.py --all [PARENT_DIR]      # every project under PARENT_DIR that has .agent/SIPS-CONSUMIDOS.md
+
+Reads the project's `.agent/SIPS-CONSUMIDOS.md` (one `## SIP - Name (`sip-x`)` entry per SIP) and, for each entry:
+  - hub date: "Última atualização do hub: AAAA-MM-DD" in the hub resolver, against "Instalado/atualizado em" (the hub owner
+    keeps that date by hand, so it is a hint; the other checks are objective);
+  - links: `.agent/skills/<resolver>` and `.claude/skills/<resolver>` exist and resolve into the hub, and so do the
+    agents/workflows the project chose;
+  - news: agents/workflows now in the hub that are not in "Vistos no hub" (new to offer), and "Vistos" ones that left the hub.
+Status per SIP: "em dia" or "atualizar" (with the reasons). Exit code 1 when any SIP needs an update, 0 otherwise, 2 on usage error.
+Never writes anything. To update, paste the SIP's install prompt (line "Para atualizar") in the project.
+Standard library only.
+"""
+
+import os
+import re
+import sys
+from pathlib import Path
+
+ENTRY = re.compile(r"^## (.+?) \(`([^`]+)`\)\s*$")
+FIELD = re.compile(r"^- ([^:]+):\s*(.*)$")
+HUB_DATE = re.compile(r"Última atualização do hub:\s*(\d{4}-\d{2}-\d{2})")
+SKIP_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", ".next", "dist", "build"}
+
+
+def parse_manifest(text: str) -> list[dict]:
+    entries, cur = [], None
+    for line in text.splitlines():
+        m = ENTRY.match(line)
+        if m:
+            cur = {"name": m.group(1), "resolver": m.group(2)}
+            entries.append(cur)
+            continue
+        f = FIELD.match(line)
+        if cur is not None and f:
+            cur[f.group(1).strip()] = f.group(2).strip()
+    return entries
+
+
+def names(value: str) -> list[str]:
+    """'a, b, c' -> [a, b, c]; 'nenhum' or empty -> []."""
+    value = value.strip().strip(".")
+    if not value or value.lower().startswith("nenhum"):
+        return []
+    return [n.strip().strip("`") for n in value.split(",") if n.strip()]
+
+
+def seen_in_hub(value: str) -> tuple[list[str], list[str]]:
+    """'agents a, b; workflows c' -> ([a, b], [c])."""
+    m = re.match(r"\s*agents\s*(.*?)\s*;\s*workflows\s*(.*)$", value, re.S)
+    return (names(m.group(1)), names(m.group(2))) if m else ([], [])
+
+
+def hub_items(hub: Path, kind: str) -> set[str]:
+    """Top-level .md files in the hub's .agent/<kind>/, same exclusions as build_sip_index.py."""
+    folder = hub / ".agent" / kind
+    if not folder.is_dir():
+        return set()
+    out = set()
+    for p in folder.glob("*.md"):
+        n = p.stem
+        if n.startswith(("_", ".", "sip-")) or p.name == "README.md":
+            continue
+        if p.is_symlink() and hub.resolve() not in p.resolve().parents:
+            continue
+        out.add(n)
+    return out
+
+
+def link_problem(link: Path, hub: Path) -> str | None:
+    if not os.path.lexists(link):
+        return "não existe"
+    if not link.exists():
+        return "link quebrado"
+    if hub.resolve() not in link.resolve().parents and link.resolve() != hub.resolve():
+        return "não aponta para o hub"
+    return None
+
+
+def check_entry(project: Path, e: dict) -> dict:
+    hub = Path(e.get("Hub", "")).expanduser()
+    resolver = e["resolver"]
+    reasons: list[str] = []
+    out = {"sip": e["name"], "resolver": resolver, "reasons": reasons, "update": e.get("Para atualizar", "")}
+    if not hub.is_dir():
+        reasons.append(f"hub não encontrado: {hub}")
+        return out
+    skill = hub / ".agent" / "skills" / resolver / "SKILL.md"
+    hub_date = None
+    if skill.is_file():
+        m = HUB_DATE.search(skill.read_text(encoding="utf-8", errors="replace"))
+        hub_date = m.group(1) if m else None
+    else:
+        reasons.append("resolver não existe no hub")
+    installed = (re.search(r"\d{4}-\d{2}-\d{2}", e.get("Instalado/atualizado em", "")) or [None])[0]
+    out["hub_date"], out["installed"] = hub_date, installed
+    if hub_date and installed and hub_date > installed:
+        reasons.append(f"hub atualizado em {hub_date}, projeto em {installed}")
+    if not installed:
+        reasons.append("manifesto sem data de instalação")
+    if not e.get("Para atualizar"):
+        reasons.append("manifesto sem a linha 'Para atualizar'")
+    # links: resolver always; agents/workflows only the chosen ones
+    for base in (".agent", ".claude"):
+        p = link_problem(project / base / "skills" / resolver, hub)
+        if p:
+            reasons.append(f"{base}/skills/{resolver}: {p}")
+    chosen = {"agents": names(e.get("Agents", "")), "workflows": names(e.get("Workflows", ""))}
+    for kind, items in chosen.items():
+        for n in items:
+            p = link_problem(project / ".agent" / kind / f"{n}.md", hub)
+            if p:
+                reasons.append(f".agent/{kind}/{n}.md: {p}")
+    # news
+    seen_a, seen_w = seen_in_hub(e.get("Vistos no hub", ""))
+    for kind, seen in (("agents", seen_a), ("workflows", seen_w)):
+        now = hub_items(hub, kind)
+        if seen or "Vistos no hub" in e:
+            new = sorted(now - set(seen))
+            gone = sorted(set(seen) - now)
+            if new:
+                reasons.append(f"{len(new)} {kind} novos no hub: " + ", ".join(new[:8]) + ("…" if len(new) > 8 else ""))
+            if gone:
+                reasons.append(f"{len(gone)} {kind} saíram do hub: " + ", ".join(gone[:8]))
+    return out
+
+
+def report(project: Path) -> int:
+    manifest = project / ".agent" / "SIPS-CONSUMIDOS.md"
+    print(f"\n# {project}")
+    if not manifest.is_file():
+        print("  sem .agent/SIPS-CONSUMIDOS.md: nenhum SIP registrado (instale pelo prompt do SIP).")
+        return 0
+    entries = parse_manifest(manifest.read_text(encoding="utf-8", errors="replace"))
+    if not entries:
+        print("  manifesto sem entradas.")
+        return 0
+    behind = 0
+    for e in entries:
+        r = check_entry(project, e)
+        status = "atualizar" if r["reasons"] else "em dia"
+        behind += bool(r["reasons"])
+        print(f"  [{status}] {r['sip']} ({r['resolver']})  hub: {r.get('hub_date') or '?'}  projeto: {r.get('installed') or '?'}")
+        for why in r["reasons"]:
+            print(f"      - {why}")
+        if r["reasons"] and r["update"]:
+            print(f"      Para atualizar: {r['update'].replace('Para atualizar:', '').strip()}")
+    return 1 if behind else 0
+
+
+def find_projects(parent: Path) -> list[Path]:
+    found = []
+    for root, dirs, files in os.walk(parent):
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+        if Path(root).name == ".agent" and "SIPS-CONSUMIDOS.md" in files:
+            found.append(Path(root).parent)
+            dirs[:] = []
+    return sorted(found)
+
+
+def main(argv: list[str]) -> int:
+    args = argv[1:]
+    if args and args[0] in ("-h", "--help"):
+        print(__doc__)
+        return 0
+    if args and args[0] == "--all":
+        parent = Path(args[1] if len(args) > 1 else ".").expanduser()
+        if not parent.is_dir():
+            print(f"pasta não existe: {parent}", file=sys.stderr)
+            return 2
+        rc = 0
+        for p in find_projects(parent):
+            rc |= report(p)
+        return rc
+    project = Path(args[0] if args else ".").expanduser()
+    if not project.is_dir():
+        print(f"pasta não existe: {project}", file=sys.stderr)
+        return 2
+    return report(project)
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

@@ -2,8 +2,8 @@
 
 > Índice central de todas as Skills, Workflows e Agentes da Plataforma (0 Padrões + 0 Mkt)
 
-**Total Geral:** `699` recursos | **Skills:** `311` | **Workflows:** `225` | **Agentes:** `163`
-**Fontes Integradas:** `0 Mkt` (247) · `0 Padrões` (452)
+**Total Geral:** `686` recursos | **Skills:** `309` | **Workflows:** `225` | **Agentes:** `152`
+**Fontes Integradas:** `0 Mkt` (247) · `0 Padrões` (439)
 
 ---
 
@@ -30,8 +30,8 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Engenharia de Prompts & Avaliação de LLMs](#engenharia-de-prompts--avaliação-de-llms) (`4`)
   - [Modelos de IA & Machine Learning](#modelos-de-ia--machine-learning) (`4`)
   - [Pipelines de Dados & Transformação](#pipelines-de-dados--transformação) (`2`)
-- [Arquitetura de Software & Engenharia](#arquitetura-de-software--engenharia) (`42` recursos)
-  - [Padrões Arquiteturais & Boas Práticas](#padrões-arquiteturais--boas-práticas) (`42`)
+- [Arquitetura de Software & Engenharia](#arquitetura-de-software--engenharia) (`39` recursos)
+  - [Padrões Arquiteturais & Boas Práticas](#padrões-arquiteturais--boas-práticas) (`39`)
 - [Backend & APIs](#backend--apis) (`21` recursos)
   - [Design & Integração de APIs (REST / GraphQL)](#design--integração-de-apis-rest--graphql) (`12`)
   - [Node.js, Go & Microsserviços](#nodejs-go--microsserviços) (`2`)
@@ -40,13 +40,13 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
 - [Database & Storage](#database--storage) (`6` recursos)
   - [Bancos Relacionais (PostgreSQL & SQL)](#bancos-relacionais-postgresql--sql) (`3`)
   - [Modelagem & Migrações de Banco](#modelagem--migrações-de-banco) (`3`)
-- [DevOps & Cloud Infra](#devops--cloud-infra) (`64` recursos)
+- [DevOps & Cloud Infra](#devops--cloud-infra) (`60` recursos)
   - [Infraestrutura como Código (Terraform / Cloud)](#infraestrutura-como-código-terraform--cloud) (`3`)
   - [Orquestração Kubernetes & Contêineres](#orquestração-kubernetes--contêineres) (`2`)
-  - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`59`)
-- [Frontend & UI/UX](#frontend--uiux) (`216` recursos)
+  - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`55`)
+- [Frontend & UI/UX](#frontend--uiux) (`212` recursos)
   - [Acessibilidade Web (A11y & WCAG)](#acessibilidade-web-a11y--wcag) (`4`)
-  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`190`)
+  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`186`)
   - [Design Systems & Estilização Moderna](#design-systems--estilização-moderna) (`10`)
   - [Frameworks Web Modernos (React & Next.js)](#frameworks-web-modernos-react--nextjs) (`12`)
 - [Gestão de Produtos e Projetos](#gestão-de-produtos-e-projetos) (`16` recursos)
@@ -54,9 +54,9 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Estratégia & Especificação de Produto (PRD)](#estratégia--especificação-de-produto-prd) (`3`)
   - [Operações Ágeis & Coordenação de Equipe](#operações-ágeis--coordenação-de-equipe) (`4`)
   - [Planejamento de Projetos & Sprints](#planejamento-de-projetos--sprints) (`7`)
-- [Mobile Development](#mobile-development) (`38` recursos)
+- [Mobile Development](#mobile-development) (`36` recursos)
   - [Arquitetura e Padrões Mobile](#arquitetura-e-padrões-mobile) (`2`)
-  - [iOS & Ferramentas Nativas](#ios--ferramentas-nativas) (`36`)
+  - [iOS & Ferramentas Nativas](#ios--ferramentas-nativas) (`34`)
 - [Processos de VibeCoding & Metodologia IA](#processos-de-vibecoding--metodologia-ia) (`24` recursos)
   - [Auditoria Anti-Slop & Segurança VibeCoding](#auditoria-anti-slop--segurança-vibecoding) (`1`)
   - [Engenharia de Contexto & Memória](#engenharia-de-contexto--memória) (`3`)
@@ -348,7 +348,7 @@ Total de recursos nesta macro-área: `10`
 
 ## <a id="arquitetura-de-software--engenharia"></a>Arquitetura de Software & Engenharia
 
-Total de recursos nesta macro-área: `42`
+Total de recursos nesta macro-área: `39`
 
 ### <a id="padrões-arquiteturais--boas-práticas"></a>Padrões Arquiteturais & Boas Práticas
 
@@ -358,7 +358,6 @@ Total de recursos nesta macro-área: `42`
 | <a id="defi-protocol-templates"></a>**`defi-protocol-templates`** | `Skill` | `0 Padrões` | Implemente protocolos DeFi com modelos prontos para produção para sistemas de piquetagem, AMMs, governança e empréstimo. Use ao criar aplicativos financeiros descentralizados ou protocolos de contratos inteligentes. |
 | <a id="executing-plans"></a>**`executing-plans`** | `Skill` | `0 Padrões` | Use ao executar um plano de implementação na sessão atual como o próprio implementador — seu parceiro humano escolheu a execução em linha ou nenhuma ferramenta de subagente está disponível |
 | <a id="game-development"></a>**`game-development`** | `Skill` | `0 Padrões` | Orquestrador de desenvolvimento de jogos. Rotas para habilidades específicas da plataforma com base nas necessidades do projeto. |
-| <a id="geo-fundamentals"></a>**`geo-fundamentals`** | `Skill` | `0 Padrões` | Otimização generativa de mecanismos para mecanismos de busca de IA (ChatGPT, Claude, Perplexity). |
 | <a id="go-concurrency-patterns"></a>**`go-concurrency-patterns`** | `Skill` | `0 Padrões` | Simultaneidade Master Go com goroutines, canais, primitivas de sincronização e contexto. Use ao criar aplicativos Go simultâneos, implementar pools de trabalhadores ou depurar condições de corrida. |
 | <a id="linkerd-patterns"></a>**`linkerd-patterns`** | `Skill` | `0 Padrões` | Implemente padrões de malha de serviço Linkerd para implantações de malha de serviço leves e focadas em segurança. Use ao configurar o Linkerd, configurar políticas de tráfego ou implementar redes de confiança zero com sobrecarga mínima. |
 | <a id="lint-and-validate"></a>**`lint-and-validate`** | `Skill` | `0 Padrões` | Procedimentos automáticos de controle de qualidade, fiapos e análise estática. Use após cada modificação de código para garantir a correção da sintaxe e os padrões do projeto. Gatilhos onKeywords: lint, formato, verificação, validação, tipos, análise estática. |
@@ -394,8 +393,6 @@ Total de recursos nesta macro-área: `42`
 | <a id="blockchain-developer"></a>**`@blockchain-developer`** | `Agent` | `0 Padrões` | Crie aplicativos Web3 prontos para produção, contratos inteligentes e sistemas descentralizados. Implementa protocolos DeFi, plataformas NFT, DAOs e integrações de blockchain empresarial. Use PROATIVAMENTE para contratos inteligentes, aplicativos Web3, protocolos DeFi ou infraestrutura blockchain. |
 | <a id="cpp-pro"></a>**`@cpp-pro`** | `Agent` | `0 Padrões` | Escreva código C++ idiomático com recursos modernos, RAII, ponteiros inteligentes e algoritmos STL. Lida com modelos, semântica de movimentação e otimização de desempenho. Use PROATIVAMENTE para refatoração C++, segurança de memória ou padrões C++ complexos. |
 | <a id="php-pro"></a>**`@php-pro`** | `Agent` | `0 Padrões` | Escreva código PHP idiomático com geradores, iteradores, estruturas de dados SPL e recursos OOP modernos. Use PROATIVAMENTE para aplicativos PHP de alto desempenho. |
-| <a id="seo-meta-optimizer"></a>**`@seo-meta-optimizer`** | `Agent` | `0 Padrões` | Cria metatítulos, descrições e sugestões de URL otimizados com base em limites de caracteres e práticas recomendadas. Gera metadados atraentes e ricos em palavras-chave. Use PROATIVAMENTE para novos conteúdos. |
-| <a id="seo-snippet-hunter"></a>**`@seo-snippet-hunter`** | `Agent` | `0 Padrões` | Formata o conteúdo para ser elegível para snippets em destaque e recursos SERP. Cria blocos de conteúdo otimizados para snippets com base nas práticas recomendadas. Use PROATIVAMENTE para conteúdo baseado em perguntas. |
 
 ---
 
@@ -470,7 +467,7 @@ Total de recursos nesta macro-área: `6`
 
 ## <a id="devops--cloud-infra"></a>DevOps & Cloud Infra
 
-Total de recursos nesta macro-área: `64`
+Total de recursos nesta macro-área: `60`
 
 ### <a id="infraestrutura-como-código-terraform--cloud"></a>Infraestrutura como Código (Terraform / Cloud)
 
@@ -544,10 +541,6 @@ Total de recursos nesta macro-área: `64`
 | <a id="quant-analyst"></a>**`@quant-analyst`** | `Agent` | `0 Padrões` | Crie modelos financeiros, faça backtest de estratégias de negociação e analise dados de mercado. Implementa métricas de risco, otimização de portfólio e arbitragem estatística. Use PROATIVAMENTE para finanças quantitativas, algoritmos de negociação ou análise de risco. |
 | <a id="risk-manager"></a>**`@risk-manager`** | `Agent` | `0 Padrões` | Monitore o risco do portfólio, múltiplos R e limites de posição. Cria estratégias de hedge, calcula expectativa e implementa stop-loss. Use PROATIVAMENTE para avaliação de risco, rastreamento de negociações ou proteção de portfólio. |
 | <a id="ruby-pro"></a>**`@ruby-pro`** | `Agent` | `0 Padrões` | Escreva código Ruby idiomático com metaprogramação, padrões Rails e otimização de desempenho. Especializado em Ruby on Rails, desenvolvimento de gem e frameworks de teste. Use PROATIVAMENTE para refatoração Ruby, otimização ou recursos Ruby complexos. |
-| <a id="seo-cannibalization-detector"></a>**`@seo-cannibalization-detector`** | `Agent` | `0 Padrões` | Analisa várias páginas fornecidas para identificar sobreposição de palavras-chave e possíveis problemas de canibalização. Sugere estratégias de diferenciação. Use PROATIVAMENTE ao revisar conteúdo semelhante. |
-| <a id="seo-content-auditor"></a>**`@seo-content-auditor`** | `Agent` | `0 Padrões` | As análises forneceram conteúdo de qualidade, sinais EAT e práticas recomendadas de SEO. Pontua o conteúdo e fornece recomendações de melhoria com base nas diretrizes estabelecidas. Use PROATIVAMENTE para revisão de conteúdo. |
-| <a id="seo-content-refresher"></a>**`@seo-content-refresher`** | `Agent` | `0 Padrões` | Identifica elementos desatualizados no conteúdo fornecido e sugere atualizações para mantê-lo atualizado. Encontra estatísticas, datas e exemplos que precisam ser atualizados. Use PROATIVAMENTE para conteúdo mais antigo. |
-| <a id="seo-keyword-strategist"></a>**`@seo-keyword-strategist`** | `Agent` | `0 Padrões` | Analisa o uso de palavras-chave no conteúdo fornecido, calcula a densidade, sugere variações semânticas e palavras-chave LSI com base no tópico. Evita otimização excessiva. Use PROATIVAMENTE para otimização de conteúdo. |
 | <a id="test-automator"></a>**`@test-automator`** | `Agent` | `0 Padrões` | Domine a automação de testes baseada em IA com estruturas modernas, testes de autocorreção e engenharia de qualidade abrangente. Crie estratégias de teste escalonáveis ​​com integração avançada de CI/CD. Use PROATIVAMENTE para automação de testes ou garantia de qualidade. |
 | <a id="test-engineer"></a>**`@test-engineer`** | `Agent` | `0 Padrões` | Especialista em testes, TDD e automação de testes. Use para escrever testes, melhorar a cobertura e depurar falhas de teste. Aciona teste, especificação, cobertura, brincadeira, pytest, dramaturgo, e2e, teste de unidade. |
 
@@ -555,7 +548,7 @@ Total de recursos nesta macro-área: `64`
 
 ## <a id="frontend--uiux"></a>Frontend & UI/UX
 
-Total de recursos nesta macro-área: `216`
+Total de recursos nesta macro-área: `212`
 
 ### <a id="acessibilidade-web-a11y--wcag"></a>Acessibilidade Web (A11y & WCAG)
 
@@ -741,10 +734,6 @@ Total de recursos nesta macro-área: `216`
 | <a id="rust-pro"></a>**`@rust-pro`** | `Agent` | `0 Padrões` | Master Rust 1.75+ com padrões assíncronos modernos, recursos de sistema de tipo avançado e programação de sistemas prontos para produção. Especialista no mais recente ecossistema Rust, incluindo Tokio, axum e caixas de última geração. Use PROATIVAMENTE para desenvolvimento Rust, otimização de desempenho ou programação de sistemas. |
 | <a id="scala-pro"></a>**`@scala-pro`** | `Agent` | `0 Padrões` | Domine o desenvolvimento Scala de nível empresarial com programação funcional, sistemas distribuídos e processamento de big data. Especialista em Apache Pekko, Akka, Spark, ZIO/Cats Effect e arquiteturas reativas. Use PROATIVAMENTE para design de sistema Scala, otimização de desempenho ou integração empresarial. |
 | <a id="search-specialist"></a>**`@search-specialist`** | `Agent` | `0 Padrões` | Pesquisador especializado na web usando técnicas avançadas de pesquisa e síntese. Domina operadores de pesquisa, filtragem de resultados e verificação de múltiplas fontes. Lida com análises competitivas e verificação de fatos. Use PROATIVAMENTE para pesquisas profundas, coleta de informações ou análise de tendências. |
-| <a id="seo-authority-builder"></a>**`@seo-authority-builder`** | `Agent` | `0 Padrões` | Analisa o conteúdo em busca de sinais EAT e sugere melhorias para construir autoridade e confiança. Identifica elementos de credibilidade ausentes. Use PROATIVAMENTE para tópicos YMYL. |
-| <a id="seo-content-writer"></a>**`@seo-content-writer`** | `Agent` | `0 Padrões` | Escreve conteúdo otimizado para SEO com base nas palavras-chave fornecidas e resumos de tópicos. Cria conteúdo envolvente e abrangente seguindo as melhores práticas. Use PROATIVAMENTE para tarefas de criação de conteúdo. |
-| <a id="seo-specialist"></a>**`@seo-specialist`** | `Agent` | `0 Padrões` | Especialista em SEO e GEO (Generative Engine Optimization). Lida com auditorias de SEO, Core Web Vitals, otimização EAT, visibilidade de pesquisa de IA. Use para melhorias de SEO, otimização de conteúdo ou estratégias de citação de IA. |
-| <a id="seo-structure-architect"></a>**`@seo-structure-architect`** | `Agent` | `0 Padrões` | Analisa e otimiza a estrutura do conteúdo, incluindo hierarquia de cabeçalho, sugere marcação de esquema e oportunidades de links internos. Cria organização de conteúdo amigável para pesquisa. Use PROATIVAMENTE para estruturação de conteúdo. |
 | <a id="service-mesh-expert"></a>**`@service-mesh-expert`** | `Agent` | `0 Padrões` | Arquitetura de service mesh com Istio e Linkerd: gerenciamento de tráfego, mTLS, observabilidade, entrega progressiva. Use para redes nativas da nuvem. |
 | <a id="startup-analyst"></a>**`@startup-analyst`** | `Agent` | `0 Padrões` | Analista de negócios especialista em startups, especializado em dimensionamento de mercado, modelagem financeira, análise competitiva e planejamento estratégico para empresas em estágio inicial. Use PROATIVAMENTE quando o usuário perguntar sobre oportunidade de mercado, TAM/SAM/SOM, projeções financeiras, economia unitária, cenário competitivo, planejamento de equipe, métricas de startup ou estratégia de negócios para pré-semente através de startups da Série A. |
 | <a id="tdd-orchestrator"></a>**`@tdd-orchestrator`** | `Agent` | `0 Padrões` | Orquestrador mestre de TDD especializado em disciplina de refatoração vermelho-verde, coordenação de fluxo de trabalho multiagente e práticas abrangentes de desenvolvimento orientado a testes. Aplica as melhores práticas de TDD entre equipes com testes assistidos por IA e estruturas modernas. Use PROATIVAMENTE para implementação e governança de TDD. |
@@ -839,7 +828,7 @@ Total de recursos nesta macro-área: `16`
 
 ## <a id="mobile-development"></a>Mobile Development
 
-Total de recursos nesta macro-área: `38`
+Total de recursos nesta macro-área: `36`
 
 ### <a id="arquitetura-e-padrões-mobile"></a>Arquitetura e Padrões Mobile
 
@@ -869,7 +858,6 @@ Total de recursos nesta macro-área: `38`
 | <a id="plan-writing"></a>**`plan-writing`** | `Skill` | `0 Padrões` | Planejamento de tarefas estruturado com detalhamentos, dependências e critérios de verificação claros. Use ao implementar recursos, refatorar ou qualquer trabalho de várias etapas. |
 | <a id="python-patterns"></a>**`python-patterns`** | `Skill` | `0 Padrões` | Princípios de desenvolvimento Python e tomada de decisão. Seleção de framework, padrões assíncronos, dicas de tipo, estrutura do projeto. Ensina a pensar, não a copiar. |
 | <a id="red-team-tactics"></a>**`red-team-tactics`** | `Skill` | `0 Padrões` | Princípios táticos do time vermelho baseados no MITRE ATT&CK. Fases de ataque, evasão de detecção, relatórios. |
-| <a id="seo-fundamentals"></a>**`seo-fundamentals`** | `Skill` | `0 Padrões` | Fundamentos de SEO, EAT, Core Web Vitals e princípios de algoritmo do Google. |
 | <a id="server-management"></a>**`server-management`** | `Skill` | `0 Padrões` | Princípios de gerenciamento de servidores e tomada de decisões. Gerenciamento de processos, estratégia de monitoramento e decisões de escala. Ensina a pensar, não a comandar. |
 | <a id="sip-mautic"></a>**`sip-mautic`** | `Skill` | `0 Padrões` | Use whenever the current task involves Mautic (contatos, segmentos, campanhas, e-mails, formulários) or Mailgun (envio, webhooks, domínios) but the active project has no local Mautic skills — i.e. any project other than "SIP - Mautic" itself. Routes the task to the central Mautic knowledge hub instead of improvising from general knowledge. Also use when the user asks "existe algo de mautic pra isso", "tem template pra isso no hub", "consulta o SIP - Mautic", or names Mautic/Mailgun explicitly in a project that isn't it. Este stub existe para que IAs que não leem `.claude/skills/` (Google Antigravity/Gemini, Cursor) ainda encontrem este nome via Regra 4 (Fallback Resolution Protocol) — nos projetos que instalaram este SIP, o Claude Code já o acha em `.claude/skills/sip-mautic`; nos outros, as regras (módulo `sip-access`) mandam ler este ponteiro. |
 | <a id="startup-metrics-framework"></a>**`startup-metrics-framework`** | `Skill` | `0 Padrões` | Essa habilidade deve ser usada quando o usuário pergunta sobre "principais métricas de inicialização", "métricas de SaaS", "CAC e LTV", "economia unitária", "queima múltipla", "regra dos 40", "métricas de mercado" ou solicita orientação sobre rastreamento e otimização de métricas de desempenho de negócios. |
@@ -887,7 +875,6 @@ Total de recursos nesta macro-área: `38`
 | <a id="orchestrator"></a>**`@orchestrator`** | `Agent` | `0 Padrões` | Coordenação multiagente e orquestração de tarefas. Use quando uma tarefa exigir múltiplas perspectivas, análise paralela ou execução coordenada em diferentes domínios. Invoque esse agente para tarefas complexas que se beneficiam da experiência combinada em segurança, back-end, front-end, testes e DevOps. |
 | <a id="performance-engineer"></a>**`@performance-engineer`** | `Agent` | `0 Padrões` | Engenheiro de desempenho especializado em observabilidade moderna, otimização de aplicativos e desempenho escalável de sistemas. Domina OpenTelemetry, rastreamento distribuído, teste de carga, cache multicamadas, Core Web Vitals e monitoramento de desempenho. Lida com otimização ponta a ponta, monitoramento de usuários reais e padrões de escalabilidade. Use PROATIVAMENTE para desafios de otimização de desempenho, observabilidade ou escalabilidade. |
 | <a id="sales-automator"></a>**`@sales-automator`** | `Agent` | `0 Padrões` | Elabore e-mails frios, acompanhamentos e modelos de propostas. Cria páginas de preços, estudos de caso e scripts de vendas. Use PROATIVAMENTE para divulgação de vendas ou nutrição de leads. |
-| <a id="seo-content-planner"></a>**`@seo-content-planner`** | `Agent` | `0 Padrões` | Cria contornos de conteúdo abrangentes e grupos de tópicos para SEO. Planeja calendários de conteúdo e identifica lacunas de tópicos. Use PROATIVAMENTE para estratégia e planejamento de conteúdo. |
 
 ---
 

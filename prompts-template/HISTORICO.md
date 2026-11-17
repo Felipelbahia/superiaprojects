@@ -49,4 +49,9 @@ Detalhe completo da auditoria que motivou esta versão: `<PASTA_DO_PROJETO>/.age
 | Separar criação de projeto de marketing (Prompt 02b) do scaffolding de código | Projetos de conteúdo não precisam de perguntas sobre frameworks JS, bancos Supabase ou backend; precisam de estrutura padrão (`brand/`, `conteudos/`, `assets/`) e fallback em `0 Mkt` |
 | Padronizar migração segura de conteúdo e marcas (Prompt 09) com `diff -rq` | Evita a sobrecarga do hub `0 Mkt` com conteúdos executados de múltiplos projetos, garantindo que o manual de marca viva no projeto local sem perda de arquivos |
 | Gerar catálogo unificado (MD + HTML) via `generate_catalog.py` | Garante visibilidade e descoberta das skills locais e globais em português, com navegação por categorias e inspeção de referências sem precisar abrir arquivos manualmente |
-
+| Fundir os prompts 04 (reuso) e 05 (estudo) em `04-oss-scout.md`, com passo 0 olhando nos seus projetos | Mesma skill e mesmas regras; reaproveitar o que já existe em outro projeto vem antes de buscar fora (2026-11-17) |
+| Reduzir o 03 a um lançador do `project-defines/prompts/brownfield.md` | Era cópia do prompt da skill (2026-11-17) |
+| Renomear o 07 para `07-seguranca-e-legal.md`; `02b` passa a citar `sip-marketing` e perde o passo do catálogo | Nome mais claro; lista antiga citava coisas que o hub não tem (2026-11-17) |
+| Aposentar o `02b` (projeto de marketing): o `02` já pergunta o tipo (conteúdo = módulo `content`, `sip-marketing` sugerido, mapa de destinos) e ganhou pastas do mapa e `.gitignore` para vídeo | Os dois prompts repetiam os mesmos passos; marketing é só um tipo de projeto (2026-11-17) |
+| Tirar `GEMINI.md` dos prompts | O kit não usa mais esse arquivo; o `01` só lê `.agent/rules/*` antigos para não perder regra local (2026-11-17) |
+| Criar o `08-atualizar-sips.md` e o script `sips_status.py` | Instalar um SIP tinha como atualizar (colar o prompt de novo), mas nada dizia QUANDO atualizar; o status compara o manifesto com o hub e o disco (2026-11-17) |

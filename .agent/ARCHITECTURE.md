@@ -31,9 +31,9 @@ Rule files (`CLAUDE.md`, `AGENTS.md`, plus `.cursorrules` and `.claude/CLAUDE.md
 
 ## Scripts
 
-- **Inside skills** (`.agent/skills/<skill>/scripts/`): everything that belongs to one domain (security_scan, lint_runner, ux_audit, seo_checker, ...). The skill that owns the topic owns the script.
+- **Inside skills** (`.agent/skills/<skill>/scripts/`): everything that belongs to one domain (security_scan, lint_runner, ux_audit, ...). The skill that owns the topic owns the script.
 - **`.agent/scripts/`**: only cross-cutting orchestrators:
-  - `checklist.py` / `verify_all.py` - run the skill scripts in priority order
+  - `checklist.py` / `verify_all.py` - run the skill scripts in priority order. A project may declare a non-critical check "not applicable" in `.agent/checklist.json` (`{"not_applicable": {"UX Audit": "<reason>"}}`); it is skipped and shown with the reason. Security Scan and Lint Check cannot be declared.
   - `sync_rules.py` - rule-file parity
   - `sync_entrypoints.py` - symlinks + validation (`--check`, `--write-docs`)
   - `projects_audit.py`, `session_manager.py`, `auto_preview.py`

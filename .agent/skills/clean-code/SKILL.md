@@ -155,8 +155,6 @@ File to edit: UserService.ts
 | **mobile-developer** | Mobile Audit | `python .agent/skills/mobile-design/scripts/mobile_audit.py .` |
 | **database-architect** | Schema Validate | `python .agent/skills/database-design/scripts/schema_validator.py .` |
 | **security-auditor** | Security Scan | `python .agent/skills/vulnerability-scanner/scripts/security_scan.py .` |
-| **seo-specialist** | SEO Check | `python .agent/skills/seo-fundamentals/scripts/seo_checker.py .` |
-| **seo-specialist** | GEO Check | `python .agent/skills/geo-fundamentals/scripts/geo_checker.py .` |
 | **performance-optimizer** | Lighthouse | `python .agent/skills/performance-profiling/scripts/lighthouse_audit.py <url>` |
 | **test-engineer** | Test Runner | `python .agent/skills/testing-patterns/scripts/test_runner.py .` |
 | **test-engineer** | Playwright | `python .agent/skills/webapp-testing/scripts/playwright_runner.py <url>` |

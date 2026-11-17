@@ -76,6 +76,7 @@ Total: 202.
 | `architecture-patterns` | Implement proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design. Use when architecting complex backend systems or refactoring existing applications for better maintainability. |
 | `async-python-patterns` | Master Python asyncio, concurrent programming, and async/await patterns for high-performance applications. Use when building async APIs, concurrent systems, or I/O-bound applications requiring non-blocking operations. |
 | `attack-tree-construction` | Build comprehensive attack trees to visualize threat paths. Use when mapping attack scenarios, identifying defense gaps, or communicating security risks to stakeholders. |
+| `atualizar-sips` | Use when the owner wants to check whether the SIPs installed in the current project are up to date, or to update them ("atualizar os SIPs", "tem atualização dos SIPs?", "os SIPs estão em dia?", "update my SIPs", "check SIP updates"). Runs a read-only status against the project's .agent/SIPS-CONSUMIDOS.md and, with the owner's ok, re-runs each SIP's install prompt. |
 | `auth-implementation-patterns` | Master authentication and authorization patterns including JWT, OAuth2, session management, and RBAC to build secure, scalable access control systems. Use when implementing auth systems, securing APIs, or debugging security issues. |
 | `backtesting-frameworks` | Build robust backtesting systems for trading strategies with proper handling of look-ahead bias, survivorship bias, and transaction costs. Use when developing trading algorithms, validating strategies, or building backtesting infrastructure. |
 | `bash-defensive-patterns` | Master defensive Bash programming techniques for production-grade scripts. Use when writing robust shell scripts, CI/CD pipelines, or system utilities requiring fault tolerance and safety. |
@@ -126,7 +127,6 @@ Total: 202.
 | `frontend-design` | Design thinking and decision-making for web UI. Use when designing components, layouts, color schemes, typography, or creating aesthetic interfaces. Teaches principles, not fixed values. |
 | `game-development` | Game development orchestrator. Routes to platform-specific skills based on project needs. |
 | `gdpr-data-handling` | Implement GDPR-compliant data handling with consent management, data subject rights, and privacy by design. Use when building systems that process EU personal data, implementing privacy controls, or conducting GDPR compliance reviews. |
-| `geo-fundamentals` | Generative Engine Optimization for AI search engines (ChatGPT, Claude, Perplexity). |
 | `git-advanced-workflows` | Master advanced Git workflows including rebasing, cherry-picking, bisect, worktrees, and reflog to maintain clean history and recover from any situation. Use when managing complex Git histories, collaborating on feature branches, or troubleshooting repository issues. |
 | `github-actions-templates` | Create production-ready GitHub Actions workflows for automated testing, building, and deploying applications. Use when setting up CI/CD with GitHub Actions, automating development workflows, or creating reusable workflow templates. |
 | `github-publisher` | Use when the user asks to publish, upload or push a local folder or project to GitHub for the first time, create a new GitHub repository from existing code, or "subir o projeto pro GitHub" / "criar repositório", and when a repository is about to be shared (made public, a collaborator added, the link sent to someone) - including when they say it is already clean or they are in a hurry. |
@@ -216,7 +216,6 @@ Total: 202.
 | `secrets-management` | Implement secure secrets management for CI/CD pipelines using Vault, AWS Secrets Manager, or native platform solutions. Use when handling sensitive credentials, rotating secrets, or securing CI/CD environments. |
 | `security-guidance-plugin` | Use when enabling, tuning or debugging the Claude Code security-guidance plugin that reviews Claude's own edits for vulnerabilities during a session, when adding custom security rules or patterns to it, or when writing code that uses eval or exec, unsafe deserialization, raw DOM injection or CI workflow files. Also for avisos de segurança durante a edição. |
 | `security-requirement-extraction` | Derive security requirements from threat models and business context. Use when translating threats into actionable requirements, creating security user stories, or building security test cases. |
-| `seo-fundamentals` | SEO fundamentals, E-E-A-T, Core Web Vitals, and Google algorithm principles. |
 | `server-management` | Server management principles and decision-making. Process management, monitoring strategy, and scaling decisions. Teaches thinking, not commands. |
 | `service-mesh-observability` | Implement comprehensive observability for service meshes including distributed tracing, metrics, and visualization. Use when setting up mesh monitoring, debugging latency issues, or implementing SLOs for service communication. |
 | `session-handoff` | Use when ending a session with unfinished work that another session will need to continue, or when starting a session that resumes someone else's (or your own past) handoff — captures task status, decisions, learnings, and next steps without losing context. |
@@ -264,6 +263,7 @@ Total: 202.
 | `webapp-testing` | Web application testing principles. E2E, Playwright, deep audit strategies. |
 | `workflow-orchestration-patterns` | Design durable workflows with Temporal for distributed systems. Covers workflow vs activity separation, saga patterns, state management, and determinism constraints. Use when building long-running processes, distributed transactions, or microservice orchestration. |
 | `workflow-patterns` | Use this skill when implementing tasks according to Conductor's TDD workflow, handling phase checkpoints, managing git commits for tasks, or understanding the verification protocol. |
+| `writing-agents` | Use when creating a new agent for the kit, adding memory or learning to an agent, deciding how much autonomy an agent has, or reviewing whether an agent file follows the kit's model. |
 | `writing-plans` | Use when you have a spec or requirements for a multi-step task, before touching code |
 | `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment |
 
@@ -278,7 +278,7 @@ instalá-lo, ele também está em `.claude/agents/<nome>.md` (mesmo conteúdo).
 
 <!-- agents:start (gerado por build_sip_index.py — não edite à mão) -->
 
-Total: 130.
+Total: 119.
 
 | Agent | Use quando |
 | --- | --- |
@@ -382,17 +382,6 @@ Total: 130.
 | `scala-pro` | Master enterprise-grade Scala development with functional programming, distributed systems, and big data processing. Expert in Apache Pekko, Akka, Spark, ZIO/Cats Effect, and reactive architectures. Use PROACTIVELY for Scala system design, performance optimization, or enterprise integration. |
 | `search-specialist` | Expert web researcher using advanced search techniques and synthesis. Masters search operators, result filtering, and multi-source verification. Handles competitive analysis and fact-checking. Use PROACTIVELY for deep research, information gathering, or trend analysis. |
 | `security-auditor` | Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks. Masters vulnerability assessment, threat modeling, secure authentication (OAuth2/OIDC), OWASP standards, cloud security, and security automation. Handles DevSecOps integration, compliance (GDPR/HIPAA/SOC2), and incident response. Use PROACTIVELY for security audits, DevSecOps, or compliance implementation. |
-| `seo-authority-builder` | Analyzes content for E-E-A-T signals and suggests improvements to build authority and trust. Identifies missing credibility elements. Use PROACTIVELY for YMYL topics. |
-| `seo-cannibalization-detector` | Analyzes multiple provided pages to identify keyword overlap and potential cannibalization issues. Suggests differentiation strategies. Use PROACTIVELY when reviewing similar content. |
-| `seo-content-auditor` | Analyzes provided content for quality, E-E-A-T signals, and SEO best practices. Scores content and provides improvement recommendations based on established guidelines. Use PROACTIVELY for content review. |
-| `seo-content-planner` | Creates comprehensive content outlines and topic clusters for SEO. Plans content calendars and identifies topic gaps. Use PROACTIVELY for content strategy and planning. |
-| `seo-content-refresher` | Identifies outdated elements in provided content and suggests updates to maintain freshness. Finds statistics, dates, and examples that need updating. Use PROACTIVELY for older content. |
-| `seo-content-writer` | Writes SEO-optimized content based on provided keywords and topic briefs. Creates engaging, comprehensive content following best practices. Use PROACTIVELY for content creation tasks. |
-| `seo-keyword-strategist` | Analyzes keyword usage in provided content, calculates density, suggests semantic variations and LSI keywords based on the topic. Prevents over-optimization. Use PROACTIVELY for content optimization. |
-| `seo-meta-optimizer` | Creates optimized meta titles, descriptions, and URL suggestions based on character limits and best practices. Generates compelling, keyword-rich metadata. Use PROACTIVELY for new content. |
-| `seo-snippet-hunter` | Formats content to be eligible for featured snippets and SERP features. Creates snippet-optimized content blocks based on best practices. Use PROACTIVELY for question-based content. |
-| `seo-specialist` | SEO and GEO (Generative Engine Optimization) expert. Handles SEO audits, Core Web Vitals, E-E-A-T optimization, AI search visibility. Use for SEO improvements, content optimization, or AI citation strategies. |
-| `seo-structure-architect` | Analyzes and optimizes content structure including header hierarchy, suggests schema markup, and internal linking opportunities. Creates search-friendly content organization. Use PROACTIVELY for content structuring. |
 | `service-mesh-expert` | Service mesh architecture with Istio and Linkerd: traffic management, mTLS, observability, progressive delivery. Use for cloud-native networking. |
 | `sql-pro` | Master modern SQL with cloud-native databases, OLTP/OLAP optimization, and advanced query techniques. Expert in performance tuning, data modeling, and hybrid analytical systems. Use PROACTIVELY for database optimization or complex analysis. |
 | `startup-analyst` | Expert startup business analyst specializing in market sizing, financial modeling, competitive analysis, and strategic planning for early-stage companies. Use PROACTIVELY when the user asks about market opportunity, TAM/SAM/SOM, financial projections, unit economics, competitive landscape, team planning, startup metrics, or business strategy for pre-seed through Series A startups. |
