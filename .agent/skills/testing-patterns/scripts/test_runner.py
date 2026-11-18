@@ -25,13 +25,17 @@ with contextlib.suppress(AttributeError, ValueError, OSError):
     getattr(sys.stdout, 'reconfigure')(encoding='utf-8', errors='replace')  # noqa: B009
 
 
+FAST_NOTE = "fast subset (script test:fast): this is not the full suite; run the project's full suite (npm test) before closing a change"
+
+
 def detect_test_framework(project_path: Path) -> dict:
     """Detect test framework and commands."""
     result: dict[str, Any] = {
         "type": "unknown",
         "framework": None,
         "cmd": None,
-        "coverage_cmd": None
+        "coverage_cmd": None,
+        "note": None
     }
     
     # Node.js project
@@ -43,8 +47,14 @@ def detect_test_framework(project_path: Path) -> dict:
             scripts = pkg.get("scripts", {})
             deps = {**pkg.get("dependencies", {}), **pkg.get("devDependencies", {})}
             
+            # A project that declares `test:fast` opts into a quick subset here (the checklist has a time limit);
+            # the full suite stays the project's own closing gate.
+            if "test:fast" in scripts:
+                result["framework"] = "npm run test:fast"
+                result["cmd"] = ["npm", "run", "test:fast"]
+                result["note"] = FAST_NOTE
             # Check for test script
-            if "test" in scripts:
+            elif "test" in scripts:
                 result["framework"] = "npm test"
                 result["cmd"] = ["npm", "test"]
                 
@@ -164,6 +174,8 @@ def main():
     test_info = detect_test_framework(project_path)
     print(f"Type: {test_info['type']}")
     print(f"Framework: {test_info['framework']}")
+    if test_info.get("note"):
+        print(f"Note: {test_info['note']}")
     print("-"*60)
     
     if not test_info["cmd"]:
@@ -210,7 +222,9 @@ def main():
     
     if result["tests_run"] > 0:
         print(f"Tests: {result['tests_run']} total, {result['tests_passed']} passed, {result['tests_failed']} failed")
-    
+    if test_info.get("note"):
+        print(f"Note: {test_info['note']}")
+
     output = {
         "script": "test_runner",
         "project": str(project_path),

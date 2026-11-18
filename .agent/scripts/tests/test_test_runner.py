@@ -50,5 +50,32 @@ class PythonCommand(unittest.TestCase):
         self.assertEqual(info["framework"], "pytest")
 
 
+class NodeFastScript(unittest.TestCase):
+    """A project that declares `test:fast` runs it in the checklist; the full suite stays the closing gate."""
+
+    @staticmethod
+    def pkg(scripts: dict) -> dict:
+        import json
+        return {"package.json": json.dumps({"scripts": scripts})}
+
+    def test_test_fast_wins_over_test(self):
+        info = detect(self.pkg({"test": "node --test", "test:fast": "node --test tests/a.test.mjs"}), pytest_installed=False)
+        self.assertEqual(info["cmd"], ["npm", "run", "test:fast"])
+        self.assertEqual(info["framework"], "npm run test:fast")
+
+    def test_without_test_fast_keeps_npm_test(self):
+        info = detect(self.pkg({"test": "node --test"}), pytest_installed=False)
+        self.assertEqual(info["cmd"], ["npm", "test"])
+
+    def test_test_fast_alone_is_enough(self):
+        info = detect(self.pkg({"test:fast": "node --test"}), pytest_installed=False)
+        self.assertEqual(info["cmd"], ["npm", "run", "test:fast"])
+
+    def test_output_says_it_is_a_fast_subset(self):
+        info = detect(self.pkg({"test": "x", "test:fast": "y"}), pytest_installed=False)
+        self.assertIn("fast", info["note"].lower())
+        self.assertIn("full suite", info["note"].lower())
+
+
 if __name__ == "__main__":
     unittest.main()
