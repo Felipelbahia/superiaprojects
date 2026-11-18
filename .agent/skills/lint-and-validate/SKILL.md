@@ -42,6 +42,6 @@ license: MIT
 
 | Script | Purpose | Command |
 |--------|---------|---------|
-| `scripts/lint_runner.py` | Unified lint check | `python scripts/lint_runner.py <project_path>` |
+| `scripts/lint_runner.py` | Unified lint check. Python in a git repo: only files touched since HEAD (`--since REF` to widen, `--all` for the whole project) | `python scripts/lint_runner.py <project_path> [--since REF] [--all]` |
 | `scripts/type_coverage.py` | Type coverage analysis | `python scripts/type_coverage.py <project_path>` |
 

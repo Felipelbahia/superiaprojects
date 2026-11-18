@@ -4,29 +4,57 @@ Lint Runner - Unified linting and type checking
 Runs appropriate linters based on project type.
 
 Usage:
-    python lint_runner.py <project_path>
+    python lint_runner.py <project_path> [--since REF] [--all]
 
 Supports:
     - Node.js: npm run lint, npx tsc --noEmit
     - Python: ruff check, mypy
+
+Python projects in a git repo lint only the files touched (rule "Lint what you touch"):
+modified or new .py files since HEAD, or since REF with --since. Old findings in files
+nobody touched do not fail the run. --all lints the whole project; outside a git repo
+everything is linted.
 """
 
+import contextlib
+import json
 import subprocess
 import sys
-import json
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 # Fix Windows console encoding
-try:
-    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-except:
-    pass
+with contextlib.suppress(AttributeError, ValueError, OSError):
+    getattr(sys.stdout, 'reconfigure')(encoding='utf-8', errors='replace')  # noqa: B009
 
 
-def detect_project_type(project_path: Path) -> dict:
+def touched_python_files(project_path: Path, since: str = "HEAD") -> list[str] | None:
+    """Python files modified or new since `since` (default HEAD), relative to project_path.
+
+    Returns None when project_path is not inside a git repo (the caller lints everything).
+    """
+    def git(*args: str) -> str | None:
+        try:
+            proc = subprocess.run(["git", *args], cwd=str(project_path), capture_output=True, check=False,
+                                  text=True, encoding="utf-8", errors="replace", timeout=60)
+        except (FileNotFoundError, subprocess.TimeoutExpired):
+            return None
+        return proc.stdout if proc.returncode == 0 else None
+
+    if git("rev-parse", "--is-inside-work-tree") is None:
+        return None
+    changed = git("diff", "--name-only", "--diff-filter=ACMR", "--relative", since)
+    new = git("ls-files", "--others", "--exclude-standard")
+    if changed is None or new is None:
+        return None
+    names = {n for n in (changed + new).splitlines() if n.endswith(".py")}
+    return sorted(n for n in names if (project_path / n).is_file())
+
+
+def detect_project_type(project_path: Path, python_files: list[str] | None = None) -> dict:
     """Detect project type and available linters."""
-    result = {
+    result: dict[str, Any] = {
         "type": "unknown",
         "linters": []
     }
@@ -50,19 +78,21 @@ def detect_project_type(project_path: Path) -> dict:
             if "typescript" in deps or (project_path / "tsconfig.json").exists():
                 result["linters"].append({"name": "tsc", "cmd": ["npx", "tsc", "--noEmit"]})
                 
-        except:
-            pass
+        except (OSError, ValueError, AttributeError) as e:
+            result["warning"] = f"package.json not read: {e}"
     
     # Python project
     if (project_path / "pyproject.toml").exists() or (project_path / "requirements.txt").exists():
         result["type"] = "python"
         
-        # Check for ruff
-        result["linters"].append({"name": "ruff", "cmd": ["ruff", "check", "."]})
-        
-        # Check for mypy
-        if (project_path / "mypy.ini").exists() or (project_path / "pyproject.toml").exists():
-            result["linters"].append({"name": "mypy", "cmd": ["mypy", "."]})
+        # python_files None = lint everything; a list = only those files (empty = nothing touched)
+        targets = ["."] if python_files is None else python_files
+        if targets:
+            result["linters"].append({"name": "ruff", "cmd": ["ruff", "check", *targets]})
+            if (project_path / "mypy.ini").exists() or (project_path / "pyproject.toml").exists():
+                result["linters"].append({"name": "mypy", "cmd": ["mypy", *targets]})
+        else:
+            result["note"] = "no Python files touched: ruff and mypy skipped"
     
     return result
 
@@ -80,6 +110,7 @@ def run_linter(linter: dict, cwd: Path) -> dict:
         proc = subprocess.run(
             linter["cmd"],
             cwd=str(cwd),
+            check=False,
             capture_output=True,
             text=True,
             encoding='utf-8',
@@ -95,25 +126,36 @@ def run_linter(linter: dict, cwd: Path) -> dict:
         result["error"] = f"Command not found: {linter['cmd'][0]}"
     except subprocess.TimeoutExpired:
         result["error"] = "Timeout after 120s"
-    except Exception as e:
+    except OSError as e:
         result["error"] = str(e)
     
     return result
 
 
 def main():
-    project_path = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
+    args = sys.argv[1:]
+    since = "HEAD"
+    if "--since" in args:
+        i = args.index("--since")
+        since = args[i + 1] if i + 1 < len(args) else "HEAD"
+        del args[i:i + 2]
+    lint_all = "--all" in args
+    args = [a for a in args if a != "--all"]
+    project_path = Path(args[0] if args else ".").resolve()
     
     print(f"\n{'='*60}")
-    print(f"[LINT RUNNER] Unified Linting")
+    print("[LINT RUNNER] Unified Linting")
     print(f"{'='*60}")
     print(f"Project: {project_path}")
     print(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
     # Detect project type
-    project_info = detect_project_type(project_path)
+    python_files = None if lint_all else touched_python_files(project_path, since)
+    project_info = detect_project_type(project_path, python_files)
     print(f"Type: {project_info['type']}")
     print(f"Linters: {len(project_info['linters'])}")
+    if project_info.get("note"):
+        print(project_info["note"])
     print("-"*60)
     
     if not project_info["linters"]:
