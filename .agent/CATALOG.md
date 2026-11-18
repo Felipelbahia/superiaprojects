@@ -2,8 +2,8 @@
 
 > Índice central de todas as Skills, Workflows e Agentes da Plataforma (0 Padrões + 0 Mkt)
 
-**Total Geral:** `685` recursos | **Skills:** `308` | **Workflows:** `225` | **Agentes:** `152`
-**Fontes Integradas:** `0 Mkt` (246) · `0 Padrões` (439)
+**Total Geral:** `686` recursos | **Skills:** `309` | **Workflows:** `225` | **Agentes:** `152`
+**Fontes Integradas:** `0 Mkt` (246) · `0 Padrões` (440)
 
 ---
 
@@ -44,9 +44,9 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Infraestrutura como Código (Terraform / Cloud)](#infraestrutura-como-código-terraform--cloud) (`3`)
   - [Orquestração Kubernetes & Contêineres](#orquestração-kubernetes--contêineres) (`2`)
   - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`55`)
-- [Frontend & UI/UX](#frontend--uiux) (`211` recursos)
+- [Frontend & UI/UX](#frontend--uiux) (`212` recursos)
   - [Acessibilidade Web (A11y & WCAG)](#acessibilidade-web-a11y--wcag) (`4`)
-  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`185`)
+  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`186`)
   - [Design Systems & Estilização Moderna](#design-systems--estilização-moderna) (`10`)
   - [Frameworks Web Modernos (React & Next.js)](#frameworks-web-modernos-react--nextjs) (`12`)
 - [Gestão de Produtos e Projetos](#gestão-de-produtos-e-projetos) (`16` recursos)
@@ -548,7 +548,7 @@ Total de recursos nesta macro-área: `60`
 
 ## <a id="frontend--uiux"></a>Frontend & UI/UX
 
-Total de recursos nesta macro-área: `211`
+Total de recursos nesta macro-área: `212`
 
 ### <a id="acessibilidade-web-a11y--wcag"></a>Acessibilidade Web (A11y & WCAG)
 
@@ -570,6 +570,7 @@ Total de recursos nesta macro-área: `211`
 | <a id="architecture"></a>**`architecture`** | `Skill` | `0 Padrões` | Estrutura de tomada de decisão arquitetônica. Análise de requisitos, avaliação de trade-off, documentação ADR. Use ao tomar decisões de arquitetura ou analisar o design do sistema. |
 | <a id="architecture-decision-records"></a>**`architecture-decision-records`** | `Skill` | `0 Padrões` | Escreva e mantenha registros de decisões de arquitetura (ADRs) seguindo as melhores práticas para documentação de decisões técnicas. Use ao documentar decisões técnicas significativas, revisar escolhas arquitetônicas anteriores ou estabelecer processos de decisão. |
 | <a id="architecture-patterns"></a>**`architecture-patterns`** | `Skill` | `0 Padrões` | Implemente padrões comprovados de arquitetura de back-end, incluindo Arquitetura Limpa, Arquitetura Hexagonal e Design Orientado a Domínio. Use ao arquitetar sistemas back-end complexos ou refatorar aplicativos existentes para melhor manutenção. |
+| <a id="auditing-memory-usage"></a>**`auditing-memory-usage`** | `Skill` | `0 Padrões` | Use quando o proprietário disser que a máquina ou um aplicativo parece pesado, lento ou com muita memória, a memória continua crescendo ou pede para verificar o código de um projeto em busca de vazamentos de memória ou uso desnecessário de memória. |
 | <a id="auth-implementation-patterns"></a>**`auth-implementation-patterns`** | `Skill` | `0 Padrões` | Padrões mestres de autenticação e autorização, incluindo JWT, OAuth2, gerenciamento de sessão e RBAC para criar sistemas de controle de acesso seguros e escaláveis. Use ao implementar sistemas de autenticação, proteger APIs ou depurar problemas de segurança. |
 | <a id="backtesting-frameworks"></a>**`backtesting-frameworks`** | `Skill` | `0 Padrões` | Crie sistemas robustos de backtesting para estratégias de negociação com tratamento adequado de viés de antecipação, viés de sobrevivência e custos de transação. Use ao desenvolver algoritmos de negociação, validar estratégias ou construir infraestrutura de backtesting. |
 | <a id="bash-linux"></a>**`bash-linux`** | `Skill` | `0 Padrões` | Padrões de terminal Bash/Linux. Comandos críticos, tubulação, tratamento de erros, scripts. Use ao trabalhar em sistemas macOS ou Linux. |
