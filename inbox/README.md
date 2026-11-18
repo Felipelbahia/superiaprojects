@@ -75,6 +75,10 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | 037 | ~~test_runner.py chama `python` no macOS~~ (aplicado 2026-11-18, em `arquivo/`) | `test_runner.py` | Média |
 | 038 | ~~UX Audit aplica regras de app a e-mail e acusa falsos positivos~~ (aplicado 2026-11-18, em `arquivo/`) | `ux_audit.py` | Média |
 | 032 | ~~Regras locais perdidas ou lixo antigo achados pelo check_local_rules.py~~ (resolvido na auditoria em 2026-11-15, em `arquivo/`) | #22, #42, #44 e ecossistema | Alta |
+| 034 | ~~writing-agents: ideias de estrutura da revisão~~ (aplicado 2026-11-18: hook de auto-edição, check de ferramentas, modo do Papel; em `arquivo/`) | `writing-agents`, `sync_entrypoints.py`, `.claude/settings.json` | Média |
+| 035 | ~~Mapeamento de modelos Antigravity/Claude e migração dos agentes~~ (aplicado 2026-11-18, Opção A, em `arquivo/`) | `.agent/agents/*.md` | Média |
+| 040 | ~~propagar_sip.py aceitar a cópia gerada do resolver~~ (aplicado 2026-11-18, em `arquivo/`; sobra o stub do 0 Padrões) | `propagar_sip.py`, `sips_status.py` | Média |
+| 036 | ~~session-handoff: armadilha do zsh~~ (encerrado 2026-11-18 sem mudança: RED já passa, em `arquivo/`) | skill `session-handoff` | Baixa |
 
 
 Ordem sugerida: 001, 002, 003 (maior retorno na origem); depois 010, 006, 007; o resto quando fizer sentido. Os itens 001 a 003 mexem no mesmo arquivo: aplique em sequência, com um commit por item. Os itens 011 a 017 vieram do SIP Astro (`/Users/macbookpro/Documents/IA Projects/_Plataforma/Base Sites - Astro`, 2026-11-10); 011 a 015 também mexem no `execution-loop`, então entram na mesma fila sequencial (sugestão: 011 e 014 primeiro).
