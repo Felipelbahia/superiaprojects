@@ -1,0 +1,7 @@
+Processes: 600 total
+Load Avg: 9.40, 40.64, 37.18
+PID    COMMAND          MEM    CMPRS
+6701   Antigravity IDE  1000M  3000M
+53000  python3.12       1203M  800M
+38449  agy              300M   200M
+2052   Antigravity IDE  100M   3900M

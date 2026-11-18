@@ -1,0 +1,17 @@
+ 6978 /Users/dono/.antigravity-ide/bin/agy --hub --hub-port 50777
+ 6980 npm exec @modelcontextprotocol/server-sequential-thinking
+ 6981 node /Users/dono/.npm/_npx/c1/node_modules/.bin/mcp-server-sequential-thinking
+47042 /Users/dono/.antigravity-ide/bin/agy --hub --hub-port=50888
+47050 node /Users/dono/.npm/_npx/c2/node_modules/.bin/shadcn mcp
+38449 /Users/dono/.antigravity-ide/bin/agy --hub --hub-port=50123
+38460 npm exec @supabase/mcp-server-supabase@latest --access-token @@SBP@@
+38461 node /Users/dono/.npm/_npx/f58f/node_modules/.bin/mcp-server-supabase --access-token @@SBP@@
+38470 npm exec openapi-mcp-server
+38471 node /Users/dono/.npm/_npx/f58f/node_modules/openapi-mcp-server/index.js
+51000 /Users/dono/.local/bin/claude --resume
+52000 node /Users/dono/.npm/_npx/aa11/node_modules/.bin/context7-mcp --api-key @@CTX7@@
+52010 node /Users/dono/.npm/_npx/bb22/node_modules/stitch-mcp/dist/index.js --header X-Goog-Api-Key: @@GOOG@@
+52020 node /Users/dono/.npm/_npx/f58f/node_modules/.bin/mcp-server-supabase --access-token @@SBP@@
+53000 /Users/dono/Documents/Compartilhado/RSS Feed/.venv/bin/python -m feed
+60001 node server.js
+60002 node server.js

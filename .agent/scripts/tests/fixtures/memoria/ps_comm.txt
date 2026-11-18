@@ -1,0 +1,40 @@
+    1     0 05-11:02:10 Ss   /sbin/launchd
+ 2012     1    08:00:12 S    /Applications/Antigravity IDE.app/Contents/MacOS/Antigravity IDE
+ 2056  2012    08:00:05 S    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+ 6716  2056    07:50:00 Ss   /bin/zsh
+ 6855  6716    07:49:00 S    /Users/dono/.local/bin/claude
+ 7000  6855       00:02 S    /usr/bin/python3
+ 6701  2012    03:18:24 R    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+ 7517  6701    03:17:40 S    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+ 6978  6701    02:59:10 S    /Users/dono/.antigravity-ide/bin/agy
+ 6980  6978    02:59:00 S    /usr/local/bin/npm
+ 6981  6980    02:58:58 S    /usr/local/bin/node
+46989  2012       26:47 U    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+47028 46989       26:42 S    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+47051 46989       26:39 S    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+47105 46989       26:38 S    /Users/dono/.antigravity-ide/extensions/anthropic.claude-code-2.1.327-darwin-x64/resources/native-binary/claude
+47042 46989       07:12 S    /Users/dono/.antigravity-ide/bin/agy
+47050 47042       07:10 S    /usr/local/bin/node
+38449     1 01:54:20 S    /Users/dono/.antigravity-ide/bin/agy
+38460 38449 01:54:10 S    /usr/local/bin/npm
+38461 38460 01:54:08 S    /usr/local/bin/node
+38470 38449 01:54:10 S    /usr/local/bin/npm
+38471 38470 01:54:08 S    /usr/local/bin/node
+ 2052  2012    05:10:00 S    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+ 2053  2052    05:09:00 Z    (node)
+64027  2012    04:40:00 S    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+64030 64027    04:39:00 Z    (claude)
+48583  2012       10:00 U    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+48847 48583       09:50 S    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+48880  2012       25:00 S    /Applications/Antigravity IDE.app/Contents/Frameworks/Antigravity IDE Helper (Plugin).app/Contents/MacOS/Antigravity IDE Helper (Plugin)
+49502 48880       24:30 Ss   /Users/dono/.antigravity-ide/extensions/kilocode.kilo-code-7.8.27-darwin-x64/bin/kilo
+49503 48880       24:30 S    /Users/dono/.antigravity-ide/extensions/openai.chatgpt-26.1111.21308-darwin-x64/bin/macos-x86_64/codex
+51000     1    03:00:00 S    /Users/dono/.local/bin/claude
+51001     1    03:00:00 S    /Users/dono/.antigravity-ide/extensions/kilocode.kilo-code-7.8.27-darwin-x64/bin/kilo
+51002     1    03:00:00 S    /Users/dono/.antigravity-ide/extensions/openai.chatgpt-26.1111.21308-darwin-x64/bin/macos-x86_64/codex
+52000     1    02:00:00 S    /usr/local/bin/node
+52010     1    02:00:00 S    /usr/local/bin/node
+52020     1    02:00:00 S    mcp-server-supabase@latest --access-token @@SBP@@
+53000     1    06:00:00 R    /Users/dono/Documents/Compartilhado/RSS Feed/.venv/bin/python
+60001  6716       05:00 S    /usr/local/bin/node
+60002  6716       04:00 S    /usr/local/bin/node

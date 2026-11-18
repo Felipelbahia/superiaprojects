@@ -1,0 +1,4 @@
+Mach Virtual Memory Statistics: (page size of 4096 bytes)
+Pages free:                                    14829.
+Pages stored in compressor:                  6144860.
+Pages occupied by compressor:                1310720.
