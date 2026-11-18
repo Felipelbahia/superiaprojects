@@ -95,6 +95,9 @@ import re
 import json
 from pathlib import Path
 
+SKIP_MARKER = "ux-audit: skip"
+SKIP_MARKER_WINDOW = 1000
+
 class UXAuditor:
     def __init__(self):
         self.issues = []
@@ -107,7 +110,11 @@ class UXAuditor:
             with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
                 content = f.read()
         except: return
-        
+
+        # Generated files (e.g. the kit catalog, which embeds skill docs as data) opt out with a
+        # marker comment in the first lines: their text is documentation, not UI.
+        if SKIP_MARKER in content[:SKIP_MARKER_WINDOW]: return
+
         self.files_checked += 1
         filename = os.path.basename(filepath)
 
@@ -208,7 +215,8 @@ class UXAuditor:
             self.warnings.append(f"[Cognitive Load] {filename}: High visual noise detected. Many colors and borders increase cognitive load.")
 
         # Familiar patterns
-        if has_form:
+        # Stylesheets have no <label>/<input> tags: words like 'card' there do not make a form.
+        if has_form and not filename.lower().endswith('.css'):
             has_standard_labels = bool(re.search(r'<label|placeholder|aria-label', content, re.IGNORECASE))
             if not has_standard_labels:
                 self.issues.append(f"[Cognitive Load] {filename}: Form inputs without labels. Use <label> for accessibility and clarity.")

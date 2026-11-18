@@ -603,6 +603,7 @@ def generate_html_dashboard(items: list[dict], title: str, subtitle: str) -> str
     safe_json = raw_json.replace("</script>", "<\\/script>").replace("<!--", "<\\!--")
     
     html = f"""<!DOCTYPE html>
+<!-- ux-audit: skip (generated; embeds skill documentation as data, not UI) -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">

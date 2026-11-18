@@ -69,7 +69,9 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | 021 | ~~Stubs de SIP do 0 Padrões sem a seção "Atualização"~~ (aplicado 2026-11-11, em `arquivo/`) | 7 stubs `sip-*` + `superiaprojects-criar-sip` (Passo 5) | Média |
 | 022 | ~~`.gitignore` padrão: backups de `.env` e 0 Padrões sem regras de `.env`~~ (aplicado 2026-11-11, em `arquivo/`) | `project-initializer` + `.gitignore` do 0 Padrões + `github-publisher` | Média |
 | 023 | ~~`.claude/CLAUDE.md` duplicado e regras antigas~~ (resolvido na auditoria geral em 2026-11-15, em `arquivo/`) | todos os projetos com regras | Alta |
+| 024 | ~~README do FM aponta para os prompts de inteligência arquivados~~ (aplicado 2026-11-17, em `arquivo/`) | README do Futuro Mercado | Média |
 | 025 | Kit de onboarding para clonar e rodar em outra máquina (versão do runtime, trava de versão, README com passo a passo, prova do clone limpo). **Parcial:** regra nas skills e no módulo `code` em 2026-11-12; retrofit dos projetos em andamento na propagação do kit (rastreador) | `project-initializer` + `github-publisher` + retrofit dos projetos | Média |
+| 028 | ~~UX Audit falha no catálogo~~ (aplicado 2026-11-17, em `arquivo/`; checklist completo depende do 033) | `ux_audit.py`, `generate_catalog.py` | Média |
 | 032 | ~~Regras locais perdidas ou lixo antigo achados pelo check_local_rules.py~~ (resolvido na auditoria em 2026-11-15, em `arquivo/`) | #22, #42, #44 e ecossistema | Alta |
 
 
