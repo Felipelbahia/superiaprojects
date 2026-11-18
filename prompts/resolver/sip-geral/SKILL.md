@@ -44,7 +44,7 @@ Agent ou workflow que o projeto não instalou: use-o assim mesmo, pelo caminho a
 
 <!-- indice:start dir=verticais (gerado por build_sip_index.py — não edite à mão) -->
 
-Total: 202 skills, 119 agents, 111 workflows.
+Total: 203 skills, 119 agents, 111 workflows.
 
 | Vertical | Use quando | Skills | Agents | Workflows | Arquivo |
 | --- | --- | --- | --- | --- | --- |
@@ -52,7 +52,7 @@ Total: 202 skills, 119 agents, 111 workflows.
 | `mobile-e-jogos` | Apps mobile (iOS, Android, React Native, Flutter) e desenvolvimento de jogos (Unity, Godot, Minecraft). | 8 | 6 | 1 | `verticais/mobile-e-jogos.md` |
 | `ia-e-ml` | IA e ML: LLMs, RAG, embeddings, busca vetorial e híbrida, avaliação, prompts, pipelines de ML, MCP, agentes de IA e análise quantitativa. | 12 | 8 | 7 | `verticais/ia-e-ml.md` |
 | `documentacao` | Documentação: ADRs, templates, runbooks, postmortem, tutoriais, referência de API, diagramas (Mermaid, C4) e explicação de código. | 4 | 10 | 3 | `verticais/documentacao.md` |
-| `arquitetura-e-qualidade` | Arquitetura e qualidade: padrões e decisões de arquitetura, microsserviços, CQRS e event sourcing, código limpo, refatoração, modernização, dependências, performance, débito técnico e a família ponytail (simplicidade e auditoria). | 16 | 8 | 6 | `verticais/arquitetura-e-qualidade.md` |
+| `arquitetura-e-qualidade` | Arquitetura e qualidade: padrões e decisões de arquitetura, microsserviços, CQRS e event sourcing, código limpo, refatoração, modernização, dependências, performance, débito técnico e a família ponytail (simplicidade e auditoria). | 17 | 8 | 6 | `verticais/arquitetura-e-qualidade.md` |
 | `dados-e-banco` | Bancos e dados: modelagem, SQL, PostgreSQL, Supabase, migrações, ETL (dbt, Airflow, Spark), qualidade de dados, KPIs e storytelling com dados. | 11 | 5 | 3 | `verticais/dados-e-banco.md` |
 | `devops-e-cloud` | DevOps e nuvem: CI/CD, Kubernetes, Helm, service mesh, Terraform, observabilidade, SLO, incidentes, deploy, custo, shell e monorepo. | 30 | 12 | 8 | `verticais/devops-e-cloud.md` |
 | `testes-e-depuracao` | Testes e depuração: TDD, testes unitários, E2E e de interface, QA, depuração sistemática, análise de erros e lint. | 14 | 6 | 12 | `verticais/testes-e-depuracao.md` |

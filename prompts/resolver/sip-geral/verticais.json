@@ -110,6 +110,7 @@
         "deps-upgrade",
         "tech-debt",
         "performance-*",
+        "auditing-memory-usage",
         "python-performance-*",
         "code-archaeologist",
         "dx-optimizer",
