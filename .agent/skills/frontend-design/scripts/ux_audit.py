@@ -87,16 +87,67 @@ Analyzes code for compliance with:
    - Form labels
 
 Total: 80+ checks across all design principles
+
+SCOPE AND PROJECT OPTIONS
+- `.agent/` (the kit) is never audited; a file with `ux-audit: skip` in its first 1000 characters is skipped.
+- E-mail templates (folder `email`/`emails`/`mensageria`, or `<table role="presentation"`, `bgcolor=`,
+  `mso-`) are not app screens: only the img-alt and purple checks run on them.
+- The form checks need real markup (`<form|<input|<select|<textarea`, or password/credit/card/payment as a
+  whole word in a type=/name=/autocomplete= attribute).
+- Purple is searched in colour VALUES only (never in comments or prose).
+- Optional section of `<project>/.agent/checklist.json`:
+      {"ux_audit": {"exclude": ["mensageria/**"], "brand_colors": ["magenta", "#E6007E"]}}
+  `exclude` takes globs relative to the audited folder; `brand_colors` exempts the project's own colours
+  from the purple ban.
 """
 
-import sys
+import contextlib
+import fnmatch
+import json
 import os
 import re
-import json
+import sys
 from pathlib import Path
 
 SKIP_MARKER = "ux-audit: skip"
 SKIP_MARKER_WINDOW = 1000
+PROJECT_CONFIG = ".agent/checklist.json"
+# Folders that hold e-mail HTML, and markup only e-mail templates use (table layout, MSO hacks).
+EMAIL_FOLDERS = {"email", "emails", "mensageria"}
+# A form is real markup: a form control tag, or a payment/credential word used as a whole word
+# in a type=/name=/autocomplete= attribute. The same words in prose or class names do not count.
+FORM_MARKUP = re.compile(
+    r'<(?:form|input|select|textarea)\b'
+    r'|\b(?:type|name|autocomplete)\s*=\s*["\'][^"\']*\b(?:password|credit|card|payment)\b',
+    re.IGNORECASE)
+# Purple ban (Maestro): looked for in colour VALUES only, never in comments or prose.
+PURPLE_HEX = re.compile(r'#(?:8B5CF6|A855F7|9333EA|7C3AED|6D28D9|A78BFA|C4B5FD|DDD6FE|EDE9FE)\b', re.IGNORECASE)
+PURPLE_NAME = re.compile(r'\b(purple|violet|fuchsia|magenta|lavender)\b', re.IGNORECASE)
+PURPLE_TAILWIND = re.compile(r'\b(?:bg|text|from|to|via|border|ring|fill|stroke)-(purple|violet|fuchsia)-\d+', re.IGNORECASE)
+COMMENTS = re.compile(r'/\*.*?\*/|<!--.*?-->', re.DOTALL)
+COLOR_VALUES = re.compile(
+    r'(?:\b(?:color|background[\w-]*|fill|stroke|border[\w-]*|outline[\w-]*|(?:box|text)-shadow)|--[\w-]+)'
+    r'\s*:\s*([^;}]*)'
+    r'|\b(?:fill|stroke|color|bgcolor)\s*=\s*["\']([^"\']*)', re.IGNORECASE)
+EMAIL_MARKUP = re.compile(r'<table[^>]*role=["\']presentation["\']|\bbgcolor\s*=|\bmso-', re.IGNORECASE)
+
+
+def load_project_options(root: Path) -> dict:
+    """Return the `ux_audit` section of <root>/.agent/checklist.json ({} when absent or invalid)."""
+    try:
+        data = json.loads((root / PROJECT_CONFIG).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    options = data.get("ux_audit", {}) if isinstance(data, dict) else {}
+    return options if isinstance(options, dict) else {}
+
+
+def is_email_template(rel_parts: tuple, content: str) -> bool:
+    """E-mail HTML is not an app screen: detected by folder name or by e-mail-only markup."""
+    if any(part.lower() in EMAIL_FOLDERS for part in rel_parts[:-1]):
+        return True
+    return bool(EMAIL_MARKUP.search(content))
+
 
 class UXAuditor:
     def __init__(self):
@@ -104,12 +155,16 @@ class UXAuditor:
         self.warnings = []
         self.passed_count = 0
         self.files_checked = 0
+        self.root = None
+        self.exclude = []
+        self.brand_colors = set()  # colours the project owns (e.g. a magenta brand): exempt from the purple ban
     
     def audit_file(self, filepath: str) -> None:
         try:
             with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
                 content = f.read()
-        except: return
+        except OSError:
+            return
 
         # Generated files (e.g. the kit catalog, which embeds skill docs as data) opt out with a
         # marker comment in the first lines: their text is documentation, not UI.
@@ -118,9 +173,18 @@ class UXAuditor:
         self.files_checked += 1
         filename = os.path.basename(filepath)
 
+        # E-mail templates are not app screens: only accessibility and the colour ban apply.
+        if self.root is not None:
+            rel_parts = Path(os.path.relpath(filepath, self.root)).parts
+        else:
+            rel_parts = (filename,)
+        if is_email_template(rel_parts, content):
+            self.audit_email(filename, content)
+            return
+
         # Pre-calculate common flags
         has_long_text = bool(re.search(r'<p|<div.*class=.*text|article|<span.*text', content, re.IGNORECASE))
-        has_form = bool(re.search(r'<form|<input|password|credit|card|payment', content, re.IGNORECASE))
+        has_form = bool(FORM_MARKUP.search(content))
         complex_elements = len(re.findall(r'<input|<select|<textarea|<option', content, re.IGNORECASE))
 
         # --- 1. PSYCHOLOGY LAWS ---
@@ -292,14 +356,14 @@ class UXAuditor:
 
         # 2.4 Letter Spacing (Tracking)
         # Uppercase without tracking
-        if re.search(r'uppercase|text-transform:\s*uppercase', content, re.IGNORECASE):
-            if not re.search(r'tracking-|letter-spacing:', content):
-                self.warnings.append(f"[Typography] {filename}: Uppercase text without tracking. ALL CAPS needs +5-10% spacing.")
+        if re.search(r'uppercase|text-transform:\s*uppercase', content, re.IGNORECASE) \
+                and not re.search(r'tracking-|letter-spacing:', content):
+            self.warnings.append(f"[Typography] {filename}: Uppercase text without tracking. ALL CAPS needs +5-10% spacing.")
 
         # Large text (display/hero) should have negative tracking
-        if re.search(r'text-(?:4xl|5xl|6xl|7xl|8xl|9xl)|font-size:\s*[3-9]\dpx', content):
-            if not re.search(r'tracking-tight|letter-spacing:\s*-[0-9]', content):
-                self.warnings.append(f"[Typography] {filename}: Large display text without tracking-tight. Big text needs -1% to -4% spacing.")
+        if re.search(r'text-(?:4xl|5xl|6xl|7xl|8xl|9xl)|font-size:\s*[3-9]\dpx', content) \
+                and not re.search(r'tracking-tight|letter-spacing:\s*-[0-9]', content):
+            self.warnings.append(f"[Typography] {filename}: Large display text without tracking-tight. Big text needs -1% to -4% spacing.")
 
         # 2.5 Weight and Emphasis - Contrast levels
         # Check for adjacent weight levels (poor contrast)
@@ -311,9 +375,8 @@ class UXAuditor:
                 # Map named weights to numbers
                 weight_map = {'thin': '100', 'extralight': '200', 'light': '300', 'normal': '400', 'medium': '500', 'semibold': '600', 'bold': '700', 'extrabold': '800', 'black': '900'}
                 val = weight_map.get(val.lower(), val)
-                try:
+                with contextlib.suppress(ValueError):
                     weight_values.append(int(val))
-                except: pass
 
         # Check for adjacent weights (400/500, 500/600, etc.)
         for i in range(len(weight_values) - 1):
@@ -387,9 +450,9 @@ class UXAuditor:
         # --- 3. VISUAL EFFECTS (visual-effects.md) ---
         
         # Glassmorphism Check
-        if 'backdrop-filter' in content or 'blur(' in content:
-            if not re.search(r'background:\s*rgba|bg-opacity|bg-[a-z0-9]+\/\d+', content):
-                self.warnings.append(f"[Visual] {filename}: Blur used without semi-transparent background (Glassmorphism fail)")
+        if ('backdrop-filter' in content or 'blur(' in content) \
+                and not re.search(r'background:\s*rgba|bg-opacity|bg-[a-z0-9]+\/\d+', content):
+            self.warnings.append(f"[Visual] {filename}: Blur used without semi-transparent background (Glassmorphism fail)")
         
         # GPU Acceleration / Performance
         if re.search(r'@keyframes|transition:', content):
@@ -412,11 +475,9 @@ class UXAuditor:
         # Check for neomorphism patterns (dual shadows with opposite directions)
         neo_shadows = re.findall(r'box-shadow:\s*([^;]+)', content)
         for shadow in neo_shadows:
-            # Neomorphism has two shadows: positive offset + negative offset
-            if ',' in shadow and '-' in shadow:
-                # Check for inset pattern (pressed state)
-                if 'inset' in shadow:
-                    self.warnings.append(f"[Visual] {filename}: Neomorphism inset detected. Ensure adequate contrast for accessibility.")
+            # Neomorphism has two shadows (positive + negative offset); inset is the pressed state
+            if ',' in shadow and '-' in shadow and 'inset' in shadow:
+                self.warnings.append(f"[Visual] {filename}: Neomorphism inset detected. Ensure adequate contrast for accessibility.")
 
         # --- 3.2 SHADOW HIERARCHY ---
         # Count shadow levels to check for elevation consistency
@@ -506,14 +567,7 @@ class UXAuditor:
         # --- 4. COLOR SYSTEM (color-system.md) ---
 
         # 4.1 PURPLE BAN - Critical check from color-system.md
-        purple_hexes = ['#8B5CF6', '#A855F7', '#9333EA', '#7C3AED', '#6D28D9',
-                        '#8B5CF6', '#A78BFA', '#C4B5FD', '#DDD6FE', '#EDE9FE',
-                        '#8b5cf6', '#a855f7', '#9333ea', '#7c3aed', '#6d28d9',
-                        'purple', 'violet', 'fuchsia', 'magenta', 'lavender']
-        for purple in purple_hexes:
-            if purple.lower() in content.lower():
-                self.issues.append(f"[Color] {filename}: PURPLE DETECTED ('{purple}'). Banned by Maestro rules. Use Teal/Cyan/Emerald instead.")
-                break
+        self.check_purple(filename, content)
 
         # 4.2 60-30-10 Rule check
         # Count color usage to estimate ratio
@@ -609,10 +663,9 @@ class UXAuditor:
         # 5.6 Scroll Animation Performance
         # Check for scroll-driven animations
         has_scroll_anim = bool(re.search(r'onScroll|scroll.*trigger|IntersectionObserver', content))
-        if has_scroll_anim:
-            # Check if using expensive properties in scroll handlers
-            if re.search(r'onScroll.*[^\w](width|height|top|left)', content):
-                self.issues.append(f"[Animation] {filename}: Scroll handler animating layout properties. Use transform/opacity for 60fps.")
+        # Expensive (layout) properties inside scroll handlers
+        if has_scroll_anim and re.search(r'onScroll.*[^\w](width|height|top|left)', content):
+            self.issues.append(f"[Animation] {filename}: Scroll handler animating layout properties. Use transform/opacity for 60fps.")
 
         # --- 6. MOTION GRAPHICS (motion-graphics.md) ---
 
@@ -679,13 +732,39 @@ class UXAuditor:
         if re.search(r'<img(?![^>]*alt=)[^>]*>', content):
             self.issues.append(f"[Accessibility] {filename}: Missing img alt text")
 
+    def check_purple(self, filename: str, content: str) -> None:
+        code = COMMENTS.sub('', content)
+        values = ' '.join(a or b for a, b in COLOR_VALUES.findall(code))
+        found = [m.group(0) for m in PURPLE_HEX.finditer(code)]
+        found += [m.group(1) for m in PURPLE_NAME.finditer(values)]
+        found += [m.group(1) for m in PURPLE_TAILWIND.finditer(code)]
+        for purple in found:
+            if purple.lower() not in self.brand_colors:
+                self.issues.append(f"[Color] {filename}: PURPLE DETECTED ('{purple}'). Banned by Maestro rules. Use Teal/Cyan/Emerald instead.")
+                break
+
+    def audit_email(self, filename: str, content: str) -> None:
+        self.check_purple(filename, content)
+        if re.search(r'<img(?![^>]*alt=)[^>]*>', content):
+            self.issues.append(f"[Accessibility] {filename}: Missing img alt text")
+
+    def is_excluded(self, filepath: str) -> bool:
+        rel = Path(os.path.relpath(filepath, self.root)).as_posix()
+        return any(fnmatch.fnmatch(rel, pattern) for pattern in self.exclude)
+
     def audit_directory(self, directory: str) -> None:
         extensions = {'.tsx', '.jsx', '.html', '.vue', '.svelte', '.css'}
+        self.root = Path(directory)
+        options = load_project_options(self.root)
+        self.exclude = [str(p) for p in options.get("exclude", [])]
+        self.brand_colors = {str(c).lower() for c in options.get("brand_colors", [])}
         for root, dirs, files in os.walk(directory):
-            dirs[:] = [d for d in dirs if d not in {'node_modules', '.git', 'dist', 'build', '.next'}]
+            # .agent/ holds the kit (catalog, skills), never the project's own UI.
+            dirs[:] = [d for d in dirs if d not in {'node_modules', '.git', 'dist', 'build', '.next', '.agent'}]
             for file in files:
-                if Path(file).suffix in extensions:
-                    self.audit_file(os.path.join(root, file))
+                path = os.path.join(root, file)
+                if Path(file).suffix in extensions and not self.is_excluded(path):
+                    self.audit_file(path)
 
     def get_report(self):
         return {
