@@ -10,7 +10,7 @@ license: MIT
 
 An agent is a role (who does the work); a skill is knowledge (how to do something). This skill builds agents with a fixed file model and a **brain**: a folder that records what the agent learned, so it improves run after run while the owner keeps control.
 
-**Core rule:** the agent proposes, the owner approves. No autonomy level lets an agent edit its own file.
+**Core rule:** the agent proposes, the owner approves. No autonomy level lets an agent edit its own file. The hook `.agent/hooks/block_agent_self_edit.py` (registered in `.claude/settings.json`) enforces it in Claude Code: a subagent's `Edit`/`Write` on its own file is denied.
 
 Scope: agents only (workflows and skills have their own rules: `writing-skills`).
 
@@ -24,7 +24,7 @@ Scope: agents only (workflows and skills have their own rules: `writing-skills`)
 ## Create an agent
 
 1. Confirm the role does not exist: `ls .agent/agents/` and `.agent/CATALOG.md`. Reuse before build.
-2. Copy `references/agent-template.md` to `.agent/agents/<name>.md`. Fill every section; `description` is triggers only ("Use when ..."). Choose `model:` based on role complexity (`inherit` default; `flash_lite` for fast routine execution, converted to `haiku` for Claude Code; `pro` for deep reasoning, converted to `sonnet`). Write only what the owner said or this skill requires; anything you add (limits, role claims, skills, tools) is a builder choice, listed in `decisoes.md` as `pendente de confirmação`. Every limit needs a step that keeps it; each tool in `tools` needs a step that uses it; a step names only skills listed in `skills:`; `description` names the situation, never what the agent does.
+2. Copy `references/agent-template.md` to `.agent/agents/<name>.md`. Fill every section; `description` is triggers only ("Use when ..."). Choose `model:` based on role complexity (`inherit` default; `flash_lite` for fast routine execution, converted to `haiku` for Claude Code; `pro` for deep reasoning, converted to `sonnet`). Write only what the owner said or this skill requires (the file's own content is written in the owner's language; the template headings stay as given); anything you add (limits, role claims, skills, tools) is a builder choice, listed in `decisoes.md` as `pendente de confirmação`. Every limit needs a step that keeps it; each tool in `tools` needs a step that uses it; a step names only skills listed in `skills:`; `description` names the situation, never what the agent does.
 3. Choose `autonomy` on purpose and tell the owner which one:
 
    | Level | The agent may | Default |
@@ -43,7 +43,9 @@ Re-read the agent file and `decisoes.md` and check each line. A "step" is any pa
 2. Every premise taken from the brief (for example "the style changes every time") appears in `decisoes.md` with origin `briefing`, wherever it shows up (Papel, title, `description`, Processo, Formato da entrega). If an idea came from the brief, its origin is ALWAYS `briefing` in every section where it appears—repeating it elsewhere never turns it into `construtor`. Never assign conflicting origin labels to the same premise across different sections.
 3. Exact quotes vs paraphrases: Every quote enclosed in quotation marks in `decisoes.md` must be a verbatim word-for-word excerpt of the owner's instruction. If any word is changed, omitted or summarized, do not use quotation marks; label it `dono (parafraseado)`. The origin label must be chosen strictly from the allowed set: `briefing`, `dono (parafraseado)` or `construtor`. Never invent composite or hybrid labels (like `construtor/briefing` or `briefing (parafraseado)`).
 4. One sentence per item, one label per item: Every single sentence of the agent file that is not the owner's quoted words nor the template text must be listed in `decisoes.md` as its own separate item (one bullet per sentence—never group multiple sentences into a single block/bullet). Each item states its exact location (Papel, title, `description`, step N) and has exactly one origin label (`briefing`, `dono (parafraseado)` or `construtor`). That includes the `description` and every individual sentence of Papel. A step that only points to another section ("Deliver as in Formato da entrega") is template wording and needs no entry.
-5. `python .agent/scripts/sync_entrypoints.py --check` passes.
+5. Mode coherence: Papel starts with `Executa.` or `Só propõe.` (the owner's words decide; no words, choose `Só propõe.` and list it as `pendente de confirmação`). Title, `description` and Processo agree with it: a `Só propõe.` agent has no step that applies a change outside its brain; an `Executa.` agent that waits for approval has an approval step before the first action, named in Processo.
+6. Pending items: every `pendente de confirmação` item in `decisoes.md` stays pending until the owner answers; then change it in place to `confirmado AAAA-MM-DD` or `recusado AAAA-MM-DD` (a refused item: remove its sentence from the agent file, keep the entry). The reply to the owner lists the pending items.
+7. `python .agent/scripts/sync_entrypoints.py --check` passes (it also fails when a tool in `tools` is named in no step).
 
 An empty `skills:` is valid. A skill mentioned only as a pointer in Formato da entrega (for example `mapa-de-destinos`) is not a dependency and need not be in `skills:`.
 

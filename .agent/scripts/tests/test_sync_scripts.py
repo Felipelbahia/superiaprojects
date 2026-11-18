@@ -157,9 +157,10 @@ class SyncEntrypointsBrain(unittest.TestCase):
     def setUp(self):
         self.project = Path(tempfile.mkdtemp()) / "project"
 
-    def agent(self, autonomy: str = "propose", name: str = "dir"):
+    def agent(self, autonomy: str = "propose", name: str = "dir", tools: str = "", body: str = ""):
         extra = f"autonomy: {autonomy}\n" if autonomy else ""
-        write(self.project / ".agent" / "agents" / f"{name}.md", f"---\nname: {name}\ndescription: Use when testing\n{extra}---\n")
+        extra += f"tools: {tools}\n" if tools else ""
+        write(self.project / ".agent" / "agents" / f"{name}.md", f"---\nname: {name}\ndescription: Use when testing\n{extra}---\n{body}")
         link = self.project / ".claude" / "agents" / f"{name}.md"
         link.parent.mkdir(parents=True, exist_ok=True)
         link.symlink_to(f"../../.agent/agents/{name}.md")
@@ -219,6 +220,38 @@ class SyncEntrypointsBrain(unittest.TestCase):
         self.agent("")
         result = self.check()
         self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_agent_without_autonomy_does_not_get_its_tools_checked(self):
+        self.agent("", tools="Read, Bash", body="\n## Processo\n1. Think.\n")
+        result = self.check()
+        self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_tool_cited_in_a_step_passes(self):
+        self.agent(tools="Read, Bash", body="\n## Processo\n1. Read the brief.\n2. Run `Bash` to list files.\n")
+        self.brain()
+        result = self.check()
+        self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_tool_never_cited_fails_and_names_it(self):
+        self.agent(tools="Read, Bash", body="\n## Processo\n1. Read the brief.\n")
+        self.brain()
+        result = self.check()
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("agent dir tool Bash is not cited in any step", result.stdout)
+
+    def test_tool_cited_only_in_limites_fails(self):
+        self.agent(tools="Read, Bash", body="\n## Limites\nNever uses Bash.\n\n## Processo\n1. Read the brief.\n")
+        self.brain()
+        result = self.check()
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("tool Bash", result.stdout)
+
+    def test_tool_name_inside_another_word_does_not_count(self):
+        self.agent(tools="Read, Bash", body="\n## Processo\n1. Read the brief.\n2. Use Bashful tone.\n")
+        self.brain()
+        result = self.check()
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("tool Bash", result.stdout)
 
     def test_empty_skills_line_does_not_swallow_the_next_field(self):
         write(self.project / ".agent" / "agents" / "dir.md", "---\nname: dir\ndescription: Use when testing\nskills:\nautonomy: propose\n---\n")

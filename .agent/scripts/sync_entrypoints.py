@@ -96,6 +96,18 @@ def brain_errors(name: str, autonomy: str) -> list[str]:
     return errors
 
 
+def tool_errors(path: Path, name: str, tools: str) -> list[str]:
+    """Every tool in `tools` must be named in a step: the body without the Limites section."""
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    body = re.sub(r"\A---\n.*?\n---\n?", "", text, count=1, flags=re.S)
+    body = re.sub(r"^## Limites\b.*?(?=^## |\Z)", "", body, flags=re.S | re.M)
+    errors = []
+    for tool in re.split(r"[,\s]+", tools):
+        if tool and not re.search(rf"(?<![A-Za-z0-9_]){re.escape(tool)}(?![A-Za-z0-9_])", body):
+            errors.append(f"agent {name} tool {tool} is not cited in any step (remove it from tools or use it in Processo)")
+    return errors
+
+
 def is_hub_skill_link(link: Path, name: str) -> bool:
     """A skill link that goes straight to the same-named skill in another .agent/ tree (a SIP hub).
 
@@ -289,6 +301,7 @@ def validate() -> tuple[list[str], dict]:
             errors.append(f"agent without description: {a.name}")
         if "autonomy" in fm:
             errors += brain_errors(a.stem, fm["autonomy"])
+            errors += tool_errors(a, a.stem, fm.get("tools", ""))
         known = skill_names | hub_skill_names(a)
         for ref in re.split(r"[,\s]+", fm.get("skills", "")):
             if ref and ref.split("/")[0] not in known:

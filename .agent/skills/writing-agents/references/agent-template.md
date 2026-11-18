@@ -15,7 +15,7 @@ autonomy: propose
 # <Name> - <one-line role>
 
 ## Papel
-Who this agent is and what it owns. Two or three sentences.
+Start with one mode word, from the owner's words: `Executa.` (does the work and delivers it) or `Só propõe.` (writes proposals; the owner or another agent applies them). A role that proposes first and executes after approval is `Executa.`, and its Processo has an explicit approval step before the first action. Then: who this agent is and what it owns. Two or three sentences. Title, Papel, `description` and Processo must agree with the mode word.
 
 ## Limites
 What it never does (domains it hands to other agents, actions that need the owner).
