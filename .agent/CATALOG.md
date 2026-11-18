@@ -2,8 +2,8 @@
 
 > Índice central de todas as Skills, Workflows e Agentes da Plataforma (0 Padrões + 0 Mkt)
 
-**Total Geral:** `686` recursos | **Skills:** `309` | **Workflows:** `225` | **Agentes:** `152`
-**Fontes Integradas:** `0 Mkt` (246) · `0 Padrões` (440)
+**Total Geral:** `687` recursos | **Skills:** `310` | **Workflows:** `225` | **Agentes:** `152`
+**Fontes Integradas:** `0 Mkt` (247) · `0 Padrões` (440)
 
 ---
 
@@ -135,7 +135,7 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Sinais Fracos](#sinais-fracos) (`1`)
   - [Temas E Plugins](#temas-e-plugins) (`1`)
   - [Tendencias](#tendencias) (`2`)
-- [copy (Copywriting & Conversão)](#copy-copywriting--conversão) (`14` recursos)
+- [copy (Copywriting & Conversão)](#copy-copywriting--conversão) (`15` recursos)
   - [Avaliacao De Hook](#avaliacao-de-hook) (`1`)
   - [Conversao](#conversao) (`1`)
   - [Hook De Video](#hook-de-video) (`1`)
@@ -147,6 +147,7 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Roteiro De Video](#roteiro-de-video) (`1`)
   - [Roteiro Mais Falado](#roteiro-mais-falado) (`1`)
   - [Saas](#saas) (`2`)
+  - [Textos e Conversão](#textos-e-conversão) (`1`)
   - [Vsl](#vsl) (`1`)
 - [data (Inteligência de Dados)](#data-inteligência-de-dados) (`14` recursos)
   - [Analise De Desempenho](#analise-de-desempenho) (`1`)
@@ -570,7 +571,7 @@ Total de recursos nesta macro-área: `212`
 | <a id="architecture"></a>**`architecture`** | `Skill` | `0 Padrões` | Estrutura de tomada de decisão arquitetônica. Análise de requisitos, avaliação de trade-off, documentação ADR. Use ao tomar decisões de arquitetura ou analisar o design do sistema. |
 | <a id="architecture-decision-records"></a>**`architecture-decision-records`** | `Skill` | `0 Padrões` | Escreva e mantenha registros de decisões de arquitetura (ADRs) seguindo as melhores práticas para documentação de decisões técnicas. Use ao documentar decisões técnicas significativas, revisar escolhas arquitetônicas anteriores ou estabelecer processos de decisão. |
 | <a id="architecture-patterns"></a>**`architecture-patterns`** | `Skill` | `0 Padrões` | Implemente padrões comprovados de arquitetura de back-end, incluindo Arquitetura Limpa, Arquitetura Hexagonal e Design Orientado a Domínio. Use ao arquitetar sistemas back-end complexos ou refatorar aplicativos existentes para melhor manutenção. |
-| <a id="auditing-memory-usage"></a>**`auditing-memory-usage`** | `Skill` | `0 Padrões` | Use quando o proprietário disser que a máquina ou um aplicativo parece pesado, lento ou com muita memória, a memória continua crescendo ou pede para verificar o código de um projeto em busca de vazamentos de memória ou uso desnecessário de memória. |
+| <a id="auditing-memory-usage"></a>**`auditing-memory-usage`** | `Skill` | `0 Padrões` | Use quando o proprietário disser que o Mac ou um aplicativo parece pesado, lento ou com muita memória, a memória swap ou compactada está alta após horas de uso do IDE, processos órfãos de Antigravity, Gemini, Claude, Kilo ou codex se acumulam, a memória continua crescendo ou pede para verificar o código de um projeto em busca de vazamentos de memória ou uso desnecessário de memória. |
 | <a id="auth-implementation-patterns"></a>**`auth-implementation-patterns`** | `Skill` | `0 Padrões` | Padrões mestres de autenticação e autorização, incluindo JWT, OAuth2, gerenciamento de sessão e RBAC para criar sistemas de controle de acesso seguros e escaláveis. Use ao implementar sistemas de autenticação, proteger APIs ou depurar problemas de segurança. |
 | <a id="backtesting-frameworks"></a>**`backtesting-frameworks`** | `Skill` | `0 Padrões` | Crie sistemas robustos de backtesting para estratégias de negociação com tratamento adequado de viés de antecipação, viés de sobrevivência e custos de transação. Use ao desenvolver algoritmos de negociação, validar estratégias ou construir infraestrutura de backtesting. |
 | <a id="bash-linux"></a>**`bash-linux`** | `Skill` | `0 Padrões` | Padrões de terminal Bash/Linux. Comandos críticos, tubulação, tratamento de erros, scripts. Use ao trabalhar em sistemas macOS ou Linux. |
@@ -1384,7 +1385,7 @@ Total de recursos nesta macro-área: `22`
 
 ## <a id="copy-copywriting--conversão"></a>copy (Copywriting & Conversão)
 
-Total de recursos nesta macro-área: `14`
+Total de recursos nesta macro-área: `15`
 
 ### <a id="avaliacao-de-hook"></a>Avaliacao De Hook
 
@@ -1453,6 +1454,12 @@ Total de recursos nesta macro-área: `14`
 | :--- | :--- | :--- | :--- |
 | <a id="copy-saas"></a>**`copy-saas`** | `Skill` | `0 Mkt` | Copywriter de SaaS e startups focado em posicionamento, mensagem e pesquisa de voz do cliente (VOC), com um fluxo de 10 fases para criar uma landing page. Use para definir posicionamento e proposta de valor, montar a hierarquia de mensagem, minerar a linguagem do cliente e planejar o processo de uma landing page de SaaS. NÃO use para cartas de venda, CTAs e persuasão de resposta direta (use copy-conversao), para redigir a página seção a seção ou auditar CRO (use copy-landing-page), para roteiro de VSL (use copy-vsl) nem para email (use email-copy). |
 | <a id="copy-saas"></a>**`/copy-saas`** | `Workflow` | `0 Mkt` | Redator de SaaS e startups focado em posicionamento, mensagem e pesquisa |
+
+### <a id="textos-e-conversão"></a>Textos e Conversão
+
+| Recurso | Tipo | Origem | Descrição e Aplicação |
+| :--- | :--- | :--- | :--- |
+| <a id="roteiro-tiktok-60s-noticia"></a>**`roteiro-tiktok-60s-noticia`** | `Skill` | `0 Mkt` | Use when escrever o roteiro de um vídeo curto de 60s (TikTok, Reels, Shorts) a partir de uma ou mais matérias jornalísticas, principalmente de tema sensível (violência, crime, saúde, luto), em série com briefing já respondido. Também quando precisar mapear loops abertos e fechados num vídeo curto, ou pontuar o hook de um vídeo de notícia. |
 
 ### <a id="vsl"></a>Vsl
 
