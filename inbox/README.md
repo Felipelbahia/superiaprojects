@@ -64,20 +64,20 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | 017 | ~~Testes de skills: texto com o caminho literal, arquivos com o local~~ (aplicado 2026-11-11, em `arquivo/`) | skill `writing-skills` | Média |
 | 018 | ~~Hook de commit versionado para checagens rápidas~~ (aplicado 2026-11-11, hook ativo; em `arquivo/`) | skill `project-initializer` + próprio 0 Padrões | Média |
 | 019 | ~~Nova skill `github-publisher`~~ (criada 2026-11-11, em `arquivo/`) | nova skill global (`github-publisher`) | Média |
-| SIP-020 | Migrar os 7 SIPs para o padrão único (tabelas + instalação opcional; stubs locais do 0 Padrões concluídos em 2026-11-11) | 7 hubs SIP, `_sips.md` | Média |
-| SIP-020 | Manifestos dos consumidores de SIP sem a linha "Para atualizar" (0 Padrões concluído em 2026-11-11; restam 16 entradas em 8 projetos) | `.agent/SIPS-CONSUMIDOS.md` dos 8 consumidores externos | Baixa |
+| SIP-020 | ~~Migrar os 7 SIPs para o padrão único (tabelas + instalação opcional)~~ (feito 2026-11-15, em `arquivo/`; reverificado 2026-11-18: 23/23 PASS nos 7 hubs) | 7 hubs SIP, `_sips.md` | Média |
+| SIP-020 | ~~Manifestos dos consumidores de SIP sem a linha "Para atualizar"~~ (feito 2026-11-15, em `arquivo/`; reverificado 2026-11-18: 59 manifestos, nenhum sem a linha) | `.agent/SIPS-CONSUMIDOS.md` dos 8 consumidores externos | Baixa |
 | 021 | ~~Stubs de SIP do 0 Padrões sem a seção "Atualização"~~ (aplicado 2026-11-11, em `arquivo/`) | 7 stubs `sip-*` + `superiaprojects-criar-sip` (Passo 5) | Média |
 | 022 | ~~`.gitignore` padrão: backups de `.env` e 0 Padrões sem regras de `.env`~~ (aplicado 2026-11-11, em `arquivo/`) | `project-initializer` + `.gitignore` do 0 Padrões + `github-publisher` | Média |
 | 023 | ~~`.claude/CLAUDE.md` duplicado e regras antigas~~ (resolvido na auditoria geral em 2026-11-15, em `arquivo/`) | todos os projetos com regras | Alta |
 | 024 | ~~README do FM aponta para os prompts de inteligência arquivados~~ (aplicado 2026-11-17, em `arquivo/`) | README do Futuro Mercado | Média |
-| 025 | Kit de onboarding para clonar e rodar em outra máquina (versão do runtime, trava de versão, README com passo a passo, prova do clone limpo). **Parcial:** regra nas skills e no módulo `code` em 2026-11-12; retrofit dos projetos em andamento na propagação do kit (rastreador) | `project-initializer` + `github-publisher` + retrofit dos projetos | Média |
+| 025 | ~~Kit de onboarding para clonar e rodar em outra máquina~~ (feito 2026-11-15, em `arquivo/`: regra nas skills e no módulo `code`; retrofit registrado na `inbox/` de cada projeto, que o aplica ao processar a própria inbox) | `project-initializer` + `github-publisher` + retrofit dos projetos | Média |
 | 028 | ~~UX Audit falha no catálogo~~ (aplicado 2026-11-17, em `arquivo/`; checklist completo depende do 033) | `ux_audit.py`, `generate_catalog.py` | Média |
 | 037 | ~~test_runner.py chama `python` no macOS~~ (aplicado 2026-11-18, em `arquivo/`) | `test_runner.py` | Média |
 | 038 | ~~UX Audit aplica regras de app a e-mail e acusa falsos positivos~~ (aplicado 2026-11-18, em `arquivo/`) | `ux_audit.py` | Média |
 | 032 | ~~Regras locais perdidas ou lixo antigo achados pelo check_local_rules.py~~ (resolvido na auditoria em 2026-11-15, em `arquivo/`) | #22, #42, #44 e ecossistema | Alta |
 | 034 | ~~writing-agents: ideias de estrutura da revisão~~ (aplicado 2026-11-18: hook de auto-edição, check de ferramentas, modo do Papel; em `arquivo/`) | `writing-agents`, `sync_entrypoints.py`, `.claude/settings.json` | Média |
 | 035 | ~~Mapeamento de modelos Antigravity/Claude e migração dos agentes~~ (aplicado 2026-11-18, Opção A, em `arquivo/`) | `.agent/agents/*.md` | Média |
-| 040 | ~~propagar_sip.py aceitar a cópia gerada do resolver~~ (aplicado 2026-11-18, em `arquivo/`; sobra o stub do 0 Padrões) | `propagar_sip.py`, `sips_status.py` | Média |
+| 040 | ~~propagar_sip.py aceitar a cópia gerada do resolver~~ (aplicado 2026-11-18, em `arquivo/`; stub `sip-astro` do 0 Padrões reinstalado como cópia gerada em 2026-11-18) | `propagar_sip.py`, `sips_status.py` | Média |
 | 036 | ~~session-handoff: armadilha do zsh~~ (encerrado 2026-11-18 sem mudança: RED já passa, em `arquivo/`) | skill `session-handoff` | Baixa |
 
 

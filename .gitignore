@@ -75,3 +75,8 @@ GEMINI.md
 .claude/CLAUDE.md
 .cursorrules
 
+
+# SIP - Astro (generated, holds a path of this machine)
+.agent/skills/sip-astro
+.claude/skills/sip-astro
+.agent/.sip-hubs.local.json
