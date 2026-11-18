@@ -68,7 +68,13 @@ O script `./install.sh`:
 1. Verifica seu ambiente Python 3.
 2. Cria o arquivo `CLAUDE.md` a partir do `CLAUDE.example.md` (se ainda não existir).
 3. Cria todos os symlinks para o Claude Code (`.claude/`) e Cursor (`.cursor/`).
-4. Gera o catálogo visual unificado em `catalog.html`.
+4. Gera o catálogo visual unificado em `.agent/catalog.html`.
+5. Troca o caminho do kit (escrito na máquina do autor) pelo local onde você instalou, nas skills, prompts e docs (`localize_paths.py`). Rode `python3 .agent/scripts/localize_paths.py` de novo se mover a pasta; num clone isso deixa esses `.md` como modificados no git.
+6. Atualiza os prompt templates: grava `projetos/prompts/` com o caminho real do kit no lugar de `<SUPER_IA_PROJECTS_PATH>` (sobrescreve a cada instalação).
+
+**Windows (ou qualquer sistema sem bash):** use `py install.py` (ou `python install.py`), que faz os mesmos passos só com Python. Se o Windows negar symlinks (erro 1314, sem Modo Desenvolvedor), o kit usa junctions para pastas e cópias controladas para arquivos, e `sync_entrypoints.py` as mantém atualizadas.
+
+O kit pode ficar em **qualquer pasta** (com espaços e acentos): os scripts descobrem o próprio caminho e não dependem de um local fixo.
 
 ---
 

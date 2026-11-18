@@ -26,10 +26,11 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 
 CWD = Path.cwd().resolve()
-GLOBAL_PADROES_DIR = Path("/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões")
-GLOBAL_MKT_DIR = Path("/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Mkt")
+# The kit root is wherever this script lives (works on macOS, Linux and Windows); 0 Mkt is an optional sibling.
+GLOBAL_PADROES_DIR = Path(__file__).resolve().parents[2]
+GLOBAL_MKT_DIR = GLOBAL_PADROES_DIR.parent / "0 Mkt"
 
-SCRIPTS_DIR = GLOBAL_PADROES_DIR / ".agent" / "scripts"
+SCRIPTS_DIR = Path(__file__).resolve().parent
 CACHE_FILE = SCRIPTS_DIR / "translations_cache.json"
 
 # Categorias Oficiais de 0 Mkt (17 categorias canônicas)
@@ -80,6 +81,15 @@ ESSENTIAL_RESOURCES = [
     ("project-defines", "Skill", "0 Padrões", "Governança documental de projetos governados por pasta _projectdefines/."),
 ]
 
+def rel_to_cwd(p: Path) -> str:
+    """Path relative to the project root being built, so the data holds no machine-specific path.
+    catalog-app.js turns it back into a real path in the viewer's browser."""
+    try:
+        return Path(os.path.relpath(p.resolve(), CWD)).as_posix()
+    except ValueError:  # other drive on Windows
+        return p.name
+
+
 def load_cache() -> dict:
     if CACHE_FILE.exists():
         try:
@@ -89,8 +99,17 @@ def load_cache() -> dict:
     return {}
 
 def save_cache(cache: dict):
-    SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
-    CACHE_FILE.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
+    """The translation cache is an optimization: a read-only or missing folder must never fail the catalog."""
+    try:
+        SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
+        CACHE_FILE.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
+    except OSError as exc:
+        print(f"Aviso: cache de traducao nao salvo ({exc}); o catalogo foi gerado normalmente.")
+
+
+def central_tag(path: Path, template: str) -> str:
+    """A <link>/<script> pointing at a central kit file, only when it exists here (never a dead absolute path)."""
+    return template.format(uri=path.resolve().as_uri()) if path.is_file() else "<!-- central kit file not found on this machine -->"
 
 def is_portuguese(text: str) -> bool:
     pt_words = {"para", "com", "não", "quando", "este", "esta", "usar", "use", "crie", "como", "está", "estão", "desenvolvimento", "equipe", "recursos", "especialista", "análise", "relatórios", "geração", "estratégia", "padrões", "criação", "produção"}
@@ -386,7 +405,7 @@ def scan_agent_dir(agent_dir: Path, source_name: str, cache: dict, project_name:
                             other_files.append({
                                 "name": p.name,
                                 "rel_path": rel,
-                                "abs_path": str(p.resolve()),
+                                "abs_path": rel_to_cwd(p),
                                 "content": f_content
                             })
                         except Exception:
@@ -398,7 +417,7 @@ def scan_agent_dir(agent_dir: Path, source_name: str, cache: dict, project_name:
                     "source": source_name,
                     "desc_en": desc,
                     "path": f".agent/skills/{name}/SKILL.md",
-                    "abs_path": str(skill_file.resolve()),
+                    "abs_path": rel_to_cwd(skill_file),
                     "content": content[:12000],
                     "files": other_files,
                     "_meta": meta
@@ -424,7 +443,7 @@ def scan_agent_dir(agent_dir: Path, source_name: str, cache: dict, project_name:
                 "source": source_name,
                 "desc_en": desc,
                 "path": f".agent/workflows/{wf_file.name}",
-                "abs_path": str(wf_file.resolve()),
+                "abs_path": rel_to_cwd(wf_file),
                 "content": content[:12000],
                 "files": [],
                 "_meta": meta
@@ -450,7 +469,7 @@ def scan_agent_dir(agent_dir: Path, source_name: str, cache: dict, project_name:
                 "source": source_name,
                 "desc_en": desc,
                 "path": f".agent/agents/{ag_file.name}",
-                "abs_path": str(ag_file.resolve()),
+                "abs_path": rel_to_cwd(ag_file),
                 "content": content[:12000],
                 "files": [],
                 "_meta": meta
@@ -594,7 +613,7 @@ def generate_html_dashboard(items: list[dict], title: str, subtitle: str) -> str
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- CSS da Aplicação: 1º Mestre Central (Zero-Sync Runtime), 2º Fallback Local -->
-  <link rel="stylesheet" href="file:///Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/catalog-app.css">
+  {central_tag(GLOBAL_PADROES_DIR / ".agent" / "catalog-app.css", '<link rel="stylesheet" href="{uri}">')}
   <link rel="stylesheet" href="./catalog-app.css">
 </head>
 <body>
@@ -753,12 +772,12 @@ def generate_html_dashboard(items: list[dict], title: str, subtitle: str) -> str
   </script>
 
   <!-- Dynamic Loader Scripts (Tentam carregar dados ao vivo das 3 bases) -->
-  <script src="file:///Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/catalog-data.js"></script>
-  <script src="file:///Users/macbookpro/Documents/IA Projects/_Plataforma/0 Mkt/.agent/catalog-data.js"></script>
+  {central_tag(GLOBAL_PADROES_DIR / ".agent" / "catalog-data.js", '<script src="{uri}"></script>')}
+  {central_tag(GLOBAL_MKT_DIR / ".agent" / "catalog-data.js", '<script src="{uri}"></script>')}
   <script src="./catalog-data.js"></script>
 
   <!-- JS da Aplicação: 1º Mestre Central (Zero-Sync Runtime), 2º Fallback Local -->
-  <script src="file:///Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/catalog-app.js"></script>
+  {central_tag(GLOBAL_PADROES_DIR / ".agent" / "catalog-app.js", '<script src="{uri}"></script>')}
   <script src="./catalog-app.js"></script>
 </body>
 </html>
@@ -797,12 +816,17 @@ def build_for_target(target_dir: Path, source_name: str, cache: dict, is_primary
     combined_items = list(local_items)
     
     if source_name == "0 Padrões":
+        # Defaults first: 0 Mkt is an optional sibling, a standalone install has no other base to merge.
+        title = "Antigravity Kit — Catálogo Geral da Plataforma"
+        subtitle = "Índice central de todas as Skills, Workflows e Agentes do kit"
         if (GLOBAL_MKT_DIR / ".agent").is_dir():
             mkt_items = scan_agent_dir(GLOBAL_MKT_DIR / ".agent", "0 Mkt", cache, project_name="0 Mkt")
             combined_items.extend(mkt_items)
             title = "Antigravity Kit — Catálogo Geral Unificado da Plataforma"
             subtitle = "Índice central de todas as Skills, Workflows e Agentes da Plataforma (0 Padrões + 0 Mkt)"
     elif source_name == "0 Mkt":
+        title = "0 Mkt — Catálogo de Marketing, Growth e Vendas"
+        subtitle = "Catálogo de Marketing"
         if (GLOBAL_PADROES_DIR / ".agent").is_dir():
             padroes_items = scan_agent_dir(GLOBAL_PADROES_DIR / ".agent", "0 Padrões", cache, project_name="0 Padrões")
             combined_items.extend(padroes_items)
@@ -846,6 +870,9 @@ def build_for_target(target_dir: Path, source_name: str, cache: dict, is_primary
 
 
 def main():
+    for stream in (sys.stdout, sys.stderr):  # Windows consoles (cp1252) cannot print the status emojis
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(errors="replace")
     cache = load_cache()
     
     if CWD == GLOBAL_PADROES_DIR or "--all" in sys.argv:

@@ -41,6 +41,14 @@ plans/
 .claude/skills/sip-*
 # sip-geral é nativo deste próprio hub (symlink relativo versionado)
 !.claude/skills/sip-geral
+# SIPs de dominio consumidos pelo dono (ponteiros para hubs na maquina dele) e o manifesto deles:
+# cada usuario instala os seus pelo prompt de instalacao de cada SIP. sip-geral e nativo do kit e fica versionado.
+.agent/skills/sip-*/
+!.agent/skills/sip-geral/
+.agent/SIPS-CONSUMIDOS.md
+# Local onde o kit foi instalado (escrito por localize_paths.py)
+.agent/.kit-path
+
 # Agents/workflows de SIPs instalados (sem prefixo fixo, listar cada um ao
 # instalar via o prompt de instalacao - ver projetos/_sips.md):
 .claude/agents/n8n-agent.md

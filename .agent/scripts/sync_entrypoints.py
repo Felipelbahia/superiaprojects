@@ -16,6 +16,9 @@ Usage (run from the project root):
     python .agent/scripts/sync_entrypoints.py --write-docs # refresh counts block in ARCHITECTURE.md/README.md
 
 Only symlinks are ever created or removed; a real file or folder in a target is reported, never touched.
+
+Windows: when the OS denies symlinks (WinError 1314: no Developer Mode / admin), folders fall back to
+directory junctions and files to managed copies (see linkutil.py). Copies are refreshed on every sync.
 """
 
 import argparse
@@ -24,6 +27,9 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import linkutil  # noqa: E402
 
 ROOT = Path.cwd()
 AGENT = ROOT / ".agent"
@@ -189,6 +195,16 @@ def sync_links(check_only: bool) -> list[str]:
 
             if link.is_symlink() and os.readlink(link) == rel and link.exists():
                 continue
+            state = linkutil.managed_state(link, s, target)
+            if state == "ok":
+                continue
+            if state == "stale":
+                if check_only:
+                    problems.append(f"out of date copy (symlinks unavailable): {target_rel}/{name}")
+                else:
+                    linkutil.refresh_copy(link, s, target)
+                    print(f"  refreshed copy {target_rel}/{name}")
+                continue
             if kind == "dir" and is_hub_skill_link(link, name):
                 continue
             if link.is_symlink() and link.exists():
@@ -202,7 +218,7 @@ def sync_links(check_only: bool) -> list[str]:
                             problems.append(f"generated file should be symlink for inherit model: {target_rel}/{name}")
                             continue
                         link.unlink()
-                        link.symlink_to(rel)
+                        linkutil.make_link(link, rel, s, target)
                         print(f"  converted back to symlink {target_rel}/{name}")
                         continue
                 problems.append(f"REAL (not symlink) in {target_rel}: {name} - resolve by hand")
@@ -214,14 +230,23 @@ def sync_links(check_only: bool) -> list[str]:
             else:
                 if link.is_symlink():
                     link.unlink()
-                link.symlink_to(rel)
-                print(f"  linked {target_rel}/{name}")
+                how = linkutil.make_link(link, rel, s, target)
+                suffix = "" if how == "symlink" else f" ({how}: symlinks not allowed here)"
+                print(f"  linked {target_rel}/{name}{suffix}")
         if target.is_dir():
+            for name in linkutil.managed_orphans(target, wanted):
+                if check_only:
+                    problems.append(f"orphan copy: {target_rel}/{name}")
+                else:
+                    linkutil.remove_managed(target, name)
+                    print(f"  removed orphan copy {target_rel}/{name}")
             for existing in target.iterdir():
+                if existing.name == linkutil.MANIFEST:
+                    continue
                 if existing.name in wanted:
                     continue
                 if existing.is_symlink():
-                    raw = os.readlink(existing)
+                    raw = os.readlink(existing).replace("\\", "/")  # Windows returns backslashes
                     ours = (not os.path.isabs(raw) and raw.startswith("../") and "/.agent/" in raw) and not existing.exists()
                     if not ours:
                         continue  # only dangling links we could have created; absolute/foreign links are never removed

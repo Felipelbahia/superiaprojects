@@ -33,9 +33,10 @@ _spec = importlib.util.spec_from_file_location("assemble_rules", Path(__file__).
 assemble_rules = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(assemble_rules)
 
-BASE = Path("/Users/macbookpro/Documents/IA Projects")
+# Everything is derived from where the kit lives: <BASE>/_Plataforma/0 Padrões/.agent/scripts/projects_audit.py
+KIT = Path(__file__).resolve().parents[2]
+BASE = KIT.parent.parent
 DEFAULT_ROOTS = ["Compartilhado", "ILazos", "Pessoal", "Plinq", "Projetos", "WaiMonitor", "_Plataforma"]
-KIT = BASE / "_Plataforma" / "0 Padrões"
 DEFAULT_OUT = KIT / ".agent" / "plans" / "Relatório de projetos vs kit.md"
 
 FICHAS = KIT / "projetos"

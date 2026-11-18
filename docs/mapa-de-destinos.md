@@ -10,7 +10,7 @@ Atualizado em 2026-11-12. Se este mapa divergir de uma regra de skill, **vale es
 | Workflow (`/comando`) | `.agent/workflows/<nome>.md` | `description`, `disable-model-invocation: true` | fixo pelas regras; link em `.claude/commands/` e `.cursor/commands/` |
 | Módulo de regras | `.agent/skills/project-initializer/modules/<nome>.md` | | o `CLAUDE.md` é gerado deles (`assemble_rules.py`); nunca editar o `CLAUDE.md` à mão |
 | Regras do kit nesta máquina | `CLAUDE.md` (gerado por `assemble_rules.py`, + bloco `## Project`) → `AGENTS.md` (cópia do `sync_rules.py`; `GEMINI.md` e `.agent/rules/` são legado) | | fora do git; nunca à mão: editar o módulo e remontar |
-| Modelo público de regras | `CLAUDE.example.md` (+ `ClaudeExample.md`) | | versionado; base do `install.sh`; sem o bloco `## Project` do kit; manter alinhado aos módulos |
+| Modelo público de regras | `CLAUDE.example.md` (+ `ClaudeExample.md`) | | versionado; base do `install.sh` e do `install.py`; sem o bloco `## Project` do kit; manter alinhado aos módulos |
 | Scripts do kit e testes | `.agent/scripts/` · `.agent/scripts/tests/test_<script ou assunto>.py` | | código: segue o `STANDARDS.md` |
 | Dados compartilhados de skills | `.agent/.shared/<skill>/` | | versionado (ex.: dados do `ui-ux-pro-max`) |
 | Prompt para colar | `prompts-template/NN-<assunto>.md` (versionado, com `<SUPER_IA_PROJECTS_PATH>`) + `projetos/prompts/NN-<assunto>.md` (cópia local, caminho absoluto) | `NN-` = número do prompt | aposentados em `_arquivo/` nas duas pastas; as duas cópias deveriam ter o mesmo texto, exceto o caminho (hoje divergem: ver Inconsistências) |

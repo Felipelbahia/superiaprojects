@@ -65,7 +65,7 @@ def checks(hub: Path, skill: str) -> list[tuple[str, bool, str]]:
         ("resolver: 'Última atualização do hub: AAAA-MM-DD' with a real date",
          bool(re.search(r"Última atualização do hub: \d{4}-\d{2}-\d{2}", r)), ""),
         ("resolver: cites the prompt path",
-         nfc(f"{hub}/prompts/instalar-skill-{skill}.md") in nfc(r), ""),
+         (nfc(f"{hub}/prompts/instalar-skill-{skill}.md") in nfc(r) or f"<HUB>/prompts/instalar-skill-{skill}.md" in r), ""),
         ("resolver: contribution as inbox/NNN-<assunto>.md", "inbox/NNN-" in r, ""),
         ("prompt: manifest line 'Para atualizar: cole de novo'", "Para atualizar: cole de novo" in p, ""),
         ("prompt: runs sync_entrypoints.py --check", "sync_entrypoints.py" in p and "--check" in p, ""),

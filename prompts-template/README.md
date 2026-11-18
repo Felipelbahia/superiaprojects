@@ -18,6 +18,10 @@ Os prompts trazem **verificações obrigatórias** (`ls`, `grep`, `diff`, `test 
 
 O número 5 está vago de propósito: o antigo #5 (estudar referências) foi fundido no #4 em 2026-11-17, e os números não foram reaproveitados para não quebrar referências externas. Prompts aposentados e removidos desta pasta: 02b (fundido no 02), o 03 antigo (agora lançador), o 04 antigo e o 05 (fundidos no 04), 08 sincronizar (absorvido pelo 01), 09 migrar conteúdo do 0 Mkt e 10 e 11 inteligência (substituídos pelos SIPs `sip-trends-previsao-demanda`, `sip-imprensa` e `sip-marketing` mais as linhas do mapa de destinos).
 
+## Atualização na instalação
+
+`install.sh` e `install.py` rodam `.agent/scripts/render_prompts.py`, que grava `projetos/prompts/` (local, não versionado) a partir deste `prompts-template/`, trocando `<SUPER_IA_PROJECTS_PATH>` pelo caminho real do kit. Rode de novo depois de editar um template.
+
 ## Como usar
 
 1. Abra o arquivo do prompt e copie **tudo**.

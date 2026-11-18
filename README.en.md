@@ -54,7 +54,13 @@ The `./install.sh` script automatically:
 1. Detects your Python 3 environment.
 2. Initializes your `CLAUDE.md` from `CLAUDE.example.md` (without overwriting if you already have one).
 3. Creates symlinks for **Claude Code** (`.claude/`) and **Cursor** (`.cursor/`).
-4. Generates the unified visual catalog in `catalog.html`.
+4. Generates the unified visual catalog in `.agent/catalog.html`.
+5. Rewrites the kit path (written on the author's machine) to where you installed it, in skills, prompts and docs (`localize_paths.py`). Run `python3 .agent/scripts/localize_paths.py` again if you move the folder; in a clone those `.md` files show as modified in git.
+6. Refreshes the prompt templates: writes `projetos/prompts/` with the kit's real path in place of `<SUPER_IA_PROJECTS_PATH>` (overwritten on every install).
+
+**Windows (or any system without bash):** run `py install.py` (or `python install.py`), same steps in pure Python. If Windows denies symlinks (error 1314, no Developer Mode), the kit uses junctions for folders and managed copies for files; `sync_entrypoints.py` keeps them up to date.
+
+The kit can live in **any folder** (spaces and accents included): scripts find their own location and need no fixed path.
 
 ---
 
