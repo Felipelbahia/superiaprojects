@@ -11,22 +11,23 @@ Supports:
     - Python: pytest, unittest
 """
 
+import contextlib
+import importlib.util
+import json
 import subprocess
 import sys
-import json
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 # Fix Windows console encoding
-try:
-    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-except:
-    pass
+with contextlib.suppress(AttributeError, ValueError, OSError):
+    getattr(sys.stdout, 'reconfigure')(encoding='utf-8', errors='replace')  # noqa: B009
 
 
 def detect_test_framework(project_path: Path) -> dict:
     """Detect test framework and commands."""
-    result = {
+    result: dict[str, Any] = {
         "type": "unknown",
         "framework": None,
         "cmd": None,
@@ -63,22 +64,32 @@ def detect_test_framework(project_path: Path) -> dict:
                 result["cmd"] = ["npx", "jest"]
                 result["coverage_cmd"] = ["npx", "jest", "--coverage"]
                 
-        except:
-            pass
+        except (OSError, ValueError, AttributeError) as e:
+            result["warning"] = f"package.json not read: {e}"
     
     # Python project
     if (project_path / "pyproject.toml").exists() or (project_path / "requirements.txt").exists():
         result["type"] = "python"
-        result["framework"] = "pytest"
-        result["cmd"] = ["python", "-m", "pytest", "-v"]
-        result["coverage_cmd"] = ["python", "-m", "pytest", "--cov", "--cov-report=term-missing"]
+        # Current interpreter, never a bare `python` (macOS only has `python3`).
+        if importlib.util.find_spec("pytest") is not None:
+            result["framework"] = "pytest"
+            result["cmd"] = [sys.executable, "-m", "pytest", "-v"]
+            result["coverage_cmd"] = [sys.executable, "-m", "pytest", "--cov", "--cov-report=term-missing"]
+        else:
+            # No pytest: run the standard library runner on the project's tests folder.
+            result["framework"] = "unittest"
+            result["cmd"] = [sys.executable, "-m", "unittest", "discover", "-v"]
+            for folder in ("tests", "test", ".agent/scripts/tests"):
+                if (project_path / folder).is_dir():
+                    result["cmd"] += ["-s", folder]
+                    break
     
     return result
 
 
 def run_tests(cmd: list, cwd: Path) -> dict:
     """Run tests and return results."""
-    result = {
+    result: dict[str, Any] = {
         "passed": False,
         "output": "",
         "error": "",
@@ -91,6 +102,7 @@ def run_tests(cmd: list, cwd: Path) -> dict:
         proc = subprocess.run(
             cmd,
             cwd=str(cwd),
+            check=False,
             capture_output=True,
             text=True,
             encoding='utf-8',
@@ -131,7 +143,7 @@ def run_tests(cmd: list, cwd: Path) -> dict:
         result["error"] = f"Command not found: {cmd[0]}"
     except subprocess.TimeoutExpired:
         result["error"] = "Timeout after 300s"
-    except Exception as e:
+    except OSError as e:
         result["error"] = str(e)
     
     return result
@@ -142,7 +154,7 @@ def main():
     with_coverage = "--coverage" in sys.argv
     
     print(f"\n{'='*60}")
-    print(f"[TEST RUNNER] Unified Test Execution")
+    print("[TEST RUNNER] Unified Test Execution")
     print(f"{'='*60}")
     print(f"Project: {project_path}")
     print(f"Coverage: {'enabled' if with_coverage else 'disabled'}")

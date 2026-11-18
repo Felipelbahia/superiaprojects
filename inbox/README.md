@@ -72,6 +72,7 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | 024 | ~~README do FM aponta para os prompts de inteligência arquivados~~ (aplicado 2026-11-17, em `arquivo/`) | README do Futuro Mercado | Média |
 | 025 | Kit de onboarding para clonar e rodar em outra máquina (versão do runtime, trava de versão, README com passo a passo, prova do clone limpo). **Parcial:** regra nas skills e no módulo `code` em 2026-11-12; retrofit dos projetos em andamento na propagação do kit (rastreador) | `project-initializer` + `github-publisher` + retrofit dos projetos | Média |
 | 028 | ~~UX Audit falha no catálogo~~ (aplicado 2026-11-17, em `arquivo/`; checklist completo depende do 033) | `ux_audit.py`, `generate_catalog.py` | Média |
+| 037 | ~~test_runner.py chama `python` no macOS~~ (aplicado 2026-11-18, em `arquivo/`) | `test_runner.py` | Média |
 | 032 | ~~Regras locais perdidas ou lixo antigo achados pelo check_local_rules.py~~ (resolvido na auditoria em 2026-11-15, em `arquivo/`) | #22, #42, #44 e ecossistema | Alta |
 
 
