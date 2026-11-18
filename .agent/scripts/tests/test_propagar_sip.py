@@ -19,7 +19,7 @@ TODAY = date.today().isoformat()
 def make_hub(root: Path, agents: list[str]) -> Path:
     hub = root / "hub"
     (hub / ".agent" / "skills" / "sip-x").mkdir(parents=True)
-    (hub / ".agent" / "skills" / "sip-x" / "SKILL.md").write_text("- Última atualização do hub: 2026-11-12\n", encoding="utf-8")
+    (hub / ".agent" / "skills" / "sip-x" / "SKILL.md").write_text("---\nname: sip-x\ndescription: Use when testing.\n---\n- Última atualização do hub: 2026-11-12\n", encoding="utf-8")
     (hub / ".agent" / "agents").mkdir(parents=True)
     for a in agents:
         (hub / ".agent" / "agents" / f"{a}.md").write_text("x", encoding="utf-8")
@@ -227,6 +227,164 @@ class PropagarTests(unittest.TestCase):
     def test_usage_errors(self):
         self.assertEqual(run().returncode, 2)
         self.assertEqual(run("/nao/existe/hub").returncode, 2)
+
+
+def make_fichas(root: Path, *projects: Path, mothers: tuple = ()) -> Path:
+    fichas = root / "fichas"
+    fichas.mkdir()
+    for p in projects:
+        (fichas / f"{p.name}.md").write_text(
+            f"# Ficha de Projeto: {p.name}\n\n> **Repositório / Caminho:** `{p}`\n", encoding="utf-8")
+    if mothers:
+        (fichas / "_pastas-mae.txt").write_text("# mães\n" + "\n".join(str(m) for m in mothers) + "\n", encoding="utf-8")
+    return fichas
+
+
+class CobrirTests(unittest.TestCase):
+    def setup(self, root: Path):
+        hub = make_hub(root, ["a"])
+        reg = make_project(root, hub, name="registrado", seen="agents a; workflows nenhum", installed=TODAY)
+        register(hub, "registrado", reg)
+        new = root / "novo"
+        (new / ".agent").mkdir(parents=True)
+        mae = root / "mae"
+        mae.mkdir()
+        return hub, reg, new, mae
+
+    def test_requires_fichas(self):
+        with tempfile.TemporaryDirectory() as t:
+            hub = make_hub(Path(t), ["a"])
+            self.assertEqual(run(str(hub), "--cobrir").returncode, 2)
+
+    def test_dry_run_changes_nothing_and_mother_is_excluded(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub, reg, new, mae = self.setup(root)
+            fichas = make_fichas(root, new, mae, mothers=(mae,))
+            before = snapshot(root)
+            r = run(str(hub), "--cobrir", "--fichas", str(fichas))
+            self.assertEqual(snapshot(root), before)
+            self.assertIn("criaria link", r.stdout)
+            self.assertNotIn("# mae", r.stdout)
+
+    def test_apply_installs_resolver_only_and_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub, reg, new, mae = self.setup(root)
+            fichas = make_fichas(root, new, mae, mothers=(mae,))
+            run(str(hub), "--cobrir", "--fichas", str(fichas), "--apply")
+            for base in (".agent", ".claude"):
+                self.assertTrue((new / base / "skills" / "sip-x" / "SKILL.md").exists())
+            gi = (new / ".gitignore").read_text(encoding="utf-8")
+            self.assertIn(".agent/skills/sip-x", gi)
+            self.assertIn(".claude/skills/sip-x", gi)
+            man = (new / ".agent" / "SIPS-CONSUMIDOS.md").read_text(encoding="utf-8")
+            self.assertIn("- Agents: nenhum", man)
+            self.assertIn("agents a; workflows nenhum", man)
+            self.assertTrue((hub / "instalacoes" / "novo.md").is_file())
+            self.assertFalse((mae / ".agent").exists())
+            snap = snapshot(root)
+            r2 = run(str(hub), "--cobrir", "--fichas", str(fichas), "--apply")
+            man2 = (new / ".agent" / "SIPS-CONSUMIDOS.md").read_text(encoding="utf-8")
+            self.assertEqual(man2.count("## SIP - X"), 1)
+            self.assertEqual((new / ".gitignore").read_text(encoding="utf-8").count(".agent/skills/sip-x"), 1)
+            self.assertNotIn("criar link", r2.stdout)
+            self.assertEqual(r2.returncode, 0, r2.stdout)
+
+    def test_conflict_with_real_folder_is_not_touched(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub, reg, new, mae = self.setup(root)
+            (new / ".claude" / "skills" / "sip-x").mkdir(parents=True)
+            (new / ".claude" / "skills" / "sip-x" / "SKILL.md").write_text("meu", encoding="utf-8")
+            fichas = make_fichas(root, new)
+            r = run(str(hub), "--cobrir", "--fichas", str(fichas), "--apply")
+            self.assertIn("conflito", r.stdout)
+            self.assertEqual((new / ".claude" / "skills" / "sip-x" / "SKILL.md").read_text(encoding="utf-8"), "meu")
+            self.assertFalse((new / ".agent" / "SIPS-CONSUMIDOS.md").exists())
+
+    def test_old_format_entry_is_migrated(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub = make_hub(root, ["a", "b"])
+            proj = make_project(root, hub, agents="core", seen="agents core; workflows core", installed=TODAY)
+            register(hub, "proj", proj)
+            fichas = make_fichas(root)
+            dry = run(str(hub), "--cobrir", "--fichas", str(fichas))
+            self.assertIn("migraria registro antigo", dry.stdout)
+            self.assertIn("agents core", (proj / ".agent" / "SIPS-CONSUMIDOS.md").read_text(encoding="utf-8"))
+            run(str(hub), "--cobrir", "--fichas", str(fichas), "--apply")
+            man = (proj / ".agent" / "SIPS-CONSUMIDOS.md").read_text(encoding="utf-8")
+            self.assertIn("- Agents: nenhum", man)
+            self.assertIn("- Vistos no hub: agents a, b; workflows nenhum", man)
+            self.assertEqual(list((proj / "inbox").glob("*.md")), [])
+
+    def test_old_registry_format_and_missing_update_line(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub = make_hub(root, ["a"])
+            good = make_project(root, hub, name="good", installed=TODAY)
+            register(hub, "good", good)
+            old = make_project(root, hub, name="velho", installed=TODAY)
+            m = old / ".agent" / "SIPS-CONSUMIDOS.md"
+            m.write_text("\n".join(l for l in m.read_text(encoding="utf-8").splitlines() if "Para atualizar" not in l) + "\n", encoding="utf-8")
+            (hub / "instalacoes" / "velho.md").write_text(f"# Instalação: velho\n\n- Projeto: {old}\n- Hub: {hub}\n", encoding="utf-8")
+            fichas = make_fichas(root)
+            r = run(str(hub), "--cobrir", "--fichas", str(fichas), "--apply")
+            self.assertIn("# velho", r.stdout)
+            self.assertIn("- Para atualizar: cole de novo", m.read_text(encoding="utf-8"))
+
+    def test_scan_adds_unregistered_consumer_and_registers_it(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub = make_hub(root, ["a"])
+            reg = make_project(root, hub, name="registrado", installed=TODAY)
+            register(hub, "registrado", reg)
+            esquecido = make_project(root, hub, name="esquecido", installed=TODAY)
+            fichas = make_fichas(root)
+            r = run(str(hub), "--cobrir", "--fichas", str(fichas), "--scan", str(root), "--apply")
+            self.assertIn("# esquecido", r.stdout)
+            self.assertTrue((hub / "instalacoes" / "esquecido.md").is_file())
+            self.assertIn(str(esquecido), (hub / "instalacoes" / "esquecido.md").read_text(encoding="utf-8"))
+
+    def test_ficha_path_with_trailing_text_and_raiz(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub, reg, new, mae = self.setup(root)
+            fichas = root / "fichas"
+            fichas.mkdir()
+            (fichas / "novo.md").write_text(f"> **Repositório / Caminho:** `{new}` · [GitHub](https://x/y) (remoto)\n", encoding="utf-8")
+            (fichas / "mae.md").write_text(f"> **Repositório / Caminho Raiz:** `{mae}`  \n", encoding="utf-8")
+            (fichas / "_pastas-mae.txt").write_text(f"{mae}\n", encoding="utf-8")
+            r = run(str(hub), "--cobrir", "--fichas", str(fichas))
+            self.assertIn("# novo", r.stdout)
+            self.assertNotIn("# mae", r.stdout)
+
+
+class TodosTests(unittest.TestCase):
+    def test_runs_each_hub_in_the_table_and_summarises(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub1 = make_hub(root / "a", ["a"])
+            p1 = make_project(root / "a", hub1, installed=TODAY)
+            register(hub1, "proj", p1)
+            hub2 = make_hub(root / "b", ["a"])
+            p2 = make_project(root / "b", hub2, installed=TODAY)
+            register(hub2, "proj", p2)
+            kit = root / "kit"
+            (kit / "projetos").mkdir(parents=True)
+            sips = kit / "projetos" / "_sips.md"
+            sips.write_text(
+                "| Domínio | Nome | Hub | Skill |\n| :-- | :-- | :-- | :-- |\n"
+                f"| `x` | SIP - X | `{hub1}` | `sip-x` |\n| `y` | SIP - Y | `{hub2}` | `sip-x` |\n", encoding="utf-8")
+            r = run("--todos", "--sips", str(sips), "--kit", str(kit))
+            self.assertIn("== Todos os hubs ==", r.stdout)
+            self.assertEqual(r.stdout.count("Resumo:"), 4)  # 2 hubs, each printed in its own run and in the table
+            self.assertIn("[ok] hub:", r.stdout)
+
+    def test_missing_table_is_usage_error(self):
+        with tempfile.TemporaryDirectory() as t:
+            self.assertEqual(run("--todos", "--sips", str(Path(t) / "nao.md")).returncode, 2)
 
 
 if __name__ == "__main__":

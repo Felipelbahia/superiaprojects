@@ -130,7 +130,7 @@ def check_entry(project: Path, e: dict) -> dict:
         now = hub_items(hub, kind)
         if seen or "Vistos no hub" in e:
             new = sorted(now - set(seen))
-            gone = sorted(set(seen) - now)
+            gone = sorted((set(seen) - now) & set(chosen[kind]))  # leaving the hub only matters if the project chose it
             if new:
                 reasons.append(f"{len(new)} {kind} novos no hub: " + ", ".join(new[:8]) + ("…" if len(new) > 8 else ""))
             if gone:

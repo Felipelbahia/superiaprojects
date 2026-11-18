@@ -28,3 +28,11 @@ Diz se cada SIP instalado no projeto está defasado em relação ao hub e, onde 
 6. Se o projeto é um hub de SIP (tem `.agent/skills/sip-*` próprio): confira a data "Última atualização do hub" do resolver e rode `build_sip_index.py --check`.
 
 Termine apresentando: o que estava defasado, o que foi atualizado (com a verificação), o que ficou de fora por escolha do dono e o que ficou "não verificado".
+
+## Dono do hub: propagar para os consumidores
+Quando o dono pedir "propaga", "atualiza todos os consumidores" ou "atualiza todos os SIPs", não use os passos acima (eles são de um projeto consumidor). Rode, a partir do 0 Padrões, a simulação e mostre a tabela antes de aplicar:
+```
+python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/propagar_sip.py" --todos              # os 8 hubs de projetos/_sips.md
+python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/propagar_sip.py" "<caminho do hub>"   # só um hub
+```
+Depois do ok do dono, repita com `--apply` e cole a tabela final. Agents/workflows novos viram nota na `inbox/` do projeto (nunca são instalados sozinhos). Detalhes: `projetos/_sips.md`, seção "Propagar uma atualização do hub".

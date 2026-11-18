@@ -65,6 +65,17 @@ class SipsStatusTests(unittest.TestCase):
             r = run(make_project(root, hub, "2026-11-12", "agents a, velho; workflows nenhum"))
             self.assertEqual(r.returncode, 1)
             self.assertIn("1 agents novos no hub: novo", r.stdout)
+            self.assertNotIn("saíram do hub", r.stdout)  # not chosen by the project: no noise
+
+    def test_chosen_agent_that_left_hub_is_flagged(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            hub = make_hub(root, "2026-11-12", ["a"])
+            proj = make_project(root, hub, "2026-11-12", "agents a, velho; workflows nenhum")
+            m = proj / ".agent" / "SIPS-CONSUMIDOS.md"
+            m.write_text(m.read_text(encoding="utf-8").replace("- Agents: nenhum", "- Agents: velho"), encoding="utf-8")
+            r = run(proj)
+            self.assertEqual(r.returncode, 1)
             self.assertIn("1 agents saíram do hub: velho", r.stdout)
 
     def test_missing_link(self):
