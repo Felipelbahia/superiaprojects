@@ -219,7 +219,7 @@ class RelocatedKit(unittest.TestCase):
         cls.kit = cls.base / "Meu Super Projeto de IA"
         ignore = shutil.ignore_patterns(".git", "__pycache__", "plans", "catalog.html", "catalog-data.js", "CATALOG.md", "projetos", "inbox", "instalacoes")
         cls.kit.mkdir()
-        for item in (".agent", "prompts-template"):
+        for item in (".agent", "prompts-template", "prompts"):  # prompts/ holds the sip-geral resolver
             shutil.copytree(KIT / item, cls.kit / item, ignore=ignore, symlinks=True)
         for name in ("CLAUDE.example.md", "install.py"):
             shutil.copyfile(KIT / name, cls.kit / name)
@@ -248,7 +248,7 @@ class RelocatedKit(unittest.TestCase):
         self.assertNotIn("<SUPER_IA_PROJECTS_PATH>", text)
 
     def test_versioned_docs_point_to_the_new_location(self):
-        text = (self.kit / ".agent/skills/sip-geral/SKILL.md").read_text(encoding="utf-8")
+        text = (self.kit / "prompts/resolver/sip-geral/SKILL.md").read_text(encoding="utf-8")
         self.assertNotIn(localize_paths.OWNER_PATH, text)
         self.assertIn(self.kit.resolve().as_posix() + "/.agent/skills/", text)
 

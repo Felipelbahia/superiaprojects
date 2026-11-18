@@ -82,7 +82,7 @@ def desired_links(project: Path, hub: Path, e: dict) -> tuple[list[tuple[Path, s
     single = ss.is_single_link(project, resolver)
     out: list[tuple[Path, str]] = []
     removed: list[str] = []
-    skill_target = str(hub / ".agent" / "skills" / resolver)
+    skill_target = str(linkutil.resolver_dir(hub, resolver))
     if single:
         out.append((project / ".claude" / "skills" / resolver, skill_target))
     else:
@@ -111,7 +111,7 @@ def plan_links(links: list[tuple[Path, str]], hub: Path) -> tuple[list[tuple[Pat
         if not os.path.lexists(link):
             fixes.append((link, target))
         elif link.is_symlink():
-            if ss.link_problem(link, hub):
+            if ss.link_problem(link, hub, (link.parent / target).resolve()):
                 fixes.append((link, target))
         elif (state := linkutil.managed_state(link, (link.parent / target).resolve())) is not None:
             if state == "stale":
@@ -196,7 +196,7 @@ def write_note(project: Path, hub: Path, e: dict, new: dict, gone: dict, today: 
         f"## Como (o que fazer quando for pedido)\nMostrar nome e \"use quando\" de cada item novo (tabelas do resolver `{resolver}`) e "
         f"perguntar quais instalar. Depois seguir o prompt da linha \"Para atualizar\" do `.agent/SIPS-CONSUMIDOS.md` "
         f"(registra em \"Vistos no hub\"). Itens que saíram: remover só o symlink, com o ok do dono.\n\n"
-        f"## Onde\n`{hub}/.agent/skills/{resolver}/SKILL.md` e `.agent/SIPS-CONSUMIDOS.md` deste projeto.\n\n"
+        f"## Onde\n`{linkutil.resolver_dir(hub, resolver)}/SKILL.md` e `.agent/SIPS-CONSUMIDOS.md` deste projeto.\n\n"
         f"## Por quê\nO hub mudou; sem decisão, os itens novos ficam de fora (padrão do prompt de instalação).\n\n"
         f"## Para quê\n`sips_status.py` sai sem \"novos no hub\" para este SIP.\n\n"
         f"## Quem\nDono do projeto decide; o Claude da sessão aplica.\n\n"
@@ -500,7 +500,8 @@ def main(argv: list[str]) -> int:
         print("--cobrir precisa de --fichas PASTA (as fichas dos projetos)", file=sys.stderr)
         return 2
     args = [a for a in args if a not in ("--apply", "--cobrir")]
-    hub = Path(args[0]).expanduser() if args else Path("")
+    # absolute on purpose: the hub path is written into every project link, a relative one would break them
+    hub = Path(os.path.abspath(Path(args[0]).expanduser())) if args else Path("")
     if not args or not hub.is_dir():
         print(f"hub não existe: {hub}", file=sys.stderr)
         return 2

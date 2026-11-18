@@ -36,7 +36,7 @@ caminho absoluto do hub; link relativo de .claude/ ou .cursor/ aponta para o lin
 1. Skill resolver (obrigatório):
    - Crie a pasta .agent/skills/ se ela não existir.
    - Crie (ou recrie) o symlink absoluto com `ln -sfn`:
-     .agent/skills/sip-geral -> "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/sip-geral"
+     .agent/skills/sip-geral -> "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/resolver/sip-geral"
    - Crie a pasta .claude/skills/ se ela não existir.
    - Crie o symlink relativo com `ln -sfn` (pro symlink acima, não direto pro hub):
      .claude/skills/sip-geral -> ../../.agent/skills/sip-geral
@@ -47,8 +47,10 @@ caminho absoluto do hub; link relativo de .claude/ ou .cursor/ aponta para o lin
    no .gitignore. Skills especialistas não são mais instaladas.
 
 3. Escolha de agents e workflows:
-   - Leia as tabelas "Agents do hub" e "Workflows do hub" em
-     "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/sip-geral/SKILL.md" (nome + "use quando").
+   - Leia as seções "Agents" e "Workflows" de cada arquivo de
+     "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/resolver/sip-geral/verticais/" (nome + "use quando").
+     Instalações antigas apontavam para ".agent/skills/sip-geral" do hub: esse
+     caminho não existe mais, o link acima o substitui (recrie-o com `ln -sfn`).
    - Leia a entrada deste hub em .agent/SIPS-CONSUMIDOS.md, se existir:
      "Agents"/"Workflows" (escolhidos) e "Vistos no hub" (oferecidos antes).
    - Primeira instalação (sem entrada): mostre as duas tabelas e pergunte

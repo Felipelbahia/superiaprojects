@@ -19,6 +19,16 @@ from pathlib import Path
 MANIFEST = ".antigravity-kit-copies.json"
 
 
+def resolver_dir(hub: Path, name: str) -> Path:
+    """Folder of a SIP resolver inside its hub.
+
+    New layout: `<hub>/prompts/resolver/<name>` (versioned, outside the hub's own skills).
+    Legacy layout: `<hub>/.agent/skills/<name>`. The new one wins when it exists; hubs not migrated yet keep working.
+    """
+    new = Path(hub) / "prompts" / "resolver" / name
+    return new if new.is_dir() else Path(hub) / ".agent" / "skills" / name
+
+
 def _digest(path: Path) -> str:
     h = hashlib.sha256()
     if path.is_dir():

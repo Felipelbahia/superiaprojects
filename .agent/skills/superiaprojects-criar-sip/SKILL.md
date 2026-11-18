@@ -28,8 +28,15 @@ ainda não existir, e `writing-skills` para criar as skills de domínio.
   kebab-case, minúsculo, sem espaços (ex: `sip-n8n`, `sip-marketing`). Não repita
   o erro de nomear com espaços (`SIP - N8N` como nome de skill já foi tentado e
   revertido neste próprio processo por causar fricção em invocação/scripts).
-- Caminho do resolver dentro do hub: `<hub>/.agent/skills/sip-<dominio>/SKILL.md`,
-  symlink em `<hub>/.claude/skills/sip-<dominio>`.
+- Caminho do resolver dentro do hub: `<hub>/prompts/resolver/sip-<dominio>/SKILL.md`
+  (pasta real e versionada, ao lado do prompt de instalação). **Nunca** em
+  `<hub>/.agent/skills/` nem em `<hub>/.claude/skills/`: o resolver aponta para o
+  próprio hub, então dentro dele seria só ruído (conta como skill do hub e pode
+  disparar onde não serve). Ao lado dele: `verticais.json` (a que vertical cada
+  item pertence) e `verticais/<vertical>.md` (gerados, ver Passo 3).
+  Hubs antigos ainda têm o resolver em `<hub>/.agent/skills/sip-<dominio>`; os
+  scripts do kit leem os dois layouts (o novo vence), então um SIP novo já nasce
+  no layout novo e os antigos migram quando o dono quiser.
 - Prompt de instalação: `<hub>/prompts/instalar-skill-sip-<dominio>.md`.
 - Inbox de contribuição: `<hub>/inbox/README.md` (formato) + um arquivo por
   contribuição, `<hub>/inbox/NNN-<assunto>.md`, no padrão de inbox do kit;
@@ -68,8 +75,8 @@ num repositório, às vezes um que não é o diretório de trabalho atual:
 
 ```text
 Vou criar em <hub>:
-1. .agent/skills/sip-<dominio>/SKILL.md (com as tabelas de skills, agents e workflows geradas)
-2. .claude/skills/sip-<dominio> (symlink)
+1. prompts/resolver/sip-<dominio>/SKILL.md (resolver enxuto, com o índice de verticais gerado)
+2. prompts/resolver/sip-<dominio>/verticais.json e verticais/*.md (gerados)
 3. prompts/instalar-skill-sip-<dominio>.md
 4. inbox/README.md
 5. instalacoes/README.md
@@ -93,15 +100,22 @@ pode ter 3 tipos de recurso: skills (`.agent/skills/`), agents
 | Recurso | No resolver `sip-<dominio>` | No projeto consumidor |
 | --- | --- | --- |
 | Resolver | — | **sempre** instalado (symlink duplo) |
-| Skills especialistas | tabela gerada (roteador) | **nunca** symlinkadas: lidas por caminho absoluto |
-| Agents | tabela gerada (roteador) | **só os escolhidos** pelo usuário na instalação (nenhum, todos ou quais) |
-| Workflows | tabela gerada (roteador) | **só os escolhidos** pelo usuário na instalação (nenhum, todos ou quais) |
+| Skills especialistas | arquivo da vertical (gerado) | **nunca** symlinkadas: lidas por caminho absoluto |
+| Agents | arquivo da vertical (gerado) | **só os escolhidos** pelo usuário na instalação (nenhum, todos ou quais) |
+| Workflows | arquivo da vertical (gerado) | **só os escolhidos** pelo usuário na instalação (nenhum, todos ou quais) |
 
-As três tabelas são geradas do frontmatter (`description`) pelo script do kit
+**Dois níveis, para o resolver não crescer com o hub:** o `SKILL.md` do resolver
+fica pequeno (passos, modos e uma tabela de verticais, ~100 linhas) e a IA só
+abre o arquivo da vertical que a tarefa pede. O consumidor carrega o resolver
+inteiro em toda tarefa; uma lista única com uma linha por skill, agent e
+workflow pesa mais que a maioria das skills que ela aponta.
+
+O índice e os arquivos de vertical são gerados do frontmatter (`description`)
+pelo script do kit
 `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/build_sip_index.py"`
 (ver Passo 3). Um agent ou workflow não instalado continua usável: a IA o acha
-na tabela e lê o `.md` no hub por caminho absoluto. Instalar só serve para
-quem quer o agent/`/comando` nativo na lista do projeto.
+no arquivo da vertical e lê o `.md` no hub por caminho absoluto. Instalar só
+serve para quem quer o agent/`/comando` nativo na lista do projeto.
 
 ## Passo 2 — templates (substituir os placeholders)
 
@@ -112,7 +126,7 @@ domínio dentro do hub, se já existir (ex: `n8n-router`; opcional — as tabela
 geradas do resolver já são o roteador; se o hub não tem roteador mestre, tire
 do modo consulta a frase que o cita).
 
-### `.agent/skills/{{SKILL}}/SKILL.md`
+### `prompts/resolver/{{SKILL}}/SKILL.md`
 
 ```markdown
 ---
@@ -145,14 +159,17 @@ aspas: `"{{HUB_PATH}}"`.
 
 ## Modo consulta (padrão — prefira este)
 
-1. Ache a linha que bate com o pedido nas tabelas abaixo (Skills, Agents,
-   Workflows): elas são o roteador do hub. Se o hub tiver um roteador mestre
-   para casos ambíguos, leia-o:
+1. Ache a vertical na tabela do índice abaixo pela coluna "Use quando". Se o hub
+   tiver um roteador mestre para casos ambíguos, leia-o:
    `"{{HUB_PATH}}/.agent/skills/{{ROUTER}}/SKILL.md"`
-2. Leia só o arquivo do item escolhido, por caminho absoluto no hub
+2. Leia só o arquivo da vertical:
+   `"{{HUB_PATH}}/prompts/resolver/{{SKILL}}/verticais/<vertical>.md"`. Ali estão as
+   skills, agents e workflows daquela área, cada um com o seu "Use quando". Sem
+   certeza da vertical: `grep -ril "<palavra>" "{{HUB_PATH}}/prompts/resolver/{{SKILL}}/verticais/"`.
+3. Leia só o arquivo do item escolhido, por caminho absoluto no hub
    (`"{{HUB_PATH}}/.agent/skills/<nome>/SKILL.md"`). Nunca symlinke nem copie
    skills especialistas do hub para o projeto.
-3. Aplique o conteúdo inline. Avise o usuário em uma linha que a resposta veio
+4. Aplique o conteúdo inline. Avise o usuário em uma linha que a resposta veio
    do hub `{{HUB_NOME}}`, não de conhecimento genérico.
 
 ## Modo dispatch (só para construções grandes)
@@ -161,39 +178,24 @@ Não existe invocação nativa de agente cross-projeto no Claude Code. "Disparar
 o agente do hub é montar um subagente genérico (`Agent`,
 `subagent_type: "general-purpose"`) com a persona do hub colada no prompt:
 
-1. Leia a persona do agente especialista do hub (se existir, em
-   `.agent/agents/`).
+1. Leia a persona do agente especialista (seção Agents do arquivo da vertical,
+   `"{{HUB_PATH}}/.agent/agents/<nome>.md"`) inteira (name + description + corpo).
 2. Leia a(s) skill(s) relevante(s) do hub.
 3. Chame `Agent` com o conteúdo colado + a tarefa concreta.
 4. Valide o resultado contra a skill de validação do hub (se existir) antes de
    aplicar.
 
-## Skills do hub
+## Índice de verticais
 
-Arquivo: `"{{HUB_PATH}}/.agent/skills/<nome>/SKILL.md"`.
+Um arquivo por vertical em `"{{HUB_PATH}}/prompts/resolver/{{SKILL}}/verticais/"`,
+com as skills (`.agent/skills/<nome>/SKILL.md`), agents (`.agent/agents/<nome>.md`)
+e workflows (`.agent/workflows/<nome>.md`) da área. Um workflow é um
+procedimento `/nome`: se o pedido bate com ele, leia o `.md` e siga; não invente
+um `/comando` que não está no arquivo da vertical. Se este projeto escolheu
+instalar um agent ou workflow, ele também aparece nativo.
 
-<!-- skills:start (gerado por build_sip_index.py — não edite à mão) -->
-<!-- skills:end -->
-
-## Agents do hub
-
-Arquivo: `"{{HUB_PATH}}/.agent/agents/<nome>.md"`. Um agent da tabela é a
-persona preferida pro Modo dispatch acima: leia o `.md` inteiro (name +
-description + corpo) antes de montar o subagente. Se este projeto escolheu
-instalá-lo, ele também está em `.claude/agents/<nome>.md` (mesmo conteúdo).
-
-<!-- agents:start (gerado por build_sip_index.py — não edite à mão) -->
-<!-- agents:end -->
-
-## Workflows do hub
-
-Arquivo: `"{{HUB_PATH}}/.agent/workflows/<nome>.md"`. Um workflow é um
-procedimento `/nome`: se o pedido bate com uma linha da tabela, leia o `.md`
-e siga o procedimento; não invente um `/comando` que não está na tabela. Se
-este projeto escolheu instalá-lo, ele também aparece como `/nome` nativo.
-
-<!-- workflows:start (gerado por build_sip_index.py — não edite à mão) -->
-<!-- workflows:end -->
+<!-- indice:start dir=verticais (gerado por build_sip_index.py — não edite à mão) -->
+<!-- indice:end -->
 
 ## Agent ou workflow não instalado
 
@@ -246,6 +248,25 @@ Se a tarefa não é de {{DOMINIO}}, ou se o projeto atual é o próprio
 `{{HUB_NOME}}`, não force o uso desta skill.
 ```
 
+### `prompts/resolver/{{SKILL}}/verticais.json`
+
+```json
+{
+  "padrao": "outros",
+  "verticais": [
+    {"nome": "<vertical>", "quando": "<uma frase: quando abrir esta vertical>", "match": ["<prefixo>-*"]},
+    {"nome": "outros", "quando": "O que não coube nas outras verticais.", "match": []}
+  ]
+}
+```
+
+Regras: cada item do hub (skill, agent ou workflow) entra na **primeira** vertical
+cujo `match` (padrões `fnmatch` sobre o nome) servir; o que não servir em nenhuma
+vai para a `padrao`. Sem `padrao`, item sem vertical faz o gerador falhar. Hub com
+prefixos regulares (`seo-*`, `copy-*`) usa um padrão por vertical; hub com nomes
+soltos usa listas de padrões por tema e ordena as verticais da mais específica
+para a mais geral. Toda vertical precisa de `quando`.
+
 ### `prompts/instalar-skill-{{SKILL}}.md`
 
 ```markdown
@@ -287,7 +308,7 @@ caminho absoluto do hub; link relativo de .claude/ ou .cursor/ aponta para o lin
 1. Skill resolver (obrigatório):
    - Crie a pasta .agent/skills/ se ela não existir.
    - Crie (ou recrie) o symlink absoluto com `ln -sfn`:
-     .agent/skills/{{SKILL}} -> "{{HUB_PATH}}/.agent/skills/{{SKILL}}"
+     .agent/skills/{{SKILL}} -> "{{HUB_PATH}}/prompts/resolver/{{SKILL}}"
    - Crie a pasta .claude/skills/ se ela não existir.
    - Crie o symlink relativo com `ln -sfn` (pro symlink acima, não direto pro hub):
      .claude/skills/{{SKILL}} -> ../../.agent/skills/{{SKILL}}
@@ -298,8 +319,8 @@ caminho absoluto do hub; link relativo de .claude/ ou .cursor/ aponta para o lin
    no .gitignore. Skills especialistas não são mais instaladas.
 
 3. Escolha de agents e workflows:
-   - Leia as tabelas "Agents do hub" e "Workflows do hub" em
-     "{{HUB_PATH}}/.agent/skills/{{SKILL}}/SKILL.md" (nome + "use quando").
+   - Leia as seções "Agents" e "Workflows" de cada arquivo de
+     "{{HUB_PATH}}/prompts/resolver/{{SKILL}}/verticais/" (nome + "use quando").
    - Leia a entrada deste hub em .agent/SIPS-CONSUMIDOS.md, se existir:
      "Agents"/"Workflows" (escolhidos) e "Vistos no hub" (oferecidos antes).
    - Primeira instalação (sem entrada): mostre as duas tabelas e pergunte
@@ -398,7 +419,7 @@ agents/workflows escolhidos **direto neste projeto** (via `.agent/skills/`,
 `0 Padrões` nem da Regra 4 (Fallback Resolution Protocol) — a 1ª prioridade
 da Regra 4 já é "skills locais do próprio projeto", que é exatamente o que
 os passos 1 e 4 criaram aqui. O que não foi escolhido elas acham pelas
-tabelas do resolver e leem por caminho absoluto no hub. O stub global do `0 Padrões` continua existindo como rede de
+verticais do resolver e leem por caminho absoluto no hub. O stub global do `0 Padrões` continua existindo como rede de
 segurança pra projetos que *não* instalaram (2ª prioridade da Regra 4), mas
 quem instalou via este prompt não depende dele.
 
@@ -526,8 +547,9 @@ aqui. Se um projeto parar de usar o hub, apague o arquivo dele.
 
 ## Passo 3 — executar
 
-1. Crie os 4 arquivos dos templates acima com os placeholders substituídos
-   (resolver, prompt, `inbox/README.md`, `instalacoes/README.md`).
+1. Crie os 5 arquivos dos templates acima com os placeholders substituídos
+   (resolver, `verticais.json`, prompt, `inbox/README.md`, `instalacoes/README.md`).
+   O resolver vai em `prompts/resolver/{{SKILL}}/` (crie a pasta), nunca em `.agent/skills/`.
 1b. **Adicione ao `.gitignore` do próprio hub** (não ao do `0 Padrões` — são
    repositórios diferentes) o bloco de "Convenção de nomes": `inbox/*`,
    `!inbox/README.md`, `instalacoes/*`, `!instalacoes/README.md`, com o
@@ -535,26 +557,29 @@ aqui. Se um projeto parar de usar o hub, apague o arquivo dele.
    Confira com `git check-ignore -v inbox/001-teste.md instalacoes/x.md` (ignorados)
    e `git check-ignore inbox/README.md instalacoes/README.md` (sem saída = versionados).
 1c. Na seção "Atualização" do resolver, troque `AAAA-MM-DD` pela data de hoje.
-1c2. Gere as tabelas de skills, agents e workflows do resolver:
+1c2. Preencha `verticais.json` (um `nome`, um `quando` e os padrões `match` por
+   vertical; veja o template acima) e gere o índice e os arquivos de vertical:
    `python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/build_sip_index.py" --hub "<hub>"`
-   (reescreve só o texto entre `<!-- <tipo>:start … -->` e `<!-- <tipo>:end -->`;
-   `--check` sai 1 se alguma tabela estiver desatualizada; ver `--help`). Hub
-   grande: acrescente `group=prefix` na linha `<!-- skills:start … -->` para
-   agrupar por prefixo do nome. Rode de novo sempre que o hub ganhar, perder
-   ou mudar a `description` de uma skill, agent ou workflow, e ponha o
-   `--check` no lint ou hook do hub. Hub que precisa de regra própria pode
-   copiar o script como base, mantendo os marcadores e os códigos de saída.
+   (reescreve o texto entre `<!-- indice:start … -->` e `<!-- indice:end -->` e
+   grava `verticais/<vertical>.md`; `--check` sai 1 se algo estiver desatualizado
+   e 2 se um item ficar sem vertical ou uma vertical sem `quando`; ver `--help`).
+   Rode de novo sempre que o hub ganhar, perder ou mudar a `description` de uma
+   skill, agent ou workflow, e ponha o `--check` no lint ou hook do hub. O
+   resolver antigo, com três tabelas (`<!-- skills:start … -->`, `agents`,
+   `workflows`, opção `group=prefix`), continua aceito pelo gerador, mas não é
+   o modelo para hub novo. Mantenha o `SKILL.md` do resolver em ~100 linhas;
+   se passar disso, algo que é lista foi parar fora do índice.
 1d. Confira o hub contra este modelo:
    `python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/check_sip_hub.py" "<hub>" sip-<dominio>`
    tem de sair com 0 (todas as checagens PASS). Rode de novo sempre que mudar o resolver, o
    prompt, o inbox ou o `.gitignore` de um hub. Hub com lint próprio de caminhos
    (ex.: `Base Sites - Astro`): rode também o lint dele; caminho citado em skill
    precisa ser absoluto e existir, então não cite `inbox/arquivo/` (pasta ignorada).
-2. Crie o symlink (`ln -s "<hub>/.agent/skills/{{SKILL}}" "<hub>/.claude/skills/{{SKILL}}"`)
-   ou, se o hub já usa `sync_entrypoints.py` (convenção Antigravity Kit), rode-o
-   de dentro do hub em vez de criar o symlink manualmente. Isto é a skill
-   resolver **dentro do próprio hub** — não confundir com o Passo 5 abaixo,
-   que é o stub em `0 Padrões` pra descoberta cross-project.
+2. **Não** crie symlink do resolver dentro do hub (`.claude/skills/{{SKILL}}`
+   ou `.agent/skills/{{SKILL}}`): o resolver só serve a quem está fora. Se o hub
+   usa `sync_entrypoints.py` (convenção Antigravity Kit), rode-o de dentro do hub
+   e confira que ele não acusa o resolver como skill. Não confundir com o Passo 5
+   abaixo, que é o stub em `0 Padrões` pra descoberta cross-project.
 3. Se o hub tiver uma ficha em `0 Padrões/projetos/<Nome>.md`, adicione: a linha
    da skill na tabela de skills, uma seção "Acesso Cross-Project" apontando pro
    prompt e pro inbox, e uma linha no histórico de decisões.
@@ -568,7 +593,7 @@ aqui. Se um projeto parar de usar o hub, apague o arquivo dele.
 ## Passo 4 — o resolver completo fica só no hub
 
 **Nunca** crie a skill resolver **completa** dentro de `0 Padrões` — ela é
-sempre co-localizada no próprio hub (`<hub>/.agent/skills/sip-<dominio>/`).
+sempre co-localizada no próprio hub (`<hub>/prompts/resolver/sip-<dominio>/`).
 Um resolver guardado fora do hub diverge do roteador de domínio com o
 tempo, porque ninguém o atualiza junto. `generate_catalog.py` do
 `0 Padrões` só precisa ser rodado se esta própria skill meta
@@ -586,13 +611,14 @@ symlink `.claude/skills/sip-<dominio>` no 0 Padrões):**
   sub-skills do Firecrawl (consolidado em 2026-11-06 de 17 stubs
   individuais pra 1 só por hub).
 - **O stub só aponta, não lista**: caminho absoluto do resolver do hub
-  (onde estão as tabelas de skills, agents e workflows), do roteador
+  (`<hub>/prompts/resolver/sip-<dominio>/SKILL.md`, onde estão o índice e os arquivos
+  de vertical com skills, agents e workflows), do roteador
   mestre (se houver) e do prompt de instalação. Não copie nomes de skills,
   agents ou workflows no stub (não crie arquivos em
   `0 Padrões/.agent/agents/` ou `.agent/workflows/` pra isso): a lista
-  copiada envelhece; as tabelas do resolver são geradas e conferidas por
-  `--check`. Diga no stub, em uma linha, que agents e workflows do hub
-  estão nas tabelas do resolver e podem ser lidos por caminho absoluto
+  copiada envelhece; o índice e as verticais do resolver são gerados e conferidos
+  por `--check`. Diga no stub, em uma linha, que agents e workflows do hub
+  estão nas verticais do resolver e podem ser lidos por caminho absoluto
   (Google Antigravity/Gemini/Cursor chegam neles por esse caminho, já que
   a Regra 4 não os redireciona sozinha para um hub externo).
 - **Seção `## Atualização` no stub (obrigatória):** inclua ao final do stub:
@@ -600,7 +626,7 @@ symlink `.claude/skills/sip-<dominio>` no 0 Padrões):**
   ## Atualização
 
   Data da última atualização e instruções: seção "Atualização" do resolver no hub
-  (`<hub>/.agent/skills/sip-<dominio>/SKILL.md`). Para atualizar a instalação num
+  (`<hub>/prompts/resolver/sip-<dominio>/SKILL.md`). Para atualizar a instalação num
   projeto, cole de novo `<hub>/prompts/instalar-skill-sip-<dominio>.md`.
   ```
   Não copie a data literal para o stub: ela mudaria em dois lugares e divergiria
@@ -618,14 +644,14 @@ symlink `.claude/skills/sip-<dominio>` no 0 Padrões):**
 
 **Instale o SIP aqui no 0 Padrões também (obrigatório, não mais opcional)
 — além do stub do Passo 5:**
-- Crie o symlink `.claude/skills/sip-<dominio>` -> `<hub>/.agent/skills/sip-<dominio>`
+- Crie o symlink `.claude/skills/sip-<dominio>` -> `<hub>/prompts/resolver/sip-<dominio>`
   (absoluto, direto pro hub — **não** o padrão duplo do passo 1 do prompt
   de instalação: o 0 Padrões é exceção a esse padrão, ver `_sips.md`
   seção "Exceção: 0 Padrões não usa o padrão duplo como consumidor" —
   seu `.agent/skills/sip-<dominio>` já é o stub real do Passo 5, não pode
   também ser symlink pro hub).
 - Agents e workflows: mesma escolha do passo 3 do prompt de instalação
-  (mostre as tabelas do resolver e pergunte nenhum / todos / quais; sem
+  (mostre as seções Agents e Workflows das verticais do resolver e pergunte nenhum / todos / quais; sem
   resposta = nenhum; mesmas regras de arquivo real e de remoção). Para cada
   agent escolhido, crie `0 Padrões/.claude/agents/<nome>.md` ->
   `<hub>/.agent/agents/<nome>.md`; para cada workflow escolhido,
@@ -636,7 +662,8 @@ symlink `.claude/skills/sip-<dominio>` no 0 Padrões):**
   agents/workflows, ex. `.claude/agents/<nome>.md`, se algum).
 - Rode `python3 .agent/scripts/sync_entrypoints.py --check` na raiz do
   0 Padrões: tem de sair com 0 (o validador aceita o link direto para
-  `<hub>/.agent/skills/sip-<dominio>` de mesmo nome; o hook de commit do
+  `<hub>/prompts/resolver/sip-<dominio>` de mesmo nome, ou `<hub>/.agent/skills/sip-<dominio>`
+  em hub com layout antigo; o hook de commit do
   0 Padrões recusa commits enquanto houver erro).
 - Registre esta instalação em `<hub>/instalacoes/0-padroes.md` (mesmo
   formato do passo 9 do prompt de instalação — nome "0 Padrões", caminho

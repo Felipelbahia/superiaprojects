@@ -39,12 +39,10 @@ plans/
 # SIPs instalados aqui como consumidor (symlink -> path absoluto de outro hub,
 # nao portavel entre maquinas/clones). Fonte de verdade fica no hub, nao aqui.
 .claude/skills/sip-*
-# sip-geral é nativo deste próprio hub (symlink relativo versionado)
-!.claude/skills/sip-geral
 # SIPs de dominio consumidos pelo dono (ponteiros para hubs na maquina dele) e o manifesto deles:
-# cada usuario instala os seus pelo prompt de instalacao de cada SIP. sip-geral e nativo do kit e fica versionado.
+# cada usuario instala os seus pelo prompt de instalacao de cada SIP.
+# O resolver do proprio kit (sip-geral) nao mora aqui: fica versionado em prompts/resolver/sip-geral/.
 .agent/skills/sip-*/
-!.agent/skills/sip-geral/
 .agent/SIPS-CONSUMIDOS.md
 # Local onde o kit foi instalado (escrito por localize_paths.py)
 .agent/.kit-path

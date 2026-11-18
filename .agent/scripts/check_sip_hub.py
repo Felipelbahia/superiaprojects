@@ -16,6 +16,13 @@ from pathlib import Path
 PROBE = "zzz-check-sip-hub-probe.md"
 INDEXER = Path(__file__).resolve().parent / "build_sip_index.py"
 KINDS = ("skills", "agents", "workflows")
+MAX_RESOLVER_LINES = 120  # two-level resolver: steps, modes and the vertical table; the lists live in verticais/
+
+
+def resolver_dir(hub: Path, skill: str) -> Path:
+    """`<hub>/prompts/resolver/<skill>` (new layout) when it exists, else `<hub>/.agent/skills/<skill>` (legacy)."""
+    new = hub / "prompts" / "resolver" / skill
+    return new if new.is_dir() else hub / ".agent" / "skills" / skill
 
 
 def ignored(hub: Path, rel: str) -> bool:
@@ -46,7 +53,7 @@ def nfc(text: str) -> str:
 
 
 def checks(hub: Path, skill: str) -> list[tuple[str, bool, str]]:
-    resolver = hub / ".agent" / "skills" / skill / "SKILL.md"
+    resolver = resolver_dir(hub, skill) / "SKILL.md"
     prompt = hub / "prompts" / f"instalar-skill-{skill}.md"
     inbox = hub / "inbox" / "README.md"
     r = resolver.read_text(encoding="utf-8") if resolver.is_file() else ""
@@ -54,11 +61,18 @@ def checks(hub: Path, skill: str) -> list[tuple[str, bool, str]]:
     i = inbox.read_text(encoding="utf-8") if inbox.is_file() else ""
     sections = ["## O quê", "## Como", "## Onde", "## Por quê", "## Para quê", "## Quem",
                 "## Efeitos e impactos", "## Exemplos", "## Gatilho para sair da inbox", "## Enquanto isso"]
-    missing_regions = [k for k in KINDS if f"<!-- {k}:start" not in r or f"<!-- {k}:end -->" not in r]
+    two_level = "<!-- indice:start" in r and "<!-- indice:end -->" in r  # small resolver + one file per vertical
+    missing_regions = [] if two_level else [k for k in KINDS if f"<!-- {k}:start" not in r or f"<!-- {k}:end -->" not in r]
     fresh, fresh_detail = tables_fresh(hub, skill) if resolver.is_file() else (False, "")
+    new_layout = (hub / "prompts" / "resolver" / skill).is_dir()
+    leftovers = [str(x.relative_to(hub)) for x in (hub / ".agent" / "skills" / skill, hub / ".claude" / "skills" / skill)
+                 if os.path.lexists(x)] if new_layout else []
+    size = len(r.splitlines())
     result = [
         ("resolver exists", resolver.is_file(), str(resolver)),
-        ("resolver: regions for skills, agents and workflows", not missing_regions, ", ".join(missing_regions)),
+        ("resolver (new layout): no copy or link left in the hub's own .agent/skills or .claude/skills", not leftovers, ", ".join(leftovers)),
+        (f"resolver (new layout): small enough, at most {MAX_RESOLVER_LINES} lines", not new_layout or size <= MAX_RESOLVER_LINES, f"{size} lines"),
+        ("resolver: regions for skills, agents and workflows (or the `indice` region)", not missing_regions, ", ".join(missing_regions)),
         ("resolver: tables up to date (build_sip_index.py --check)", fresh, fresh_detail),
         ("prompt exists", prompt.is_file(), str(prompt)),
         ("resolver: section '## Atualização'", "## Atualização" in r, ""),

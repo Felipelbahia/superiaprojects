@@ -25,7 +25,7 @@ Diz se cada SIP instalado no projeto está defasado em relação ao hub e, onde 
 3. **Pergunte**, SIP por SIP, se atualiza (sugeridos / nenhum / lista). Sem resposta = nenhum. Tudo em dia: pare e diga isso.
 4. **Atualize** cada SIP aprovado seguindo por inteiro o prompt da linha "Para atualizar" do manifesto. Ele refaz os links, mantém a escolha anterior de agents e workflows e pergunta só os itens novos ("Vistos no hub"). Para cada item novo, mostre nome e "use quando"; sem resposta = não instalar. Itens que saíram do hub: mostre os links quebrados e remova só com o "ok".
 5. **Verifique**: rode o status de novo e cole a saída. Todo SIP aprovado deve estar "em dia", com a data de hoje no manifesto. O que continuar "atualizar" vira item na `inbox/` do projeto, com o motivo.
-6. Se o projeto é um hub de SIP (tem `.agent/skills/sip-*` próprio): confira a data "Última atualização do hub" do resolver e rode `build_sip_index.py --check`.
+6. Se o projeto é um hub de SIP (tem `prompts/resolver/sip-*` próprio, ou `.agent/skills/sip-*` em hub de layout antigo): confira a data "Última atualização do hub" do resolver e rode `build_sip_index.py --check`.
 
 Termine apresentando: o que estava defasado, o que foi atualizado (com a verificação), o que ficou de fora por escolha do dono e o que ficou "não verificado".
 

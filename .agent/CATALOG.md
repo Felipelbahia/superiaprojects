@@ -2,8 +2,8 @@
 
 > Índice central de todas as Skills, Workflows e Agentes da Plataforma (0 Padrões + 0 Mkt)
 
-**Total Geral:** `687` recursos | **Skills:** `310` | **Workflows:** `225` | **Agentes:** `152`
-**Fontes Integradas:** `0 Mkt` (247) · `0 Padrões` (440)
+**Total Geral:** `685` recursos | **Skills:** `308` | **Workflows:** `225` | **Agentes:** `152`
+**Fontes Integradas:** `0 Mkt` (246) · `0 Padrões` (439)
 
 ---
 
@@ -44,9 +44,9 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Infraestrutura como Código (Terraform / Cloud)](#infraestrutura-como-código-terraform--cloud) (`3`)
   - [Orquestração Kubernetes & Contêineres](#orquestração-kubernetes--contêineres) (`2`)
   - [Pipelines de CI/CD & Deploy Contínuo](#pipelines-de-cicd--deploy-contínuo) (`55`)
-- [Frontend & UI/UX](#frontend--uiux) (`212` recursos)
+- [Frontend & UI/UX](#frontend--uiux) (`211` recursos)
   - [Acessibilidade Web (A11y & WCAG)](#acessibilidade-web-a11y--wcag) (`4`)
-  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`186`)
+  - [Componentes de Interface & Interação](#componentes-de-interface--interação) (`185`)
   - [Design Systems & Estilização Moderna](#design-systems--estilização-moderna) (`10`)
   - [Frameworks Web Modernos (React & Next.js)](#frameworks-web-modernos-react--nextjs) (`12`)
 - [Gestão de Produtos e Projetos](#gestão-de-produtos-e-projetos) (`16` recursos)
@@ -105,7 +105,7 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Traducao De Legenda](#traducao-de-legenda) (`1`)
   - [Transcricao](#transcricao) (`1`)
   - [Video Para Gif](#video-para-gif) (`1`)
-- [brand (Identidade da Marca)](#brand-identidade-da-marca) (`13` recursos)
+- [brand (Identidade da Marca)](#brand-identidade-da-marca) (`12` recursos)
   - [Audience](#audience) (`1`)
   - [Builder](#builder) (`1`)
   - [Design System](#design-system) (`1`)
@@ -113,7 +113,6 @@ Estes recursos regem os processos de desenvolvimento, resolução de skills e go
   - [Essence](#essence) (`1`)
   - [Guardiao De Voz](#guardiao-de-voz) (`1`)
   - [Identidade Sonora](#identidade-sonora) (`1`)
-  - [Identidade e Marca](#identidade-e-marca) (`1`)
   - [Naming](#naming) (`1`)
   - [Paleta De Cores](#paleta-de-cores) (`1`)
   - [Visual Direction](#visual-direction) (`1`)
@@ -549,7 +548,7 @@ Total de recursos nesta macro-área: `60`
 
 ## <a id="frontend--uiux"></a>Frontend & UI/UX
 
-Total de recursos nesta macro-área: `212`
+Total de recursos nesta macro-área: `211`
 
 ### <a id="acessibilidade-web-a11y--wcag"></a>Acessibilidade Web (A11y & WCAG)
 
@@ -632,7 +631,6 @@ Total de recursos nesta macro-área: `212`
 | <a id="service-mesh-observability"></a>**`service-mesh-observability`** | `Skill` | `0 Padrões` | Implemente observabilidade abrangente para malhas de serviço, incluindo rastreamento distribuído, métricas e visualização. Use ao configurar o monitoramento de malha, depurar problemas de latência ou implementar SLOs para comunicação de serviço. |
 | <a id="similarity-search-patterns"></a>**`similarity-search-patterns`** | `Skill` | `0 Padrões` | Implemente uma pesquisa eficiente de similaridade com bancos de dados vetoriais. Use ao criar pesquisa semântica, implementar consultas de vizinhos mais próximos ou otimizar o desempenho de recuperação. |
 | <a id="sip-astro"></a>**`sip-astro`** | `Skill` | `0 Padrões` | Use sempre que a tarefa atual envolver Astro (construir ou migrar um site, escolher um tema, integrações, SEO/GEO, implantação, formulários, análises, i18n, e-commerce, testes, atualizações, auditoria de pré-lançamento), mas o projeto ativo não possui habilidades Astro locais - ou seja, qualquer projeto diferente do próprio "SIP - Astro". Encaminha a tarefa para o centro central de conhecimento Astro em vez de improvisar a partir do conhecimento geral. Use também quando o usuário perguntar "existe algo de astro pra isso", "tem habilidade de astro no hub" ou nomear explicitamente as habilidades do Astro em um projeto que não seja o hub. |
-| <a id="sip-geral"></a>**`sip-geral`** | `Skill` | `0 Padrões` | Use when the current task involves general software engineering, architecture, backend, frontend, mobile, database, testing, security, DevOps, AI/ML or development workflows (spec, planning, execution-loop, TDD, debugging) in any project other than "SIP - Geral" (0 Padrões) itself, or when the user asks "existe algo no 0 Padrões pra isso", "tem skill/agent/workflow pra isso no hub geral", "consulta o SIP - Geral", or names a 0 Padrões skill, agent or workflow explicitly in a consumer project. |
 | <a id="sip-marketing"></a>**`sip-marketing`** | `Skill` | `0 Padrões` | Use sempre que a tarefa atual envolver marketing, conteúdo, copywriting, branding, mídia social, SEO, anúncios pagos, e-mail, RP, crescimento, capacitação de vendas ou análise de marketing, mas o projeto ativo não tiver habilidades de marketing local - ou seja, qualquer projeto que não seja o próprio "SIP - Marketing" (0 Mkt). Encaminha a tarefa para o centro central de conhecimento de marketing, em vez de improvisar a partir do conhecimento geral. Use também quando o usuário perguntar "existe algo de marketing pra isso", "tem habilidade de marketing no hub", "consulta o SIP - Marketing", ou nomear explicitamente uma habilidade, agente ou fluxo de trabalho 0 Mkt em um projeto que não é o hub. |
 | <a id="startup-financial-modeling"></a>**`startup-financial-modeling`** | `Skill` | `0 Padrões` | Essa habilidade deve ser usada quando o usuário pede para "criar projeções financeiras", "construir um modelo financeiro", "prever receita", "calcular taxa de consumo", "estimar pista", "modelar fluxo de caixa" ou solicitar planejamento financeiro de 3 a 5 anos para uma startup. |
 | <a id="stripe-integration"></a>**`stripe-integration`** | `Skill` | `0 Padrões` | Implemente o processamento de pagamentos Stripe para fluxos de pagamento robustos e compatíveis com PCI, incluindo checkout, assinaturas e webhooks. Use ao integrar pagamentos Stripe, criar sistemas de assinatura ou implementar fluxos de checkout seguros. |
@@ -1199,7 +1197,7 @@ Total de recursos nesta macro-área: `25`
 
 ## <a id="brand-identidade-da-marca"></a>brand (Identidade da Marca)
 
-Total de recursos nesta macro-área: `13`
+Total de recursos nesta macro-área: `12`
 
 ### <a id="audience"></a>Audience
 
@@ -1242,12 +1240,6 @@ Total de recursos nesta macro-área: `13`
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
 | <a id="brand-identidade-sonora"></a>**`brand-identidade-sonora`** | `Skill` | `0 Mkt` | Use para definir a identidade sonora de uma marca: logo sonoro (1 a 3 segundos), estética de voz, moodboard de áudio e diretrizes de trilha, efeitos e silêncio para vídeo, podcast, aplicativo e eventos (etapa 8, uso audiovisual, do brand-builder). Gatilhos: \"logo sonoro\", \"identidade sonora\", \"trilha da marca\", \"sonic branding\". NÃO use para editar, mixar ou masterizar áudio (use audiovisual-podcast-e-audio), para transcrever (use audiovisual-transcricao), para gerar voz sintética ou produzir vídeo (projeto Edição de Vídeo com IA) nem para a identidade visual (use brand-visual-direction e brand-design-system). |
-
-### <a id="identidade-e-marca"></a>Identidade e Marca
-
-| Recurso | Tipo | Origem | Descrição e Aplicação |
-| :--- | :--- | :--- | :--- |
-| <a id="sip-marketing"></a>**`sip-marketing`** | `Skill` | `0 Mkt` | Use sempre que a tarefa atual envolver marketing, conteúdo, copywriting, branding, mídia social, SEO, anúncios pagos, e-mail, RP, crescimento, capacitação de vendas ou análise de marketing, mas o projeto ativo não tiver habilidades de marketing local - ou seja, qualquer projeto que não seja o próprio "SIP - Marketing" (0 Mkt). Encaminha a tarefa para o centro central de conhecimento de marketing, em vez de improvisar a partir do conhecimento geral. Use também quando o usuário perguntar "existe algo de marketing pra isso", "tem habilidade de marketing no hub", "consulta o SIP - Marketing", ou nomear explicitamente uma habilidade, agente ou fluxo de trabalho 0 Mkt em um projeto que não é o hub. |
 
 ### <a id="naming"></a>Naming
 

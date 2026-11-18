@@ -21,6 +21,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import linkutil  # noqa: E402
+
 ENTRY = re.compile(r"^## (.+?) \(`([^`]+)`\)\s*$")
 FIELD = re.compile(r"^- ([^:]+):\s*(.*)$")
 HUB_DATE = re.compile(r"Última atualização do hub:\s*(\d{4}-\d{2}-\d{2})")
@@ -71,13 +74,17 @@ def hub_items(hub: Path, kind: str) -> set[str]:
     return out
 
 
-def link_problem(link: Path, hub: Path) -> str | None:
+def link_problem(link: Path, hub: Path, expected: Path | None = None) -> str | None:
+    """Why `link` is wrong, or None. With `expected` (the resolver folder or the hub item it must reach), a link that
+    lands elsewhere in the hub (e.g. on the hub root) is a problem too."""
     if not os.path.lexists(link):
         return "não existe"
     if not link.exists():
         return "link quebrado"
     if hub.resolve() not in link.resolve().parents and link.resolve() != hub.resolve():
         return "não aponta para o hub"
+    if expected is not None and link.resolve() != Path(expected).resolve():
+        return "aponta para outro lugar do hub (não para o item certo)"
     return None
 
 
@@ -95,7 +102,7 @@ def check_entry(project: Path, e: dict) -> dict:
     if not hub.is_dir():
         reasons.append(f"hub não encontrado: {hub}")
         return out
-    skill = hub / ".agent" / "skills" / resolver / "SKILL.md"
+    skill = linkutil.resolver_dir(hub, resolver) / "SKILL.md"
     hub_date = None
     if skill.is_file():
         m = HUB_DATE.search(skill.read_text(encoding="utf-8", errors="replace"))
@@ -114,14 +121,14 @@ def check_entry(project: Path, e: dict) -> dict:
     # Exception (0 Padrões): `.agent/skills/<resolver>` is a real stub folder, so the only link is `.claude/` straight to the hub.
     single = is_single_link(project, resolver)
     for base in ((".claude",) if single else (".agent", ".claude")):
-        p = link_problem(project / base / "skills" / resolver, hub)
+        p = link_problem(project / base / "skills" / resolver, hub, linkutil.resolver_dir(hub, resolver))
         if p:
             reasons.append(f"{base}/skills/{resolver}: {p}")
     chosen = {"agents": names(e.get("Agents", "")), "workflows": names(e.get("Workflows", ""))}
     for kind, items in chosen.items():
         for n in items:
             where = Path(".claude") / ("agents" if kind == "agents" else "commands") if single else Path(".agent") / kind
-            p = link_problem(project / where / f"{n}.md", hub)
+            p = link_problem(project / where / f"{n}.md", hub, hub / ".agent" / kind / f"{n}.md")
             if p:
                 reasons.append(f"{where}/{n}.md: {p}")
     # news

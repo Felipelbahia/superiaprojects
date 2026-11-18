@@ -19,11 +19,11 @@ sem resposta = pular, registrado em "Conflitos".
 Só remova symlinks (`test -L`) cujo destino, lido com `readlink` sem `-f`, aponte
 para dentro de "<CAMINHO_DO_HUB>".
 1. Resolver, com `ln -sfn` (nunca só `-s`):
-   .agent/skills/sip-exemplo -> "<CAMINHO_DO_HUB>/.agent/skills/sip-exemplo"
+   .agent/skills/sip-exemplo -> "<CAMINHO_DO_HUB>/prompts/resolver/sip-exemplo"
    .claude/skills/sip-exemplo -> ../../.agent/skills/sip-exemplo
 2. Migração: remova symlinks antigos de skills especialistas deste hub.
-3. Escolha: mostre as tabelas "Agents do hub" (exemplo-arquiteto, exemplo-revisor)
-   e "Workflows do hub" (exemplo-publicar) do resolver e pergunte
+3. Escolha: mostre as seções "Agents" (exemplo-arquiteto, exemplo-revisor)
+   e "Workflows" (exemplo-publicar) das verticais do resolver e pergunte
    "nenhum / todos / quais". Sem resposta = nenhum. Reinstalação: mantenha a
    escolha do manifesto e pergunte só os itens fora de "Vistos no hub"
    (sem resposta = os novos ficam de fora).
@@ -56,7 +56,7 @@ para dentro de "<CAMINHO_DO_HUB>".
 
 ## Por que symlink e não cópia
 
-A fonte de verdade fica no hub; a skill fica em `<CAMINHO_DO_HUB>/.agent/skills/sip-exemplo/SKILL.md`.
+A fonte de verdade fica no hub; o resolver fica em `<CAMINHO_DO_HUB>/prompts/resolver/sip-exemplo/SKILL.md`.
 Symlink garante que atualizações futuras nesse arquivo já reflitam em todos os
 projetos que instalaram, sem rodar este prompt de novo — exceto se o symlink
 quebrar (hub movido/renomeado), caso em que basta colar o prompt outra vez.
