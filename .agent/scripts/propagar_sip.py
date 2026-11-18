@@ -83,7 +83,10 @@ def desired_links(project: Path, hub: Path, e: dict) -> tuple[list[tuple[Path, s
     out: list[tuple[Path, str]] = []
     removed: list[str] = []
     skill_target = str(linkutil.resolver_dir(hub, resolver))
-    if single:
+    if ss.is_generated_copy(project, resolver):
+        if ss.generated_exposure_problem(project, resolver):
+            out.append((project / ".claude" / "skills" / resolver, f"../../.agent/skills/{resolver}"))
+    elif single:
         out.append((project / ".claude" / "skills" / resolver, skill_target))
     else:
         out.append((project / ".agent" / "skills" / resolver, skill_target))
@@ -353,6 +356,14 @@ def install_missing(hub: Path, name: str, project: Path, tmpl: dict, apply: bool
     return False
 
 
+def hub_resolvers(hub: Path) -> list[str]:
+    base = hub / "prompts" / "resolver"
+    return sorted(d.name for d in base.iterdir() if d.is_dir()) if base.is_dir() else []
+
+
+GENERATED_NOTE = "cópia gerada pelo instalador do hub: não alterada (para atualizar, reinstale com o instalador do hub)"
+
+
 def handle(hub: Path, name: str, project: Path, apply: bool, today: str, cover: bool = False, tmpl: dict | None = None) -> bool:
     """Returns True when something is still pending for this project."""
     print(f"\n# {name}  ({project})")
@@ -360,6 +371,13 @@ def handle(hub: Path, name: str, project: Path, apply: bool, today: str, cover: 
         print("  - projeto não existe em disco: registro de instalacoes/ desatualizado")
         return True
     e = find_entry(project, hub)
+    generated = [n for n in hub_resolvers(hub) if ss.is_generated_copy(project, n)] if e is None else []
+    if generated:  # installed by the hub's own installer, which writes no manifest entry: not a pending
+        print(f"  - {generated[0]}: {GENERATED_NOTE}; manifesto não exigido")
+        bad = ss.generated_exposure_problem(project, generated[0])
+        if bad:
+            print(f"  - .claude/skills/{generated[0]}: {bad}; reinstale com o instalador do hub")
+        return bool(bad)
     if e is None and cover and tmpl is not None:
         pend = install_missing(hub, name, project, tmpl, apply, today)
         if apply:
@@ -377,6 +395,8 @@ def handle(hub: Path, name: str, project: Path, apply: bool, today: str, cover: 
         e = find_entry(project, hub) or e
     links, removed = desired_links(project, hub, e)
     fixes, conflicts = plan_links(links, hub)
+    if ss.is_generated_copy(project, e["resolver"]):
+        print(f"  - {e['resolver']}: {GENERATED_NOTE}")
     for r in removed:
         print(f"  - {r} escolhido pelo projeto saiu do hub: remover o link com o ok do dono")
         pending = True
