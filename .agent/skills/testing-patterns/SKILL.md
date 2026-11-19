@@ -178,3 +178,9 @@ license: MIT
 ---
 
 > **Remember:** Tests are documentation. If someone can't understand what the code does from the tests, rewrite them.
+
+---
+
+## 11. Slow suites and the checklist
+
+The checklist's Test Runner has a time limit (300 s). A Node project whose full suite is slower declares an npm script `test:fast` (the quick subset). `test_runner.py` runs `npm run test:fast` instead of `npm test` and prints a note that it is a subset. The full suite (`npm test`) stays the project's gate before closing a change. Only `npm` is handled (not `pnpm`/`yarn`).

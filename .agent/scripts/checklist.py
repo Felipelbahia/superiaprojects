@@ -14,7 +14,7 @@ Priority Order:
     P0: Security Scan (vulnerabilities, secrets)
     P1: Lint & Type Check (code quality)
     P2: Schema Validation (if database exists)
-    P3: Test Runner (unit/integration tests)
+    P3: Test Runner (unit/integration tests; a Node project with an npm script `test:fast` runs only that quick subset, flagged in the output; run the full suite before closing a change)
     P4: UX Audit (psychology laws, accessibility)
     P5: SEO Check (meta tags, structure)
     P6: Performance (lighthouse - requires URL)
