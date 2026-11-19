@@ -25,6 +25,8 @@ Adapted from the `create_handoff.md`/`resume_handoff.md` agents in this repo, wh
 
 `.agent/plans/handoffs/` (next to the loops and plans in `.agent/plans/`). *Legacy:* a project that already has `handoffs/` at its root keeps using it until the owner asks to migrate it (`mv` into `.agent/plans/`, fix the links). Filename: `AAAA-MM-DD_HH-MM_<descrição-curta>.md`. No ticket system, no external sync — the committed file itself is the handoff. If this project already tracks work in an issue tracker, prefixing the filename with its ticket ID is a fine optional adapter — don't require one that doesn't exist here.
 
+**A prompt to continue (the owner asks to resume in another session or at another time):** it is not the handoff. Save it as `.agent/plans/prompts/NNN-<Short Title>.md` (own counter; temporary prompts go there too) and give the owner its path. The prompt points at the handoff file in `handoffs/`; never paste the handoff's content into it.
+
 **If the work being handed off is inside an `execution-loop` run:** the handoff's Artifacts section must point at the exact `.agent/plans/execution-loops/<date>/<goal>/NN Nome.md` files already produced, so resuming continues the loop's numbering instead of restarting it.
 
 ## Creating a Handoff

@@ -13,6 +13,8 @@ Usage:
 Priority Order:
     P0: Security Scan (vulnerabilities, secrets)
     P1: Lint & Type Check (code quality)
+    P1: Env Diff Check (no config, .env, migration or database target in the diff; ALLOW_ENV_DIFF=1 releases)
+    P1: Scope Check (the diff stays inside the plan's `Scope:` line; ALLOW_SCOPE_DIFF=1 releases)
     P2: Schema Validation (if database exists)
     P3: Test Runner (unit/integration tests; a Node project with an npm script `test:fast` runs only that quick subset, flagged in the output; run the full suite before closing a change)
     P4: UX Audit (psychology laws, accessibility)
@@ -66,6 +68,8 @@ def print_error(text: str):
 CORE_CHECKS = [
     ("Security Scan", ".agent/skills/vulnerability-scanner/scripts/security_scan.py", True),
     ("Lint Check", ".agent/skills/lint-and-validate/scripts/lint_runner.py", True),
+    ("Env Diff Check", ".agent/scripts/env_diff_check.py", True),
+    ("Scope Check", ".agent/scripts/scope_check.py", False),
     ("Schema Validation", ".agent/skills/database-design/scripts/schema_validator.py", False),
     ("Test Runner", ".agent/skills/testing-patterns/scripts/test_runner.py", False),
     ("UX Audit", ".agent/skills/frontend-design/scripts/ux_audit.py", False),

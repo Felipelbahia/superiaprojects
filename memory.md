@@ -45,3 +45,20 @@ Problema → Solução, só o que não se deduz do código.
 - **Evidência registrada (SIGTERM no `agy` 38449, 1h54, 11 filhos MCP):** depois do sinal, 0 dos 11 MCPs seguiam vivos e o swap foi de 654 MB para 434 MB. Foi uma observação, não uma garantia do `agy`; o script só sinaliza os alvos listados.
 - **Regra para quem for olhar processo à mão:** nunca `ps ... command` nem `comm`; use o script.
 - Loop: `.agent/plans/execution-loops/2026_11_18/Protocolo Check de Memoria/`.
+
+## 2026-11-19 — Skill citada e não instalada: o agente desistia (inbox 043)
+- **Problema:** em TAAb, Base Sites - Astro e IL - App o pedido de handoff falhou: o `CLAUDE.md` manda usar `session-handoff`, que não está em `.claude/skills/` (só o ponteiro `sip-geral` está, de propósito). O agente procurou direto, não achou e parou, embora o §11 já mandasse resolver pelo `sip-geral`. A regra ficava no fim do arquivo e nada levava o agente até ela.
+- **Solução:** regra geral no §2 do `core.md` (ordem: `.agent/` do projeto, SIPs instalados, kit; só dizer "não existe" depois de mostrar onde procurou), gatilho na `description` do `sip-geral` e teste `test_rules_skill_refs.py` (toda skill citada nos módulos existe no hub). Junto entrou a seção "Change discipline" (cinco regras de um vídeo: parar e avisar, suíte inteira, escopo mínimo, padrão e dependência, config e produção) com os checks `scope_check.py` e `env_diff_check.py` no `checklist.py` e no hook.
+- **Também achado:** `CLAUDE.example.md` e `ClaudeExample.md` (o que o `install.sh` copia) estavam defasados dos módulos; `test_example_templates.py` agora os compara com a montagem por módulos.
+- **Liberação dos checks:** `ALLOW_ENV_DIFF=1` / `ALLOW_SCOPE_DIFF=1` por commit, só depois do dono dizer no chat; o motivo vai no plano.
+- Loop: `.agent/plans/execution-loops/2026_11_19/Busca no SIP e Disciplina de Mudança/`. Falta propagar: `avisar_projetos_inbox.py --apply` e remontagem de cada projeto.
+
+## 2026-11-19 — Notas do kit no inbox dos projetos: `GERAL-NNN-` e pasta de prompts
+- **Decisão do dono:** nota que o kit (ou outro projeto) deixa no inbox de um projeto se chama `GERAL-NNN-assunto.md` (sequência `GERAL-` própria, conta `arquivo/`); prompt para continuar em outra sessão ou outro momento, e prompts temporários, vão em `.agent/plans/prompts/NNN-Título.md`. Está no `core.md`, no mapa de destinos e na skill `mapa-de-destinos`.
+- **Só vale para as próximas:** as 57 notas `NNN-regras-do-kit-...` já gravadas em 2026-11-19 não são renomeadas nem regravadas. `avisar_projetos_inbox.py` e `propagar_sip.py` reescrevem uma nota antiga do mesmo assunto no lugar, sem criar duplicada.
+- **Suposições não contestadas:** `plans` (o dono escreveu `plan`), kebab no inbox, título legível nos prompts.
+
+## 2026-11-19 — `scope_check.py` não reconhecia caminhos com ponto (inbox 044)
+- **Problema:** `glob.lstrip("./")` tira todo ponto e barra do começo, então `.agent/...`, `.githooks/...` e `.env.example` viravam `agent/...` e eram barrados como "fora do escopo". Meus testes não tinham nenhum glob começando com ponto; quem achou foi o Base Sites - Astro.
+- **Solução:** `norm_glob` tira só o prefixo `./`; testes com `.agent/`, `.github/`, `.env.example` e `./.agent/x.md`. Conferido em outro projeto sorteado (`waimonitor`).
+- **Regra:** teste de caminho/glob sempre inclui um caso que começa com ponto.

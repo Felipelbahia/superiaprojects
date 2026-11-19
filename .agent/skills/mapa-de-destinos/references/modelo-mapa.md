@@ -16,7 +16,8 @@ Atualizado em AAAA-MM-DD. Se este mapa divergir de uma regra de skill, **vale es
 | <linhas do(s) preset(s)> | | | | |
 | Código (componentes, rotas, testes, configs) | segue a stack e o `STANDARDS.md` | projeto | | fora do mapa; ex.: "segue a skill astro-development" |
 | Planos, loops e handoffs | .agent/plans/ | projeto | `execution-loops/AAAA_MM_DD/<Título>/NN Nome.md`, `handoffs/` | fixo pelas regras do kit; fora do git |
-| Itens adiados | inbox/ | projeto | `NNN-assunto.md` | fixo pelas regras do kit |
+| Prompt para continuar em outra sessão ou outro momento, e prompts temporários | .agent/plans/prompts/ | projeto | `NNN-<Título Curto>.md` (contador próprio) | fixo pelas regras do kit; fora do git; o handoff fica em `handoffs/` |
+| Itens adiados | inbox/ | projeto | `NNN-assunto.md`; nota do kit ou de outro projeto: `GERAL-NNN-assunto.md` | fixo pelas regras do kit |
 | Contrato do projeto (se houver) | _projectdefines/ | projeto | | fixo; só muda com aprovação do dono |
 | Memória de longo prazo | memory.md | projeto | `Problema → Solução` | fixo |
 | Este mapa e documentos do projeto | docs/ | projeto | | |

@@ -10,7 +10,7 @@ Arquitetura e qualidade: padrões e decisões de arquitetura, microsserviços, C
 | --- | --- |
 | `architecture` | Architectural decision-making framework. Requirements analysis, trade-off evaluation, ADR documentation. Use when making architecture decisions or analyzing system design. |
 | `architecture-patterns` | Implement proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design. Use when architecting complex backend systems or refactoring existing applications for better maintainability. |
-| `auditing-memory-usage` | Use when the owner says the machine or an app feels heavy, slow or memory-hungry, memory keeps growing, or asks to check a project's code for memory leaks or unnecessary memory use. |
+| `auditing-memory-usage` | Use when the owner says the Mac or an app feels heavy, slow or memory-hungry, swap or compressed memory is high after hours of IDE use, orphan processes from Antigravity, Gemini, Claude, Kilo or codex pile up, memory keeps growing, or asks to check a project's code for memory leaks or unnecessary memory use. |
 | `clean-code` | Pragmatic coding standards - concise, direct, no over-engineering, no unnecessary comments |
 | `cqrs-implementation` | Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems. |
 | `dependency-upgrade` | Manage major dependency version upgrades with compatibility analysis, staged rollout, and comprehensive testing. Use when upgrading framework versions, updating major dependencies, or managing breaking changes in libraries. |

@@ -149,13 +149,14 @@ class PropagarTests(unittest.TestCase):
             proj = make_project(root, hub)
             (proj / "inbox" / "arquivo").mkdir()
             (proj / "inbox" / "arquivo" / "007-velho.md").write_text("x", encoding="utf-8")
+            (proj / "inbox" / "arquivo" / "GERAL-004-velho.md").write_text("x", encoding="utf-8")
             register(hub, "proj", proj)
             run(str(hub), "--apply")
             run(str(hub), "--apply")
             self.assertFalse((proj / ".agent" / "agents" / "novo.md").exists())
             notes = [p for p in (proj / "inbox").glob("*.md")]
             self.assertEqual(len(notes), 1, notes)
-            self.assertRegex(notes[0].name, r"^008-sip-x-novidades\.md$")
+            self.assertRegex(notes[0].name, r"^GERAL-005-sip-x-novidades\.md$")
             self.assertIn("novo", notes[0].read_text(encoding="utf-8"))
 
     def test_gone_item_not_chosen_makes_no_note(self):

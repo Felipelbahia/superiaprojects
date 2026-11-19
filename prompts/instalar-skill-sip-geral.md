@@ -119,6 +119,11 @@ caminho absoluto do hub; link relativo de .claude/ ou .cursor/ aponta para o lin
    - "Vistos no hub" é o que permite, na próxima vez, perguntar só os novos.
    - Se o arquivo já tiver uma entrada pra este hub (de uma instalação
    anterior), substitua-a em vez de duplicar.
+11. Confirme que as regras deste projeto sabem achar o que não está
+   instalado: rode `grep -n -F "Named in these rules but not in" CLAUDE.md`
+   e cole a saída. Sem saída: as regras estão atrás do kit. Avise o dono
+   (remontar com `assemble_rules.py`, prompt 01 de `prompts-template/`) e
+   não edite o `CLAUDE.md` à mão.
 ```
 
 ## Por que o padrão duplo (symlink de symlink) e não um só

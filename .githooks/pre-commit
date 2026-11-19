@@ -24,6 +24,8 @@ run_check() {
 
 run_check "AI entrypoints (sync_entrypoints.py --check)" python3 .agent/scripts/sync_entrypoints.py --check
 run_check "rule-file parity (sync_rules.py --check)" python3 .agent/scripts/sync_rules.py --check
+run_check "environment and config in the commit (env_diff_check.py --staged; ALLOW_ENV_DIFF=1 releases)" python3 .agent/scripts/env_diff_check.py . --staged
+run_check "scope of the plan (scope_check.py --staged; ALLOW_SCOPE_DIFF=1 releases)" python3 .agent/scripts/scope_check.py . --staged
 
 if [ "$failed" -ne 0 ]; then
   echo "pre-commit: commit refused. Fix the items above, or run python3 .agent/scripts/sync_rules.py / sync_entrypoints.py." >&2

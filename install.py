@@ -48,6 +48,7 @@ def main() -> int:
         print("\nA instalação terminou com erros: veja as mensagens acima.")
         return 1
     print("\nPronto. Abra .agent/catalog.html no navegador para explorar skills, agentes e workflows.")
+    print("Disciplina de mudança: env_diff_check.py e scope_check.py rodam no checklist.py e no hook (ative uma vez: git config core.hooksPath .githooks).")
     return 0
 
 

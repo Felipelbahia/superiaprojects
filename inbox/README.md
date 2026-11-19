@@ -79,6 +79,9 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | 035 | ~~Mapeamento de modelos Antigravity/Claude e migração dos agentes~~ (aplicado 2026-11-18, Opção A, em `arquivo/`) | `.agent/agents/*.md` | Média |
 | 040 | ~~propagar_sip.py aceitar a cópia gerada do resolver~~ (aplicado 2026-11-18, em `arquivo/`; stub `sip-astro` do 0 Padrões reinstalado como cópia gerada em 2026-11-18) | `propagar_sip.py`, `sips_status.py` | Média |
 | 036 | ~~session-handoff: armadilha do zsh~~ (encerrado 2026-11-18 sem mudança: RED já passa, em `arquivo/`) | skill `session-handoff` | Baixa |
+| 042 | ~~A seção 3 das regras ainda exige GEMINI.md, mas o `sync_rules.py` o trata como legado~~ (aplicado antes de 2026-11-19, commit `f05fbd8`; conferido e arquivado em 2026-11-19, em `arquivo/`) | `core.md`, `sync_rules.py` | Média |
+| 043 | ~~Regras: buscar no SIP o que não está instalado e disciplina de mudança~~ (aplicado 2026-11-19, em `arquivo/`; notas gravadas nos 58 projetos; remontagem de cada um no loop de propagação) | módulos de regras, `project-initializer`, kit de instalação, `checklist.py` | Alta |
+| 044 | ~~`scope_check.py`: glob que começa com ponto (`.agent/...`) nunca casa~~ (aplicado 2026-11-19, em `arquivo/`) | `scope_check.py` | Alta |
 
 
 Ordem sugerida: 001, 002, 003 (maior retorno na origem); depois 010, 006, 007; o resto quando fizer sentido. Os itens 001 a 003 mexem no mesmo arquivo: aplique em sequência, com um commit por item. Os itens 011 a 017 vieram do SIP Astro (`/Users/macbookpro/Documents/IA Projects/_Plataforma/Base Sites - Astro`, 2026-11-10); 011 a 015 também mexem no `execution-loop`, então entram na mesma fila sequencial (sugestão: 011 e 014 primeiro).

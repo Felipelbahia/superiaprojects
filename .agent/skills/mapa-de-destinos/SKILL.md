@@ -13,7 +13,7 @@ O lugar de cada tipo de entrega é decidido **uma vez, por projeto**, num docume
 
 **Fora do mapa:** código e arquivos que o framework dita (componentes, rotas, testes, configs) seguem a convenção da stack, o `STANDARDS.md` e a skill do framework (ex.: site Astro, Next.js). O mapa pode ter uma linha que só diz "segue a skill X".
 
-**Caminhos fixos pelas regras do kit** entram no mapa como linhas fixas e não se negociam: `.agent/plans/` (planos, loops, handoffs), `inbox/`, `_projectdefines/`, `memory.md`.
+**Caminhos fixos pelas regras do kit** entram no mapa como linhas fixas e não se negociam: `.agent/plans/` (planos, loops, handoffs, `prompts/` para prompt de continuação e prompts temporários), `inbox/` (notas do kit: `GERAL-NNN-assunto.md`), `_projectdefines/`, `memory.md`.
 
 ## Regra de resolução (nesta ordem)
 1. **Leia `docs/mapa-de-destinos.md`** (projeto antigo: `mapa-de-destinos.md` na raiz) e use o **Caminho** da linha do tipo de entrega, preenchendo os placeholders (`{tipo}`, `{marca}`, `{produto}`, `AAAA-MM-DD - Nome`). Nunca monte caminho por conta própria.

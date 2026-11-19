@@ -24,8 +24,9 @@ Atualizado em 2026-11-12. Se este mapa divergir de uma regra de skill, **vale es
 | Documentação pública do repositório | raiz: `README.md`, `README.en.md`, `SETUP.md`, `STANDARDS.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md` | | imagens em `assets/` |
 | Documentação de terceiros | `.agent/vendor/` | | fora do git |
 | Código (scripts, hooks, configs) | segue o `STANDARDS.md` | | fora do mapa; hook em `.githooks/`; CI e templates de issue em `.github/` |
-| Planos, loops, handoffs, artefatos do Antigravity, backups de regras | `.agent/plans/` | `execution-loops/AAAA_MM_DD/<Título>/NN Nome.md`, `handoffs/`, `{Tarefa} [PLAN\|TASK\|WALKTHROUGH].md` | fixo pelas regras do kit; fora do git |
-| Itens adiados | `inbox/` (resolvidos em `inbox/arquivo/`) | `NNN-assunto.md` | fixo pelas regras do kit; fora do git, só o `README.md` versionado |
+| Planos, loops, handoffs, artefatos do Antigravity, backups de regras | `.agent/plans/` | `execution-loops/AAAA_MM_DD/<Título>/NN Nome.md`, `handoffs/`, `prompts/`, `{Tarefa} [PLAN\|TASK\|WALKTHROUGH].md` | fixo pelas regras do kit; fora do git |
+| Prompt para continuar em outra sessão ou outro momento, e prompts temporários | `.agent/plans/prompts/` | `NNN-<Título Curto>.md` (contador próprio da pasta) | fixo pelas regras do kit; fora do git; o handoff em si fica em `handoffs/` |
+| Itens adiados | `inbox/` (resolvidos em `inbox/arquivo/`) | `NNN-assunto.md`; nota que o kit ou outro projeto deixa no inbox de um projeto: `GERAL-NNN-assunto.md` (contador `GERAL-` próprio) | fixo pelas regras do kit; fora do git, só o `README.md` versionado |
 | Memória de longo prazo | `memory.md` | `Problema → Solução` | fixo pelas regras do kit; ainda não existe (ver Inconsistências) |
 | Este mapa e documentos do projeto | `docs/` | | |
 

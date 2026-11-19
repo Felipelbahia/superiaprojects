@@ -1,7 +1,7 @@
 ---
 # Repository: https://github.com/Felipelbahia/superiaprojects
 name: sip-geral
-description: Use when the current task involves general software engineering, architecture, backend, frontend, mobile, database, testing, security, DevOps, AI/ML or development workflows (spec, planning, execution-loop, TDD, debugging) in any project other than "SIP - Geral" (0 Padrões) itself, or when the user asks "existe algo no 0 Padrões pra isso", "tem skill/agent/workflow pra isso no hub geral", "consulta o SIP - Geral", or names a 0 Padrões skill, agent or workflow explicitly in a consumer project.
+description: Use when the current task involves general software engineering, architecture, backend, frontend, mobile, database, testing, security, DevOps, AI/ML or development workflows (spec, planning, execution-loop, TDD, debugging) in any project other than "SIP - Geral" (0 Padrões) itself, or when the user asks "existe algo no 0 Padrões pra isso", "tem skill/agent/workflow pra isso no hub geral", "consulta o SIP - Geral", or names a 0 Padrões skill, agent or workflow explicitly in a consumer project, or when the project rules (CLAUDE.md / AGENTS.md) cite a skill, agent or workflow by name (for example session-handoff, brainstorming, execution-loop) that is missing from the available skills list: search here before saying it does not exist.
 author: Futuro Mercado / Felipe Bahia (@felipelbahia)
 license: MIT
 ---

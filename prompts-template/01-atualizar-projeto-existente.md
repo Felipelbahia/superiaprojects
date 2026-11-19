@@ -64,7 +64,7 @@ REGRAS (valem para todos os passos):
 8. Ambiente e `.gitignore`:
    - `.env.example` completo: `comm -23 <(grep -oE "^[A-Za-z_][A-Za-z0-9_]*=" .env | sort -u) <(grep -oE "^[A-Za-z_][A-Za-z0-9_]*=" .env.example | sort -u)`; o que sobrar entra no `.env.example` (só o nome) ou é justificado como não usado em código.
    - `.gitignore`: `.env*` (com exceção `!.env.example`), `.agent/plans/` e `plans/` ignorados; `_projectdefines/`, `memory.md`, `STANDARDS.md`, `.env.example`, `docs/` e os arquivos de regra (`CLAUDE.md`, `AGENTS.md`) NUNCA ignorados.
-   - Testes (com módulo `code`): rode a suíte inteira e cole a saída. Teste que já falha: registre nome e causa no resumo; NÃO apague, pule nem afrouxe (decisão minha). Sem `.githooks/pre-commit`: proponha o hook com a parte rápida da suíte (passo "Hook de commit" de `<SUPER_IA_PROJECTS_PATH>/.agent/skills/project-initializer/SKILL.md`) e só instale com o meu "ok"; se houver teste que já falha na parte rápida, diga que o hook recusaria todo commit e pergunte antes.
+   - Testes (com módulo `code`): rode a suíte inteira e cole a saída. Teste que já falha: registre nome e causa no resumo; NÃO apague, pule nem afrouxe (decisão minha). Sem `.githooks/pre-commit`: proponha o hook com a parte rápida da suíte (passo "Hook de commit" de `<SUPER_IA_PROJECTS_PATH>/.agent/skills/project-initializer/SKILL.md`) e só instale com o meu "ok"; se houver teste que já falha na parte rápida, diga que o hook recusaria todo commit e pergunte antes. O hook e o `checklist.py` também rodam `env_diff_check.py` e `scope_check.py` (disciplina de mudança; scripts do kit, pelo caminho absoluto, `--staged` no hook): se o hook existente não os tem, proponha acrescentá-los e só instale com o meu "ok".
    - `memory.md` na raiz: se faltar, crie (memória de longo prazo, formato `Problema → Solução`, versionado).
    - Planos e handoffs ficam em `.agent/plans/execution-loops/` e `.agent/plans/handoffs/`. Se o projeto já tem `execution-loops/` ou `handoffs/` na raiz, NÃO mova (legado até eu pedir).
 
@@ -79,6 +79,7 @@ REGRAS (valem para todos os passos):
    - [ ] Nenhum `.claude/CLAUDE.md` ao lado do `./CLAUDE.md` (ou a minha decisão registrada)
    - [ ] Toda skill local tem `.claude/skills/<nome>` como symlink (`test -L`)
    - [ ] `sync_entrypoints.py --check` OK
+   - [ ] Regras com a busca no SIP e a disciplina de mudança: `grep -n -F -e "Named in these rules but not in" -e "Change discipline" CLAUDE.md` (saída colada; sem saída = remontar com `assemble_rules.py`, nunca editar à mão)
    - [ ] Toda skill/agent/script e todo arquivo (`CODEBASE.md`, `ARCHITECTURE.md`…) citado nas regras existe no projeto ou no hub (comando, não suposição)
    - [ ] `comm` do passo 8 vazio (ou só variáveis justificadas)
    - [ ] `docs/mapa-de-destinos.md` existe (ou a minha decisão registrada)

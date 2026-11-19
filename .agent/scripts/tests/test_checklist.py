@@ -36,6 +36,14 @@ class NotApplicableTest(unittest.TestCase):
         self.assertIn("Running: UX Audit", r.stdout)
         self.assertIn("Skipped: 0", r.stdout)
 
+    def test_change_discipline_checks_run_and_env_check_is_critical(self):
+        r = run_on(None)
+        self.assertIn("Running: Env Diff Check", r.stdout)
+        self.assertIn("Running: Scope Check", r.stdout)
+        r = run_on({"not_applicable": {"Env Diff Check": "trust me"}})
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("Env Diff Check", r.stdout)
+
     def test_empty_reason_is_refused(self):
         r = run_on({"not_applicable": {"UX Audit": "  "}})
         self.assertEqual(r.returncode, 1)

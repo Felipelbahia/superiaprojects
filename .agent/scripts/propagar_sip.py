@@ -178,10 +178,17 @@ def news(hub: Path, e: dict) -> tuple[dict, dict, bool]:
     return new, gone, unreadable
 
 
-def next_number(inbox: Path) -> int:
+def next_geral_number(inbox: Path) -> int:
+    """Next NNN for a `GERAL-NNN-<title>.md` note (what the kit leaves in other projects' inbox).
+    Own sequence: only `GERAL-` files count, in the inbox and in inbox/arquivo/."""
     nums = [int(m.group(1)) for d in (inbox, inbox / "arquivo") if d.is_dir()
-            for f in d.glob("*.md") if (m := re.match(r"(\d+)-", f.name))]
+            for f in d.glob("GERAL-*.md") if (m := re.match(r"GERAL-(\d+)-", f.name))]
     return max(nums, default=0) + 1
+
+
+def note_label(path: Path) -> str:
+    """`GERAL-005` for GERAL-005-x.md, `008` for an old 008-x.md."""
+    return re.match(r"(GERAL-\d+|\d+)-", path.name).group(1)
 
 
 def write_note(project: Path, hub: Path, e: dict, new: dict, gone: dict, today: str) -> Path:
@@ -189,8 +196,8 @@ def write_note(project: Path, hub: Path, e: dict, new: dict, gone: dict, today: 
     inbox.mkdir(exist_ok=True)
     resolver = e["resolver"]
     existing = sorted(inbox.glob(f"*-{resolver}-novidades.md"))
-    path = existing[0] if existing else inbox / f"{next_number(inbox):03d}-{resolver}-novidades.md"
-    num = path.name.split("-", 1)[0]
+    path = existing[0] if existing else inbox / f"GERAL-{next_geral_number(inbox):03d}-{resolver}-novidades.md"
+    num = note_label(path)
     fmt = lambda d: "; ".join(f"{k}: {', '.join(v)}" for k, v in d.items() if v) or "nenhum"  # noqa: E731
     path.write_text(
         f"# {num} — Novidades do hub {e['name']}\n"
