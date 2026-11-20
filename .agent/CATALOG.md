@@ -935,7 +935,7 @@ Total de recursos nesta macro-área: `24`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="skill-resolver"></a>**`skill-resolver`** | `Skill` | `0 Padrões` | Use whenever a capability seems relevant to the current task but no matching skill appears in the currently loaded skills list — this is common in Antigravity Kit projects (any repo with a .agent/skills/ directory, or a CLAUDE.md/AGENTS.md that references "0 Padrões"), because Claude Code only auto-discovers SKILL.md files under .claude/skills/ and ~/.claude/skills/, never under .agent/skills/. Also use when the user names a skill by name that doesn't show up in the listing, or asks things like "existe skill pra isso", "do we have a skill for X", "check 0 Padrões for a skill". Searches the project's own .agent/skills/ (and .agents/skills/ for older, unmigrated setups), then the global library at 0 Padrões/.agent/skills/, then 0 Mkt/ for marketing, SEO, copywriting or growth topics. |
+| <a id="skill-resolver"></a>**`skill-resolver`** | `Skill` | `0 Padrões` | Use whenever a capability seems relevant to the current task but no matching skill appears in the currently loaded skills list, or the Skill tool answers "Unknown skill" for a skill the project rules name — common in Antigravity Kit projects (any repo with a .agent/skills/ directory, or a CLAUDE.md/AGENTS.md that references "0 Padrões"), because Claude Code only auto-discovers SKILL.md files under .claude/skills/ and ~/.claude/skills/, never under .agent/skills/ or inside a hub. Also use when the user names a skill that doesn't show up in the listing, or asks "existe skill pra isso", "do we have a skill for X", "check 0 Padrões for a skill". Runs resolve_skill.py, which searches the project, the SIP hubs it consumes and the kit. This is the fallback for projects with no SIP installed; where `sip-geral` is installed, its resolver covers the same ground. |
 
 ---
 
@@ -1283,7 +1283,7 @@ Total de recursos nesta macro-área: `22`
 
 | Recurso | Tipo | Origem | Descrição e Aplicação |
 | :--- | :--- | :--- | :--- |
-| <a id="conteudo-aprovacao"></a>**`/conteudo-aprovacao`** | `Workflow` | `0 Mkt` | Gera o fluxo de aprovação de uma peça de conteúdo (etapas, responsáveis, SLA e checklist por estágio). Use quando uma peça precisar passar por revisão antes de publicar. |
+| <a id="conteudo-aprovacao"></a>**`/conteudo-aprovacao`** | `Workflow` | `0 Mkt` | Gera o fluxo de aprovação de uma peça de conteúdo (etapas, responsáveis, SLA, parecer em 5 campos e releitura integral na v2). Use quando uma peça precisar passar por revisão antes de publicar. |
 
 ### <a id="brainstorm"></a>Brainstorm
 
