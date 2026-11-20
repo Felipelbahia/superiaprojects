@@ -34,6 +34,14 @@ ficam fora do git do hub (só este README é versionado).
    ```
 4. Não edite nada fora desta pasta.
 
+## Nota de retomada: `CONTINUAR-NNN-Titulo.md`
+
+Quando a sessão termina com trabalho aberto e o dono não vai continuar agora, o que fica para depois vai para esta pasta como
+`CONTINUAR-NNN-Titulo.md` (contador `CONTINUAR-` próprio, contando `arquivo/`; título curto e legível). Mesmo formato das
+notas acima, escrita para quem nunca viu a conversa: o que falta, o comando ou prompt exato para retomar, caminhos
+absolutos do loop e dos itens relacionados, o que já foi publicado (commits) e as armadilhas encontradas. Não é analisada até o
+dono pedir; ao concluir, `Status: feito em AAAA-MM-DD` e vai para `arquivo/`.
+
 ## Revisão (lado do hub)
 
 Itens da inbox não são analisados até o dono do hub pedir. Ao resolver um item:
@@ -86,6 +94,7 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | 047 | Propagar o núcleo aos consumidores e provar em sessão real | `propagar_sip.py`, 63 projetos | Alta |
 | 048 | ~~Cópia global do `skill-resolver` diverge do hub~~ (aplicado 2026-11-20, em `arquivo/`) | `~/.claude/skills/skill-resolver` | Baixa |
 | 049 | Remontar as regras do kit nos projetos, em sessões por faixa (loop pronto em `.agent/plans/execution-loops/2026_11_20/Remontar Regras nos Projetos/`) | 58 projetos (`CLAUDE.md`/`AGENTS.md`) | Média |
+| CONTINUAR-001 | Núcleo de skills: teste real e remontagem das regras nos projetos (nota de retomada; junta o 047 e o 049) | loop `2026_11_20`, 58 projetos | Média |
 
 
 Ordem sugerida: 001, 002, 003 (maior retorno na origem); depois 010, 006, 007; o resto quando fizer sentido. Os itens 001 a 003 mexem no mesmo arquivo: aplique em sequência, com um commit por item. Os itens 011 a 017 vieram do SIP Astro (`/Users/macbookpro/Documents/IA Projects/_Plataforma/Base Sites - Astro`, 2026-11-10); 011 a 015 também mexem no `execution-loop`, então entram na mesma fila sequencial (sugestão: 011 e 014 primeiro).
