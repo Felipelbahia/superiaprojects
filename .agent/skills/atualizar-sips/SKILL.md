@@ -14,6 +14,7 @@ Diz se cada SIP instalado no projeto está defasado em relação ao hub e, onde 
 - Nunca diga "em dia" sem ter rodado o status e conferido a saída; o que não foi verificado é "não verificado".
 - Só remova **symlink**, nunca arquivo ou pasta real. Conflito de nome com arquivo do dono segue o prompt de instalação do SIP (perguntar caso a caso).
 - A data do hub é mantida à mão pelo dono do hub: é dica. Link ausente, agent ou workflow novo ou removido são verificados em disco.
+- O **núcleo** do SIP (`nucleo.json` ao lado do resolver, lido pelo `sips_status.py`): link ausente, quebrado ou errado de uma skill do núcleo é motivo de "atualizar". O prompt de instalação refaz esses links (passo 2b); skill do próprio projeto com o mesmo nome é mantida.
 
 ## Passos
 1. **Status** (na raiz do projeto):

@@ -120,6 +120,52 @@ def generated_exposure_problem(project: Path, resolver: str) -> str | None:
     return None
 
 
+def nucleo_links(project: Path, hub: Path, resolver: str) -> tuple[list[tuple[Path, str]], list[str]]:
+    """((link path, target) for every núcleo skill the project should have linked, problems with the núcleo itself).
+
+    A real folder at `.agent/skills/<n>` is the project's own skill: only `.claude/skills/<n>` has to reach it.
+    Not for the hub that keeps a real stub as resolver (0 Padrões): there the skills are already local.
+    """
+    try:
+        names = linkutil.nucleo(hub, resolver)
+    except ValueError as err:
+        return [], [f"núcleo: {err}"]
+    out: list[tuple[Path, str]] = []
+    problems: list[str] = []
+    for n in names:
+        hub_skill = hub / ".agent" / "skills" / n
+        if not (hub_skill / "SKILL.md").is_file():
+            problems.append(f"núcleo {n}: não existe no hub")
+            continue
+        local = project / ".agent" / "skills" / n
+        if not (local.is_dir() and not local.is_symlink()):
+            out.append((local, str(hub_skill)))
+        out.append((project / ".claude" / "skills" / n, f"../../.agent/skills/{n}"))
+    return out, problems
+
+
+def nucleo_status(project: Path, hub: Path, resolver: str) -> list[str]:
+    links, reasons = nucleo_links(project, hub, resolver)
+    for link, target in links:
+        hub_skill = hub / ".agent" / "skills" / link.name
+        if link.parent.parent.name == ".agent":  # .agent/skills/<n> -> hub
+            p = link_problem(link, hub, hub_skill)
+        else:  # .claude/skills/<n> -> .agent/skills/<n>, which is a hub link or the project's own skill
+            local = project / ".agent" / "skills" / link.name
+            p = _local_link_problem(link, local) if local.is_dir() and not local.is_symlink() else link_problem(link, hub, hub_skill)
+        if p:
+            reasons.append(f"núcleo {link.relative_to(project)}: {p}")
+    return reasons
+
+
+def _local_link_problem(link: Path, local: Path) -> str | None:
+    if not os.path.lexists(link):
+        return "não existe"
+    if not link.exists():
+        return "link quebrado"
+    return None if link.resolve() == local.resolve() else "não aponta para a skill local do projeto"
+
+
 def check_entry(project: Path, e: dict) -> dict:
     hub = Path(e.get("Hub", "")).expanduser()
     resolver = e["resolver"]
@@ -162,6 +208,8 @@ def check_entry(project: Path, e: dict) -> dict:
             p = link_problem(project / where / f"{n}.md", hub, hub / ".agent" / kind / f"{n}.md")
             if p:
                 reasons.append(f"{where}/{n}.md: {p}")
+    if not single:
+        reasons.extend(nucleo_status(project, hub, resolver))
     # news
     seen_a, seen_w = seen_in_hub(e.get("Vistos no hub", ""))
     for kind, seen in (("agents", seen_a), ("workflows", seen_w)):

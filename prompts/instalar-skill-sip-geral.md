@@ -43,8 +43,20 @@ caminho absoluto do hub; link relativo de .claude/ ou .cursor/ aponta para o lin
 
 2. Migração (instalações antigas): remova, seguindo a regra de remoção, todo
    symlink em .agent/skills/ e .claude/skills/ que aponte para uma skill
-   especialista do hub (qualquer uma que não seja sip-geral), e a entrada dele
-   no .gitignore. Skills especialistas não são mais instaladas.
+   especialista do hub (qualquer uma que não seja sip-geral nem do núcleo do passo 2b), e a
+   entrada dele no .gitignore. As skills especialistas fora do núcleo não são mais instaladas.
+
+2b. Núcleo (as skills de processo que as regras citam; só elas são linkadas):
+   - Leia "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/resolver/sip-geral/nucleo.json" (`{"skills": [...]}`).
+     Arquivo ausente: pule este passo.
+   - Nome que não existe no hub (o `sips_status.py` acusa "núcleo <n>: não existe no hub"): pule e me avise.
+   - Para cada nome <n> (seguindo a regra de symlink acima): se
+     .agent/skills/<n> já é uma pasta REAL, é skill do próprio projeto: mantenha-a
+     e só garanta .claude/skills/<n> -> ../../.agent/skills/<n> (relativo).
+     Senão crie .agent/skills/<n> -> "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/<n>" (absoluto) e
+     .claude/skills/<n> -> ../../.agent/skills/<n> (relativo).
+   - As outras skills especialistas continuam não instaladas: leia-as por caminho
+     absoluto (`resolve_skill.py`).
 
 3. Escolha de agents e workflows:
    - Leia as seções "Agents" e "Workflows" de cada arquivo de
@@ -77,8 +89,8 @@ caminho absoluto do hub; link relativo de .claude/ ou .cursor/ aponta para o lin
    agents/workflows deste hub que não estão mais escolhidos, ou cujo arquivo
    sumiu do hub (link quebrado), e as entradas deles no .gitignore.
 
-6. Confirme com `ls -la` cada symlink criado (os de .agent/ E os de .claude/)
-   e que o .md correspondente é legível através de cada um. Depois, na raiz
+6. Confirme com `ls -la` cada symlink criado (os de .agent/ E os de .claude/, incluindo
+   os do núcleo) e que o .md/SKILL.md correspondente é legível através de cada um. Depois, na raiz
    deste projeto, rode
    `python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/sync_entrypoints.py" --check`:
    tem de sair com 0. Se acusar erro de link ou skill do hub, pare e relate
@@ -89,7 +101,8 @@ caminho absoluto do hub; link relativo de .claude/ ou .cursor/ aponta para o lin
    por symlink instalado, nunca um curinga do prefixo do domínio:
    .agent/skills/sip-geral
    .claude/skills/sip-geral
-   (e, para cada agent/workflow instalado no passo 4, os caminhos
+   (e, para cada skill do núcleo linkada no passo 2b, .agent/skills/<n> e
+   .claude/skills/<n>; e, para cada agent/workflow instalado no passo 4, os caminhos
    .agent/agents/<nome>.md, .claude/agents/<nome>.md,
    .agent/workflows/<nome>.md, .claude/commands/<nome>.md,
    .cursor/commands/<nome>.md correspondentes)
@@ -136,8 +149,8 @@ symlink local em `.agent/`, não direto pro hub. Essa cadeia de dois symlinks
 outras IAs leem pastas diferentes**: Claude Code só descobre
 `.claude/skills/`/`.claude/agents/`/`.claude/commands/`; Google
 Antigravity/Gemini/Cursor só leem `.agent/skills/`/`.agent/agents/`/
-`.agent/workflows/` direto (via Regra 4, 1ª prioridade: skills locais do
-próprio projeto). Um symlink só em `.claude/` (direto pro hub) atende só o
+`.agent/workflows/` direto (1ª etapa da regra "Skills, agents, workflows: where they live" do
+`CLAUDE.md`/`AGENTS.md`: o `.agent/` do próprio projeto). Um symlink só em `.claude/` (direto pro hub) atende só o
 Claude Code — pra essas outras IAs acharem o recurso neste projeto
 específico, ele precisa também existir em `.agent/`. Atualizações futuras no
 hub já refletem aqui automaticamente nos dois — exceto se um symlink quebrar
@@ -151,11 +164,11 @@ fica registrada em `.agent/SIPS-CONSUMIDOS.md`, linha "Vistos no hub").
 Com o padrão duplo acima, essas IAs já encontram o resolver e os
 agents/workflows escolhidos **direto neste projeto** (via `.agent/skills/`,
 `.agent/agents/`, `.agent/workflows/`), sem depender do stub global do
-`0 Padrões` nem da Regra 4 (Fallback Resolution Protocol) — a 1ª prioridade
-da Regra 4 já é "skills locais do próprio projeto", que é exatamente o que
+`0 Padrões` nem da regra "Skills, agents, workflows: where they live" do
+`CLAUDE.md`/`AGENTS.md` — a 1ª etapa dela já é "o `.agent/` do próprio projeto", que é exatamente o que
 os passos 1 e 4 criaram aqui. O que não foi escolhido elas acham pelas
 tabelas do resolver e leem por caminho absoluto no hub. O stub global do `0 Padrões` continua existindo como rede de
-segurança pra projetos que *não* instalaram (2ª prioridade da Regra 4), mas
+segurança pra projetos que *não* instalaram (a busca dessa regra no kit, 3ª etapa), mas
 quem instalou via este prompt não depende dele.
 
 ## Via de volta: contribuir com o hub

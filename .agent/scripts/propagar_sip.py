@@ -17,7 +17,7 @@ Projects are found in `<HUB_DIR>/instalacoes/*.md` (field "Caminho absoluto"). F
 Cover mode (`--cobrir --fichas PASTA_DAS_FICHAS`, e.g. for sip-geral that every project should have):
   - the universe is the hub's `instalacoes/` plus the paths in the project cards ("Repositório / Caminho" in `PASTA/*.md`),
     minus the parent folders listed in `PASTA/_pastas-mae.txt` (one absolute path per line, `#` comments) and the hub itself;
-  - a project of the universe with no entry of this hub gets the resolver installed (dual symlinks, .gitignore lines,
+  - a project of the universe with no entry of this hub gets the resolver and the núcleo installed (dual symlinks, .gitignore lines,
     manifest entry, `instalacoes/` record), with NO agents/workflows chosen; "Vistos no hub" records the hub as seen today;
   - an entry in the old format (chosen items that no longer exist in the hub, unreadable "Vistos no hub") is migrated:
     missing chosen names are dropped and "Vistos no hub" is rewritten with the hub as it is today.
@@ -91,6 +91,10 @@ def desired_links(project: Path, hub: Path, e: dict) -> tuple[list[tuple[Path, s
     else:
         out.append((project / ".agent" / "skills" / resolver, skill_target))
         out.append((project / ".claude" / "skills" / resolver, f"../../.agent/skills/{resolver}"))
+    if not single:
+        core, core_problems = ss.nucleo_links(project, hub, resolver)
+        out.extend(core)
+        removed.extend(core_problems)
     for kind, claude_dir in (("agents", "agents"), ("workflows", "commands")):
         for n in ss.names(e.get("Agents" if kind == "agents" else "Workflows", "")):
             hub_file = str(hub / ".agent" / kind / f"{n}.md")
@@ -328,8 +332,18 @@ def write_registry(hub: Path, name: str, project: Path, resolver: str, today: st
                    f"- Agents: nenhum\n- Workflows: nenhum\n", encoding="utf-8")
 
 
+def ensure_gitignore(project: Path, lines: list[str], label: str) -> None:
+    """Appends the lines that are not in the project's .gitignore yet (local symlinks stay out of git)."""
+    gi = project / ".gitignore"
+    text = gi.read_text(encoding="utf-8") if gi.is_file() else ""
+    add = [l for l in lines if l not in text.splitlines()]
+    if add:
+        prefix = "" if not text or text.endswith("\n") else "\n"
+        gi.write_text(text + prefix + f"\n# {label} (caminho absoluto desta máquina)\n" + "\n".join(add) + "\n", encoding="utf-8")
+
+
 def install_missing(hub: Path, name: str, project: Path, tmpl: dict, apply: bool, today: str) -> bool:
-    """Installs the resolver only. Returns True when something is still pending (conflict)."""
+    """Installs the resolver and the núcleo, no agents or workflows. Returns True when something is still pending (conflict)."""
     resolver = tmpl["resolver"]
     e = {"resolver": resolver, "name": tmpl["name"], "Agents": "nenhum", "Workflows": "nenhum"}
     links, _ = desired_links(project, hub, e)
@@ -345,13 +359,7 @@ def install_missing(hub: Path, name: str, project: Path, tmpl: dict, apply: bool
     if not apply:
         return True
     apply_fixes(fixes)
-    gi = project / ".gitignore"
-    have = gi.read_text(encoding="utf-8").splitlines() if gi.is_file() else []
-    add = [l for l in ignore_lines if l not in have]
-    if add:
-        prefix = "" if not have or gi.read_text(encoding="utf-8").endswith("\n") else "\n"
-        gi.write_text((gi.read_text(encoding="utf-8") if gi.is_file() else "") + prefix
-                      + f"\n# symlinks do {tmpl['name']} (caminho absoluto desta máquina)\n" + "\n".join(add) + "\n", encoding="utf-8")
+    ensure_gitignore(project, ignore_lines, f"symlinks do {tmpl['name']}")
     manifest = project / ".agent" / "SIPS-CONSUMIDOS.md"
     (project / ".agent").mkdir(exist_ok=True)
     block = (f"## {tmpl['name']} (`{resolver}`)\n- Hub: {hub}\n- Instalado/atualizado em: {today}\n- Skill: {resolver}\n"
@@ -405,7 +413,7 @@ def handle(hub: Path, name: str, project: Path, apply: bool, today: str, cover: 
     if ss.is_generated_copy(project, e["resolver"]):
         print(f"  - {e['resolver']}: {GENERATED_NOTE}")
     for r in removed:
-        print(f"  - {r} escolhido pelo projeto saiu do hub: remover o link com o ok do dono")
+        print(f"  - {r}" if r.startswith("núcleo") else f"  - {r} escolhido pelo projeto saiu do hub: remover o link com o ok do dono")
         pending = True
     for link, target in fixes:
         print(f"  - {'recriar' if apply else 'recriaria'} link {link.relative_to(project)} -> {target}")
@@ -414,6 +422,8 @@ def handle(hub: Path, name: str, project: Path, apply: bool, today: str, cover: 
         pending = True
     if apply:
         apply_fixes(fixes)
+        core = {l for l, _ in ss.nucleo_links(project, hub, e["resolver"])[0]}
+        ensure_gitignore(project, [str(l.relative_to(project)) for l, _ in fixes if l in core], f"núcleo do {e['name']}")
     new, gone, unreadable = news(hub, e)
     if unreadable:
         print("  - novidades não verificadas: \"Vistos no hub\" em formato antigo (rode o prompt de instalação do SIP uma vez)")

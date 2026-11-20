@@ -16,6 +16,20 @@ O projeto `SIP - Geral` (`/Users/macbookpro/Documents/IA Projects/_Plataforma/0 
 
 Leitura de arquivo fora do diretório de trabalho pode pedir aprovação do usuário na primeira vez; isso é esperado. Sempre use o caminho absoluto entre aspas: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões"`.
 
+## Skill que as regras citam e a ferramenta Skill não acha (`Unknown skill`)
+
+Isso não é erro do projeto: a skill mora no hub (ou em outro SIP) e não está em
+`.claude/skills/`. Não repita a chamada e não pare. Na raiz do projeto, rode:
+`python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/resolve_skill.py" <nome ou termo>`
+Ele devolve o caminho absoluto, o SIP de origem e se esse SIP está instalado
+neste projeto (lê os hubs no disco agora, não o manifesto, que é só uma foto da
+instalação). Leia o `SKILL.md` por esse caminho, avise o dono em uma linha ("a
+skill X vem do hub, li por caminho") e siga. Sem resultado, o script mostra onde
+procurou: só então diga que não existe. SIP não instalado: ofereça o prompt de
+instalação que o script mostra. O núcleo (lista em
+`/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/resolver/sip-geral/nucleo.json`, se existir) já vem
+linkado no projeto, e essas a ferramenta Skill acha.
+
 ## Passo 1 — classifique a tarefa
 
 | Tipo de tarefa | O que fazer |
@@ -27,7 +41,7 @@ Leitura de arquivo fora do diretório de trabalho pode pedir aprovação do usu�
 
 1. Ache a vertical na tabela do índice abaixo pela coluna "Use quando". Para casos ambíguos, leia o roteador mestre do hub: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/intelligent-routing/SKILL.md"`.
 2. Leia só o arquivo da vertical: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/resolver/sip-geral/verticais/<vertical>.md"`. Ali estão as skills, agents e workflows daquela área, cada um com o seu "Use quando". Sem certeza da vertical: `grep -ril "<palavra>" "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/resolver/sip-geral/verticais/"`.
-3. Leia só o arquivo do item escolhido, por caminho absoluto no hub: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/<nome>/SKILL.md"`. Nunca symlinke nem copie skills especialistas do hub para o projeto.
+3. Leia só o arquivo do item escolhido, por caminho absoluto no hub: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/<nome>/SKILL.md"`. Nunca symlinke nem copie skills especialistas do hub para o projeto (só o núcleo vem linkado pelo instalador).
 4. Aplique o conteúdo inline e avise em uma linha que a resposta veio do hub `SIP - Geral`, não de conhecimento genérico.
 
 ## Modo dispatch (só para construções grandes)
@@ -76,7 +90,7 @@ Caso contrário (sessão num projeto consumidor, sem o dono revisando aquela edi
 
 ## Atualização
 
-- Última atualização do hub: 2026-11-18 (o dono do hub muda esta data sempre que esta skill, um agent, um workflow ou a estrutura do hub mudar).
+- Última atualização do hub: 2026-11-20 (o dono do hub muda esta data sempre que esta skill, um agent, um workflow ou a estrutura do hub mudar).
 - Para atualizar a instalação num projeto (refazer links, escolher entre os agents/workflows novos): cole de novo o prompt `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/instalar-skill-sip-geral.md"` numa sessão daquele projeto.
 - A data em que **cada projeto** instalou ou atualizou fica no `.agent/SIPS-CONSUMIDOS.md` dele. Se for anterior à data acima, ofereça rodar o prompt.
 

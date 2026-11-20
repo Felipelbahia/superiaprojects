@@ -1,7 +1,7 @@
 ---
 # Repository: https://github.com/Felipelbahia/superiaprojects
 name: skill-resolver
-description: Use whenever a capability seems relevant to the current task but no matching skill appears in the currently loaded skills list — this is common in Antigravity Kit projects (any repo with a .agent/skills/ directory, or a CLAUDE.md/AGENTS.md that references "0 Padrões"), because Claude Code only auto-discovers SKILL.md files under .claude/skills/ and ~/.claude/skills/, never under .agent/skills/. Also use when the user names a skill by name that doesn't show up in the listing, or asks things like "existe skill pra isso", "do we have a skill for X", "check 0 Padrões for a skill". Searches the project's own .agent/skills/ (and .agents/skills/ for older, unmigrated setups), then the global library at 0 Padrões/.agent/skills/, then 0 Mkt/ for marketing, SEO, copywriting or growth topics.
+description: Use whenever a capability seems relevant to the current task but no matching skill appears in the currently loaded skills list, or the Skill tool answers "Unknown skill" for a skill the project rules name — common in Antigravity Kit projects (any repo with a .agent/skills/ directory, or a CLAUDE.md/AGENTS.md that references "0 Padrões"), because Claude Code only auto-discovers SKILL.md files under .claude/skills/ and ~/.claude/skills/, never under .agent/skills/ or inside a hub. Also use when the user names a skill that doesn't show up in the listing, or asks "existe skill pra isso", "do we have a skill for X", "check 0 Padrões for a skill". Runs resolve_skill.py, which searches the project, the SIP hubs it consumes and the kit. This is the fallback for projects with no SIP installed; where `sip-geral` is installed, its resolver covers the same ground.
 author: Futuro Mercado / Felipe Bahia (@felipelbahia)
 license: MIT
 ---
@@ -9,68 +9,43 @@ license: MIT
 
 ## Why this exists
 
-Claude Code's native Skill tool only lists `SKILL.md` files it finds under two
-places: the project's `.claude/skills/` and the personal `~/.claude/skills/`.
+Claude Code's native Skill tool only lists `SKILL.md` files under the project's `.claude/skills/` and the personal
+`~/.claude/skills/`. The Antigravity Kit keeps skills under `.agent/skills/` (and the SIP hubs keep theirs in the hub), a place
+Claude Code never scans. A name the rules cite that is not linked there makes the Skill tool answer `Unknown skill`.
+**That is not a project error**: the skill exists, it just lives somewhere the tool does not look.
 
-The Antigravity Kit convention (used across the VibeCoding / Plinq projects)
-stores skill content under `.agent/skills/` instead — a Google Antigravity
-convention, not a Claude Code one. Claude Code never scans that path on its
-own. A project's `CLAUDE.md` usually has a "Fallback Resolution Protocol"
-section describing this search order in prose, but prose alone doesn't make
-those skills invokable — nothing puts them in the Skill tool's list. This
-skill is the actual procedure behind that prose: run it when you suspect a
-relevant skill exists but isn't showing up.
+## Which skill answers first
 
-## Search order
+| The project has | Use |
+|---|---|
+| `sip-geral` (or any `sip-*`) in `.claude/skills/` | its resolver: it explains the same procedure and the hub's index by vertical |
+| no SIP installed (no `.agent/SIPS-CONSUMIDOS.md`) | this skill |
 
-Run these in order and stop at the first real match. Use `find`/`ls`, not
-memory — a name that existed in a past session may have moved or been
-renamed.
+Both end in the same command, so the answer is the same.
 
-1. **Project-local, Antigravity convention** — the current project's own
-   `.agent/skills/<query>*` (and `.agents/skills/<query>*` for projects not
-   yet migrated to the singular `.agent/` form). These are project-specific
-   and take priority over anything global.
+## Procedure
+
+1. Run, from the project root (the kit's copy, by absolute path):
    ```
-   find .agent/skills .agents/skills -maxdepth 1 -iname "*<query>*" 2>/dev/null
+   python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/resolve_skill.py" <name or term>
    ```
-2. **Global base** — the shared skill library at
-   `/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/`.
-   ```
-   find "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills" -maxdepth 1 -iname "*<query>*"
-   ```
-   If nothing matches the literal query, `ls` the directory and scan names by
-   eye — skill names are topic-based (`api-patterns`, `database-design`,
-   `n8n-workflow-patterns`), not always a substring of what the user said.
-3. **Global marketing** — for SEO, copywriting, growth, positioning, or
-   marketing-strategy topics only:
-   `/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Mkt/`.
-
-## Once you find a match
-
-1. Read its `SKILL.md` first — treat it exactly like a normal Skill
-   invocation: read the index/frontmatter, then only the specific sections
-   relevant to the task at hand (don't read every file in the skill folder).
-2. Follow its instructions inline, as if the Skill tool had loaded it.
-3. Tell the user in one line where it came from (project-local vs. global
-   0 Padrões vs. 0 Mkt) — this matters because project-local skills reflect
-   decisions specific to that codebase, while global ones are generic
-   defaults that may need adapting.
+   It looks in the project's own `.agent/`, the hubs listed in `.agent/SIPS-CONSUMIDOS.md`, the kit, and the hubs of the SIPs the project
+   did not install. It reads each hub from disk now (the manifest is only a snapshot taken at install time) and prints the absolute
+   path, the origin and whether that SIP is installed here. Exit 0 found, 1 not found, 2 usage.
+2. Read the printed `SKILL.md` first: the index and frontmatter, then only the sections the task needs. Follow it inline, as if the
+   Skill tool had loaded it.
+3. Tell the owner in one line where it came from (the project's own, a hub, a SIP not installed here). A project-local skill reflects
+   decisions of that codebase; a hub one is a generic default that may need adapting.
+4. A skill of a SIP the project did not install: the script names that SIP's install prompt. Offer it; never install on your own.
 
 ## If nothing matches
 
-Say so plainly — don't fabricate a procedure from general knowledge and
-pass it off as the skill's guidance. Ask the user, or proceed with your own
-best judgment and flag that no dedicated skill covered this.
+The script prints every place it looked. Show that list before saying a skill does not exist. Never invent a procedure from general
+knowledge and present it as the skill's guidance: ask the owner, or proceed with your own judgment and say that no dedicated skill
+covered this.
 
-## Optional: promote a global skill to native discovery
+## Never copy or link a hub skill into the project by yourself
 
-If a global (`0 Padrões`) skill turns out to be used repeatedly in a given
-project, it's worth making it natively discoverable there instead of
-resolving it by hand every time — symlink it into that project's
-`.claude/skills/`:
-```
-ln -s "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/<name>" ".claude/skills/<name>"
-```
-Only do this when asked, or mention it as a suggestion — creating files in a
-project is a visible change and shouldn't happen silently.
+Read it by its path. Only the *núcleo* (the process skills the rules name in mandatory steps, listed in `nucleo.json` next to the
+`sip-geral` resolver) is linked in projects, by the SIP installer and `propagar_sip.py`. A project missing the núcleo links is brought up
+to date by the skill `atualizar-sips`, with the owner's ok.

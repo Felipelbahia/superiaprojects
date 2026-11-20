@@ -82,6 +82,10 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | 042 | ~~A seção 3 das regras ainda exige GEMINI.md, mas o `sync_rules.py` o trata como legado~~ (aplicado antes de 2026-11-19, commit `f05fbd8`; conferido e arquivado em 2026-11-19, em `arquivo/`) | `core.md`, `sync_rules.py` | Média |
 | 043 | ~~Regras: buscar no SIP o que não está instalado e disciplina de mudança~~ (aplicado 2026-11-19, em `arquivo/`; notas gravadas nos 58 projetos; remontagem de cada um no loop de propagação) | módulos de regras, `project-initializer`, kit de instalação, `checklist.py` | Alta |
 | 044 | ~~`scope_check.py`: glob que começa com ponto (`.agent/...`) nunca casa~~ (aplicado 2026-11-19, em `arquivo/`) | `scope_check.py` | Alta |
+| 045 | ~~`execution-loop` dá `Unknown skill` em projeto consumidor~~ (aplicado 2026-11-20 como núcleo de skills + `resolve_skill.py`, em `arquivo/`) | `sip-geral`, regras (core), scripts de SIP | Alta |
+| 047 | Propagar o núcleo aos consumidores e provar em sessão real | `propagar_sip.py`, 63 projetos | Alta |
+| 048 | ~~Cópia global do `skill-resolver` diverge do hub~~ (aplicado 2026-11-20, em `arquivo/`) | `~/.claude/skills/skill-resolver` | Baixa |
+| 049 | Remontar as regras do kit nos projetos, em sessões por faixa (loop pronto em `.agent/plans/execution-loops/2026_11_20/Remontar Regras nos Projetos/`) | 58 projetos (`CLAUDE.md`/`AGENTS.md`) | Média |
 
 
 Ordem sugerida: 001, 002, 003 (maior retorno na origem); depois 010, 006, 007; o resto quando fizer sentido. Os itens 001 a 003 mexem no mesmo arquivo: aplique em sequência, com um commit por item. Os itens 011 a 017 vieram do SIP Astro (`/Users/macbookpro/Documents/IA Projects/_Plataforma/Base Sites - Astro`, 2026-11-10); 011 a 015 também mexem no `execution-loop`, então entram na mesma fila sequencial (sugestão: 011 e 014 primeiro).

@@ -12,6 +12,7 @@ The copy keeps the source bytes unchanged (no header), so frontmatter still star
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -27,6 +28,28 @@ def resolver_dir(hub: Path, name: str) -> Path:
     """
     new = Path(hub) / "prompts" / "resolver" / name
     return new if new.is_dir() else Path(hub) / ".agent" / "skills" / name
+
+
+NUCLEO_NAME = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+
+
+def nucleo(hub: Path, resolver: str) -> list[str]:
+    """Skills a SIP resolver asks every consumer to keep linked: `skills` in `nucleo.json` next to the resolver.
+
+    No file: no núcleo (a SIP may not declare one). A file that is not `{"skills": ["kebab-name", ...]}` is an error:
+    the names become link targets, so a bad file must be seen, never skipped.
+    """
+    f = resolver_dir(hub, resolver) / "nucleo.json"
+    if not f.is_file():
+        return []
+    try:
+        data = json.loads(f.read_text(encoding="utf-8"))
+    except ValueError as err:
+        raise ValueError(f"{f}: JSON inválido ({err})") from err
+    names = data.get("skills") if isinstance(data, dict) else None
+    if not isinstance(names, list) or not all(isinstance(n, str) and NUCLEO_NAME.match(n) for n in names):
+        raise ValueError(f'{f}: esperado {{"skills": ["nome-em-kebab-case", ...]}}')
+    return names
 
 
 def _digest(path: Path) -> str:

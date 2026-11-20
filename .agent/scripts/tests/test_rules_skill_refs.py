@@ -7,6 +7,8 @@ installed locally (only the `sip-*` pointers are), so it must live in this hub: 
 Run from the 0 Padrões root: python3 -m unittest discover -s .agent/scripts/tests
 """
 
+import json
+import json
 import re
 import tempfile
 import unittest
@@ -41,7 +43,32 @@ def missing(modules_dir: Path, kit: Path = KIT) -> list[str]:
     return problems
 
 
+NUCLEO_FILE = KIT / "prompts" / "resolver" / "sip-geral" / "nucleo.json"
+# Skills core.md cites that stay out of the núcleo: used only in one situation, found on demand through `sip-geral`
+# (`resolve_skill.py`). A skill that every project needs goes to nucleo.json instead.
+ON_DEMAND = {
+    "launch-readiness": "only before a go-live or a bulk e-mail",
+    "mapa-de-destinos": "only when a deliverable has no row in docs/mapa-de-destinos.md",
+    "vulnerability-scanner": "only before publishing an app or site",
+}
+
+
+def outside_nucleo(core_text: str, nucleo: list[str]) -> list[str]:
+    """Skills cited in core.md that are neither linked in every project (núcleo) nor listed as on demand."""
+    return sorted({n for n, _ in citations(core_text)} - set(nucleo) - set(ON_DEMAND) - set(EXTERNAL))
+
+
 class RulesSkillRefs(unittest.TestCase):
+    def test_core_cites_only_nucleo_or_on_demand_skills(self):
+        nucleo = json.loads(NUCLEO_FILE.read_text(encoding="utf-8"))["skills"]
+        self.assertEqual(outside_nucleo((MODULES / "core.md").read_text(encoding="utf-8"), nucleo), [],
+                         "core.md cites a skill that is not linked in projects: add it to nucleo.json or to ON_DEMAND")
+
+    def test_a_new_core_citation_outside_the_nucleo_is_reported(self):
+        self.assertEqual(outside_nucleo("- Use skill `nova-skill` here.\n", ["execution-loop"]), ["nova-skill"])
+        self.assertEqual(outside_nucleo("- Use skill `brainstorming` here.\n", ["brainstorming"]), [])
+        self.assertEqual(outside_nucleo("- Use skill `launch-readiness` here.\n", []), [])
+
     def test_real_modules_cite_only_findable_skills(self):
         self.assertEqual(missing(MODULES), [])
 
