@@ -1,1 +1,1 @@
-../../.agent/agents/ai-engineer.md
+../../.agents/agents/ai-engineer.md

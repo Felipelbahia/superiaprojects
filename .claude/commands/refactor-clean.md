@@ -1,1 +1,1 @@
-../../.agent/workflows/refactor-clean.md
+../../.agents/workflows/refactor-clean.md

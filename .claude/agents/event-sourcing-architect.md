@@ -1,1 +1,1 @@
-../../.agent/agents/event-sourcing-architect.md
+../../.agents/agents/event-sourcing-architect.md

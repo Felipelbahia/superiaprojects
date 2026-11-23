@@ -1,1 +1,1 @@
-../../.agent/workflows/compliance-check.md
+../../.agents/workflows/compliance-check.md

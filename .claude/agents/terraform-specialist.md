@@ -1,1 +1,1 @@
-../../.agent/agents/terraform-specialist.md
+../../.agents/agents/terraform-specialist.md

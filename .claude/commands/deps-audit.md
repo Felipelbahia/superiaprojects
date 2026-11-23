@@ -1,1 +1,1 @@
-../../.agent/workflows/deps-audit.md
+../../.agents/workflows/deps-audit.md

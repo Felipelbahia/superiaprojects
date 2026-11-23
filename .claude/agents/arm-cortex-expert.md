@@ -1,1 +1,1 @@
-../../.agent/agents/arm-cortex-expert.md
+../../.agents/agents/arm-cortex-expert.md

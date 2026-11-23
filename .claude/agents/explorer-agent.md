@@ -1,1 +1,1 @@
-../../.agent/agents/explorer-agent.md
+../../.agents/agents/explorer-agent.md

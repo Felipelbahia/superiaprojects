@@ -1,1 +1,1 @@
-../../.agent/agents/ruby-pro.md
+../../.agents/agents/ruby-pro.md

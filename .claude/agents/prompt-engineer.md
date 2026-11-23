@@ -1,1 +1,1 @@
-../../.agent/agents/prompt-engineer.md
+../../.agents/agents/prompt-engineer.md

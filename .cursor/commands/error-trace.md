@@ -1,1 +1,1 @@
-../../.agent/workflows/error-trace.md
+../../.agents/workflows/error-trace.md

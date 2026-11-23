@@ -1,1 +1,1 @@
-../../.agent/workflows/ml-pipeline.md
+../../.agents/workflows/ml-pipeline.md

@@ -2,7 +2,7 @@
 
 Arquitetura e qualidade: padrões e decisões de arquitetura, microsserviços, CQRS e event sourcing, código limpo, refatoração, modernização, dependências, performance, débito técnico e a família ponytail (simplicidade e auditoria).
 
-> Gerado por build_sip_index.py. Não edite à mão. Skill: `"<HUB>/.agent/skills/<nome>/SKILL.md"`; agent: `"<HUB>/.agent/agents/<nome>.md"`; workflow: `"<HUB>/.agent/workflows/<nome>.md"`.
+> Gerado por build_sip_index.py. Não edite à mão. Skill: `"<HUB>/.agents/skills/<nome>/SKILL.md"`; agent: `"<HUB>/.agents/agents/<nome>.md"`; workflow: `"<HUB>/.agents/workflows/<nome>.md"`.
 
 ## Skills (17)
 

@@ -1,1 +1,1 @@
-../../.agent/workflows/design-system-foundation.md
+../../.agents/workflows/design-system-foundation.md

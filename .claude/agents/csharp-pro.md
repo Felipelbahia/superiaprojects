@@ -1,1 +1,1 @@
-../../.agent/agents/csharp-pro.md
+../../.agents/agents/csharp-pro.md

@@ -1,1 +1,1 @@
-../../.agent/agents/elixir-pro.md
+../../.agents/agents/elixir-pro.md

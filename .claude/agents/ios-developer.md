@@ -1,1 +1,1 @@
-../../.agent/agents/ios-developer.md
+../../.agents/agents/ios-developer.md

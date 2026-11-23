@@ -1,1 +1,1 @@
-../../.agent/workflows/data-pipeline.md
+../../.agents/workflows/data-pipeline.md

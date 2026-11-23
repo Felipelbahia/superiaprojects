@@ -1,1 +1,1 @@
-../../.agent/workflows/context-restore.md
+../../.agents/workflows/context-restore.md

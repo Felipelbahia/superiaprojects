@@ -1,1 +1,1 @@
-../../.agent/workflows/feature-development.md
+../../.agents/workflows/feature-development.md

@@ -1,1 +1,1 @@
-../../.agent/workflows/full-review.md
+../../.agents/workflows/full-review.md

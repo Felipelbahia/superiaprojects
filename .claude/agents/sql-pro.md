@@ -1,1 +1,1 @@
-../../.agent/agents/sql-pro.md
+../../.agents/agents/sql-pro.md

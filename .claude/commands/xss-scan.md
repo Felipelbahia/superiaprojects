@@ -1,1 +1,1 @@
-../../.agent/workflows/xss-scan.md
+../../.agents/workflows/xss-scan.md

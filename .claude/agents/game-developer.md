@@ -1,1 +1,1 @@
-../../.agent/agents/game-developer.md
+../../.agents/agents/game-developer.md

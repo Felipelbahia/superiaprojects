@@ -1,1 +1,1 @@
-../../.agent/workflows/ci_commit.md
+../../.agents/workflows/ci_commit.md

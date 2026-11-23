@@ -1,1 +1,1 @@
-../../.agent/agents/mlops-engineer.md
+../../.agents/agents/mlops-engineer.md

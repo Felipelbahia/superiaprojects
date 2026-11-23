@@ -1,1 +1,1 @@
-../../.agent/workflows/component-scaffold.md
+../../.agents/workflows/component-scaffold.md

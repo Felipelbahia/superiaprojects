@@ -1,1 +1,1 @@
-../../.agent/agents/php-pro.md
+../../.agents/agents/php-pro.md

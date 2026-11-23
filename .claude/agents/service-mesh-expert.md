@@ -1,1 +1,1 @@
-../../.agent/agents/service-mesh-expert.md
+../../.agents/agents/service-mesh-expert.md

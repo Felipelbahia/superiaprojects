@@ -1,1 +1,1 @@
-../../.agent/agents/c-pro.md
+../../.agents/agents/c-pro.md

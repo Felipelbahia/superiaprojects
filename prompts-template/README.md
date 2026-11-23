@@ -20,7 +20,7 @@ O número 5 está vago de propósito: o antigo #5 (estudar referências) foi fun
 
 ## Atualização na instalação
 
-`install.sh` e `install.py` rodam `.agent/scripts/render_prompts.py`, que grava `projetos/prompts/` (local, não versionado) a partir deste `prompts-template/`, trocando `<SUPER_IA_PROJECTS_PATH>` pelo caminho real do kit. Rode de novo depois de editar um template.
+`install.sh` e `install.py` rodam `.agents/scripts/render_prompts.py`, que grava `projetos/prompts/` (local, não versionado) a partir deste `prompts-template/`, trocando `<SUPER_IA_PROJECTS_PATH>` pelo caminho real do kit. Rode de novo depois de editar um template.
 
 ## Como usar
 

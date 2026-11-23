@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/haskell-pro.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/haskell-pro.md (model: sonnet) -->
 ---
 name: haskell-pro
 description: Expert Haskell engineer specializing in advanced type systems, pure functional design, and high-reliability software. Use PROACTIVELY for type-level programming, concurrency, and architecture guidance.

@@ -1,1 +1,1 @@
-../../.agent/workflows/code-migrate.md
+../../.agents/workflows/code-migrate.md

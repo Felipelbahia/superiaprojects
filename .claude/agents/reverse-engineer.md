@@ -1,1 +1,1 @@
-../../.agent/agents/reverse-engineer.md
+../../.agents/agents/reverse-engineer.md

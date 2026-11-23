@@ -1,1 +1,1 @@
-../../.agent/agents/conductor-validator.md
+../../.agents/agents/conductor-validator.md

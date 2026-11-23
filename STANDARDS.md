@@ -17,10 +17,10 @@
 
 ## 2. Standard Folder Structure
 
-- **`/.agent/`**: Root AI configuration, agents, skills, workflows and rules
-- **`/CLAUDE.md` and `/AGENTS.md`**: Master rule files, identical (`GEMINI.md` and `.agent/rules/` are legacy)
-- **`/.agent/skills/`**: Modular skills index and domain instructions
-- **`/.agent/scripts/`**: Automation and verification scripts
+- **`/.agents/`**: Root AI configuration, agents, skills, workflows and rules
+- **`/CLAUDE.md` and `/AGENTS.md`**: Master rule files, identical (`GEMINI.md` and `.agents/rules/` are legacy)
+- **`/.agents/skills/`**: Modular skills index and domain instructions
+- **`/.agents/scripts/`**: Automation and verification scripts
 - **`/projetos/`**: Central registry of all VibeCoding projects and sheets
 
 ## 3. General Principles from `clean-code` Skill
@@ -34,4 +34,4 @@
 
 - When entering a new project, check for a root `STANDARDS.md`.
 - Ensure dual rules parity (`CLAUDE.md`, `AGENTS.md`) is 100% preserved.
-- Always check `.agent/workflows` for project-specific automation.
+- Always check `.agents/workflows` for project-specific automation.

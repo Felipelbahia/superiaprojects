@@ -1,1 +1,1 @@
-../../.agent/workflows/python-scaffold.md
+../../.agents/workflows/python-scaffold.md

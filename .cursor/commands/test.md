@@ -1,1 +1,1 @@
-../../.agent/workflows/test.md
+../../.agents/workflows/test.md

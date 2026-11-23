@@ -1,1 +1,1 @@
-../../.agent/workflows/design-new-page.md
+../../.agents/workflows/design-new-page.md

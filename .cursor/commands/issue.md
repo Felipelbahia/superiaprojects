@@ -1,1 +1,1 @@
-../../.agent/workflows/issue.md
+../../.agents/workflows/issue.md

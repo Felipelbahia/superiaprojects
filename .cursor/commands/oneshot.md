@@ -1,1 +1,1 @@
-../../.agent/workflows/oneshot.md
+../../.agents/workflows/oneshot.md

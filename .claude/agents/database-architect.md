@@ -1,1 +1,1 @@
-../../.agent/agents/database-architect.md
+../../.agents/agents/database-architect.md

@@ -1,1 +1,1 @@
-../../.agent/workflows/performance-optimization.md
+../../.agents/workflows/performance-optimization.md

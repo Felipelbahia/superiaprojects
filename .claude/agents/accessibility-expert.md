@@ -1,1 +1,1 @@
-../../.agent/agents/accessibility-expert.md
+../../.agents/agents/accessibility-expert.md

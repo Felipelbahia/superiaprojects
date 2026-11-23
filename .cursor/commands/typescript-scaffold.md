@@ -1,1 +1,1 @@
-../../.agent/workflows/typescript-scaffold.md
+../../.agents/workflows/typescript-scaffold.md

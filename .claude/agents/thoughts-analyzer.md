@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/thoughts-analyzer.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/thoughts-analyzer.md (model: sonnet) -->
 ---
 name: thoughts-analyzer
 description: The research equivalent of codebase-analyzer. Use this subagent_type when wanting to deep dive on a research topic. Not commonly needed otherwise.

@@ -1,1 +1,1 @@
-../../.agent/workflows/multi-agent-optimize.md
+../../.agents/workflows/multi-agent-optimize.md

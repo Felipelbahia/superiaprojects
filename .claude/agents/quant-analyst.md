@@ -1,1 +1,1 @@
-../../.agent/agents/quant-analyst.md
+../../.agents/agents/quant-analyst.md

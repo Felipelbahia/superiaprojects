@@ -1,6 +1,6 @@
 Alinhar este projeto ao padrão de bancos Supabase
 
-Siga a skill supabase: <SUPER_IA_PROJECTS_PATH>/.agent/skills/supabase/SKILL.md e o registro <SUPER_IA_PROJECTS_PATH>/projetos/_bancos-supabase.md.
+Siga a skill supabase: <SUPER_IA_PROJECTS_PATH>/.agents/skills/supabase/SKILL.md e o registro <SUPER_IA_PROJECTS_PATH>/projetos/_bancos-supabase.md.
 
 REGRAS: sem MCP do Supabase. Não acesse nenhum banco e não rode migração agora. Do `.env` leia só os NOMES das variáveis (ex.: `cut -d= -f1`), nunca os valores, e não os mostre. Nunca escreva chave, senha, token ou connection string em ficha, registro ou `.env.example`. Não renomeie variável no código sem eu aprovar o plano. Nunca afirme algo sem verificar por comando ou leitura; o que não verificou fica "não verificado".
 

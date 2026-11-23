@@ -1,1 +1,1 @@
-../../.agent/agents/scala-pro.md
+../../.agents/agents/scala-pro.md

@@ -1,1 +1,1 @@
-../../.agent/workflows/tdd-green.md
+../../.agents/workflows/tdd-green.md

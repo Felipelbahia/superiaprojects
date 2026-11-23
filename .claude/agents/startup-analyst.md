@@ -1,1 +1,1 @@
-../../.agent/agents/startup-analyst.md
+../../.agents/agents/startup-analyst.md

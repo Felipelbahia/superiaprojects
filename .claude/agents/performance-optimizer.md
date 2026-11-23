@@ -1,1 +1,1 @@
-../../.agent/agents/performance-optimizer.md
+../../.agents/agents/performance-optimizer.md

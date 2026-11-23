@@ -1,1 +1,1 @@
-../../.agent/workflows/status.md
+../../.agents/workflows/status.md

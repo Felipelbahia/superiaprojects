@@ -1,1 +1,1 @@
-../../.agent/agents/javascript-pro.md
+../../.agents/agents/javascript-pro.md

@@ -1,1 +1,1 @@
-../../.agent/agents/test-engineer.md
+../../.agents/agents/test-engineer.md

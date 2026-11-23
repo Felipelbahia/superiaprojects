@@ -1,1 +1,1 @@
-../../.agent/workflows/revert.md
+../../.agents/workflows/revert.md

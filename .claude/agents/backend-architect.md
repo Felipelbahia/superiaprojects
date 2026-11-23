@@ -1,1 +1,1 @@
-../../.agent/agents/backend-architect.md
+../../.agents/agents/backend-architect.md

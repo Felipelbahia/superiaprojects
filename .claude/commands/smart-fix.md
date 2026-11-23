@@ -1,1 +1,1 @@
-../../.agent/workflows/smart-fix.md
+../../.agents/workflows/smart-fix.md

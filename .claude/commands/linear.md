@@ -1,1 +1,1 @@
-../../.agent/workflows/linear.md
+../../.agents/workflows/linear.md

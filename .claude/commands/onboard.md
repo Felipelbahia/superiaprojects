@@ -1,1 +1,1 @@
-../../.agent/workflows/onboard.md
+../../.agents/workflows/onboard.md

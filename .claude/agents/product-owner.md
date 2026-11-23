@@ -1,1 +1,1 @@
-../../.agent/agents/product-owner.md
+../../.agents/agents/product-owner.md

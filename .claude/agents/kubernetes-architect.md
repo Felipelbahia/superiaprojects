@@ -1,1 +1,1 @@
-../../.agent/agents/kubernetes-architect.md
+../../.agents/agents/kubernetes-architect.md

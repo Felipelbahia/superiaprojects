@@ -1,1 +1,1 @@
-../../.agent/workflows/test-generate.md
+../../.agents/workflows/test-generate.md

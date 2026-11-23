@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/error-detective.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/error-detective.md (model: sonnet) -->
 ---
 name: error-detective
 description: Search logs and codebases for error patterns, stack traces, and anomalies. Correlates errors across systems and identifies root causes. Use PROACTIVELY when debugging issues, analyzing logs, or investigating production errors.

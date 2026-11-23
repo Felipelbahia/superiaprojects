@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/mobile-security-coder.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/mobile-security-coder.md (model: sonnet) -->
 ---
 name: mobile-security-coder
 description: Expert in secure mobile coding practices specializing in input validation, WebView security, and mobile-specific security patterns. Use PROACTIVELY for mobile security implementations or mobile security code reviews.

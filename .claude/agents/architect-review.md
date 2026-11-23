@@ -1,1 +1,1 @@
-../../.agent/agents/architect-review.md
+../../.agents/agents/architect-review.md

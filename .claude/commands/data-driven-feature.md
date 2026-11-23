@@ -1,1 +1,1 @@
-../../.agent/workflows/data-driven-feature.md
+../../.agents/workflows/data-driven-feature.md

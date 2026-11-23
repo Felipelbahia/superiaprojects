@@ -1,1 +1,1 @@
-../../.agent/agents/mobile-developer.md
+../../.agents/agents/mobile-developer.md

@@ -1,1 +1,1 @@
-../../.agent/workflows/ralph_research.md
+../../.agents/workflows/ralph_research.md

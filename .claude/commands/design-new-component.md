@@ -1,1 +1,1 @@
-../../.agent/workflows/design-new-component.md
+../../.agents/workflows/design-new-component.md

@@ -1,1 +1,1 @@
-../../.agent/workflows/preview.md
+../../.agents/workflows/preview.md

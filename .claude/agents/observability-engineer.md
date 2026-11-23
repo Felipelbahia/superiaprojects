@@ -1,1 +1,1 @@
-../../.agent/agents/observability-engineer.md
+../../.agents/agents/observability-engineer.md

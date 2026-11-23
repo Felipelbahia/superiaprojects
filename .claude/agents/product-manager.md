@@ -1,1 +1,1 @@
-../../.agent/agents/product-manager.md
+../../.agents/agents/product-manager.md

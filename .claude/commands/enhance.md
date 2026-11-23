@@ -1,1 +1,1 @@
-../../.agent/workflows/enhance.md
+../../.agents/workflows/enhance.md

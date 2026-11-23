@@ -1,1 +1,1 @@
-../../.agent/agents/monorepo-architect.md
+../../.agents/agents/monorepo-architect.md

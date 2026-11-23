@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/c4-context.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/c4-context.md (model: sonnet) -->
 ---
 name: c4-context
 description: Expert C4 Context-level documentation specialist. Creates high-level system context diagrams, documents personas, user journeys, system features, and external dependencies. Synthesizes container and component documentation with system documentation to create comprehensive context-level architecture. Use when creating the highest-level C4 system context documentation.

@@ -1,1 +1,1 @@
-../../.agent/agents/threat-modeling-expert.md
+../../.agents/agents/threat-modeling-expert.md

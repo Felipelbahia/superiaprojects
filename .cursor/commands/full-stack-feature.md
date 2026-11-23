@@ -1,1 +1,1 @@
-../../.agent/workflows/full-stack-feature.md
+../../.agents/workflows/full-stack-feature.md

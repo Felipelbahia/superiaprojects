@@ -1,1 +1,1 @@
-../../.agent/workflows/describe_pr.md
+../../.agents/workflows/describe_pr.md

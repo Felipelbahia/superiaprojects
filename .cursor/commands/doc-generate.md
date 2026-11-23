@@ -1,1 +1,1 @@
-../../.agent/workflows/doc-generate.md
+../../.agents/workflows/doc-generate.md

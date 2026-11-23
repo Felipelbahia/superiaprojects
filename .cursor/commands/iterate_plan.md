@@ -1,1 +1,1 @@
-../../.agent/workflows/iterate_plan.md
+../../.agents/workflows/iterate_plan.md

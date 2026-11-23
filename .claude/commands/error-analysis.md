@@ -1,1 +1,1 @@
-../../.agent/workflows/error-analysis.md
+../../.agents/workflows/error-analysis.md

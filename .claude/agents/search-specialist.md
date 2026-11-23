@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/search-specialist.md (model: haiku) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/search-specialist.md (model: haiku) -->
 ---
 name: search-specialist
 description: Expert web researcher using advanced search techniques and synthesis. Masters search operators, result filtering, and multi-source verification. Handles competitive analysis and fact-checking. Use PROACTIVELY for deep research, information gathering, or trend analysis.

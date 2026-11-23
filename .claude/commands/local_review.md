@@ -1,1 +1,1 @@
-../../.agent/workflows/local_review.md
+../../.agents/workflows/local_review.md

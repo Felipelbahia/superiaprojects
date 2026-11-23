@@ -1,1 +1,1 @@
-../../.agent/workflows/new-track.md
+../../.agents/workflows/new-track.md

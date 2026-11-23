@@ -1,1 +1,1 @@
-../../.agent/agents/risk-manager.md
+../../.agents/agents/risk-manager.md

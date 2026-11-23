@@ -1,1 +1,1 @@
-../../.agent/workflows/api-mock.md
+../../.agents/workflows/api-mock.md

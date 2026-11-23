@@ -1,1 +1,1 @@
-../../.agent/workflows/create_plan.md
+../../.agents/workflows/create_plan.md

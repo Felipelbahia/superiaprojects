@@ -1,1 +1,1 @@
-../../.agent/agents/orchestrator.md
+../../.agents/agents/orchestrator.md

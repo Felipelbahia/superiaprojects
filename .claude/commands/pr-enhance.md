@@ -1,1 +1,1 @@
-../../.agent/workflows/pr-enhance.md
+../../.agents/workflows/pr-enhance.md

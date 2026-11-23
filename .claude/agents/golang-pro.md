@@ -1,1 +1,1 @@
-../../.agent/agents/golang-pro.md
+../../.agents/agents/golang-pro.md

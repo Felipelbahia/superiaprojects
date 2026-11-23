@@ -1,1 +1,1 @@
-../../.agent/agents/temporal-python-pro.md
+../../.agents/agents/temporal-python-pro.md

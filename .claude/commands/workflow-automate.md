@@ -1,1 +1,1 @@
-../../.agent/workflows/workflow-automate.md
+../../.agents/workflows/workflow-automate.md

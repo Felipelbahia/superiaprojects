@@ -1,1 +1,1 @@
-../../.agent/agents/qa-automation-engineer.md
+../../.agents/agents/qa-automation-engineer.md

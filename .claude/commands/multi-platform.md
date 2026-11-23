@@ -1,1 +1,1 @@
-../../.agent/workflows/multi-platform.md
+../../.agents/workflows/multi-platform.md

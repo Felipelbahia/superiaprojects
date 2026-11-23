@@ -1,1 +1,1 @@
-../../.agent/agents/context-manager.md
+../../.agents/agents/context-manager.md

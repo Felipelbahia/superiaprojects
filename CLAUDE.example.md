@@ -28,28 +28,28 @@ Declared once, at setup, and kept current. It says which rule modules this file 
 - Produces: <software | content | automation/data | mix>
 - Modules: <core, ...>
 - Primary agent: <agent>
-- SIPs: <sip-geral, ...> (details: `.agent/SIPS-CONSUMIDOS.md`)
+- SIPs: <sip-geral, ...> (details: `.agents/SIPS-CONSUMIDOS.md`)
 ```
 
 ## 2. Skills, agents, workflows: where they live
 
-- `.agent/` is the single source of truth. Never copy, always symlink into what each AI reads:
+- `.agents/` is the single source of truth. Never copy, always symlink into what each AI reads:
 
   | Kind | Source | Exposed as |
   |---|---|---|
-  | Skill | `.agent/skills/<name>/SKILL.md` | `.claude/skills/<name>` |
-  | Agent (a role: `name` + `description`) | `.agent/agents/<name>.md` | `.claude/agents/<name>.md` |
-  | Workflow (a `/command`: `description`, `disable-model-invocation: true`) | `.agent/workflows/<name>.md` | `.claude/commands/<name>.md`, `.cursor/commands/<name>.md` |
+  | Skill | `.agents/skills/<name>/SKILL.md` | `.claude/skills/<name>` |
+  | Agent (a role: `name` + `description`) | `.agents/agents/<name>.md` | `.claude/agents/<name>.md` |
+  | Workflow (a `/command`: `description`, `disable-model-invocation: true`) | `.agents/workflows/<name>.md` | `.claude/commands/<name>.md`, `.cursor/commands/<name>.md` |
 
-- Claude Code never scans `.agent/skills/`. Before deleting any `.claude/skills/<name>`, run `test -L`: a real directory may be the only thing making the skill visible.
-- New skill: only in this project (`.agent/skills/<name>/`). Read `writing-skills` first.
-- After adding, renaming or removing a skill, agent or workflow, run `python .agent/scripts/sync_entrypoints.py` and `python .agent/scripts/generate_catalog.py`.
-- Catalog of skills, agents and workflows: `.agent/CATALOG.md`.
-- **Named in these rules but not in `.claude/skills/`, `.claude/agents/` or `.claude/commands/`:** that is not an error and never a reason to stop. Look in this order: (1) this project's `.agent/`; (2) the installed SIPs: `sip-geral` and every `sip-*` listed in `.agent/SIPS-CONSUMIDOS.md` (the resolver points to the item in its hub: read it there by absolute path); (3) the kit: `<kit>/.agent/skills/sip-*/SKILL.md` (kit path in `.agent/SIPS-CONSUMIDOS.md`). To look, run `python3 .agent/scripts/resolve_skill.py <name or term>` (not local? the hub copy, by absolute path, from the project root): it prints the absolute path, the SIP it comes from and whether that SIP is installed here, reading the hubs from disk now. **An `Unknown skill` from the Skill tool is not a project error:** do not stop and do not repeat the call; tell the owner in one line and read the file at the printed path. Say "it does not exist" only after showing where you looked (the script prints the places). Found in a hub: read it from there, never copy it into the project. Only the *núcleo* is linked: the few process skills these rules name in mandatory steps (`nucleo.json` next to the `sip-geral` resolver), put in `.claude/skills/` by the SIP installer and `propagar_sip.py`; a project that does not have them yet gets them from `atualizar-sips` (details: section *Central hub*).
+- Claude Code never scans `.agents/skills/`. Before deleting any `.claude/skills/<name>`, run `test -L`: a real directory may be the only thing making the skill visible.
+- New skill: only in this project (`.agents/skills/<name>/`). Read `writing-skills` first.
+- After adding, renaming or removing a skill, agent or workflow, run `python .agents/scripts/sync_entrypoints.py` and `python .agents/scripts/generate_catalog.py`.
+- Catalog of skills, agents and workflows: `.agents/CATALOG.md`.
+- **Named in these rules but not in `.claude/skills/`, `.claude/agents/` or `.claude/commands/`:** that is not an error and never a reason to stop. Look in this order: (1) this project's `.agents/`; (2) the installed SIPs: `sip-geral` and every `sip-*` listed in `.agents/SIPS-CONSUMIDOS.md` (the resolver points to the item in its hub: read it there by absolute path); (3) the kit: `<kit>/.agents/skills/sip-*/SKILL.md` (kit path in `.agents/SIPS-CONSUMIDOS.md`). To look, run `python3 .agents/scripts/resolve_skill.py <name or term>` (not local? the hub copy, by absolute path, from the project root): it prints the absolute path, the SIP it comes from and whether that SIP is installed here, reading the hubs from disk now. **An `Unknown skill` from the Skill tool is not a project error:** do not stop and do not repeat the call; tell the owner in one line and read the file at the printed path. Say "it does not exist" only after showing where you looked (the script prints the places). Found in a hub: read it from there, never copy it into the project. Only the *núcleo* is linked: the few process skills these rules name in mandatory steps (`nucleo.json` next to the `sip-geral` resolver), put in `.claude/skills/` by the SIP installer and `propagar_sip.py`; a project that does not have them yet gets them from `atualizar-sips` (details: section *Central hub*).
 
 ## 3. Rule files parity
 
-`CLAUDE.md` and `AGENTS.md` at the project root stay 100% identical: Claude Code reads `./CLAUDE.md` (or `./.claude/CLAUDE.md`, **never both**: it loads the two), Antigravity and other tools read `./AGENTS.md`. `GEMINI.md` and `.agent/rules/` are legacy: never create them (`python .agent/scripts/sync_rules.py --clean-legacy` removes old copies, asking first). After editing one, run `python .agent/scripts/sync_rules.py`. When the kit's modules change, a project's `CLAUDE.md` falls behind on its own: re-run `assemble_rules.py` (same modules) and `sync_rules.py`. That is routine; check first that the diff has only module lines. Updating an old rules file: keep only the project's own rules, whole (`check_local_rules.py <backup> CLAUDE.md` must say `ok`), and drop the old generic text.
+`CLAUDE.md` and `AGENTS.md` at the project root stay 100% identical: Claude Code reads `./CLAUDE.md` (or `./.claude/CLAUDE.md`, **never both**: it loads the two), Antigravity and other tools read `./AGENTS.md`. `GEMINI.md` and `.agents/rules/` are legacy: never create them (`python .agents/scripts/sync_rules.py --clean-legacy` removes old copies, asking first). After editing one, run `python .agents/scripts/sync_rules.py`. When the kit's modules change, a project's `CLAUDE.md` falls behind on its own: re-run `assemble_rules.py` (same modules) and `sync_rules.py`. That is routine; check first that the diff has only module lines. Updating an old rules file: keep only the project's own rules, whole (`check_local_rules.py <backup> CLAUDE.md` must say `ok`), and drop the old generic text.
 
 ## 4. Before acting (mandatory sequence)
 
@@ -98,14 +98,14 @@ Read only when the trigger applies, and only if the file exists. With `_projectd
 
 ## 7. Plans, inbox, artifacts
 
-- Everything under `.agent/plans/` (local, always listed in the project's `.gitignore`: add the line if missing; `_projectdefines/` and `memory.md` are versioned). One plan per task.
+- Everything under `.agents/plans/` (local, always listed in the project's `.gitignore`: add the line if missing; `_projectdefines/` and `memory.md` are versioned). One plan per task.
   - Plans/loops: `execution-loops/AAAA_MM_DD/<Short Title>/NN Name.md` (inside a loop the plan is `02 Plan.md`; plan only is `00 Plan.md`; the counter never resets).
   - Handoffs: `handoffs/`. Audits: `{task-slug}.md`.
   - Prompts: a prompt to continue in another session or at another time, and any temporary prompt, go in `prompts/NNN-Title.md` (own counter, human-readable title). The handoff itself stays in `handoffs/`.
   - In edit mode, look for an existing plan of the objective first.
 - **Inbox:** deferred items go to `inbox/NNN-subject.md` at the project root (format: `inbox/README.md`). Not analyzed until the owner asks. Resolved ones move to `inbox/arquivo/`, never deleted. A note the kit or another project leaves in this inbox is named `GERAL-NNN-subject.md` (own `GERAL-` counter, same format, same archive).
-- **System artifacts (Antigravity: `implementation_plan`, `task`, `walkthrough`):** save a copy at the end as `.agent/plans/{Task Name} [PLAN|TASK|WALKTHROUGH].md` (human-readable name, never delete).
-- **Subagent context containment (Clean Return Protocol):** heavy payloads (logs, raw terminal output, full code dumps, multi-page drafts) belong on disk (`.agent/plans/`, `scratchpad/`, or destination map paths), never in chat messages. A subagent's return message to the coordinator must be strictly executive: (1) one-line status; (2) 3-5 bullets summarizing results with clickable links to files on disk; (3) blocking questions or open decisions only. Never dump raw terminal stdout/stderr or whole files in the reply.
+- **System artifacts (Antigravity: `implementation_plan`, `task`, `walkthrough`):** save a copy at the end as `.agents/plans/{Task Name} [PLAN|TASK|WALKTHROUGH].md` (human-readable name, never delete).
+- **Subagent context containment (Clean Return Protocol):** heavy payloads (logs, raw terminal output, full code dumps, multi-page drafts) belong on disk (`.agents/plans/`, `scratchpad/`, or destination map paths), never in chat messages. A subagent's return message to the coordinator must be strictly executive: (1) one-line status; (2) 3-5 bullets summarizing results with clickable links to files on disk; (3) blocking questions or open decisions only. Never dump raw terminal stdout/stderr or whole files in the reply.
 
 ## 8. Learn
 
@@ -158,7 +158,7 @@ A significant change is not finished until its evidence is shown: the check that
 
 ## 13. Code done means
 
-A significant change is not finished until `python .agent/scripts/checklist.py .` passes (add `--url <URL>` before deploy). Show its output. The whole test suite and the linter run, not only the tests of the file you touched; an old test that now fails is a regression: show its name and the error, then fix it or ask. The checklist also runs `scope_check.py` and `env_diff_check.py` (see *Change discipline* and *Safety and handoff*). Also run it when the user asks for "final checks" / "checagem final". Order: Security → Lint → Schema → Tests → UX → SEO → Lighthouse/E2E; fix Critical blockers first. Review and security: `claude-code-review`, `security-guidance-plugin`, `claude-security-scan` win over `code-review-*`, `vulnerability-scanner`, `sast-configuration`.
+A significant change is not finished until `python .agents/scripts/checklist.py .` passes (add `--url <URL>` before deploy). Show its output. The whole test suite and the linter run, not only the tests of the file you touched; an old test that now fails is a regression: show its name and the error, then fix it or ask. The checklist also runs `scope_check.py` and `env_diff_check.py` (see *Change discipline* and *Safety and handoff*). Also run it when the user asks for "final checks" / "checagem final". Order: Security → Lint → Schema → Tests → UX → SEO → Lighthouse/E2E; fix Critical blockers first. Review and security: `claude-code-review`, `security-guidance-plugin`, `claude-security-scan` win over `code-review-*`, `vulnerability-scanner`, `sast-configuration`.
 
 ## 14. Interface rules
 

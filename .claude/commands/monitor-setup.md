@@ -1,1 +1,1 @@
-../../.agent/workflows/monitor-setup.md
+../../.agents/workflows/monitor-setup.md

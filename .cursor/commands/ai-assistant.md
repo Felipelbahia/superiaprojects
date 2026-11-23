@@ -1,1 +1,1 @@
-../../.agent/workflows/ai-assistant.md
+../../.agents/workflows/ai-assistant.md

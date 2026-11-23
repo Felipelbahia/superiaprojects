@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/frontend-security-coder.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/frontend-security-coder.md (model: sonnet) -->
 ---
 name: frontend-security-coder
 description: Expert in secure frontend coding practices specializing in XSS prevention, output sanitization, and client-side security patterns. Use PROACTIVELY for frontend security implementations or client-side security code reviews.

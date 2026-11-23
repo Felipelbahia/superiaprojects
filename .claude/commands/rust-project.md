@@ -1,1 +1,1 @@
-../../.agent/workflows/rust-project.md
+../../.agents/workflows/rust-project.md

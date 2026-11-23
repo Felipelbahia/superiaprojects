@@ -1,1 +1,1 @@
-../../.agent/agents/database-optimizer.md
+../../.agents/agents/database-optimizer.md

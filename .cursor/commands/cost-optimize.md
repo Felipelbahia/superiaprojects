@@ -1,1 +1,1 @@
-../../.agent/workflows/cost-optimize.md
+../../.agents/workflows/cost-optimize.md

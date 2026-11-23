@@ -1,1 +1,1 @@
-../../.agent/workflows/security-dependencies.md
+../../.agents/workflows/security-dependencies.md

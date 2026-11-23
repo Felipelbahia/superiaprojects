@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/dx-optimizer.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/dx-optimizer.md (model: sonnet) -->
 ---
 name: dx-optimizer
 description: Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed.

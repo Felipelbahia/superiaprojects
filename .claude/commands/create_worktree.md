@@ -1,1 +1,1 @@
-../../.agent/workflows/create_worktree.md
+../../.agents/workflows/create_worktree.md

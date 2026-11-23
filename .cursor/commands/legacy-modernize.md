@@ -1,1 +1,1 @@
-../../.agent/workflows/legacy-modernize.md
+../../.agents/workflows/legacy-modernize.md

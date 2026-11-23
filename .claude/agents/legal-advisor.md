@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/legal-advisor.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/legal-advisor.md (model: sonnet) -->
 ---
 name: legal-advisor
 description: Draft privacy policies, terms of service, disclaimers, and legal notices. Creates GDPR-compliant texts, cookie policies, and data processing agreements. Use PROACTIVELY for legal documentation, compliance texts, or regulatory requirements.

@@ -1,1 +1,1 @@
-../../.agent/workflows/ui-ux-pro-max.md
+../../.agents/workflows/ui-ux-pro-max.md

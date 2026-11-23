@@ -1,1 +1,1 @@
-../../.agent/workflows/smart-debug.md
+../../.agents/workflows/smart-debug.md

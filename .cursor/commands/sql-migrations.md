@@ -1,1 +1,1 @@
-../../.agent/workflows/sql-migrations.md
+../../.agents/workflows/sql-migrations.md

@@ -1,1 +1,1 @@
-../../.agent/workflows/migration-observability.md
+../../.agents/workflows/migration-observability.md

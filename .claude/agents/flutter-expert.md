@@ -1,1 +1,1 @@
-../../.agent/agents/flutter-expert.md
+../../.agents/agents/flutter-expert.md

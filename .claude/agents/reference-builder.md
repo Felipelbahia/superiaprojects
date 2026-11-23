@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/reference-builder.md (model: haiku) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/reference-builder.md (model: haiku) -->
 ---
 name: reference-builder
 description: Creates exhaustive technical references and API documentation. Generates comprehensive parameter listings, configuration guides, and searchable reference materials. Use PROACTIVELY for API docs, configuration references, or complete technical specifications.

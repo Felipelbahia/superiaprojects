@@ -1,1 +1,1 @@
-../../.agent/agents/typescript-pro.md
+../../.agents/agents/typescript-pro.md

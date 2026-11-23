@@ -2,7 +2,7 @@
 
 Bancos e dados: modelagem, SQL, PostgreSQL, Supabase, migrações, ETL (dbt, Airflow, Spark), qualidade de dados, KPIs e storytelling com dados.
 
-> Gerado por build_sip_index.py. Não edite à mão. Skill: `"<HUB>/.agent/skills/<nome>/SKILL.md"`; agent: `"<HUB>/.agent/agents/<nome>.md"`; workflow: `"<HUB>/.agent/workflows/<nome>.md"`.
+> Gerado por build_sip_index.py. Não edite à mão. Skill: `"<HUB>/.agents/skills/<nome>/SKILL.md"`; agent: `"<HUB>/.agents/agents/<nome>.md"`; workflow: `"<HUB>/.agents/workflows/<nome>.md"`.
 
 ## Skills (11)
 

@@ -36,16 +36,16 @@ O **Super IA Projects** resolve isso fornecendo uma arquitetura unificada:
 - 🧩 **Skills Modulares & Agnósticas:** Mais de 210 skills prontas cobrindo desenvolvimento web, mobile, web scraping robusto (Firecrawl) e arquitetura.
 - 🔄 **Loop de Execução (Execution Loop):** Metodologia rígida de entrega: *Brainstorm → Espec → Plan → Execução → QA (com notas 0 a 10 e evidências verificáveis)*. Se algum critério da Rubrica de QA tirar nota menor que 10, a skill reinicia o ciclo sozinha (Debug → Espec) e tenta de novo — até 5 ciclos — em vez de entregar algo "quase pronto".
 - 🏭 **SIPs (Super IA Projects especialistas):** Projetos-hub que concentram toda a inteligência (skills, agents, workflows) de um domínio específico (ex: n8n, marketing) em um único lugar, compartilhada sob demanda com qualquer projeto que precise — sem duplicar conhecimento em cada repositório.
-- 📊 **Catálogo Visual Interativo:** Um painel navegável em HTML (`catalog.html`) e índice Markdown (`.agent/CATALOG.md`) atualizados dinamicamente.
+- 📊 **Catálogo Visual Interativo:** Um painel navegável em HTML (`catalog.html`) e índice Markdown (`.agents/CATALOG.md`) atualizados dinamicamente.
 - 🛡️ **Privacidade & Isolamento:** Regras pessoais, históricos de execução e dados de clientes isolados por padrão via `.gitignore`.
 
 ---
 
 ## 📦 O que está incluído
 
-- **130+ Agentes Especialistas** (`.agent/agents/`): Personas focadas em domínios (Frontend, Mobile, Backend, Segurança, DevOps, Auditoria).
-- **220+ Skills com Scripts** (`.agent/skills/`): Conhecimento procedural acionável com verificações e testes embutidos.
-- **110+ Workflows** (`.agent/workflows/`): Comandos `/slash` rápidos para Claude Code e Cursor.
+- **130+ Agentes Especialistas** (`.agents/agents/`): Personas focadas em domínios (Frontend, Mobile, Backend, Segurança, DevOps, Auditoria).
+- **220+ Skills com Scripts** (`.agents/skills/`): Conhecimento procedural acionável com verificações e testes embutidos.
+- **110+ Workflows** (`.agents/workflows/`): Comandos `/slash` rápidos para Claude Code e Cursor.
 - **Modelos Agnósticos:**
   - `CLAUDE.example.md` (ou `ClaudeExample.md`): Template agnóstico pronto para ser copiado para `CLAUDE.md`.
   - `prompts-template/`: Coleção de prompts copy-paste testados para criação, migração e sincronização de projetos.
@@ -68,8 +68,8 @@ O script `./install.sh`:
 1. Verifica seu ambiente Python 3.
 2. Cria o arquivo `CLAUDE.md` a partir do `CLAUDE.example.md` (se ainda não existir).
 3. Cria todos os symlinks para o Claude Code (`.claude/`) e Cursor (`.cursor/`).
-4. Gera o catálogo visual unificado em `.agent/catalog.html`.
-5. Troca o caminho do kit (escrito na máquina do autor) pelo local onde você instalou, nas skills, prompts e docs (`localize_paths.py`). Rode `python3 .agent/scripts/localize_paths.py` de novo se mover a pasta; num clone isso deixa esses `.md` como modificados no git.
+4. Gera o catálogo visual unificado em `.agents/catalog.html`.
+5. Troca o caminho do kit (escrito na máquina do autor) pelo local onde você instalou, nas skills, prompts e docs (`localize_paths.py`). Rode `python3 .agents/scripts/localize_paths.py` de novo se mover a pasta; num clone isso deixa esses `.md` como modificados no git.
 6. Atualiza os prompt templates: grava `projetos/prompts/` com o caminho real do kit no lugar de `<SUPER_IA_PROJECTS_PATH>` (sobrescreve a cada instalação).
 
 **Windows (ou qualquer sistema sem bash):** use `py install.py` (ou `python install.py`), que faz os mesmos passos só com Python. Se o Windows negar symlinks (erro 1314, sem Modo Desenvolvedor), o kit usa junctions para pastas e cópias controladas para arquivos, e `sync_entrypoints.py` as mantém atualizadas.
@@ -87,12 +87,12 @@ git clone https://github.com/Felipelbahia/superiaprojects.git
 cd superiaprojects
 python3 --version                                   # 3.11 ou mais novo
 git config core.hooksPath .githooks                 # ativa o hook de commit
-python3 .agent/scripts/sync_entrypoints.py --check  # confere skills, agents e workflows
-python3 -m unittest discover -s .agent/scripts/tests -q
+python3 .agents/scripts/sync_entrypoints.py --check  # confere skills, agents e workflows
+python3 -m unittest discover -s .agents/scripts/tests -q
 ```
 
-- `.agent/` é a fonte de tudo; `.claude/` e `.cursor/` só têm links para ela. Não copie nem apague os links à mão.
-- Os arquivos de regras (`CLAUDE.md`, `AGENTS.md`) ficam fora do git: gere os seus com `CLAUDE.example.md` e `install.sh`. Veio de uma versão antiga do kit? `GEMINI.md` e `.agent/rules/` são legado: `python3 .agent/scripts/sync_rules.py --clean-legacy` lista o que sobrou e só apaga com o seu sim (o que diverge do `CLAUDE.md` fica para você revisar).
+- `.agents/` é a fonte de tudo; `.claude/` e `.cursor/` só têm links para ela. Não copie nem apague os links à mão.
+- Os arquivos de regras (`CLAUDE.md`, `AGENTS.md`) ficam fora do git: gere os seus com `CLAUDE.example.md` e `install.sh`. Veio de uma versão antiga do kit? `GEMINI.md` e `.agents/rules/` são legado: `python3 .agents/scripts/sync_rules.py --clean-legacy` lista o que sobrou e só apaga com o seu sim (o que diverge do `CLAUDE.md` fica para você revisar).
 - Os links `.claude/skills/sip-*` só existem onde o SIP está instalado; o `--check` não os cobra quando o `.gitignore` os ignora.
 - Mínimo: Python 3.11 (`pyproject.toml`, `.python-version`; o hook de commit para com erro claro em versão menor).
 

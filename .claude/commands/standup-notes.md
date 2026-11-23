@@ -1,1 +1,1 @@
-../../.agent/workflows/standup-notes.md
+../../.agents/workflows/standup-notes.md

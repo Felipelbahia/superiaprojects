@@ -1,1 +1,1 @@
-../../.agent/workflows/deps-upgrade.md
+../../.agents/workflows/deps-upgrade.md

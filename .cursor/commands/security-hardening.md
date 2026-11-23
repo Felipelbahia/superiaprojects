@@ -1,1 +1,1 @@
-../../.agent/workflows/security-hardening.md
+../../.agents/workflows/security-hardening.md

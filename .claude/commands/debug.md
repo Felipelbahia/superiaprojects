@@ -1,1 +1,1 @@
-../../.agent/workflows/debug.md
+../../.agents/workflows/debug.md

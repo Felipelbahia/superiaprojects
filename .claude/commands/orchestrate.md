@@ -1,1 +1,1 @@
-../../.agent/workflows/orchestrate.md
+../../.agents/workflows/orchestrate.md

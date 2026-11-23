@@ -1,1 +1,1 @@
-../../.agent/workflows/c4-architecture.md
+../../.agents/workflows/c4-architecture.md

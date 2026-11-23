@@ -1,1 +1,1 @@
-../../.agent/workflows/create-component.md
+../../.agents/workflows/create-component.md

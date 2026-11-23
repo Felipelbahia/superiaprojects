@@ -1,1 +1,1 @@
-../../.agent/agents/python-pro.md
+../../.agents/agents/python-pro.md

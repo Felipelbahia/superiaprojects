@@ -1,1 +1,1 @@
-../../.agent/agents/hybrid-cloud-architect.md
+../../.agents/agents/hybrid-cloud-architect.md

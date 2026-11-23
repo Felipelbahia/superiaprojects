@@ -1,1 +1,1 @@
-../../.agent/workflows/tech-debt.md
+../../.agents/workflows/tech-debt.md

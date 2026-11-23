@@ -1,1 +1,1 @@
-../../.agent/workflows/design-review.md
+../../.agents/workflows/design-review.md

@@ -1,1 +1,1 @@
-../../.agent/agents/devops-engineer.md
+../../.agents/agents/devops-engineer.md

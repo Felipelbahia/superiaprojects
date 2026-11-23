@@ -1,1 +1,1 @@
-../../.agent/workflows/tdd-cycle.md
+../../.agents/workflows/tdd-cycle.md

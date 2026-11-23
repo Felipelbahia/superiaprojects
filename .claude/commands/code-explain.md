@@ -1,1 +1,1 @@
-../../.agent/workflows/code-explain.md
+../../.agents/workflows/code-explain.md

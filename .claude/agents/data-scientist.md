@@ -1,1 +1,1 @@
-../../.agent/agents/data-scientist.md
+../../.agents/agents/data-scientist.md

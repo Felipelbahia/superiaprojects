@@ -1,1 +1,1 @@
-../../.agent/workflows/langchain-agent.md
+../../.agents/workflows/langchain-agent.md

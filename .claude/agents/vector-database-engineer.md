@@ -1,1 +1,1 @@
-../../.agent/agents/vector-database-engineer.md
+../../.agents/agents/vector-database-engineer.md

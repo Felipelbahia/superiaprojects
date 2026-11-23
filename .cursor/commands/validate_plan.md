@@ -1,1 +1,1 @@
-../../.agent/workflows/validate_plan.md
+../../.agents/workflows/validate_plan.md

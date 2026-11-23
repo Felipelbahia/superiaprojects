@@ -1,1 +1,1 @@
-../../.agent/agents/blockchain-developer.md
+../../.agents/agents/blockchain-developer.md

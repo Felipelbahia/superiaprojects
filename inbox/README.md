@@ -4,7 +4,7 @@ Porta de entrada para qualquer projeto que, usando a skill `sip-geral`, tenha
 aprendido algo sobre geral e queira devolver ao hub: um insight, um
 exemplo novo, ou uma melhoria numa skill existente.
 
-**Ninguém edita `.agent/skills/` (ou pastas de exemplos/workflows) direto a
+**Ninguém edita `.agents/skills/` (ou pastas de exemplos/workflows) direto a
 partir de outro projeto.** O conteúdo cai aqui primeiro e é promovido
 manualmente para o lugar certo durante uma revisão do hub. Os itens desta pasta
 ficam fora do git do hub (só este README é versionado).
@@ -73,7 +73,7 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | 018 | ~~Hook de commit versionado para checagens rápidas~~ (aplicado 2026-11-11, hook ativo; em `arquivo/`) | skill `project-initializer` + próprio 0 Padrões | Média |
 | 019 | ~~Nova skill `github-publisher`~~ (criada 2026-11-11, em `arquivo/`) | nova skill global (`github-publisher`) | Média |
 | SIP-020 | ~~Migrar os 7 SIPs para o padrão único (tabelas + instalação opcional)~~ (feito 2026-11-15, em `arquivo/`; reverificado 2026-11-18: 23/23 PASS nos 7 hubs) | 7 hubs SIP, `_sips.md` | Média |
-| SIP-020 | ~~Manifestos dos consumidores de SIP sem a linha "Para atualizar"~~ (feito 2026-11-15, em `arquivo/`; reverificado 2026-11-18: 59 manifestos, nenhum sem a linha) | `.agent/SIPS-CONSUMIDOS.md` dos 8 consumidores externos | Baixa |
+| SIP-020 | ~~Manifestos dos consumidores de SIP sem a linha "Para atualizar"~~ (feito 2026-11-15, em `arquivo/`; reverificado 2026-11-18: 59 manifestos, nenhum sem a linha) | `.agents/SIPS-CONSUMIDOS.md` dos 8 consumidores externos | Baixa |
 | 021 | ~~Stubs de SIP do 0 Padrões sem a seção "Atualização"~~ (aplicado 2026-11-11, em `arquivo/`) | 7 stubs `sip-*` + `superiaprojects-criar-sip` (Passo 5) | Média |
 | 022 | ~~`.gitignore` padrão: backups de `.env` e 0 Padrões sem regras de `.env`~~ (aplicado 2026-11-11, em `arquivo/`) | `project-initializer` + `.gitignore` do 0 Padrões + `github-publisher` | Média |
 | 023 | ~~`.claude/CLAUDE.md` duplicado e regras antigas~~ (resolvido na auditoria geral em 2026-11-15, em `arquivo/`) | todos os projetos com regras | Alta |
@@ -84,16 +84,17 @@ arquivo para `inbox/arquivo/`**. Nunca apague. Se o item não for aplicado, o me
 | 038 | ~~UX Audit aplica regras de app a e-mail e acusa falsos positivos~~ (aplicado 2026-11-18, em `arquivo/`) | `ux_audit.py` | Média |
 | 032 | ~~Regras locais perdidas ou lixo antigo achados pelo check_local_rules.py~~ (resolvido na auditoria em 2026-11-15, em `arquivo/`) | #22, #42, #44 e ecossistema | Alta |
 | 034 | ~~writing-agents: ideias de estrutura da revisão~~ (aplicado 2026-11-18: hook de auto-edição, check de ferramentas, modo do Papel; em `arquivo/`) | `writing-agents`, `sync_entrypoints.py`, `.claude/settings.json` | Média |
-| 035 | ~~Mapeamento de modelos Antigravity/Claude e migração dos agentes~~ (aplicado 2026-11-18, Opção A, em `arquivo/`) | `.agent/agents/*.md` | Média |
+| 035 | ~~Mapeamento de modelos Antigravity/Claude e migração dos agentes~~ (aplicado 2026-11-18, Opção A, em `arquivo/`) | `.agents/agents/*.md` | Média |
 | 040 | ~~propagar_sip.py aceitar a cópia gerada do resolver~~ (aplicado 2026-11-18, em `arquivo/`; stub `sip-astro` do 0 Padrões reinstalado como cópia gerada em 2026-11-18) | `propagar_sip.py`, `sips_status.py` | Média |
 | 036 | ~~session-handoff: armadilha do zsh~~ (encerrado 2026-11-18 sem mudança: RED já passa, em `arquivo/`) | skill `session-handoff` | Baixa |
 | 042 | ~~A seção 3 das regras ainda exige GEMINI.md, mas o `sync_rules.py` o trata como legado~~ (aplicado antes de 2026-11-19, commit `f05fbd8`; conferido e arquivado em 2026-11-19, em `arquivo/`) | `core.md`, `sync_rules.py` | Média |
 | 043 | ~~Regras: buscar no SIP o que não está instalado e disciplina de mudança~~ (aplicado 2026-11-19, em `arquivo/`; notas gravadas nos 58 projetos; remontagem de cada um no loop de propagação) | módulos de regras, `project-initializer`, kit de instalação, `checklist.py` | Alta |
-| 044 | ~~`scope_check.py`: glob que começa com ponto (`.agent/...`) nunca casa~~ (aplicado 2026-11-19, em `arquivo/`) | `scope_check.py` | Alta |
+| 044 | ~~`scope_check.py`: glob que começa com ponto (`.agents/...`) nunca casa~~ (aplicado 2026-11-19, em `arquivo/`) | `scope_check.py` | Alta |
 | 045 | ~~`execution-loop` dá `Unknown skill` em projeto consumidor~~ (aplicado 2026-11-20 como núcleo de skills + `resolve_skill.py`, em `arquivo/`) | `sip-geral`, regras (core), scripts de SIP | Alta |
 | 047 | Propagar o núcleo aos consumidores e provar em sessão real | `propagar_sip.py`, 63 projetos | Alta |
 | 048 | ~~Cópia global do `skill-resolver` diverge do hub~~ (aplicado 2026-11-20, em `arquivo/`) | `~/.claude/skills/skill-resolver` | Baixa |
-| 049 | Remontar as regras do kit nos projetos, em sessões por faixa (loop pronto em `.agent/plans/execution-loops/2026_11_20/Remontar Regras nos Projetos/`) | 58 projetos (`CLAUDE.md`/`AGENTS.md`) | Média |
+| 049 | Remontar as regras do kit nos projetos, em sessões por faixa (loop pronto em `.agents/plans/execution-loops/2026_11_20/Remontar Regras nos Projetos/`) | 58 projetos (`CLAUDE.md`/`AGENTS.md`) | Média |
+| 050 | ~~Padrão do Codex é `.agents` e não `.agent` (migração do ecossistema)~~ (feito 2026-11-23, em `arquivo/`; resta a varredura local nos projetos) | Hubs, regras, scripts, 63+ projetos | Alta |
 | CONTINUAR-001 | Núcleo de skills: teste real e remontagem das regras nos projetos (nota de retomada; junta o 047 e o 049) | loop `2026_11_20`, 58 projetos | Média |
 
 
@@ -102,20 +103,20 @@ Ordem sugerida: 001, 002, 003 (maior retorno na origem); depois 010, 006, 007; o
 ## Protocolo geral para aplicar um item (obrigatório)
 
 1. **Peça confirmação do Felipe** para aquele item. Não aplique vários de uma vez.
-2. **Leia** a skill de destino inteira e `writing-skills/SKILL.md` (lei de ferro: nenhuma skill, nem edição de skill, sem teste de base que falhe primeiro; método em `/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/writing-skills/testing-skills-with-subagents.md`).
+2. **Leia** a skill de destino inteira e `writing-skills/SKILL.md` (lei de ferro: nenhuma skill, nem edição de skill, sem teste de base que falhe primeiro; método em `/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agents/skills/writing-skills/testing-skills-with-subagents.md`).
 3. **RED:** rode o cenário do item em um subagente **sem** a mudança e guarde as respostas literais. Se o agente já fizer o certo, **pare** e relate: não há o que corrigir.
 4. **Edite** só o que o item descreve, no idioma da skill de destino (as skills do kit estão em inglês; comentários em português apenas onde a skill já usa). Não reescreva o resto, não mude o `description` do frontmatter para resumir o fluxo (o `description` diz só *quando usar*).
 5. **GREEN:** repita o cenário com a skill editada; o agente deve cumprir. Se achar brecha, feche com um contra explícito e repita.
 6. **Sincronize**, a partir da raiz do `0 Padrões`:
-   - `python3 .agent/scripts/generate_catalog.py` (sempre que uma skill muda);
-   - `python3 .agent/scripts/sync_entrypoints.py` (se mudou frontmatter, agente ou workflow; `--check` só valida);
-   - `python3 .agent/scripts/sync_rules.py` (se mudou qualquer arquivo de regras: `CLAUDE.md`, `AGENTS.md`, e `.cursorrules`/`.claude/CLAUDE.md` se existirem; precisam ficar idênticos).
-7. **Cópias locais:** verifique se algum projeto tem cópia local da skill (`find "/Users/macbookpro/Documents/IA Projects" -maxdepth 7 -path "*/.agent/skills/<nome>" -type d`). Em 2026-11-10 só o `0 Padrões` tinha `execution-loop`. Cópia nunca é a fonte; se achar, sincronize ou avise.
+   - `python3 .agents/scripts/generate_catalog.py` (sempre que uma skill muda);
+   - `python3 .agents/scripts/sync_entrypoints.py` (se mudou frontmatter, agente ou workflow; `--check` só valida);
+   - `python3 .agents/scripts/sync_rules.py` (se mudou qualquer arquivo de regras: `CLAUDE.md`, `AGENTS.md`, e `.cursorrules`/`.claude/CLAUDE.md` se existirem; precisam ficar idênticos).
+7. **Cópias locais:** verifique se algum projeto tem cópia local da skill (`find "/Users/macbookpro/Documents/IA Projects" -maxdepth 7 -path "*/.agents/skills/<nome>" -type d`). Em 2026-11-10 só o `0 Padrões` tinha `execution-loop`. Cópia nunca é a fonte; se achar, sincronize ou avise.
 8. **Registre:** atualize o `Status` do arquivo do item para `aplicado em AAAA-MM-DD` com o commit e o link do teste, e a tabela acima. Depois **mova o arquivo para `inbox/arquivo/`** (pedido do Felipe em 2026-11-11). Não apague o arquivo.
 9. **Não faça commit** sem o Felipe pedir. O repositório `0 Padrões` já tinha alterações não commitadas em 2026-11-10 (catálogo, traduções, remoção de `firecrawl-agent`) que não são deste trabalho: não as inclua sem perguntar.
 
 ## Convenções destes arquivos
-Seções: o quê · onde · por quê · para quê · quem · quando · contexto e evidência · texto pronto · como aplicar (RED e GREEN) · não fazer · perguntas abertas. Caminhos são absolutos. Âncoras de edição são **títulos e frases literais** (números de linha mudam). Evidências citam arquivos do projeto de origem (`/Users/macbookpro/Documents/IA Projects/Plinq/Martech/Inngage/.agent/plans/execution-loops/2026_11_10/Mapeamento de Eventos e Engajamento`), que pode ser lido, não editado.
+Seções: o quê · onde · por quê · para quê · quem · quando · contexto e evidência · texto pronto · como aplicar (RED e GREEN) · não fazer · perguntas abertas. Caminhos são absolutos. Âncoras de edição são **títulos e frases literais** (números de linha mudam). Evidências citam arquivos do projeto de origem (`/Users/macbookpro/Documents/IA Projects/Plinq/Martech/Inngage/.agents/plans/execution-loops/2026_11_10/Mapeamento de Eventos e Engajamento`), que pode ser lido, não editado.
 
 ## Origem em uma página
-Em 2026-11-10 o projeto Inngage produziu um diagnóstico de plano de rastreamento (`/Users/macbookpro/Documents/IA Projects/Plinq/Martech/Inngage/docs/diagnostico-engajamento`) sob o `execution-loop`. O loop fechou nota 10 no ciclo 2 e, quando chegou material novo, a revisão seguinte reprovou 6 de 10 itens; uma terceira revisão achou 28 pontos no catálogo. Os pontos abaixo são o que valeria levar ao kit. A skill local nascida do trabalho é `/Users/macbookpro/Documents/IA Projects/Plinq/Martech/Inngage/.agent/skills/diagnostico-tracking-plan/`.
+Em 2026-11-10 o projeto Inngage produziu um diagnóstico de plano de rastreamento (`/Users/macbookpro/Documents/IA Projects/Plinq/Martech/Inngage/docs/diagnostico-engajamento`) sob o `execution-loop`. O loop fechou nota 10 no ciclo 2 e, quando chegou material novo, a revisão seguinte reprovou 6 de 10 itens; uma terceira revisão achou 28 pontos no catálogo. Os pontos abaixo são o que valeria levar ao kit. A skill local nascida do trabalho é `/Users/macbookpro/Documents/IA Projects/Plinq/Martech/Inngage/.agents/skills/diagnostico-tracking-plan/`.

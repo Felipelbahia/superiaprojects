@@ -2,7 +2,7 @@
 
 Segurança: auditoria, SAST, modelagem de ameaças e STRIDE, segredos, vulnerabilidades, engenharia reversa e forense, mTLS, conformidade (LGPD/GDPR, PCI), contratos e agentes de pentest e resposta a incidentes de segurança.
 
-> Gerado por build_sip_index.py. Não edite à mão. Skill: `"<HUB>/.agent/skills/<nome>/SKILL.md"`; agent: `"<HUB>/.agent/agents/<nome>.md"`; workflow: `"<HUB>/.agent/workflows/<nome>.md"`.
+> Gerado por build_sip_index.py. Não edite à mão. Skill: `"<HUB>/.agents/skills/<nome>/SKILL.md"`; agent: `"<HUB>/.agents/agents/<nome>.md"`; workflow: `"<HUB>/.agents/workflows/<nome>.md"`.
 
 ## Skills (23)
 

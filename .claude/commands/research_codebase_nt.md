@@ -1,1 +1,1 @@
-../../.agent/workflows/research_codebase_nt.md
+../../.agents/workflows/research_codebase_nt.md

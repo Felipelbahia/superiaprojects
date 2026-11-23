@@ -1,1 +1,1 @@
-../../.agent/agents/performance-engineer.md
+../../.agents/agents/performance-engineer.md

@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/.agent/hooks/block_agent_self_edit.py\""
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.agents/hooks/block_agent_self_edit.py\""
           }
         ]
       }

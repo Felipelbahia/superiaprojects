@@ -1,1 +1,1 @@
-../../.agent/workflows/git-workflow.md
+../../.agents/workflows/git-workflow.md

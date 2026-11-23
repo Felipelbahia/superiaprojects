@@ -1,1 +1,1 @@
-../../.agent/workflows/market-opportunity.md
+../../.agents/workflows/market-opportunity.md

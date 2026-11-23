@@ -1,1 +1,1 @@
-../../.agent/agents/django-pro.md
+../../.agents/agents/django-pro.md

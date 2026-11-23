@@ -1,1 +1,1 @@
-../../.agent/workflows/security-sast.md
+../../.agents/workflows/security-sast.md

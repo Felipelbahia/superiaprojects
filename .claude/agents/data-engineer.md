@@ -1,1 +1,1 @@
-../../.agent/agents/data-engineer.md
+../../.agents/agents/data-engineer.md

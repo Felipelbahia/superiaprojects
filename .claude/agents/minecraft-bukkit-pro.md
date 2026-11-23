@@ -1,1 +1,1 @@
-../../.agent/agents/minecraft-bukkit-pro.md
+../../.agents/agents/minecraft-bukkit-pro.md

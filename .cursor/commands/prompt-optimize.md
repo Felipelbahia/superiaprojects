@@ -1,1 +1,1 @@
-../../.agent/workflows/prompt-optimize.md
+../../.agents/workflows/prompt-optimize.md

@@ -1,1 +1,1 @@
-../../.agent/agents/java-pro.md
+../../.agents/agents/java-pro.md

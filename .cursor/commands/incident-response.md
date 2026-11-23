@@ -1,1 +1,1 @@
-../../.agent/workflows/incident-response.md
+../../.agents/workflows/incident-response.md

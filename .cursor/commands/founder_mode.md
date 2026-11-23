@@ -1,1 +1,1 @@
-../../.agent/workflows/founder_mode.md
+../../.agents/workflows/founder_mode.md

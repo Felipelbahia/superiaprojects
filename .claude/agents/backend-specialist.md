@@ -1,1 +1,1 @@
-../../.agent/agents/backend-specialist.md
+../../.agents/agents/backend-specialist.md

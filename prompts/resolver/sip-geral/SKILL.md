@@ -1,11 +1,14 @@
 ---
-# Repository: https://github.com/Felipelbahia/superiaprojects
+# Repository: https://github.com/Felipelbahia/superiaprojects-marketing
+# Status: Customizada / Modificada localmente por Felipe Bahia
 name: sip-geral
 description: Use when the current task involves general software engineering, architecture, backend, frontend, mobile, database, testing, security, DevOps, AI/ML or development workflows (spec, planning, execution-loop, TDD, debugging) in any project other than "SIP - Geral" (0 Padrões) itself, or when the user asks "existe algo no 0 Padrões pra isso", "tem skill/agent/workflow pra isso no hub geral", "consulta o SIP - Geral", or names a 0 Padrões skill, agent or workflow explicitly in a consumer project, or when the project rules (CLAUDE.md / AGENTS.md) cite a skill, agent or workflow by name (for example session-handoff, brainstorming, execution-loop) that is missing from the available skills list: search here before saying it does not exist.
-author: Futuro Mercado / Felipe Bahia (@felipelbahia)
+author: Futuro Mercado / Felipe Bahia (@felipelbahia) & Felipe Bahia (Futuro Mercado)
 license: MIT
+metadata:
+  author: Futuro Mercado / Felipe Bahia (@felipelbahia) & Felipe Bahia (Futuro Mercado)
+  version: 1.0.0
 ---
-
 # sip-geral
 
 ## Por que isso existe
@@ -20,7 +23,7 @@ Leitura de arquivo fora do diretório de trabalho pode pedir aprovação do usu�
 
 Isso não é erro do projeto: a skill mora no hub (ou em outro SIP) e não está em
 `.claude/skills/`. Não repita a chamada e não pare. Na raiz do projeto, rode:
-`python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/scripts/resolve_skill.py" <nome ou termo>`
+`python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agents/scripts/resolve_skill.py" <nome ou termo>`
 Ele devolve o caminho absoluto, o SIP de origem e se esse SIP está instalado
 neste projeto (lê os hubs no disco agora, não o manifesto, que é só uma foto da
 instalação). Leia o `SKILL.md` por esse caminho, avise o dono em uma linha ("a
@@ -39,16 +42,16 @@ linkado no projeto, e essas a ferramenta Skill acha.
 
 ## Modo consulta (padrão — prefira este)
 
-1. Ache a vertical na tabela do índice abaixo pela coluna "Use quando". Para casos ambíguos, leia o roteador mestre do hub: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/intelligent-routing/SKILL.md"`.
+1. Ache a vertical na tabela do índice abaixo pela coluna "Use quando". Para casos ambíguos, leia o roteador mestre do hub: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agents/skills/intelligent-routing/SKILL.md"`.
 2. Leia só o arquivo da vertical: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/resolver/sip-geral/verticais/<vertical>.md"`. Ali estão as skills, agents e workflows daquela área, cada um com o seu "Use quando". Sem certeza da vertical: `grep -ril "<palavra>" "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/resolver/sip-geral/verticais/"`.
-3. Leia só o arquivo do item escolhido, por caminho absoluto no hub: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/skills/<nome>/SKILL.md"`. Nunca symlinke nem copie skills especialistas do hub para o projeto (só o núcleo vem linkado pelo instalador).
+3. Leia só o arquivo do item escolhido, por caminho absoluto no hub: `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agents/skills/<nome>/SKILL.md"`. Nunca symlinke nem copie skills especialistas do hub para o projeto (só o núcleo vem linkado pelo instalador).
 4. Aplique o conteúdo inline e avise em uma linha que a resposta veio do hub `SIP - Geral`, não de conhecimento genérico.
 
 ## Modo dispatch (só para construções grandes)
 
 Não existe invocação nativa de agente cross-projeto no Claude Code. "Disparar" um agent do hub é montar um subagente genérico (`Agent`, `subagent_type: "general-purpose"`) com a persona colada no prompt:
 
-1. Leia a persona do agent especialista (`"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agent/agents/<nome>.md"`, achado na vertical) e as skills relevantes.
+1. Leia a persona do agent especialista (`"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agents/agents/<nome>.md"`, achado na vertical) e as skills relevantes.
 2. Chame `Agent` com o conteúdo colado + a tarefa concreta.
 3. Valide o resultado contra a skill de validação do hub (se existir) antes de aplicar.
 
@@ -80,7 +83,7 @@ Total: 203 skills, 119 agents, 111 workflows.
 
 ## Modo contribuição (devolver conhecimento ao hub)
 
-**Exceção primeiro:** se o dono do hub pediu a mudança nesta conversa (indicou o hub como destino e revisou a decisão antes de qualquer arquivo ser escrito), edite `.agent/skills/`, `.agent/agents/` ou `.agent/workflows/` do hub direto, sem passar pelo inbox.
+**Exceção primeiro:** se o dono do hub pediu a mudança nesta conversa (indicou o hub como destino e revisou a decisão antes de qualquer arquivo ser escrito), edite `.agents/skills/`, `.agents/agents/` ou `.agents/workflows/` do hub direto, sem passar pelo inbox.
 
 Caso contrário (sessão num projeto consumidor, sem o dono revisando aquela edição), nunca edite essas pastas do hub: elas são lidas por caminho absoluto por todos os consumidores e uma edição sem curadoria propagaria na hora. Em vez disso:
 
@@ -92,7 +95,7 @@ Caso contrário (sessão num projeto consumidor, sem o dono revisando aquela edi
 
 - Última atualização do hub: 2026-11-20 (o dono do hub muda esta data sempre que esta skill, um agent, um workflow ou a estrutura do hub mudar).
 - Para atualizar a instalação num projeto (refazer links, escolher entre os agents/workflows novos): cole de novo o prompt `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/instalar-skill-sip-geral.md"` numa sessão daquele projeto.
-- A data em que **cada projeto** instalou ou atualizou fica no `.agent/SIPS-CONSUMIDOS.md` dele. Se for anterior à data acima, ofereça rodar o prompt.
+- A data em que **cada projeto** instalou ou atualizou fica no `.agents/SIPS-CONSUMIDOS.md` dele. Se for anterior à data acima, ofereça rodar o prompt.
 
 ## Se nada bater
 

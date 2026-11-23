@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/debugger.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/debugger.md (model: sonnet) -->
 ---
 name: debugger
 description: Debugging specialist for errors, test failures, and unexpected behavior. Use proactively when encountering any issues.

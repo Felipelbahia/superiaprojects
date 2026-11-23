@@ -1,1 +1,1 @@
-../../.agent/workflows/brainstorm.md
+../../.agents/workflows/brainstorm.md

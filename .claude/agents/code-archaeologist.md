@@ -1,1 +1,1 @@
-../../.agent/agents/code-archaeologist.md
+../../.agents/agents/code-archaeologist.md

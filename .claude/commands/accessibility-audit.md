@@ -1,1 +1,1 @@
-../../.agent/workflows/accessibility-audit.md
+../../.agents/workflows/accessibility-audit.md

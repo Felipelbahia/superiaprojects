@@ -2,13 +2,13 @@
 Status: na inbox · Aberto em: {data} · Pedido por: avisar_projetos_inbox.py · Projeto de origem: {projeto} (kit: {hub})
 
 ## O quê
-O kit mudou os módulos de regras: (A) skill, agent ou workflow citado nas regras e ausente de `.claude/` deve ser procurado em `.agent/`, nos SIPs instalados e no kit antes de dizer "não existe"; (B) seção nova "Change discipline" (parar e avisar em vez de contornar; mudança mínima dentro do `Scope:` do plano), regras de dependência, config e produção, e suíte inteira antes de "feito". Dois checks de máquina novos: `env_diff_check.py` e `scope_check.py`.
+O kit mudou os módulos de regras: (A) skill, agent ou workflow citado nas regras e ausente de `.claude/` deve ser procurado em `.agents/`, nos SIPs instalados e no kit antes de dizer "não existe"; (B) seção nova "Change discipline" (parar e avisar em vez de contornar; mudança mínima dentro do `Scope:` do plano), regras de dependência, config e produção, e suíte inteira antes de "feito". Dois checks de máquina novos: `env_diff_check.py` e `scope_check.py`.
 
 ## Como (o que fazer quando for pedido)
 Rodar o prompt 01 (`prompts-template/01-atualizar-projeto-existente.md` do kit; cópia pronta em `projetos/prompts/`): ele remonta o `CLAUDE.md` com `assemble_rules.py` (mesmos módulos, só linhas dos módulos no diff), roda `sync_rules.py` e, com módulo `code`, propõe acrescentar os dois checks ao `.githooks/pre-commit`. Prova: `grep -n -F -e "Named in these rules but not in" -e "Change discipline" CLAUDE.md`.
 
 ## Onde
-`CLAUDE.md` e `AGENTS.md` deste projeto; módulos em `{hub}/.agent/skills/project-initializer/modules/`.
+`CLAUDE.md` e `AGENTS.md` deste projeto; módulos em `{hub}/.agents/skills/project-initializer/modules/`.
 
 ## Por quê
 Em três projetos o handoff falhou porque o agente não achou a skill `session-handoff` (só o ponteiro `sip-geral` está instalado) e desistiu em vez de procurar no hub. As regras novas fecham essa falha e as cinco regras de disciplina de mudança.

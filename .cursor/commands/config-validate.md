@@ -1,1 +1,1 @@
-../../.agent/workflows/config-validate.md
+../../.agents/workflows/config-validate.md

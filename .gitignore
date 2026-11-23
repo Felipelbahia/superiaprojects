@@ -30,11 +30,11 @@ Output/
 .firecrawl/
 
 # Planos e histórico de execução de agentes (privacidade local)
-.agent/plans/
+.agents/plans/
 plans/
 
 # Documentação e controle de skills de terceiros (privacidade/controle local)
-.agent/vendor/
+.agents/vendor/
 
 # SIPs instalados aqui como consumidor (symlink -> path absoluto de outro hub,
 # nao portavel entre maquinas/clones). Fonte de verdade fica no hub, nao aqui.
@@ -42,10 +42,10 @@ plans/
 # SIPs de dominio consumidos pelo dono (ponteiros para hubs na maquina dele) e o manifesto deles:
 # cada usuario instala os seus pelo prompt de instalacao de cada SIP.
 # O resolver do proprio kit (sip-geral) nao mora aqui: fica versionado em prompts/resolver/sip-geral/.
-.agent/skills/sip-*/
-.agent/SIPS-CONSUMIDOS.md
+.agents/skills/sip-*/
+.agents/SIPS-CONSUMIDOS.md
 # Local onde o kit foi instalado (escrito por localize_paths.py)
-.agent/.kit-path
+.agents/.kit-path
 
 # Agents/workflows de SIPs instalados (sem prefixo fixo, listar cada um ao
 # instalar via o prompt de instalacao - ver projetos/_sips.md):
@@ -70,13 +70,16 @@ instalacoes/*
 CLAUDE.md
 AGENTS.md
 GEMINI.md
-.agent/rules/
-# (GEMINI.md e .agent/rules/ são legado: o kit não os gera mais; seguem ignorados para não subirem por engano)
+.agents/rules/
+# (GEMINI.md e .agents/rules/ são legado: o kit não os gera mais; seguem ignorados para não subirem por engano)
 .claude/CLAUDE.md
 .cursorrules
 
 
 # SIP - Astro (generated, holds a path of this machine)
-.agent/skills/sip-astro
+.agents/skills/sip-astro
 .claude/skills/sip-astro
-.agent/.sip-hubs.local.json
+.agents/.sip-hubs.local.json
+
+# Workflows do GitHub: o token OAuth do git não tem o escopo `workflow` (ver inbox); mantidos só localmente
+.github/workflows/

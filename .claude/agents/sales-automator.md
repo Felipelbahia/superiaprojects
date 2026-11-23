@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/sales-automator.md (model: haiku) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/sales-automator.md (model: haiku) -->
 ---
 name: sales-automator
 description: Draft cold emails, follow-ups, and proposal templates. Creates pricing pages, case studies, and sales scripts. Use PROACTIVELY for sales outreach or lead nurturing.

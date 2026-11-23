@@ -1,1 +1,1 @@
-../../.agent/agents/rust-pro.md
+../../.agents/agents/rust-pro.md

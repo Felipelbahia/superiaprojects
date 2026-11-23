@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/posix-shell-pro.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/posix-shell-pro.md (model: sonnet) -->
 ---
 name: posix-shell-pro
 description: Expert in strict POSIX sh scripting for maximum portability across Unix-like systems. Specializes in shell scripts that run on any POSIX-compliant shell (dash, ash, sh, bash --posix).

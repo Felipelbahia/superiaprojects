@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/bash-pro.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/bash-pro.md (model: sonnet) -->
 ---
 name: bash-pro
 description: Master of defensive Bash scripting for production automation, CI/CD pipelines, and system utilities. Expert in safe, portable, and testable shell scripts.

@@ -1,1 +1,1 @@
-../../.agent/agents/cpp-pro.md
+../../.agents/agents/cpp-pro.md

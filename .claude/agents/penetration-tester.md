@@ -1,1 +1,1 @@
-../../.agent/agents/penetration-tester.md
+../../.agents/agents/penetration-tester.md

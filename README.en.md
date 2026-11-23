@@ -18,20 +18,20 @@ AI-assisted coding frequently suffers from unstable context, contradictory rules
 
 **Super IA Projects** solves this by providing a unified, battle-tested agentic engineering system:
 
-- 🎯 **True Multi-AI Parity (Dual Rules Engine):** 100% identical rules automatically synchronized between `CLAUDE.md` (Claude Code) and `AGENTS.md` (Antigravity and other tools), both at the root. Coming from an older kit? `GEMINI.md` and `.agent/rules/` are legacy: `python3 .agent/scripts/sync_rules.py --clean-legacy` lists what is left and deletes only after you say yes (anything that differs from `CLAUDE.md` is kept for you to review).
+- 🎯 **True Multi-AI Parity (Dual Rules Engine):** 100% identical rules automatically synchronized between `CLAUDE.md` (Claude Code) and `AGENTS.md` (Antigravity and other tools), both at the root. Coming from an older kit? `GEMINI.md` and `.agents/rules/` are legacy: `python3 .agents/scripts/sync_rules.py --clean-legacy` lists what is left and deletes only after you say yes (anything that differs from `CLAUDE.md` is kept for you to review).
 - 🧩 **Modular & Composable Skills:** Over 220 plug-and-play skills covering web & mobile development, automation pipelines, robust web scraping (Firecrawl), and clean architecture.
 - 🔄 **The Execution Loop:** A strict, auditable delivery methodology: *Brainstorm → Spec → Plan → Execution → QA (scored 0 to 10 with verifiable proof)*. If any QA criterion scores below 10, the skill restarts the cycle on its own (Debug → Spec) and tries again — up to 5 cycles — instead of shipping something "mostly done".
 - 🏭 **SIPs (Specialist Super IA Projects):** Hub projects that concentrate all the intelligence (skills, agents, workflows) of a specific domain (e.g. n8n, marketing) in one place, shared on demand with any project that needs it — without duplicating knowledge across repos.
-- 📊 **Interactive Visual Dashboard:** A responsive HTML catalog (`catalog.html`) and markdown directory (`.agent/CATALOG.md`) dynamically generated from your codebase.
+- 📊 **Interactive Visual Dashboard:** A responsive HTML catalog (`catalog.html`) and markdown directory (`.agents/CATALOG.md`) dynamically generated from your codebase.
 - 🛡️ **Zero Data Leakage:** Private project sheets, execution loop run histories, and machine-specific configs are completely isolated via `.gitignore`.
 
 ---
 
 ## 📦 What's Included
 
-- **130+ Specialist Personas** (`.agent/agents/`): Domain experts (Frontend, Mobile, Backend, Security, DevOps, QA, Product).
-- **220+ Procedural Skills** (`.agent/skills/`): Actionable workflows with embedded scripts and verification routines.
-- **110+ Workflows** (`.agent/workflows/`): Quick `/slash` commands for Claude Code and Cursor.
+- **130+ Specialist Personas** (`.agents/agents/`): Domain experts (Frontend, Mobile, Backend, Security, DevOps, QA, Product).
+- **220+ Procedural Skills** (`.agents/skills/`): Actionable workflows with embedded scripts and verification routines.
+- **110+ Workflows** (`.agents/workflows/`): Quick `/slash` commands for Claude Code and Cursor.
 - **Agnostic Starter Templates:**
   - `CLAUDE.example.md` (or `ClaudeExample.md`): Clean, machine-agnostic template ready to copy to `CLAUDE.md`.
   - `prompts-template/`: Curated copy-paste prompts for scaffolding, syncing, and refactoring projects.
@@ -54,8 +54,8 @@ The `./install.sh` script automatically:
 1. Detects your Python 3 environment.
 2. Initializes your `CLAUDE.md` from `CLAUDE.example.md` (without overwriting if you already have one).
 3. Creates symlinks for **Claude Code** (`.claude/`) and **Cursor** (`.cursor/`).
-4. Generates the unified visual catalog in `.agent/catalog.html`.
-5. Rewrites the kit path (written on the author's machine) to where you installed it, in skills, prompts and docs (`localize_paths.py`). Run `python3 .agent/scripts/localize_paths.py` again if you move the folder; in a clone those `.md` files show as modified in git.
+4. Generates the unified visual catalog in `.agents/catalog.html`.
+5. Rewrites the kit path (written on the author's machine) to where you installed it, in skills, prompts and docs (`localize_paths.py`). Run `python3 .agents/scripts/localize_paths.py` again if you move the folder; in a clone those `.md` files show as modified in git.
 6. Refreshes the prompt templates: writes `projetos/prompts/` with the kit's real path in place of `<SUPER_IA_PROJECTS_PATH>` (overwritten on every install).
 
 **Windows (or any system without bash):** run `py install.py` (or `python install.py`), same steps in pure Python. If Windows denies symlinks (error 1314, no Developer Mode), the kit uses junctions for folders and managed copies for files; `sync_entrypoints.py` keeps them up to date.

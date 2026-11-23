@@ -1,1 +1,1 @@
-../../.agent/agents/design-system-architect.md
+../../.agents/agents/design-system-architect.md

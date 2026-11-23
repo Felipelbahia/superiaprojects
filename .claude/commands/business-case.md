@@ -1,1 +1,1 @@
-../../.agent/workflows/business-case.md
+../../.agents/workflows/business-case.md

@@ -1,1 +1,1 @@
-../../.agent/workflows/tdd-red.md
+../../.agents/workflows/tdd-red.md

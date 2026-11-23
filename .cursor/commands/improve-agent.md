@@ -1,1 +1,1 @@
-../../.agent/workflows/improve-agent.md
+../../.agents/workflows/improve-agent.md

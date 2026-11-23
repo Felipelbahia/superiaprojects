@@ -1,1 +1,1 @@
-../../.agent/workflows/debug-trace.md
+../../.agents/workflows/debug-trace.md

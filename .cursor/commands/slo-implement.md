@@ -1,1 +1,1 @@
-../../.agent/workflows/slo-implement.md
+../../.agents/workflows/slo-implement.md

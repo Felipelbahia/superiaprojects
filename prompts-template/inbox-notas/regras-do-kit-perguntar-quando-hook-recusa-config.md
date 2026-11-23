@@ -8,7 +8,7 @@ A regra "Environment and production" do módulo `core` ganhou uma frase: quando 
 Rodar o prompt 01 (`prompts-template/01-atualizar-projeto-existente.md` do kit): remonta o `CLAUDE.md` com `assemble_rules.py` (mesmos módulos, só linhas dos módulos no diff) e roda `sync_rules.py`. Prova: `grep -n -F "ask the owner whether to commit and push anyway" CLAUDE.md`.
 
 ## Onde
-`CLAUDE.md` e `AGENTS.md` deste projeto; módulo em `{hub}/.agent/skills/project-initializer/modules/core.md`.
+`CLAUDE.md` e `AGENTS.md` deste projeto; módulo em `{hub}/.agents/skills/project-initializer/modules/core.md`.
 
 ## Por quê
 O hook recusou um commit por falso positivo e o agente precisa saber o que fazer: perguntar, não contornar nem liberar sozinho.

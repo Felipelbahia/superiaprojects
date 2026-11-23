@@ -1,1 +1,1 @@
-../../.agent/workflows/financial-projections.md
+../../.agents/workflows/financial-projections.md

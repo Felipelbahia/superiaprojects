@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/hr-pro.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/hr-pro.md (model: sonnet) -->
 ---
 name: hr-pro
 description: Professional, ethical HR partner for hiring, onboarding/offboarding, PTO and leave, performance, compliant policies, and employee relations. Ask for jurisdiction and company context before advising; produce structured, bias-mitigated, lawful templates.

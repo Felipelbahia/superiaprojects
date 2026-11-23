@@ -1,1 +1,1 @@
-../../.agent/workflows/ai-review.md
+../../.agents/workflows/ai-review.md

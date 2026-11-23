@@ -62,3 +62,8 @@ Problema → Solução, só o que não se deduz do código.
 - **Problema:** `glob.lstrip("./")` tira todo ponto e barra do começo, então `.agent/...`, `.githooks/...` e `.env.example` viravam `agent/...` e eram barrados como "fora do escopo". Meus testes não tinham nenhum glob começando com ponto; quem achou foi o Base Sites - Astro.
 - **Solução:** `norm_glob` tira só o prefixo `./`; testes com `.agent/`, `.github/`, `.env.example` e `./.agent/x.md`. Conferido em outro projeto sorteado (`waimonitor`).
 - **Regra:** teste de caminho/glob sempre inclui um caso que começa com ponto.
+
+## 2026-11-23 — Migração `.agent` → `.agents` (hub 0 Padrões)
+Problema: Codex lê `.agents/`; o kit usava `.agent/`. Solução: `git mv` no hub, referências trocadas por varredura, `linkutil.adir()` para scripts que leem projetos/hubs ainda em `.agent/`, 60 avisos GERAL no inbox dos consumidores. Armadilhas: o `.gitignore` tinha entradas por caminho (arquivos novos apareciam como não rastreados até ajustar); fixtures de teste e `legacy-generic-lines.txt` modelam texto antigo de consumidores e ficam com `.agent/`; hub sem alias: consumidores perdem o caminho antigo até migrarem (decisão de Felipe). Pendências: item 050.
+Rodada 2: `migrate_agent_to_agents.py` aplicado em 6 hubs SIP e 55 consumidores (idempotente). Armadilhas: reapontar primeiro os links de `.agents/` e só depois os de `.claude/` (os de `.claude/` apontam para dentro de `.agents/`, que ainda estava quebrado); `while read` ignora a última linha sem `\n`; `CLAUDE.md`/`AGENTS.md` do kit são ignorados pelo git e a varredura por `git ls-files` não os alcança (remontar com `assemble_rules.py`). Varredura local em cada projeto via nota GERAL.
+

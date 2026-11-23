@@ -1,1 +1,1 @@
-../../.agent/workflows/multi-agent-review.md
+../../.agents/workflows/multi-agent-review.md

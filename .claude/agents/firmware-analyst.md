@@ -1,1 +1,1 @@
-../../.agent/agents/firmware-analyst.md
+../../.agents/agents/firmware-analyst.md

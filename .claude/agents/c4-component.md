@@ -1,4 +1,4 @@
-<!-- antigravity-kit:generated from ../../.agent/agents/c4-component.md (model: sonnet) -->
+<!-- antigravity-kit:generated from ../../.agents/agents/c4-component.md (model: sonnet) -->
 ---
 name: c4-component
 description: Expert C4 Component-level documentation specialist. Synthesizes C4 Code-level documentation into Component-level architecture, defining component boundaries, interfaces, and relationships. Creates component diagrams and documentation. Use when synthesizing code-level documentation into logical components.

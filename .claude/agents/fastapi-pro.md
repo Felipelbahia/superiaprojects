@@ -1,1 +1,1 @@
-../../.agent/agents/fastapi-pro.md
+../../.agents/agents/fastapi-pro.md

@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-SCRIPTS = ROOT / ".agent" / "scripts"
+SCRIPTS = ROOT / ".agents" / "scripts"
 
 
 def run(script: str, *args: str) -> int:
@@ -33,7 +33,7 @@ def main() -> int:
         print("Criando AGENTS.md (cópia do CLAUDE.md)...")
         run("sync_rules.py")
     if run("sync_rules.py", "--check") != 0:
-        print("Arquivos de regra fora de paridade: rode python .agent/scripts/sync_rules.py quando quiser alinhar.")
+        print("Arquivos de regra fora de paridade: rode python .agents/scripts/sync_rules.py quando quiser alinhar.")
 
     print("\nAjustando os caminhos do kit nas skills, prompts e docs para este local...")
     status = run("localize_paths.py")
@@ -47,7 +47,7 @@ def main() -> int:
     if status:
         print("\nA instalação terminou com erros: veja as mensagens acima.")
         return 1
-    print("\nPronto. Abra .agent/catalog.html no navegador para explorar skills, agentes e workflows.")
+    print("\nPronto. Abra .agents/catalog.html no navegador para explorar skills, agentes e workflows.")
     print("Disciplina de mudança: env_diff_check.py e scope_check.py rodam no checklist.py e no hook (ative uma vez: git config core.hooksPath .githooks).")
     return 0
 

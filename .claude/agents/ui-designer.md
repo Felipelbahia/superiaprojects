@@ -1,1 +1,1 @@
-../../.agent/agents/ui-designer.md
+../../.agents/agents/ui-designer.md
