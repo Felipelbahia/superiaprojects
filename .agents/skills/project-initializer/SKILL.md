@@ -40,6 +40,7 @@ Depois de cada resposta, diga em 1 linha o que ela define (módulo de regras, SI
 No diretório raiz do novo projeto (`<project_root>`):
 1. **Criar Diretórios de Regras:**
    - Criar a pasta `<project_root>/.claude/` (para skills, agents e commands; **não** para um `CLAUDE.md`).
+   - **Uma pasta só:** o projeto usa apenas `.agents/` (o que o Codex lê). Nunca crie `.agent/` (singular), nem symlink `.agent -> .agents`, nem linha `.agent` no `.gitignore`: as duas pastas juntas confundem as ferramentas.
 2. **Montar as Regras por Módulos (nunca recortar à mão):**
    - Os módulos ficam em `modules/` nesta skill (`core`, `sip-access`, `code`, `interface`, `content`, `automation`). Na raiz do projeto, monte com os aprovados na Fase 1 (sempre `core` e `sip-access`):
      ```bash

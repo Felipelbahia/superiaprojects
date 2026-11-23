@@ -10,8 +10,8 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-import linkutil  # noqa: E402
-import resolve_skill  # noqa: E402
+import linkutil
+import resolve_skill
 
 
 class AdirTest(unittest.TestCase):
@@ -51,9 +51,13 @@ class PublicFilesUseNewNameTest(unittest.TestCase):
                     continue  # the migration note names the old folder on purpose
                 for n, line in enumerate(f.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
                     if OLD_NAME.search(line) and "o nome antigo" not in line and "ainda tem `.agent/`" not in line \
-                            and "Se o projeto ainda tem" not in line and "Sem o meu OK" not in line:
+                            and "Se o projeto ainda tem" not in line and "Nunca crie `.agent" not in line and "Sem o meu OK" not in line:
                         bad.append(f"{f.relative_to(KIT)}:{n}")
         self.assertEqual(bad, [])
+
+    def test_initializer_and_prompt_02_say_one_folder_only(self):
+        for f in (KIT / ".agents/skills/project-initializer/SKILL.md", KIT / "prompts-template/02-criar-projeto-do-zero.md"):
+            self.assertIn("Nunca crie `.agent/`", f.read_text(encoding="utf-8"), f.name)
 
 
 if __name__ == "__main__":

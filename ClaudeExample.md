@@ -128,7 +128,7 @@ Read only when the trigger applies, and only if the file exists. With `_projectd
 ## 10. Change discipline
 
 - **Blocked? Stop and say so.** If you cannot do it or do not know how, stop and tell the owner what blocked you. Never work around it: no silencing an error, no empty `try/catch`, no skipping or deleting a test or check, no bending a structure that already works so one part runs, no faking an output. Not finding a skill, agent or file is not a block until the search in *Skills, agents, workflows: where they live* is shown.
-- **Smallest change that does the request.** Touch only what the request needs. Refactoring, renaming, reformatting or moving things beyond the request: ask first. The plan file declares its scope in a line `Scope:` (paths or globs); if the diff touches anything outside it, name those files and why before saying done. Machine check: `scope_check.py`; the owner releases one commit with `ALLOW_SCOPE_DIFF=1` after saying so in chat, and the reason goes in the plan.
+- **Smallest change that does the request.** Touch only what the request needs. Refactoring, renaming, reformatting or moving things beyond the request: ask first. The plan file declares its scope in a line `Scope:` (paths or globs); if the diff touches anything outside it, name those files and why before saying done. When committing multiple loops together, the `Scope:` of the newest plan must cover the files of all loops in the commit; alternatively, commit each loop before starting the next loop's plan. Machine check: `scope_check.py`; the owner releases one commit with `ALLOW_SCOPE_DIFF=1` after saying so in chat, and the reason goes in the plan.
 
 ## 11. Done means verified
 

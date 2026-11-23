@@ -93,9 +93,10 @@ Caso contrário (sessão num projeto consumidor, sem o dono revisando aquela edi
 
 ## Atualização
 
-- Última atualização do hub: 2026-11-20 (o dono do hub muda esta data sempre que esta skill, um agent, um workflow ou a estrutura do hub mudar).
+- Última atualização do hub: 2026-11-23 (o dono do hub muda esta data sempre que esta skill, um agent, um workflow ou a estrutura do hub mudar).
 - Para atualizar a instalação num projeto (refazer links, escolher entre os agents/workflows novos): cole de novo o prompt `"/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/prompts/instalar-skill-sip-geral.md"` numa sessão daquele projeto.
 - A data em que **cada projeto** instalou ou atualizou fica no `.agents/SIPS-CONSUMIDOS.md` dele. Se for anterior à data acima, ofereça rodar o prompt.
+- **Propagar para todos os consumidores (dono do hub):** depois de mudar este hub, rode (simulação por padrão; `--apply` grava): `python3 "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Padrões/.agents/scripts/propagar_sip.py" "/Users/macbookpro/Documents/IA Projects/_Plataforma/0 Mkt"`. Ele lê `instalacoes/`, refaz links quebrados, atualiza a data do manifesto e o registro de cada projeto e deixa agents/workflows novos como nota na `inbox/` do projeto (nunca instala sozinho). Acrescente `--apply` depois de ver a simulação, e `--scan "<pasta dos projetos>"` para achar consumidores não registrados.
 
 ## Se nada bater
 

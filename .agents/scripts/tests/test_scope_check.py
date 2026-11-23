@@ -14,7 +14,7 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SCRIPTS))
 
-import scope_check as sc  # noqa: E402
+import scope_check as sc
 
 
 def git(repo: Path, *args: str) -> None:
@@ -121,6 +121,31 @@ class Run(unittest.TestCase):
         self.assertEqual(sc.main([str(self.repo), "--staged"]), 0)
         git(self.repo, "add", "README.md")
         self.assertEqual(sc.main([str(self.repo), "--staged"]), 1)
+
+    def test_outside_scope_mentions_previous_plan_when_covered_there(self):
+        plan1 = self.repo / ".agents" / "plans" / "execution-loops" / "Loop 1" / "02 Plan.md"
+        plan1.parent.mkdir(parents=True, exist_ok=True)
+        plan1.write_text("Scope: src/a.py, README.md\n", encoding="utf-8")
+        # Ensure distinct mtime
+        os.utime(plan1, (1000, 1000))
+
+        plan2 = self.repo / ".agents" / "plans" / "execution-loops" / "Loop 2" / "02 Plan.md"
+        plan2.parent.mkdir(parents=True, exist_ok=True)
+        plan2.write_text("Scope: src/a.py\n", encoding="utf-8")
+        os.utime(plan2, (2000, 2000))
+
+        (self.repo / "src" / "a.py").write_text("a = 99\n", encoding="utf-8")
+        (self.repo / "README.md").write_text("modified in loop 1\n", encoding="utf-8")
+
+        import io
+        from contextlib import redirect_stdout
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            ret = sc.main([str(self.repo)])
+        output = buf.getvalue()
+        self.assertEqual(ret, 1)
+        self.assertIn("README.md (covered by previous plan:", output)
+        self.assertIn("To commit multiple loops together, expand the `Scope:`", output)
 
     def test_not_a_git_repo_passes_with_a_warning(self):
         with tempfile.TemporaryDirectory() as plain:

@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import git_changes  # noqa: E402
+import git_changes
 
 ALWAYS = [".agents/plans/", "inbox/", "memory.md"]
 SCOPE_LINE = re.compile(r"^\s*(?:Scope|Escopo):\s*(.*)$", re.IGNORECASE)
@@ -83,15 +83,22 @@ def outside_scope(repo: Path, globs: list[str], staged: bool = False) -> list[st
     return [p for p in git_changes.changed_paths(repo, staged) if not in_scope(p, globs)]
 
 
-def newest_plan_with_scope(repo: Path):
+def all_plans_with_scope(repo: Path) -> list[tuple[Path, list[str]]]:
     candidates = [p for p in (repo / ".agents" / "plans").rglob("*.md") if p.is_file()]
+    result = []
     for plan in sorted(candidates, key=lambda p: p.stat().st_mtime, reverse=True):
         try:
-            if parse_scope(plan.read_text(encoding="utf-8")) is not None:
-                return plan
+            globs = parse_scope(plan.read_text(encoding="utf-8"))
+            if globs is not None:
+                result.append((plan, globs))
         except (UnicodeDecodeError, OSError):
             continue
-    return None
+    return result
+
+
+def newest_plan_with_scope(repo: Path):
+    plans = all_plans_with_scope(repo)
+    return plans[0][0] if plans else None
 
 
 def main(argv: list[str]) -> int:
@@ -106,7 +113,9 @@ def main(argv: list[str]) -> int:
     if not git_changes.is_git_repo(repo):
         print(f"scope_check: {repo} is not a git repository, nothing to compare (warning)")
         return 0
-    plan = plan or newest_plan_with_scope(repo)
+    all_plans = all_plans_with_scope(repo)
+    if plan is None:
+        plan = all_plans[0][0] if all_plans else None
     if plan is None:
         print("scope_check: no plan with a `Scope:` line found under .agents/plans/, nothing to compare (warning)")
         return 0
@@ -118,9 +127,27 @@ def main(argv: list[str]) -> int:
     if os.environ.get("ALLOW_SCOPE_DIFF") == "1":
         print(f"scope_check: {len(files)} file(s) outside the scope of {plan.name}, released by ALLOW_SCOPE_DIFF=1")
         return 0
+
+    other_plans = [(p, g) for p, g in all_plans if p.resolve() != plan.resolve()]
+    covered_by_previous: dict[str, str] = {}
+    for f in files:
+        for prev_plan, prev_globs in other_plans:
+            if in_scope(f, prev_globs):
+                try:
+                    rel_plan = str(prev_plan.relative_to(repo))
+                except ValueError:
+                    rel_plan = str(prev_plan)
+                covered_by_previous[f] = rel_plan
+                break
+
     print(f"scope_check: {len(files)} file(s) outside the scope declared in {plan.name}:")
     for path in files:
-        print(f"  {path}")
+        if path in covered_by_previous:
+            print(f"  {path} (covered by previous plan: {covered_by_previous[path]})")
+        else:
+            print(f"  {path}")
+    if covered_by_previous:
+        print("To commit multiple loops together, expand the `Scope:` of the current plan to include them, or commit the previous loop before starting the next.")
     print("Name them to the owner and say why, or ask for ALLOW_SCOPE_DIFF=1 for this commit.")
     return 1
 
